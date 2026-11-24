@@ -56,6 +56,8 @@ def main():
              f"failed in env {sum(ref_env.values())}.", "",
              "| method | ref | blocked | tp | fp | fn | precision | recall | false-block | actions with UNKNOWN |",
              "|---|---|---|---|---|---|---|---|---|---|"]
+    # "direct": the main agent executes every proposed action, nothing is checked
+    by_method["direct (no check)"] = defaultdict(bool)
     for m in sorted(by_method):
         pred = {k: by_method[m].get(k, False) for k in ref_env}
         n_unk = sum(unknown[m].get(k, False) for k in ref_env)

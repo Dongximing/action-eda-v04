@@ -208,3 +208,17 @@ DATA=data/alfworld9b JEV_ADAPTER=adapters.typesafe_jev:choose METHODS=T0,H1,H2,U
 ```
 
 每个 run 目录下有 `report.md`（claim 级分层指标）和 `action_level.md`。后者的规则是：只要有一条 claim 判为 CONTRADICTED 就拦下这个动作，再分别和 tracker、环境真实结果比较。若 Jev 响应带 `probabilities`，adapter 会用作分数；否则只返回选项，`run_meta.json` 记为 one-hot，此时 D2 的弱信号触发和 Q0 的 log-odds 会退化。
+
+### 不用 Jev：OpenRouter qwen3.5-9b 作为决策模型
+
+结果记为 `api:openrouter/qwen/qwen3.5-9b@parasail`，不算 Jev 的结果。提示与本地 HF 后端相同；如果供应商返回 logprobs，就用来给选项打分，否则只取答案字母（one-hot）。
+
+```bash
+export OPENROUTER_API_KEY=...
+python scripts/check_backend.py --backend api --adapter adapters.openrouter_chat:choose
+DATA=data/alfworld9b SKIP_JEV=1 API_ADAPTER=adapters.openrouter_chat:choose METHODS=T0,H1,H2,U1,D1,D1f,D2,P0,Q0 CTX="0 1" bash scripts/run_sweep.sh
+```
+
+在 context_k=0 时，去掉方法之间共享的相同问题后，最多约 3000 次不同的请求；D1 提前停止会再少一些。`WORKERS` 默认 8 个并发。
+
+`action_level.md` 里的 `direct (no check)` 行就是"什么都不加、直接执行"的基线，对应原实验的 direct 组，12 局赢 4 局。T0 是用规则重放历史的参考上限，不属于这种基线。

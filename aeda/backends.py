@@ -24,6 +24,7 @@ import importlib
 import json
 import math
 import os
+import threading
 import time
 from dataclasses import dataclass
 from typing import Any, Callable, Protocol
@@ -107,46 +108,65 @@ def normalise_choice(raw: Any, letters: list[str]) -> dict[str, float]:
     return {l: v / s for l, v in vals.items()}
 
 
-class JevBackend:
-    """Jev decision model, called through a user-supplied adapter function.
-
-    The adapter is ``module:function`` (``--jev-adapter`` or env ``AEDA_JEV_ADAPTER``)
-    with signature::
+class AdapterBackend:
+    """Decision model called through an adapter function ``module:function`` with signature::
 
         def choose(context: str, question: str, options: list[tuple[str, str]]) -> dict[str, float] | str
 
     It returns a score per option letter, or just the chosen letter if the API
     gives no scores (counted in ``usage.one_hot``; threshold rules such as the D2
     weak-signal trigger and Q0 log-odds then degrade and this must be reported).
+    Thread-safe, so ``run(..., workers>1)`` can issue requests concurrently.
     """
 
+    prefix = "api"
+
     def __init__(self, adapter: str | None = None, cache: bool = True):
-        spec = adapter or os.environ.get("AEDA_JEV_ADAPTER")
+        spec = adapter or os.environ.get(self.env_var())
         if not spec or ":" not in spec:
-            raise ValueError("JevBackend needs --jev-adapter module:function (see adapters/jev_adapter.py)")
+            raise ValueError(f"{type(self).__name__} needs an adapter module:function (see adapters/)")
         mod, fn = spec.split(":", 1)
-        self.fn: Callable = getattr(importlib.import_module(mod), fn)
-        self.name = f"jev:{spec}"
+        module = importlib.import_module(mod)
+        self.fn: Callable = getattr(module, fn)
+        label = module.describe() if hasattr(module, "describe") else spec
+        self.name = f"{self.prefix}:{label}"
         self.usage = Usage()
         self._cache: dict | None = {} if cache else None
+        self._lock = threading.Lock()
+
+    @classmethod
+    def env_var(cls) -> str:
+        return "AEDA_API_ADAPTER"
 
     def options(self, q: Query) -> dict[str, float]:
         if q.mcq is None:
-            raise ValueError(f"Jev only answers multiple-choice queries, got {q.kind}")
+            raise ValueError(f"{self.name} only answers multiple-choice queries, got {q.kind}")
         key = (q.mcq.context, q.mcq.question, tuple(q.mcq.options))
-        if self._cache is not None and key in self._cache:
-            self.usage.cache_hits += 1
-            return self._cache[key]
+        with self._lock:
+            if self._cache is not None and key in self._cache:
+                self.usage.cache_hits += 1
+                return self._cache[key]
         t0 = time.time()
         raw = self.fn(q.mcq.context, q.mcq.question, list(q.mcq.options))
         out = normalise_choice(raw, q.letters)
-        self.usage.calls += 1
-        self.usage.seconds += time.time() - t0
-        if isinstance(raw, str) or max(out.values()) == 1.0:
-            self.usage.one_hot += 1
-        if self._cache is not None:
-            self._cache[key] = out
+        with self._lock:
+            self.usage.calls += 1
+            self.usage.seconds += time.time() - t0
+            if isinstance(raw, str) or max(out.values()) == 1.0:
+                self.usage.one_hot += 1
+            if self._cache is not None:
+                self._cache[key] = out
         return out
+
+
+class JevBackend(AdapterBackend):
+    """Jev, the study's decision model (``--jev-adapter`` or env ``AEDA_JEV_ADAPTER``)."""
+
+    prefix = "jev"
+
+    @classmethod
+    def env_var(cls) -> str:
+        return "AEDA_JEV_ADAPTER"
 
 
 class HFOptionBackend:

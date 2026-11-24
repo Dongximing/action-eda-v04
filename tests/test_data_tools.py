@@ -1,5 +1,6 @@
 """Tests for data builders, ALFWorld tracker and the context option (no model)."""
 import json
+import math
 import subprocess
 import sys
 import tempfile
@@ -163,3 +164,47 @@ class TestTypesafeAdapter(unittest.TestCase):
         q = seen["questions"]["decision"]
         self.assertEqual((seen["model"], seen["state"], q["type"], q["criteria"]),
                          ("jev-x", {"context": "records"}, "choice", {"A": "est", "B": "inv"}))
+
+
+class TestOpenRouterAdapter(unittest.TestCase):
+    def test_logprobs_letter_fallback_and_request(self):
+        import os
+        from unittest import mock
+        from adapters import openrouter_chat as O
+        lp = {"choices": [{"message": {"content": "B"}, "logprobs": {"content": [{"token": "B", "logprob": -0.1,
+              "top_logprobs": [{"token": "B", "logprob": -0.1}, {"token": " A", "logprob": -2.5},
+                               {"token": "Hmm", "logprob": -3.0}]}]}}]}
+        s = O.letter_scores(lp, ["A", "B", "C"])
+        self.assertAlmostEqual(s["B"], math.exp(-0.1))
+        self.assertAlmostEqual(s["A"], math.exp(-2.5))
+        self.assertEqual(s["C"], 0.0)
+        self.assertIsNone(O.letter_scores({"choices": [{"message": {"content": "A"}}]}, ["A", "B"]))
+        self.assertEqual(O.parse_letter("C", ["A", "B", "C"]), "C")
+        self.assertEqual(O.parse_letter("<think></think>\n\nB.", ["A", "B", "C"]), "B")
+        self.assertEqual(O.parse_letter("The answer is A", ["A", "B", "C"]), "A")
+        with self.assertRaises(ValueError):
+            O.parse_letter("Both A and B", ["A", "B", "C"])
+        seen = {}
+
+        def fake_post(payload, **kw):
+            seen.update(payload)
+            return {"choices": [{"message": {"content": "A"}}]}
+        with mock.patch.object(O, "_post", fake_post), mock.patch.dict(os.environ, {"OR_PROVIDER": "parasail"}):
+            self.assertEqual(O.choose("ctx", "q?", [("A", "x"), ("B", "y")]), "A")
+            self.assertEqual(O.describe(), "openrouter/qwen/qwen3.5-9b@parasail")
+        self.assertEqual(seen["provider"], {"order": ["parasail"], "allow_fallbacks": False})
+        self.assertTrue(seen["messages"][1]["content"].endswith("Answer with a single letter."))
+        with mock.patch.dict(os.environ, {"OPENROUTER_API_KEY": ""}):
+            with self.assertRaises(RuntimeError):
+                O.choose("ctx", "q?", [("A", "x"), ("B", "y")])
+
+
+class TestThreadedRun(unittest.TestCase):
+    def test_workers_give_same_rows(self):
+        from aeda.backends import AdapterBackend
+        samples = load_samples(ROOT / "data/smoke/samples.jsonl")
+        meths = ["H1", "U1", "D1", "D2", "P0", "Q0"]
+        seq = run(samples, meths, AdapterBackend("tests.fake_jev:good"), Config())
+        par = run(samples, meths, AdapterBackend("tests.fake_jev:good"), Config(), workers=4)
+        self.assertEqual(seq, par)
+        self.assertTrue(AdapterBackend("tests.fake_jev:good").name.startswith("api:"))

@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from aeda import prompts  # noqa: E402
-from aeda.backends import HFOptionBackend, JevBackend, TableBackend  # noqa: E402
+from aeda.backends import HFOptionBackend, AdapterBackend, JevBackend, TableBackend  # noqa: E402
 from aeda.schema import load_samples, write_jsonl  # noqa: E402
 from aeda.verifiers import METHODS, NEEDS_GENERATOR, Config, run  # noqa: E402
 
@@ -44,9 +44,12 @@ def main():
     ap.add_argument("--samples", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--methods", default=DEFAULT_METHODS)
-    ap.add_argument("--backend", choices=["jev", "hf", "table"], required=True,
-                    help="decision model: jev (study model), hf (named comparison model), table (tests)")
+    ap.add_argument("--backend", choices=["jev", "api", "hf", "table"], required=True,
+                    help="decision model: jev (study model), api (named model behind an adapter, e.g. OpenRouter), "
+                         "hf (named local comparison model), table (tests)")
     ap.add_argument("--jev-adapter", default=None, help="module:function, see adapters/jev_adapter.py")
+    ap.add_argument("--adapter", default=None, help="module:function for --backend api, e.g. adapters.openrouter_chat:choose")
+    ap.add_argument("--workers", type=int, default=1, help="concurrent (method, sample) jobs; use >1 only for API backends")
     ap.add_argument("--model", default=None, help="HF model id for --backend hf")
     ap.add_argument("--table", default=None, help="JSON table for --backend table")
     ap.add_argument("--gen-model", default=None,
@@ -77,6 +80,8 @@ def main():
 
     if a.backend == "jev":
         backend = JevBackend(a.jev_adapter)
+    elif a.backend == "api":
+        backend = AdapterBackend(a.adapter)
     elif a.backend == "hf":
         if not a.model:
             ap.error("--backend hf needs --model (it is reported as that model, not as Jev)")
@@ -99,7 +104,7 @@ def main():
 
     samples = load_samples(a.samples)
     t0 = time.time()
-    rows = run(samples, methods, backend, cfg, generator)
+    rows = run(samples, methods, backend, cfg, generator, workers=a.workers)
     wall = time.time() - t0
 
     out = Path(a.out)

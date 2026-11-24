@@ -5,6 +5,11 @@
 #   DATA=data/diag JEV_ADAPTER=adapters.jev_adapter:choose GEN_MODEL=Qwen/Qwen3-4B \
 #   CTX="0 1" bash scripts/run_sweep.sh
 #
+#   # the same 12 games with OpenRouter qwen3.5-9b as the decision model instead of Jev:
+#   export OPENROUTER_API_KEY=...
+#   DATA=data/alfworld9b SKIP_JEV=1 API_ADAPTER=adapters.openrouter_chat:choose \
+#   METHODS=T0,H1,H2,U1,D1,D1f,D2,P0,Q0 CTX="0 1" bash scripts/run_sweep.sh
+#
 #   # the 12 ALFWorld games of outputs/alfworld-9b-oneshot-alternate (no E1, so no generator):
 #   DATA=data/alfworld9b JEV_ADAPTER=adapters.typesafe_jev:choose METHODS=T0,H1,H2,U1,D1,D1f,D2,P0,Q0 \
 #   CTX="0 1" bash scripts/run_sweep.sh
@@ -19,6 +24,9 @@
 #   CTX             context_k values                                               [0 1]
 #   METHODS         methods to run                                                 [H1,H2,U1,D1,D1f,D2,E1,P0,Q0]
 #   COMPARE_MODELS  HF models run as named comparison decision models             []
+#   API_ADAPTER     module:function of a named API decision model (not Jev),
+#                   e.g. adapters.openrouter_chat:choose                          []
+#   WORKERS         concurrent jobs for jev/api backends                          [8]
 #   SKIP_JEV        1 to run only the comparison models                           [0]
 #   OUT             output root                                                    [runs/sweep]
 #   EXTRA           extra args for run_offline.py, e.g. "--dtype float16"         []
@@ -32,6 +40,8 @@ CTX=${CTX:-"0 1"}
 METHODS=${METHODS:-H1,H2,U1,D1,D1f,D2,E1,P0,Q0}
 COMPARE_MODELS=${COMPARE_MODELS:-}
 SKIP_JEV=${SKIP_JEV:-0}
+API_ADAPTER=${API_ADAPTER:-}
+WORKERS=${WORKERS:-8}
 OUT=${OUT:-runs/sweep}
 EXTRA=${EXTRA:-}
 PY=${PY:-python}
@@ -60,7 +70,11 @@ run_one () {  # $1 = run dir, rest = backend args
 
 for k in $CTX; do
   if [ "$SKIP_JEV" != "1" ]; then
-    run_one "$OUT/$NAME/jev/ctx$k" --backend jev --jev-adapter "$JEV_ADAPTER" --context-k "$k"
+    run_one "$OUT/$NAME/jev/ctx$k" --backend jev --jev-adapter "$JEV_ADAPTER" --context-k "$k" --workers "$WORKERS"
+  fi
+  if [ -n "$API_ADAPTER" ]; then
+    run_one "$OUT/$NAME/api_$(echo "${API_ADAPTER%%:*}" | tr '.' '_')/ctx$k" --backend api --adapter "$API_ADAPTER" \
+        --context-k "$k" --workers "$WORKERS"
   fi
   for model in $COMPARE_MODELS; do
     run_one "$OUT/$NAME/hf_$(echo "$model" | tr '/' '_')/ctx$k" --backend hf --model "$model" --context-k "$k"

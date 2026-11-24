@@ -20,7 +20,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(Path.cwd()))
 
 from aeda import prompts as P  # noqa: E402
-from aeda.backends import HFOptionBackend, JevBackend, Query  # noqa: E402
+from aeda.backends import HFOptionBackend, AdapterBackend, JevBackend, Query  # noqa: E402
 from aeda.schema import load_samples  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,13 +31,16 @@ EXPECTED = {("c1", 1): "A", ("c1", 3): "B", ("c1", 5): "A", ("c3", 3): "B",
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--backend", choices=["jev", "hf"], required=True)
+    ap.add_argument("--backend", choices=["jev", "api", "hf"], required=True)
     ap.add_argument("--jev-adapter", default=None)
+    ap.add_argument("--adapter", default=None)
     ap.add_argument("--model", default=None)
     ap.add_argument("--context-k", type=int, default=0)
     a = ap.parse_args()
     if a.backend == "jev":
         b = JevBackend(a.jev_adapter)
+    elif a.backend == "api":
+        b = AdapterBackend(a.adapter)
     else:
         if not a.model:
             ap.error("--model is required for --backend hf")

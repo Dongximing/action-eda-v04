@@ -354,36 +354,49 @@ NEEDS_GENERATOR = {"E1"}
 
 
 def run(samples: list[Sample], methods: list[str], backend: DecisionBackend, cfg: Config,
-        generator: Generator | None = None) -> list[dict]:
+        generator: Generator | None = None, workers: int = 1) -> list[dict]:
     """Run each method on each claim. A per-claim exception (e.g. a malformed model
     answer) becomes verdict UNKNOWN with an ``error`` field; configuration errors
-    (missing generator, unknown method) raise before any work."""
+    (missing generator, unknown method) raise before any work. ``workers>1`` runs
+    (method, sample) jobs in threads (for API backends); the row order is unchanged."""
     unknown = [m for m in methods if m not in METHODS]
     if unknown:
         raise ValueError(f"unknown methods {unknown}")
     if generator is None and NEEDS_GENERATOR & set(methods):
         raise ValueError(f"{sorted(NEEDS_GENERATOR & set(methods))} need a generator (--gen-model)")
-    rows = []
-    for meth in methods:
+
+    def job(meth: str, s: Sample) -> list[dict]:
         fn = METHODS[meth]
-        for s in samples:
-            ctx: dict = {}
-            for c in s.claims:
-                m = Meter(backend, generator)
-                try:
-                    v, ev, trace = fn(s, c, m, cfg, ctx)
-                    err = None
-                except (NotImplementedError, RuntimeError):
-                    raise  # missing backend pieces must stop the run, not become UNKNOWN
-                except Exception as e:
-                    v, ev, trace, err = "UNKNOWN", [], {}, f"{type(e).__name__}: {e}"
-                res = Result(meth, s.sid, c.cid, v, ev, m.calls, m.chars, _jsonable(trace))
-                row = asdict(res)
-                row["gen_calls"] = m.gen_calls
-                if err:
-                    row["error"] = err
-                rows.append(row)
-    return rows
+        ctx: dict = {}
+        rows = []
+        for c in s.claims:
+            m = Meter(backend, generator)
+            try:
+                v, ev, trace = fn(s, c, m, cfg, ctx)
+                err = None
+            except (NotImplementedError, RuntimeError):
+                raise  # missing backend pieces must stop the run, not become UNKNOWN
+            except Exception as e:
+                v, ev, trace, err = "UNKNOWN", [], {}, f"{type(e).__name__}: {e}"
+            row = asdict(Result(meth, s.sid, c.cid, v, ev, m.calls, m.chars, _jsonable(trace)))
+            row["gen_calls"] = m.gen_calls
+            if err:
+                row["error"] = err
+            rows.append(row)
+        return rows
+
+    jobs = [(meth, s) for meth in methods for s in samples]
+    if workers <= 1:
+        return [r for meth, s in jobs for r in job(meth, s)]
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        futures = [ex.submit(job, meth, s) for meth, s in jobs]
+        try:
+            return [r for f in futures for r in f.result()]
+        except BaseException:
+            for f in futures:
+                f.cancel()
+            raise
 
 
 def _jsonable(x):
