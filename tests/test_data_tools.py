@@ -67,16 +67,32 @@ class TestAlfworld(unittest.TestCase):
 
 
 class TestContext(unittest.TestCase):
-    def test_context_zero_keeps_p1_prompt_and_k_adds_preceding(self):
+    def test_context_block_only_when_k_positive(self):
         s = load_samples(ROOT / "data/smoke/samples.jsonl")[0]
         c, r = s.claims[0], s.records[2]
-        self.assertNotIn("Preceding records", P.record_judgment(s.task, s.proposed_action, c, r))
+        self.assertNotIn("Preceding records", P.record_judgment(s.task, s.proposed_action, c, r).render())
         self.assertEqual([x.rid for x in preceding(s, r, 2)], [1, 2])
         self.assertEqual(preceding(s, s.records[0], 3), [])
-        txt = P.record_judgment(s.task, s.proposed_action, c, r, preceding(s, r, 1))
+        txt = P.record_judgment(s.task, s.proposed_action, c, r, preceding(s, r, 1)).render()
         self.assertIn("Preceding records", txt)
         self.assertIn("Record to judge: [#3", txt)
 
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestPrompts(unittest.TestCase):
+    def test_mcq_parts_render_and_letters(self):
+        s = load_samples(ROOT / "data/smoke/samples.jsonl")[0]
+        c = s.claims[0]
+        for mcq in [P.record_judgment(s.task, s.proposed_action, c, s.records[0]),
+                    P.pair_judgment(s.task, s.proposed_action, c, s.records[0], s.records[1]),
+                    P.holistic_judgment(s.task, s.proposed_action, c, s.records),
+                    P.q_source(s.task, s.proposed_action, c, s.records[0]),
+                    P.map_claim_choice(c, [("user", "request"), ("r1", "status")])]:
+            txt = mcq.render()
+            self.assertTrue(txt.endswith("Answer with a single letter."))
+            for l, t in mcq.options:
+                self.assertIn(f"{l}. {t}", txt)
+        self.assertEqual(P.map_claim_choice(c, [("a", "b")]).letters, ["A", "Z"])

@@ -1,36 +1,52 @@
-"""Decision-model backends.
+"""Model backends.
 
-Every verifier talks to a backend through two calls:
+Two roles are kept separate:
 
-* ``options(query)``  -> probability for each option letter, from ONE forward pass
-  (single-token option readout, the "one-pass decision model" setting).
-* ``generate(query)`` -> free text; only E1 (extract-then-track) needs it.
-
-A ``Query`` carries both the rendered prompt and the structured fields, so a table
-backend used in tests can answer from ids without parsing text.
+* **Decision backend** — ``options(query)`` returns a probability (or a one-hot
+  choice) for each lettered option of a multiple-choice item, in one pass, without
+  generating text. This is the Jev role in design doc v0.4. All verdicts of H1,
+  H2, U1, D1, D1f, D2, P0, Q0 and E1's mapping/value steps come from it.
+* **Generator** — ``generate(query)`` returns free text. Only E1's claim-agnostic
+  extraction and scripts/generate_claims.py need it; Jev is not used for this.
 
 Backends:
-  HFOptionBackend   local HuggingFace causal LM (default Qwen/Qwen3-4B, thinking off)
-  JevBackend        placeholder for the Jev API; fill in once the interface is known
-  TableBackend      deterministic answers from a JSON table, for tests and smoke runs
+  JevBackend       the decision model of the study, called through a user adapter
+                   (see adapters/jev_adapter.py); no default implementation
+  HFOptionBackend  local HuggingFace causal LM: option readout from next-token
+                   logits, and generation. Usable as the generator, or as an
+                   explicitly named *comparison* decision model (e.g. the original
+                   EDA's Qwen3-4B readout for Q0). It is not a Jev substitute.
+  TableBackend     deterministic answers from a JSON table, for tests only
 """
 from __future__ import annotations
 
+import importlib
 import json
 import math
+import os
 import time
-from dataclasses import dataclass, field
-from typing import Any, Protocol
+from dataclasses import dataclass
+from typing import Any, Callable, Protocol
+
+from .prompts import MCQ
 
 
 @dataclass
 class Query:
-    kind: str                     # record|pair|holistic|q_source|q_delta|extract|map_choice|value_check|gen_claims
-    prompt: str
-    letters: list[str] = field(default_factory=list)
+    kind: str           # record|pair|holistic|q_source|q_delta|map_choice|value_check|extract|gen_claims
+    mcq: MCQ | None = None      # decision queries
+    text: str | None = None     # generation queries
     cid: str | None = None
     rids: tuple[int, ...] = ()
     sid: str | None = None
+
+    @property
+    def prompt(self) -> str:
+        return self.mcq.render() if self.mcq is not None else (self.text or "")
+
+    @property
+    def letters(self) -> list[str]:
+        return self.mcq.letters if self.mcq is not None else []
 
 
 @dataclass
@@ -40,16 +56,23 @@ class Usage:
     input_tokens: int = 0
     output_tokens: int = 0
     seconds: float = 0.0
+    one_hot: int = 0          # decision answers that carried no graded probabilities
 
     def as_dict(self) -> dict:
         return dict(self.__dict__)
 
 
-class Backend(Protocol):
+class DecisionBackend(Protocol):
     name: str
     usage: Usage
 
     def options(self, q: Query) -> dict[str, float]: ...
+
+
+class Generator(Protocol):
+    name: str
+    usage: Usage
+
     def generate(self, q: Query, max_new_tokens: int = 256) -> str: ...
 
 
@@ -60,11 +83,77 @@ def _softmax(xs: list[float]) -> list[float]:
     return [e / s for e in es]
 
 
-class HFOptionBackend:
-    """Single-forward-pass option readout from a local causal LM.
+def normalise_choice(raw: Any, letters: list[str]) -> dict[str, float]:
+    """Validate a decision answer and return probabilities over exactly ``letters``.
 
-    Reads next-token logits of the option letters after the chat template's
-    assistant prefix and renormalises over the offered letters. With Qwen3,
+    Accepts {letter: score>=0} (renormalised) or a single letter (one-hot).
+    Raises ValueError on anything else, so a malformed answer never becomes a verdict.
+    """
+    if isinstance(raw, str):
+        if raw not in letters:
+            raise ValueError(f"choice {raw!r} not among options {letters}")
+        return {l: float(l == raw) for l in letters}
+    if not isinstance(raw, dict):
+        raise ValueError(f"decision answer must be dict or letter, got {type(raw).__name__}")
+    extra = set(raw) - set(letters)
+    if extra:
+        raise ValueError(f"answer has unknown options {sorted(extra)}; expected {letters}")
+    vals = {l: float(raw.get(l, 0.0)) for l in letters}
+    if any(v < 0 or math.isnan(v) for v in vals.values()):
+        raise ValueError(f"negative or NaN score in {raw}")
+    s = sum(vals.values())
+    if s <= 0:
+        raise ValueError(f"all-zero scores in {raw}")
+    return {l: v / s for l, v in vals.items()}
+
+
+class JevBackend:
+    """Jev decision model, called through a user-supplied adapter function.
+
+    The adapter is ``module:function`` (``--jev-adapter`` or env ``AEDA_JEV_ADAPTER``)
+    with signature::
+
+        def choose(context: str, question: str, options: list[tuple[str, str]]) -> dict[str, float] | str
+
+    It returns a score per option letter, or just the chosen letter if the API
+    gives no scores (counted in ``usage.one_hot``; threshold rules such as the D2
+    weak-signal trigger and Q0 log-odds then degrade and this must be reported).
+    """
+
+    def __init__(self, adapter: str | None = None, cache: bool = True):
+        spec = adapter or os.environ.get("AEDA_JEV_ADAPTER")
+        if not spec or ":" not in spec:
+            raise ValueError("JevBackend needs --jev-adapter module:function (see adapters/jev_adapter.py)")
+        mod, fn = spec.split(":", 1)
+        self.fn: Callable = getattr(importlib.import_module(mod), fn)
+        self.name = f"jev:{spec}"
+        self.usage = Usage()
+        self._cache: dict | None = {} if cache else None
+
+    def options(self, q: Query) -> dict[str, float]:
+        if q.mcq is None:
+            raise ValueError(f"Jev only answers multiple-choice queries, got {q.kind}")
+        key = (q.mcq.context, q.mcq.question, tuple(q.mcq.options))
+        if self._cache is not None and key in self._cache:
+            self.usage.cache_hits += 1
+            return self._cache[key]
+        t0 = time.time()
+        raw = self.fn(q.mcq.context, q.mcq.question, list(q.mcq.options))
+        out = normalise_choice(raw, q.letters)
+        self.usage.calls += 1
+        self.usage.seconds += time.time() - t0
+        if isinstance(raw, str) or max(out.values()) == 1.0:
+            self.usage.one_hot += 1
+        if self._cache is not None:
+            self._cache[key] = out
+        return out
+
+
+class HFOptionBackend:
+    """Local HuggingFace causal LM: single-forward-pass option readout and generation.
+
+    Option readout = next-token logits of the option letters after the chat
+    template's assistant prefix, renormalised over the offered letters. With Qwen3
     ``enable_thinking=False`` inserts an empty think block so the first generated
     token is the answer.
     """
@@ -105,6 +194,8 @@ class HFOptionBackend:
         return self._letter_ids[letter]
 
     def options(self, q: Query) -> dict[str, float]:
+        if q.mcq is None:
+            raise ValueError(f"options() needs a multiple-choice query, got {q.kind}")
         key = ("opt", q.prompt, tuple(q.letters))
         if self._cache is not None and key in self._cache:
             self.usage.cache_hits += 1
@@ -142,46 +233,21 @@ class HFOptionBackend:
         return text
 
 
-class JevBackend:
-    """Placeholder for the Jev decision model.
-
-    Fill in ``options`` with the real API call once its interface is confirmed:
-    how many options per question, whether several questions can share one
-    prompt, and whether it returns per-option probabilities or only a choice.
-    If it returns only a choice, return {choice: 1.0, others: 0.0} and note that
-    threshold-based rules (D2 weak-signal trigger, Q0 log-odds) degrade.
-    """
-
-    name = "jev"
-
-    def __init__(self, **kwargs):
-        self.usage = Usage()
-        self.kwargs = kwargs
-
-    def options(self, q: Query) -> dict[str, float]:
-        raise NotImplementedError("Jev API not wired yet; see JevBackend docstring")
-
-    def generate(self, q: Query, max_new_tokens: int = 256) -> str:
-        raise NotImplementedError("Jev is a decision model; use a generative backend for E1")
-
-
 class TableBackend:
-    """Answers from a JSON table keyed by query kind and ids.
+    """Deterministic answers from a JSON table keyed by query kind and ids (tests only).
 
     Table format::
 
-        {"record":   {"<cid>|<rid>": {"A": .., "B": .., "C": ..}},
-         "pair":     {"<cid>|<rid1>|<rid2>": {...}},
-         "holistic": {"<cid>|<rid,rid,...>": {...}, "<cid>|*": {...}},
-         "q_source": {"<cid>|<rid>": {"A": .., "B": ..}},
-         "q_delta":  {"<cid>|<rid>": {...}},
-         "extract":  {"<sid>|<rid>": [{"entity":..,"attribute":..,"value":..}]},
-         "map_choice":  {"<cid>": {"A": .., ..., "Z": ..}},      # E1 key choice
+        {"record":      {"<cid>|<rid>": {"A": .., "B": .., "C": ..}},
+         "pair":        {"<cid>|<rid1>|<rid2>": {...}},
+         "holistic":    {"<cid>|<rid,rid,...>": {...}, "<cid>|*": {...}},
+         "q_source":    {"<cid>|<rid>": {"A": .., "B": ..}},
+         "q_delta":     {"<cid>|<rid>": {...}},
+         "extract":     {"<sid>|<rid>": [{"entity":..,"attribute":..,"value":..}]},
+         "map_choice":  {"<cid>": {"A": .., ..., "Z": ..}},
          "value_check": {"<cid>|<rid>": {"A": .., "B": .., "C": ..}}}
 
-    Missing entries fall back to an uninformative answer (C for 3-option record
-    queries, uniform otherwise). ``sid`` is not part of the key, so cids must be
-    unique across a table.
+    Missing entries fall back to an uninformative answer. cids must be unique.
     """
 
     name = "table"
@@ -200,39 +266,20 @@ class TableBackend:
 
     def options(self, q: Query) -> dict[str, float]:
         self.usage.calls += 1
-        self.usage.input_tokens += len(q.prompt) // 4
         tab = self.t.get(q.kind, {})
         if q.kind == "holistic":
             hit = tab.get(f"{q.cid}|{','.join(map(str, q.rids))}") or tab.get(f"{q.cid}|*")
         else:
             hit = tab.get(self._key(q))
         if hit is None:
-            if q.kind == "record":
-                hit = {"A": 0.05, "B": 0.05, "C": 0.9}
-            elif q.kind == "pair":
-                hit = {"A": 0.05, "B": 0.9, "C": 0.05}
-            elif q.kind == "q_delta":
-                hit = {"A": 0.95, "B": 0.05}
-            elif q.kind == "q_source":
-                hit = {"A": 0.05, "B": 0.95}
-            else:
-                hit = {l: 1 / len(q.letters) for l in q.letters}
-        s = sum(hit.get(l, 0.0) for l in q.letters)
-        return {l: hit.get(l, 0.0) / s for l in q.letters}
+            defaults = {"record": {"A": .05, "B": .05, "C": .9}, "pair": {"A": .05, "B": .9, "C": .05},
+                        "q_delta": {"A": .95, "B": .05}, "q_source": {"A": .05, "B": .95}}
+            hit = defaults.get(q.kind) or {l: 1 / len(q.letters) for l in q.letters}
+        hit = {l: v for l, v in hit.items() if l in q.letters}
+        return normalise_choice(hit, q.letters)
 
     def generate(self, q: Query, max_new_tokens: int = 256) -> str:
         self.usage.calls += 1
         if q.kind == "extract":
-            return json.dumps(self.t.get("extract", {}).get(f"{q.sid}|{q.rids[0]}", []),
-                              ensure_ascii=False)
+            return json.dumps(self.t.get("extract", {}).get(f"{q.sid}|{q.rids[0]}", []), ensure_ascii=False)
         return ""
-
-
-def make_backend(kind: str, **kw) -> Backend:
-    if kind == "hf":
-        return HFOptionBackend(**kw)
-    if kind == "jev":
-        return JevBackend(**kw)
-    if kind == "table":
-        return TableBackend.from_file(kw["table"])
-    raise ValueError(f"unknown backend {kind!r}")

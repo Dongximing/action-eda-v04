@@ -63,7 +63,7 @@ def main():
         hist = "\n".join(f"[#{r['rid']} | {r['source']}] {r['text']}" for r in s["records"]) or "(none)"
         fixed = "\n".join(f"- {c['text']}" for c in s["claims"]) or "(none)"
         prompt = PROMPT.format(k=a.k, fixed=fixed, task=s["task"], hist=hist, action=s["proposed_action"])
-        items = parse_list(gen.generate(Query("gen_claims", prompt, sid=s["sid"]), a.max_new_tokens))[: a.k]
+        items = parse_list(gen.generate(Query("gen_claims", text=prompt, sid=s["sid"]), a.max_new_tokens))[: a.k]
         for i, it in enumerate(items):
             cid = f"{s['sid']}/d{i}"
             kind = it.get("kind") if it.get("kind") in ("state", "default") else "state"

@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -42,7 +43,9 @@ def convert(ep: dict, max_samples: int | None = None):
         for j, pre in enumerate(A.preconditions(action)):
             cid = f"{sid}/c{j}"
             for r in records:
-                if any(e and e in r["text"].lower() for e in pre["entities"]):
+                # whole-name match, so "countertop 1" does not match "countertop 10"
+                if any(e and re.search(rf"(?<![A-Za-z0-9_]){re.escape(e)}(?![A-Za-z0-9_])", r["text"].lower())
+                       for e in pre["entities"]):
                     r["entities"] = sorted(set(r["entities"]) | set(pre["entities"]))
             claims.append({"cid": cid, "text": pre["text"], "kind": "state", "origin": "fixed",
                            "entities": pre["entities"], "spec": pre["spec"]})

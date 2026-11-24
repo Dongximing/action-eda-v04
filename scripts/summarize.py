@@ -30,6 +30,8 @@ def main():
     lines = ["# Summary", "", "Decidable accuracy by stratum (n in parentheses); fb = false-block rate on SUPPORTED gold.", ""]
     head = ["run", "method"] + [f"{d}={v}" for d, v in COLS] + ["fb(all)", "unknown(all)", "calls/claim"]
     lines += ["| " + " | ".join(head) + " |", "|" + "---|" * len(head)]
+    runs_meta = ["", "## Runs", "", "| run | decision model | generator | context_k | prompt | wall s | errors | one-hot answers |",
+                 "|---|---|---|---|---|---|---|---|"]
     diff_lines = ["", "## Key paired differences (decidable accuracy, episode bootstrap 95% CI)", "",
                   "| run | a | b | stratum | n | diff | CI |", "|---|---|---|---|---|---|---|"]
     for rp in reports:
@@ -53,9 +55,10 @@ def main():
         meta_p = rp.parent / "run_meta.json"
         if meta_p.exists():
             m = json.loads(meta_p.read_text(encoding="utf-8"))
-            lines.append(f"| {run} | _meta_ | backend={m['backend']} ctx={m['config'].get('context_k')} "
-                         f"prompt={m['prompt_version']} wall={m['wall_seconds']:.0f}s errors={m['errors']} |" + " |" * (len(head) - 3))
-    print("\n".join(lines + diff_lines))
+            runs_meta.append(f"| {run} | {m.get('decision_backend')} | {m.get('generator')} | "
+                             f"{m['config'].get('context_k')} | {m['prompt_version']} | {m['wall_seconds']:.0f} | "
+                             f"{m['errors']} | {(m.get('decision_usage') or {}).get('one_hot', '-')} |")
+    print("\n".join(lines + runs_meta + diff_lines))
 
 
 if __name__ == "__main__":

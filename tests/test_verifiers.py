@@ -1,6 +1,7 @@
 """Logic tests with the table backend (no model). Run: python -m unittest -v"""
 import json
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -85,7 +86,8 @@ class TestCompositionAndDefaults(unittest.TestCase):
 class TestPlumbing(unittest.TestCase):
     def test_all_methods_run_and_evaluate(self):
         samples, b = setup()
-        rows = run(list(samples.values()), ["H1", "H2", "U1", "D1", "D1f", "D2", "E1", "P0", "Q0"], b, Config())
+        rows = run(list(samples.values()), ["H1", "H2", "U1", "D1", "D1f", "D2", "E1", "P0", "Q0"], b, Config(),
+                   generator=b)
         self.assertFalse([r for r in rows if "error" in r])
         joined, missing = join(rows, load_labels(SMOKE / "labels.jsonl"), list(samples.values()))
         self.assertEqual(missing, 0)
@@ -93,10 +95,19 @@ class TestPlumbing(unittest.TestCase):
         d = paired_bootstrap(joined, "D1", "U1", n_boot=200)
         self.assertGreater(d["diff"], 0)
 
-    def test_missing_backend_stops_run(self):
+    def test_unfilled_jev_adapter_stops_run(self):
         samples, _ = setup()
         with self.assertRaises(NotImplementedError):
-            run([samples["s1"]], ["D1"], JevBackend(), Config())
+            run([samples["s1"]], ["D1"], JevBackend("tests.fake_jev:not_ready"), Config())
+
+    def test_jev_requires_adapter(self):
+        with self.assertRaises(ValueError):
+            JevBackend(None)
+
+    def test_e1_without_generator_is_rejected(self):
+        samples, b = setup()
+        with self.assertRaises(ValueError):
+            run([samples["s1"]], ["E1"], b, Config())
 
     def test_label_field_in_visible_input_is_rejected(self):
         bad = json.loads((SMOKE / "samples.jsonl").read_text(encoding="utf-8").splitlines()[0])
@@ -107,3 +118,37 @@ class TestPlumbing(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestJevAdapter(unittest.TestCase):
+    def test_scores_are_normalised_and_one_hot_counted(self):
+        samples, _ = setup()
+        jb = JevBackend("tests.fake_jev:good")
+        rows = run([samples["s1"]], ["D1", "U1", "H1"], jb, Config())
+        self.assertFalse([r for r in rows if "error" in r])
+        self.assertEqual(jb.usage.one_hot, 0)
+        jl = JevBackend("tests.fake_jev:letter_only")
+        run([samples["s1"]], ["D1"], jl, Config())
+        self.assertGreater(jl.usage.one_hot, 0)
+
+    def test_invalid_answer_becomes_unknown_with_error(self):
+        samples, _ = setup()
+        rows = run([samples["s1"]], ["D1"], JevBackend("tests.fake_jev:bad_letter"), Config())
+        self.assertTrue(all(r["verdict"] == "UNKNOWN" and "error" in r for r in rows))
+
+    def test_cli_exit_codes(self):
+        import subprocess
+        base = [sys.executable, str(ROOT / "scripts/run_offline.py"), "--samples", str(SMOKE / "samples.jsonl")]
+        with tempfile.TemporaryDirectory() as d:
+            r = subprocess.run(base + ["--out", d, "--backend", "jev", "--jev-adapter", "tests.fake_jev:bad_letter",
+                                       "--methods", "D1"], capture_output=True, cwd=ROOT)
+            self.assertEqual(r.returncode, 2)
+            r = subprocess.run(base + ["--out", d, "--backend", "jev", "--jev-adapter", "tests.fake_jev:good",
+                                       "--methods", "E1"], capture_output=True, cwd=ROOT)
+            self.assertNotEqual(r.returncode, 0)
+            self.assertIn(b"--gen-model", r.stderr)
+            r = subprocess.run(base + ["--out", d, "--backend", "jev", "--jev-adapter", "tests.fake_jev:good",
+                                       "--methods", "H1,U1,D1,D1f,D2,P0,Q0"], capture_output=True, cwd=ROOT)
+            self.assertEqual(r.returncode, 0, r.stderr.decode())
+            meta = json.loads((Path(d) / "run_meta.json").read_text())
+            self.assertTrue(meta["decision_backend"].startswith("jev:"))

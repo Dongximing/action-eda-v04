@@ -26,7 +26,7 @@ from dataclasses import asdict, dataclass, field
 
 from . import alfworld
 from . import prompts as P
-from .backends import Backend, Query
+from .backends import DecisionBackend, Generator, Query
 from .schema import Claim, Record, Sample
 
 
@@ -55,11 +55,14 @@ class Result:
 
 
 class Meter:
-    """Counts logical calls per method even when the backend serves from cache."""
+    """Counts logical calls per method even when a backend serves from cache.
+    Decision queries go to the decision backend, generation to the generator."""
 
-    def __init__(self, backend: Backend):
+    def __init__(self, backend: DecisionBackend, generator: Generator | None = None):
         self.b = backend
+        self.g = generator
         self.calls = 0
+        self.gen_calls = 0
         self.chars = 0
 
     def options(self, q: Query) -> dict[str, float]:
@@ -68,9 +71,11 @@ class Meter:
         return self.b.options(q)
 
     def generate(self, q: Query) -> str:
-        self.calls += 1
+        if self.g is None:
+            raise RuntimeError("this method needs a generator (--gen-model); the decision model does not generate")
+        self.gen_calls += 1
         self.chars += len(q.prompt)
-        return self.b.generate(q)
+        return self.g.generate(q)
 
 
 # ---------------------------------------------------------------- helpers
@@ -87,9 +92,10 @@ def entity_window(s: Sample, c: Claim) -> list[Record]:
     if not ents:
         return list(s.records)
     out = []
+    pats = [re.compile(rf"(?<![A-Za-z0-9_]){re.escape(e)}(?![A-Za-z0-9_])") for e in ents]
     for r in s.records:
         tags = {e.lower() for e in r.entities}
-        if tags & set(ents) or any(e in r.text.lower() for e in ents):
+        if tags & set(ents) or any(p.search(r.text.lower()) for p in pats):
             out.append(r)
     return out
 
@@ -103,7 +109,7 @@ def preceding(s: Sample, r: Record, k: int) -> list[Record]:
 
 
 def judge_record(m: Meter, s: Sample, c: Claim, r: Record, k: int = 0) -> dict[str, float]:
-    q = Query("record", P.record_judgment(s.task, s.proposed_action, c, r, preceding(s, r, k)), P.LETTERS3,
+    q = Query("record", P.record_judgment(s.task, s.proposed_action, c, r, preceding(s, r, k)),
               cid=c.cid, rids=(r.rid,), sid=s.sid)
     return m.options(q)
 
@@ -113,7 +119,7 @@ def argmax(p: dict[str, float]) -> str:
 
 
 def holistic(m: Meter, s: Sample, c: Claim, records: list[Record]) -> tuple[str, dict]:
-    q = Query("holistic", P.holistic_judgment(s.task, s.proposed_action, c, records), P.LETTERS3,
+    q = Query("holistic", P.holistic_judgment(s.task, s.proposed_action, c, records),
               cid=c.cid, rids=tuple(r.rid for r in records), sid=s.sid)
     p = m.options(q)
     verdict = {"A": "SUPPORTED", "B": "CONTRADICTED", "C": "UNKNOWN"}[argmax(p)]
@@ -160,7 +166,7 @@ def pair_repair(m: Meter, s: Sample, c: Claim, records: list[Record], judged, hi
     last_est = max((rid for rid, pol, pr in hits if pol == "A" and pr >= cfg.tau_conf), default=-math.inf)
     by_rid = {r.rid: r for r in records}
     weak = [rid for rid, p in sorted(judged.items())
-            if rid > last_est and cfg.tau_low <= p["B"] < cfg.tau_high]
+            if rid > last_est and argmax(p) != "A" and cfg.tau_low <= p["B"] < cfg.tau_high]
     trace = {"weak": weak, "triggered": len(weak) >= 2, "pairs": []}
     if len(weak) < 2:
         return None, trace
@@ -168,7 +174,7 @@ def pair_repair(m: Meter, s: Sample, c: Claim, records: list[Record], judged, hi
                    key=lambda ij: judged[ij[0]]["B"] + judged[ij[1]]["B"], reverse=True)[:cfg.max_pairs]
     for i, j in pairs:
         r1, r2 = by_rid[i], by_rid[j]
-        q = Query("pair", P.pair_judgment(s.task, s.proposed_action, c, r1, r2), P.LETTERS3,
+        q = Query("pair", P.pair_judgment(s.task, s.proposed_action, c, r1, r2),
                   cid=c.cid, rids=(i, j), sid=s.sid)
         p = m.options(q)
         trace["pairs"].append({"rids": [i, j], "probs": p})
@@ -250,7 +256,7 @@ def m_Q0(s, c, m, cfg, ctx):
     """Original EDA readout: find the latest source with Q-source and Q-delta both
     'yes', then score = max over later records of -logit(P(still possibly true))."""
     def ask(kind, render, r):
-        q = Query(kind, render(s.task, s.proposed_action, c, r), P.LETTERS2,
+        q = Query(kind, render(s.task, s.proposed_action, c, r),
                   cid=c.cid, rids=(r.rid,), sid=s.sid)
         return m.options(q)["A"]
 
@@ -303,7 +309,7 @@ def m_E1(s, c, m, cfg, ctx):
     if key not in ctx:
         state: dict[tuple[str, str], tuple[str, int]] = {}
         for r in s.records:
-            out = _parse_json(m.generate(Query("extract", P.extract_state(s.task, r, preceding(s, r, cfg.context_k)),
+            out = _parse_json(m.generate(Query("extract", text=P.extract_state(s.task, r, preceding(s, r, cfg.context_k)),
                                                rids=(r.rid,), sid=s.sid)))
             for f in out if isinstance(out, list) else []:
                 if isinstance(f, dict) and {"entity", "attribute", "value"} <= f.keys():
@@ -315,8 +321,9 @@ def m_E1(s, c, m, cfg, ctx):
     trace = {"n_keys": len(state)}
     if not keys:
         return no_evidence(s, c), [], trace
-    prompt, letters = P.map_claim_choice(c, keys)
-    pm = m.options(Query("map_choice", prompt, letters, cid=c.cid, sid=s.sid))
+    mcq = P.map_claim_choice(c, keys)
+    letters = mcq.letters
+    pm = m.options(Query("map_choice", mcq, cid=c.cid, sid=s.sid))
     pick = argmax(pm)
     trace["map_probs"] = pm
     if pick == "Z":
@@ -324,7 +331,7 @@ def m_E1(s, c, m, cfg, ctx):
     ent, att = keys[letters.index(pick)]
     val, rid = state[(ent, att)]
     trace.update({"key": [ent, att], "tracked_value": val})
-    pv = m.options(Query("value_check", P.value_check(c, ent, att, val, rid), P.LETTERS3,
+    pv = m.options(Query("value_check", P.value_check(c, ent, att, val, rid),
                          cid=c.cid, rids=(rid,), sid=s.sid))
     trace["value_probs"] = pv
     verdict = {"A": "SUPPORTED", "B": "CONTRADICTED", "C": "UNKNOWN"}[argmax(pv)]
@@ -343,23 +350,36 @@ METHODS = {"H1": m_H1, "H2": m_H2, "U1": m_U1, "D1": m_D1, "D1f": m_D1f,
            "D2": m_D2, "E1": m_E1, "P0": m_P0, "Q0": m_Q0, "T0": m_T0}
 
 
-def run(samples: list[Sample], methods: list[str], backend: Backend, cfg: Config) -> list[dict]:
+NEEDS_GENERATOR = {"E1"}
+
+
+def run(samples: list[Sample], methods: list[str], backend: DecisionBackend, cfg: Config,
+        generator: Generator | None = None) -> list[dict]:
+    """Run each method on each claim. A per-claim exception (e.g. a malformed model
+    answer) becomes verdict UNKNOWN with an ``error`` field; configuration errors
+    (missing generator, unknown method) raise before any work."""
+    unknown = [m for m in methods if m not in METHODS]
+    if unknown:
+        raise ValueError(f"unknown methods {unknown}")
+    if generator is None and NEEDS_GENERATOR & set(methods):
+        raise ValueError(f"{sorted(NEEDS_GENERATOR & set(methods))} need a generator (--gen-model)")
     rows = []
     for meth in methods:
         fn = METHODS[meth]
         for s in samples:
             ctx: dict = {}
             for c in s.claims:
-                m = Meter(backend)
+                m = Meter(backend, generator)
                 try:
                     v, ev, trace = fn(s, c, m, cfg, ctx)
                     err = None
-                except NotImplementedError:
-                    raise  # a missing backend must stop the run, not turn into UNKNOWN
-                except Exception as e:  # interface failure counts as UNKNOWN (doc §5.2.1 of v0.2)
+                except (NotImplementedError, RuntimeError):
+                    raise  # missing backend pieces must stop the run, not become UNKNOWN
+                except Exception as e:
                     v, ev, trace, err = "UNKNOWN", [], {}, f"{type(e).__name__}: {e}"
                 res = Result(meth, s.sid, c.cid, v, ev, m.calls, m.chars, _jsonable(trace))
                 row = asdict(res)
+                row["gen_calls"] = m.gen_calls
                 if err:
                     row["error"] = err
                 rows.append(row)
