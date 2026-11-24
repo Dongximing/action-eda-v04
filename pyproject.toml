@@ -1,0 +1,13 @@
+[project]
+name = "action-eda"
+version = "0.4.0"
+description = "Offline comparison of ordered per-record audit vs holistic / order-free / extract-then-track pre-action verification"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+# Qwen3 needs transformers >= 4.51
+hf = ["torch>=2.3", "transformers>=4.51", "accelerate"]
+
+[tool.setuptools]
+packages = ["aeda"]
