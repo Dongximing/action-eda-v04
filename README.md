@@ -185,3 +185,26 @@ tests/                       逻辑测试（不需要模型；fake_jev.py 是测
 2. 在 GPU 上跑诊断集，先看 P1（顺序敏感样本上 D1 vs U1、H1）和 P3（组合样本上 D2 vs D1）。
 3. 选定主环境，写轨迹 → 样本的转换脚本，并人工标注。
 4. 在开发集上固定阈值和 context_k，再跑测试集。
+
+## ALFWorld 9B 单示范 12 局（outputs/alfworld-9b-oneshot-alternate）
+
+数据来自另一套在线实验的 direct 组自然轨迹：qwen3.5-9b 单示范主 agent，12 局 valid_seen，赢 4 局。`data/alfworld9b/` 由下面的命令生成，已提交：
+
+```bash
+python scripts/convert_paired_outputs.py --src ~/Documents/Codex/2026-11-21/yo/outputs/alfworld-9b-oneshot-alternate --out data/alfworld9b
+```
+
+样本单位是主 agent 提出的每个改变状态的动作（take/move/open/close/clean/heat/cool），共 92 个。记录只包含该动作之前的步骤。claims 是固定前置条件（在哪、拿着什么、手是否空），共 139 条。gold 由 tracker 给出；该动作在环境里是否真的执行（是否返回 "Nothing happens"）记在 `labels.extra.action_succeeded`，核查器看不到。
+
+- 92 个动作里 30 个在环境中失败，其中 10 个违反了位置或持物前置条件，tracker 全部抓到，0 误拦。
+- 另外 20 个失败不在固定 claims 的范围内：game11 任务要 cloth，agent 拿了 towel，反复 clean 失败；game09 用 stoveburner 加热。所以在 env 参照下，只靠这些 claims，召回上限是 10/30。
+
+用 Jev 跑（TypeSafe systemone 接口，与 altprovider runner 里的 NativeJev 请求一致；只需 API key，不需要 GPU）：
+
+```bash
+export TYPESAFE_API_KEY=...   # 或 JEV_API_KEY；JEV_MODEL 默认 jev-1.14.0
+python scripts/check_backend.py --backend jev --jev-adapter adapters.typesafe_jev:choose
+DATA=data/alfworld9b JEV_ADAPTER=adapters.typesafe_jev:choose METHODS=T0,H1,H2,U1,D1,D1f,D2,P0,Q0 CTX="0 1" bash scripts/run_sweep.sh
+```
+
+每个 run 目录下有 `report.md`（claim 级分层指标）和 `action_level.md`。后者的规则是：只要有一条 claim 判为 CONTRADICTED 就拦下这个动作，再分别和 tracker、环境真实结果比较。若 Jev 响应带 `probabilities`，adapter 会用作分数；否则只返回选项，`run_meta.json` 记为 one-hot，此时 D2 的弱信号触发和 Q0 的 log-odds 会退化。

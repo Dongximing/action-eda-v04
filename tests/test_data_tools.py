@@ -96,3 +96,70 @@ class TestPrompts(unittest.TestCase):
             for l, t in mcq.options:
                 self.assertIn(f"{l}. {t}", txt)
         self.assertEqual(P.map_claim_choice(c, [("a", "b")]).letters, ["A", "Z"])
+
+
+class TestPairedOutputs(unittest.TestCase):
+    def test_natural_json_conversion(self):
+        nat = {"game": "g", "family": "pick_clean_then_place_in_recep", "task": "put a clean knife in drawer.",
+               "won": False, "end": "step_limit", "history": [
+                   {"id": "r0", "action": "reset", "observation": "You see a countertop 1, a drawer 1."},
+                   {"id": "r1", "action": "take knife 1 from countertop 1", "observation": "Nothing happens."},
+                   {"id": "r2", "action": "go to countertop 1", "observation": "You arrive at countertop 1."},
+                   {"id": "r3", "action": "take knife 1 from countertop 1", "observation": "You pick up the knife 1."},
+                   {"id": "r4", "action": "move knife 1 to drawer 1", "observation": "Nothing happens."}]}
+        with tempfile.TemporaryDirectory() as d:
+            src = Path(d) / "src" / "game01"
+            src.mkdir(parents=True)
+            (src / "natural.json").write_text(json.dumps(nat))
+            out = Path(d) / "out"
+            subprocess.run([PY, str(ROOT / "scripts/convert_paired_outputs.py"), "--src", str(src.parent),
+                            "--out", str(out)], check=True, capture_output=True)
+            samples = load_samples(out / "samples.jsonl")
+            labels = load_labels(out / "labels.jsonl")
+            self.assertEqual([s.proposed_action for s in samples],
+                             ["take knife 1 from countertop 1", "take knife 1 from countertop 1",
+                              "move knife 1 to drawer 1"])
+            gold = {(k[0], labels[k].extra["spec_type"]): labels[k].gold for k in labels}
+            self.assertEqual(gold[("game01-t0", "at")], "CONTRADICTED")     # never went to countertop 1
+            self.assertEqual(gold[("game01-t2", "at")], "SUPPORTED")
+            self.assertEqual(gold[("game01-t3", "at")], "CONTRADICTED")     # at countertop 1, not drawer 1
+            self.assertEqual(gold[("game01-t3", "holding")], "SUPPORTED")
+            self.assertFalse(labels[("game01-t3", "game01-t3/c1")].extra["action_succeeded"])
+            # the record list is the prefix only: the failed move itself is not visible
+            self.assertEqual(len(samples[-1].records), 4)
+            rows = run(samples, ["T0"], TableBackend({}), Config())
+            run_dir = Path(d) / "run"
+            run_dir.mkdir()
+            (run_dir / "predictions.jsonl").write_text("\n".join(json.dumps(r) for r in rows))
+            r = subprocess.run([PY, str(ROOT / "scripts/action_level.py"), "--labels", str(out / "labels.jsonl"),
+                                "--run", str(run_dir)], check=True, capture_output=True, text=True)
+            self.assertIn("| T0 | env | 2 | 2 | 0 | 0 |", r.stdout)
+
+
+class TestTypesafeAdapter(unittest.TestCase):
+    def test_probabilities_and_missing_key(self):
+        import os
+        from unittest import mock
+        from adapters import typesafe_jev as T
+        self.assertEqual(T._probs({"probabilities": {"A": .7, "B": .2, "C": .1}}, ["A", "B", "C"]),
+                         {"A": .7, "B": .2, "C": .1})
+        self.assertIsNone(T._probs({"probabilities": {"A": 1.0}}, ["A", "B"]))
+        self.assertEqual(T._probs({"probabilities": [.5, .5]}, ["A", "B"]), {"A": .5, "B": .5})
+        with mock.patch.dict(os.environ, {"TYPESAFE_API_KEY": "", "JEV_API_KEY": ""}):
+            with self.assertRaises(RuntimeError):
+                T.choose("ctx", "q?", [("A", "a"), ("B", "b")])
+
+    def test_request_shape_and_letter_answer(self):
+        import os
+        from unittest import mock
+        from adapters import typesafe_jev as T
+        seen = {}
+
+        def fake_post(payload, **kw):
+            seen.update(payload)
+            return {"answers": {"decision": {"choice": "B"}}}
+        with mock.patch.object(T, "_post", fake_post), mock.patch.dict(os.environ, {"JEV_MODEL": "jev-x"}):
+            self.assertEqual(T.choose("records", "What does it do?", [("A", "est"), ("B", "inv")]), "B")
+        q = seen["questions"]["decision"]
+        self.assertEqual((seen["model"], seen["state"], q["type"], q["criteria"]),
+                         ("jev-x", {"context": "records"}, "choice", {"A": "est", "B": "inv"}))

@@ -5,6 +5,10 @@
 #   DATA=data/diag JEV_ADAPTER=adapters.jev_adapter:choose GEN_MODEL=Qwen/Qwen3-4B \
 #   CTX="0 1" bash scripts/run_sweep.sh
 #
+#   # the 12 ALFWorld games of outputs/alfworld-9b-oneshot-alternate (no E1, so no generator):
+#   DATA=data/alfworld9b JEV_ADAPTER=adapters.typesafe_jev:choose METHODS=T0,H1,H2,U1,D1,D1f,D2,P0,Q0 \
+#   CTX="0 1" bash scripts/run_sweep.sh
+#
 #   # also run the original EDA readout model as a comparison decision model:
 #   COMPARE_MODELS="Qwen/Qwen3-4B" ... bash scripts/run_sweep.sh
 #
@@ -49,6 +53,9 @@ run_one () {  # $1 = run dir, rest = backend args
   $PY scripts/run_offline.py --samples "$DATA/samples.jsonl" --methods "$METHODS" --out "$run" \
       --gen-model "$GEN_MODEL" "$@" $EXTRA 2> >(tee "$run/stderr.log" >&2)
   $PY scripts/evaluate.py --samples "$DATA/samples.jsonl" --labels "$DATA/labels.jsonl" --run "$run" > /dev/null
+  if grep -q '"action_succeeded"' "$DATA/labels.jsonl"; then  # ALFWorld data: also block-or-not per action
+    $PY scripts/action_level.py --labels "$DATA/labels.jsonl" --run "$run" > /dev/null
+  fi
 }
 
 for k in $CTX; do
