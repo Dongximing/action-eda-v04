@@ -208,3 +208,31 @@ class TestThreadedRun(unittest.TestCase):
         par = run(samples, meths, AdapterBackend("tests.fake_jev:good"), Config(), workers=4)
         self.assertEqual(seq, par)
         self.assertTrue(AdapterBackend("tests.fake_jev:good").name.startswith("api:"))
+
+
+class TestFewshot(unittest.TestCase):
+    def test_build_and_use(self):
+        from aeda.verifiers import load_fewshot
+        with tempfile.TemporaryDirectory() as d:
+            out = Path(d) / "fs.json"
+            subprocess.run([PY, str(ROOT / "scripts/make_fewshot.py"), "--out", str(out)], check=True,
+                           capture_output=True)
+            ex = json.loads(out.read_text())["examples"]
+            self.assertEqual([e["answer"] for e in ex].count("C"), 2)
+            self.assertEqual(len(ex), 8)
+            s = load_samples(ROOT / "data/smoke/samples.jsonl")[0]
+            c, r = s.claims[0], s.records[0]
+            plain = P.record_judgment(s.task, s.proposed_action, c, r).render()
+            shot = P.record_judgment(s.task, s.proposed_action, c, r, None, list(load_fewshot(str(out)))).render()
+            self.assertNotIn("Worked examples", plain)
+            self.assertIn("Example 8", shot)
+            self.assertTrue(shot.endswith(plain.split("\n", 1)[1]))  # same real case after the examples
+            # the CLI flag reaches the prompts: calls are made with a different (longer) prompt
+            base = [PY, str(ROOT / "scripts/run_offline.py"), "--samples", str(ROOT / "data/smoke/samples.jsonl"),
+                    "--backend", "api", "--adapter", "tests.fake_jev:good", "--methods", "D1"]
+            subprocess.run(base + ["--out", f"{d}/r0"], check=True, capture_output=True, cwd=ROOT)
+            subprocess.run(base + ["--out", f"{d}/r1", "--fewshot", str(out)], check=True, capture_output=True,
+                           cwd=ROOT)
+            ch = [sum(json.loads(l)["prompt_chars"] for l in open(f"{d}/{x}/predictions.jsonl")) for x in ("r0", "r1")]
+            self.assertGreater(ch[1], ch[0])
+            self.assertEqual(json.loads(Path(f"{d}/r1/run_meta.json").read_text())["config"]["fewshot"], str(out))

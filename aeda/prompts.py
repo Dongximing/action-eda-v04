@@ -46,16 +46,27 @@ def _ctx_block(context: list[Record] | None, verb: str) -> str:
             + "\n".join(_rec(c) for c in context) + "\n")
 
 
+def _examples_block(examples: list[dict] | None) -> str:
+    if not examples:
+        return ""
+    out = ["Worked examples (from other episodes; each judges one record against one condition):"]
+    for i, e in enumerate(examples, 1):
+        out.append(f"Example {i}\nCondition: {e['condition']}\nRecord: {e['record']}\nAnswer: {e['answer']}")
+    return "\n\n".join(out) + "\n\nNow the real case.\n"
+
+
 def record_judgment(task: str, action: str, claim: Claim, r: Record,
-                    context: list[Record] | None = None) -> MCQ:
+                    context: list[Record] | None = None, examples: list[dict] | None = None) -> MCQ:
     """Three-option per-record judgment used by D1 / D1f / D2 / U1 / P0 (doc §3.4).
 
     ``context`` = records immediately preceding ``r``, shown only to resolve
     references (e.g. "don't cancel yet"); the question is about ``r`` alone.
+    ``examples`` = optional few-shot items {condition, record, answer} shown first.
     """
     return MCQ(
         context=(
             "You audit whether a condition holds, using ONE record from an agent's interaction history.\n"
+            f"{_examples_block(examples)}"
             f"Task: {task}\n"
             f"Proposed action (not executed yet): {action}\n"
             f"Condition: {claim.text}\n"

@@ -18,11 +18,13 @@ Not implemented: G1 (BlackSwan-style agentic verification with probes, needs a l
 """
 from __future__ import annotations
 
+import functools
 import itertools
 import json
 import math
 import re
 from dataclasses import asdict, dataclass, field
+from pathlib import Path
 
 from . import alfworld
 from . import prompts as P
@@ -40,6 +42,8 @@ class Config:
     early_stop: bool = True    # D1: backward scan stops once the decision is fixed
     context_k: int = 0         # preceding records shown (context only) in per-record judgments;
                                # applies equally to D1/D1f/D2/U1/P0 and E1 extraction, not to Q0 (original EDA)
+    fewshot: str = ""          # JSON file of worked examples for the per-record judgment (D1/D1f/D2/U1/P0);
+                               # "" = zero-shot. See scripts/make_fewshot.py
 
 
 @dataclass
@@ -108,8 +112,21 @@ def preceding(s: Sample, r: Record, k: int) -> list[Record]:
     return s.records[max(0, idx - k):idx]
 
 
-def judge_record(m: Meter, s: Sample, c: Claim, r: Record, k: int = 0) -> dict[str, float]:
-    q = Query("record", P.record_judgment(s.task, s.proposed_action, c, r, preceding(s, r, k)),
+@functools.lru_cache(maxsize=None)
+def load_fewshot(path: str) -> tuple[dict, ...]:
+    if not path:
+        return ()
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    items = data["examples"] if isinstance(data, dict) else data
+    for e in items:
+        if set(e) < {"condition", "record", "answer"} or e["answer"] not in ("A", "B", "C"):
+            raise ValueError(f"bad few-shot item in {path}: {e}")
+    return tuple(items)
+
+
+def judge_record(m: Meter, s: Sample, c: Claim, r: Record, k: int = 0, fewshot: str = "") -> dict[str, float]:
+    q = Query("record", P.record_judgment(s.task, s.proposed_action, c, r, preceding(s, r, k),
+                                          list(load_fewshot(fewshot)) or None),
               cid=c.cid, rids=(r.rid,), sid=s.sid)
     return m.options(q)
 
@@ -141,7 +158,7 @@ def ordered_audit(m: Meter, s: Sample, c: Claim, records: list[Record], cfg: Con
     judged: dict[int, dict[str, float]] = {}
     hits: list[tuple[int, str, float]] = []
     for r in reversed(records):
-        p = judge_record(m, s, c, r, cfg.context_k)
+        p = judge_record(m, s, c, r, cfg.context_k, cfg.fewshot)
         judged[r.rid] = p
         pol = argmax(p)
         if pol == "C":
@@ -207,7 +224,7 @@ def m_D2(s, c, m, cfg, ctx):
 
 
 def m_U1(s, c, m, cfg, ctx):
-    judged = {r.rid: judge_record(m, s, c, r, cfg.context_k) for r in s.records}
+    judged = {r.rid: judge_record(m, s, c, r, cfg.context_k, cfg.fewshot) for r in s.records}
     inval = [rid for rid, p in judged.items() if argmax(p) == "B" and p["B"] >= cfg.tau_conf]
     est = [rid for rid, p in judged.items() if argmax(p) == "A" and p["A"] >= cfg.tau_conf]
     trace = {"judged": judged}
@@ -234,7 +251,7 @@ def m_P0(s, c, m, cfg, ctx):
     per-record judgment); prediction = any entity-matching record after it."""
     src = None
     for r in reversed(s.records):
-        p = judge_record(m, s, c, r, cfg.context_k)
+        p = judge_record(m, s, c, r, cfg.context_k, cfg.fewshot)
         if argmax(p) == "A" and p["A"] >= cfg.tau_conf:
             src = r.rid
             break

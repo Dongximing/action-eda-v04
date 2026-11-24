@@ -60,7 +60,8 @@ def main():
     ap.add_argument("--thinking", action="store_true", help="enable Qwen3 thinking for HF models (default off)")
     ap.add_argument("--allow-errors", action="store_true")
     for f in dataclasses.fields(Config):
-        ap.add_argument(f"--{f.name.replace('_', '-')}", type=int if f.type in ("bool", "int") else float,
+        ap.add_argument(f"--{f.name.replace('_', '-')}",
+                        type={"bool": int, "int": int, "str": str}.get(f.type, float),
                         default=f.default)
     a = ap.parse_args()
 

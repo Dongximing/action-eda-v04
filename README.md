@@ -222,3 +222,15 @@ DATA=data/alfworld9b SKIP_JEV=1 API_ADAPTER=adapters.openrouter_chat:choose METH
 在 context_k=0 时，去掉方法之间共享的相同问题后，最多约 3000 次不同的请求；D1 提前停止会再少一些。`WORKERS` 默认 8 个并发。
 
 `action_level.md` 里的 `direct (no check)` 行就是"什么都不加、直接执行"的基线，对应原实验的 direct 组，12 局赢 4 局。T0 是用规则重放历史的参考上限，不属于这种基线。
+
+### 给判断模型加 few-shot
+
+逐条判断时，先给模型看 8 道标好答案的例题：3 道 A、3 道 B、2 道 C。例题取自主 agent 看过的那 3 条 ReAct Act-only 示范，属于别的游戏，和测试的 12 局不重叠。答案由 tracker 比较这条记录前后的状态自动标出，不是人工挑的。
+
+```bash
+python scripts/make_fewshot.py --out data/fewshot/alfworld_record_fewshot.json
+DATA=data/alfworld9b SKIP_JEV=1 API_ADAPTER=adapters.openrouter_chat:choose METHODS=T0,D1 CTX="0" \
+  OUT=runs/fewshot EXTRA="--fewshot data/fewshot/alfworld_record_fewshot.json" bash scripts/run_sweep.sh
+```
+
+`--fewshot` 只作用于逐条判断，也就是 D1、D1f、D2、U1、P0。`run_meta.json` 的 config 里会记下所用文件。

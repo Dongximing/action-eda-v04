@@ -1,0 +1,71 @@
+{
+ "source": "/Users/ximing/Desktop/action-eda-v04/data/fewshot/react_act_examples.json",
+ "source_sha256": "66c955a67e9596c54c5e37eeed6c88aa6ee4dabecb243d916af3f715e3499b07",
+ "rule": "Labels come from the tracker comparing the state right before and right after one\nrecord, so nothing is hand-labelled:\n  A  the record makes the condition true      (go to X -> \"at X\"; take O -> \"holding O\";\n                                               move O -> \"holding nothing\")\n  B  the record makes the condition false     (go to Y while at X -> \"at X\";\n                                               take O -> \"holding nothing\"; move O -> \"holding O\")\n  C  the record says nothing about it         (\"holding O\" while only walking around)\nOnly these unambiguous patterns are used. One example per pattern, round-robin over\nthe demos, in a fixed order (no randomness).",
+ "examples": [
+  {
+   "pattern": "arrive",
+   "answer": "A",
+   "condition": "The agent is currently at fridge 1",
+   "record": "> go to fridge 1\nThe fridge 1 is closed.",
+   "step": 0,
+   "source": "act_clean_0"
+  },
+  {
+   "pattern": "leave",
+   "answer": "B",
+   "condition": "The agent is currently at countertop 1",
+   "record": "> go to countertop 2\nOn the countertop 2, you see nothing.",
+   "step": 2,
+   "source": "act_heat_0"
+  },
+  {
+   "pattern": "walk_holding",
+   "answer": "C",
+   "condition": "The agent is currently holding pan 1",
+   "record": "> go to fridge 1\nThe fridge 1 is closed.",
+   "step": 4,
+   "source": "act_cool_0"
+  },
+  {
+   "pattern": "take",
+   "answer": "A",
+   "condition": "The agent is currently holding lettuce 1",
+   "record": "> take lettuce 1 from diningtable 1\nYou pick up the lettuce 1 from the diningtable 1.",
+   "step": 3,
+   "source": "act_clean_0"
+  },
+  {
+   "pattern": "take_empty",
+   "answer": "B",
+   "condition": "The agent is currently holding nothing",
+   "record": "> take egg 2 from countertop 3\nYou pick up the egg 2 from the countertop 3.",
+   "step": 4,
+   "source": "act_heat_0"
+  },
+  {
+   "pattern": "move_empty",
+   "answer": "A",
+   "condition": "The agent is currently holding nothing",
+   "record": "> move pan 1 to stoveburner 1\nYou move the pan 1 to the stoveburner 1.",
+   "step": 7,
+   "source": "act_cool_0"
+  },
+  {
+   "pattern": "move_holding",
+   "answer": "B",
+   "condition": "The agent is currently holding lettuce 1",
+   "record": "> move lettuce 1 to diningtable 1\nYou move the lettuce 1 to the diningtable 1.",
+   "step": 7,
+   "source": "act_clean_0"
+  },
+  {
+   "pattern": "walk_holding",
+   "answer": "C",
+   "condition": "The agent is currently holding egg 2",
+   "record": "> go to microwave 1\nThe microwave 1 is closed.",
+   "step": 5,
+   "source": "act_heat_0"
+  }
+ ]
+}
