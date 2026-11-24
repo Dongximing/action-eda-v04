@@ -43,6 +43,15 @@ def parse_demo(text: str) -> list[tuple[str, str]]:
     return steps
 
 
+def _spec_text(spec: dict) -> list[dict]:
+    """Same condition wording as aeda.alfworld.preconditions uses for test claims."""
+    t = spec["type"]
+    text = {"at": lambda: f"The agent is currently at {spec['loc']}",
+            "holding": lambda: f"The agent is currently holding {spec['obj']}",
+            "hand_empty": lambda: "The agent is currently holding nothing"}[t]()
+    return [{"text": text}]
+
+
 def candidates(steps: list[tuple[str, str]]) -> list[dict]:
     out = []
     for i, (act, obs) in enumerate(steps):
@@ -52,20 +61,22 @@ def candidates(steps: list[tuple[str, str]]) -> list[dict]:
         name, args = A.parse_action(act)
         rec = A.record_text(act, obs)
 
-        def add(pattern, answer, cond):
-            out.append({"pattern": pattern, "answer": answer, "condition": cond, "record": rec, "step": i})
+        def add(pattern, answer, spec):
+            cond = next(p["text"] for p in _spec_text(spec))
+            out.append({"pattern": pattern, "answer": answer, "condition": cond, "spec": spec,
+                        "record": rec, "step": i})
         if name == "goto" and before.loc != after.loc:
-            add("arrive", "A", f"The agent is currently at {after.loc}")
+            add("arrive", "A", {"type": "at", "loc": after.loc})
             if before.loc:
-                add("leave", "B", f"The agent is currently at {before.loc}")
+                add("leave", "B", {"type": "at", "loc": before.loc})
             if before.holding and before.holding not in rec.lower():
-                add("walk_holding", "C", f"The agent is currently holding {before.holding}")
+                add("walk_holding", "C", {"type": "holding", "obj": before.holding})
         elif name == "take" and before.holding is None:
-            add("take", "A", f"The agent is currently holding {args[0]}")
-            add("take_empty", "B", "The agent is currently holding nothing")
+            add("take", "A", {"type": "holding", "obj": args[0]})
+            add("take_empty", "B", {"type": "hand_empty"})
         elif name == "put" and before.holding:
-            add("move_empty", "A", "The agent is currently holding nothing")
-            add("move_holding", "B", f"The agent is currently holding {before.holding}")
+            add("move_empty", "A", {"type": "hand_empty"})
+            add("move_holding", "B", {"type": "holding", "obj": before.holding})
     return out
 
 

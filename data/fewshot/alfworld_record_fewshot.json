@@ -7,6 +7,10 @@
    "pattern": "arrive",
    "answer": "A",
    "condition": "The agent is currently at fridge 1",
+   "spec": {
+    "type": "at",
+    "loc": "fridge 1"
+   },
    "record": "> go to fridge 1\nThe fridge 1 is closed.",
    "step": 0,
    "source": "act_clean_0"
@@ -15,6 +19,10 @@
    "pattern": "leave",
    "answer": "B",
    "condition": "The agent is currently at countertop 1",
+   "spec": {
+    "type": "at",
+    "loc": "countertop 1"
+   },
    "record": "> go to countertop 2\nOn the countertop 2, you see nothing.",
    "step": 2,
    "source": "act_heat_0"
@@ -23,6 +31,10 @@
    "pattern": "walk_holding",
    "answer": "C",
    "condition": "The agent is currently holding pan 1",
+   "spec": {
+    "type": "holding",
+    "obj": "pan 1"
+   },
    "record": "> go to fridge 1\nThe fridge 1 is closed.",
    "step": 4,
    "source": "act_cool_0"
@@ -31,6 +43,10 @@
    "pattern": "take",
    "answer": "A",
    "condition": "The agent is currently holding lettuce 1",
+   "spec": {
+    "type": "holding",
+    "obj": "lettuce 1"
+   },
    "record": "> take lettuce 1 from diningtable 1\nYou pick up the lettuce 1 from the diningtable 1.",
    "step": 3,
    "source": "act_clean_0"
@@ -39,6 +55,9 @@
    "pattern": "take_empty",
    "answer": "B",
    "condition": "The agent is currently holding nothing",
+   "spec": {
+    "type": "hand_empty"
+   },
    "record": "> take egg 2 from countertop 3\nYou pick up the egg 2 from the countertop 3.",
    "step": 4,
    "source": "act_heat_0"
@@ -47,6 +66,9 @@
    "pattern": "move_empty",
    "answer": "A",
    "condition": "The agent is currently holding nothing",
+   "spec": {
+    "type": "hand_empty"
+   },
    "record": "> move pan 1 to stoveburner 1\nYou move the pan 1 to the stoveburner 1.",
    "step": 7,
    "source": "act_cool_0"
@@ -55,6 +77,10 @@
    "pattern": "move_holding",
    "answer": "B",
    "condition": "The agent is currently holding lettuce 1",
+   "spec": {
+    "type": "holding",
+    "obj": "lettuce 1"
+   },
    "record": "> move lettuce 1 to diningtable 1\nYou move the lettuce 1 to the diningtable 1.",
    "step": 7,
    "source": "act_clean_0"
@@ -63,6 +89,10 @@
    "pattern": "walk_holding",
    "answer": "C",
    "condition": "The agent is currently holding egg 2",
+   "spec": {
+    "type": "holding",
+    "obj": "egg 2"
+   },
    "record": "> go to microwave 1\nThe microwave 1 is closed.",
    "step": 5,
    "source": "act_heat_0"

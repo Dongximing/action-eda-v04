@@ -44,6 +44,8 @@ class Config:
                                # applies equally to D1/D1f/D2/U1/P0 and E1 extraction, not to Q0 (original EDA)
     fewshot: str = ""          # JSON file of worked examples for the per-record judgment (D1/D1f/D2/U1/P0);
                                # "" = zero-shot. See scripts/make_fewshot.py
+    record_style: str = "effect"  # per-record question: "effect" (what does the record do to the condition)
+                                  # or "state" (after the record, what is the state); same A/B/C meaning
 
 
 @dataclass
@@ -124,9 +126,12 @@ def load_fewshot(path: str) -> tuple[dict, ...]:
     return tuple(items)
 
 
-def judge_record(m: Meter, s: Sample, c: Claim, r: Record, k: int = 0, fewshot: str = "") -> dict[str, float]:
-    q = Query("record", P.record_judgment(s.task, s.proposed_action, c, r, preceding(s, r, k),
-                                          list(load_fewshot(fewshot)) or None),
+def judge_record(m: Meter, s: Sample, c: Claim, r: Record, k: int = 0, fewshot: str = "",
+                 style: str = "effect") -> dict[str, float]:
+    if style not in ("effect", "state"):
+        raise RuntimeError(f"unknown record_style {style!r}")
+    build = P.record_state if style == "state" else P.record_judgment
+    q = Query("record", build(s.task, s.proposed_action, c, r, preceding(s, r, k), list(load_fewshot(fewshot)) or None),
               cid=c.cid, rids=(r.rid,), sid=s.sid)
     return m.options(q)
 
@@ -158,7 +163,7 @@ def ordered_audit(m: Meter, s: Sample, c: Claim, records: list[Record], cfg: Con
     judged: dict[int, dict[str, float]] = {}
     hits: list[tuple[int, str, float]] = []
     for r in reversed(records):
-        p = judge_record(m, s, c, r, cfg.context_k, cfg.fewshot)
+        p = judge_record(m, s, c, r, cfg.context_k, cfg.fewshot, cfg.record_style)
         judged[r.rid] = p
         pol = argmax(p)
         if pol == "C":
@@ -224,7 +229,7 @@ def m_D2(s, c, m, cfg, ctx):
 
 
 def m_U1(s, c, m, cfg, ctx):
-    judged = {r.rid: judge_record(m, s, c, r, cfg.context_k, cfg.fewshot) for r in s.records}
+    judged = {r.rid: judge_record(m, s, c, r, cfg.context_k, cfg.fewshot, cfg.record_style) for r in s.records}
     inval = [rid for rid, p in judged.items() if argmax(p) == "B" and p["B"] >= cfg.tau_conf]
     est = [rid for rid, p in judged.items() if argmax(p) == "A" and p["A"] >= cfg.tau_conf]
     trace = {"judged": judged}
@@ -251,7 +256,7 @@ def m_P0(s, c, m, cfg, ctx):
     per-record judgment); prediction = any entity-matching record after it."""
     src = None
     for r in reversed(s.records):
-        p = judge_record(m, s, c, r, cfg.context_k, cfg.fewshot)
+        p = judge_record(m, s, c, r, cfg.context_k, cfg.fewshot, cfg.record_style)
         if argmax(p) == "A" and p["A"] >= cfg.tau_conf:
             src = r.rid
             break

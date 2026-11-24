@@ -234,3 +234,16 @@ DATA=data/alfworld9b SKIP_JEV=1 API_ADAPTER=adapters.openrouter_chat:choose METH
 ```
 
 `--fewshot` 只作用于逐条判断，也就是 D1、D1f、D2、U1、P0。`run_meta.json` 的 config 里会记下所用文件。
+
+### 逐条判断改成"问状态"（`--record-style state`）
+
+D1 的流程和裁决规则都不变，只改每条记录的问法：
+- 默认（effect）问"这条记录对条件做了什么"；
+- state 问"这条记录之后，agent 在哪 / 拿着什么"，选项是"就是条件里那个 / 是别的 / 这条看不出"，分别对应 A/B/C，含义和默认问法一样。
+
+few-shot 例题沿用同一套，按同样的问法改写后展示。
+
+```bash
+DATA=data/alfworld9b SKIP_JEV=1 API_ADAPTER=adapters.openrouter_chat:choose METHODS=T0,D1 CTX="0" OUT=runs/state \
+  EXTRA="--fewshot data/fewshot/alfworld_record_fewshot.json --record-style state" bash scripts/run_sweep.sh
+```

@@ -80,6 +80,58 @@ def record_judgment(task: str, action: str, claim: Claim, r: Record,
     )
 
 
+def state_options(text: str, spec: dict | None) -> tuple[str, list[tuple[str, str]]]:
+    """State question for one condition: A = condition holds after the record,
+    B = it does not, C = the record does not show it (same meaning as record_judgment)."""
+    t = (spec or {}).get("type")
+    if t == "at":
+        loc = spec["loc"]
+        return ("Right after this record, where is the agent?",
+                [("A", f"At {loc}."), ("B", f"Somewhere other than {loc}."),
+                 ("C", "This record does not show where the agent is.")])
+    if t == "holding":
+        obj = spec["obj"]
+        return ("Right after this record, what is the agent holding?",
+                [("A", f"{obj}."), ("B", f"Something other than {obj}, or nothing."),
+                 ("C", "This record does not show what the agent is holding.")])
+    if t == "hand_empty":
+        return ("Right after this record, what is the agent holding?",
+                [("A", "Nothing."), ("B", "Some object."),
+                 ("C", "This record does not show what the agent is holding.")])
+    return (f"Right after this record, is this true: {text}?",
+            [("A", "Yes."), ("B", "No."), ("C", "This record does not show it.")])
+
+
+def _state_examples_block(examples: list[dict] | None) -> str:
+    if not examples:
+        return ""
+    out = ["Worked examples (from other episodes):"]
+    for i, e in enumerate(examples, 1):
+        q, opts = state_options(e["condition"], e.get("spec"))
+        out.append(f"Example {i}\nRecord: {e['record']}\n{q}\n" +
+                   "\n".join(f"{l}. {t}" for l, t in opts) + f"\nAnswer: {e['answer']}")
+    return "\n\n".join(out) + "\n\nNow the real case.\n"
+
+
+def record_state(task: str, action: str, claim: Claim, r: Record,
+                 context: list[Record] | None = None, examples: list[dict] | None = None) -> MCQ:
+    """Per-record judgment asked as a state question (``--record-style state``).
+    Same A/B/C meaning as record_judgment, so D1/D1f/D2/U1/P0 use it unchanged."""
+    q, opts = state_options(claim.text, claim.spec)
+    return MCQ(
+        context=(
+            "You track the state of an agent from ONE record of its interaction history.\n"
+            f"{_state_examples_block(examples)}"
+            f"Task: {task}\n"
+            f"Proposed action (not executed yet): {action}\n"
+            f"{_ctx_block(context, 'judge')}"
+            f"Record{' to judge' if context else ''}: {_rec(r)}"
+        ),
+        question=q,
+        options=opts,
+    )
+
+
 def pair_judgment(task: str, action: str, claim: Claim, r1: Record, r2: Record) -> MCQ:
     """Pairwise repair for composition-type invalidation (doc §3.4, D2)."""
     return MCQ(

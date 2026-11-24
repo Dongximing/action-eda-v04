@@ -236,3 +236,26 @@ class TestFewshot(unittest.TestCase):
             ch = [sum(json.loads(l)["prompt_chars"] for l in open(f"{d}/{x}/predictions.jsonl")) for x in ("r0", "r1")]
             self.assertGreater(ch[1], ch[0])
             self.assertEqual(json.loads(Path(f"{d}/r1/run_meta.json").read_text())["config"]["fewshot"], str(out))
+
+
+class TestStateStyle(unittest.TestCase):
+    def test_state_options_and_wiring(self):
+        q, o = P.state_options("x", {"type": "at", "loc": "fridge 1"})
+        self.assertEqual((q, [l for l, _ in o], o[0][1]), ("Right after this record, where is the agent?",
+                                                          ["A", "B", "C"], "At fridge 1."))
+        self.assertEqual(P.state_options("x", {"type": "hand_empty"})[1][0][1], "Nothing.")
+        self.assertIn("is this true: user wants it", P.state_options("user wants it", None)[0])
+        s = load_samples(ROOT / "data/alfworld9b/samples.jsonl")[0]
+        c, r = s.claims[0], s.records[-1]
+        txt = P.record_state(s.task, s.proposed_action, c, r).render()
+        self.assertNotIn("Condition:", txt)
+        self.assertTrue(txt.endswith("Answer with a single letter."))
+        from aeda.verifiers import judge_record
+        with self.assertRaises(RuntimeError):
+            judge_record(Meter(TableBackend({})), s, c, r, style="bogus")
+        with tempfile.TemporaryDirectory() as d:
+            base = [PY, str(ROOT / "scripts/run_offline.py"), "--samples", str(ROOT / "data/smoke/samples.jsonl"),
+                    "--backend", "api", "--adapter", "tests.fake_jev:good", "--methods", "D1", "--out", d,
+                    "--record-style", "state"]
+            subprocess.run(base, check=True, capture_output=True, cwd=ROOT)
+            self.assertEqual(json.loads(Path(d, "run_meta.json").read_text())["config"]["record_style"], "state")
