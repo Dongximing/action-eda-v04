@@ -253,37 +253,44 @@
    }
   ]
  },
- "map": {
+ "map_choice": {
   "c1": {
-   "entity": "user",
-   "attribute": "request_r123",
-   "value": "cancel"
+   "A": 1.0
   },
   "c2": {
-   "entity": "r123",
-   "attribute": "status",
-   "value": "active"
+   "A": 1.0
   },
   "c3": {
-   "entity": "user",
-   "attribute": "request_r123",
-   "value": "cancel"
+   "A": 1.0
   },
   "c4": {
-   "entity": "report.pdf",
-   "attribute": "location",
-   "value": "/tmp"
+   "A": 1.0
   },
   "c5": {
-   "entity": "o7",
-   "attribute": "status",
-   "value": "pending_shipment"
+   "A": 1.0
   },
-  "c6": null,
+  "c6": {
+   "Z": 1.0
+  },
   "c7": {
-   "entity": "user",
-   "attribute": "a1_changes",
-   "value": "active"
+   "A": 1.0
+  }
+ },
+ "value_check": {
+  "c1|5": {
+   "A": 0.9,
+   "B": 0.05,
+   "C": 0.05
+  },
+  "c3|3": {
+   "A": 0.05,
+   "B": 0.9,
+   "C": 0.05
+  },
+  "c7|3": {
+   "A": 0.05,
+   "B": 0.9,
+   "C": 0.05
   }
  }
 }

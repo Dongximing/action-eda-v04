@@ -39,7 +39,7 @@ class Config:
     tau_q0: float = 0.0        # Q0: CONTRADICTED if max(-logit(P(still true))) > tau_q0
     early_stop: bool = True    # D1: backward scan stops once the decision is fixed
     context_k: int = 0         # preceding records shown (context only) in per-record judgments;
-                               # applies equally to D1/D1f/D2/U1/P0, not to Q0 (original EDA)
+                               # applies equally to D1/D1f/D2/U1/P0 and E1 extraction, not to Q0 (original EDA)
 
 
 @dataclass
@@ -295,26 +295,40 @@ def _norm(x) -> str:
 
 
 def m_E1(s, c, m, cfg, ctx):
-    """Extract-then-track. Extraction is claim-agnostic and done once per sample;
-    its calls are charged to the first claim of the sample that reaches E1."""
+    """Extract-then-track. Extraction is claim-agnostic and done once per sample
+    (free generation, JSON); its calls are charged to the first claim of the sample.
+    Mapping the claim to a tracked key and checking the value are option readouts
+    (p3), so E1 is not penalised for inventing key names."""
     key = ("E1_state", s.sid)
     if key not in ctx:
         state: dict[tuple[str, str], tuple[str, int]] = {}
         for r in s.records:
-            out = _parse_json(m.generate(Query("extract", P.extract_state(s.task, r),
+            out = _parse_json(m.generate(Query("extract", P.extract_state(s.task, r, preceding(s, r, cfg.context_k)),
                                                rids=(r.rid,), sid=s.sid)))
             for f in out if isinstance(out, list) else []:
                 if isinstance(f, dict) and {"entity", "attribute", "value"} <= f.keys():
                     state[(_norm(f["entity"]), _norm(f["attribute"]))] = (_norm(f["value"]), r.rid)
         ctx[key] = state
     state = ctx[key]
-    mp = _parse_json(m.generate(Query("map", P.map_claim(c, sorted(state)), cid=c.cid, sid=s.sid)))
-    trace = {"mapping": mp, "n_keys": len(state)}
-    if not isinstance(mp, dict) or (_norm(mp.get("entity")), _norm(mp.get("attribute"))) not in state:
+    # latest-updated keys first, capped at 25 single-letter options
+    keys = sorted(state, key=lambda k: state[k][1], reverse=True)[: len(P.KEY_LETTERS)]
+    trace = {"n_keys": len(state)}
+    if not keys:
         return no_evidence(s, c), [], trace
-    val, rid = state[(_norm(mp["entity"]), _norm(mp["attribute"]))]
-    trace["tracked_value"] = val
-    return ("SUPPORTED" if val == _norm(mp.get("value")) else "CONTRADICTED"), [rid], trace
+    prompt, letters = P.map_claim_choice(c, keys)
+    pm = m.options(Query("map_choice", prompt, letters, cid=c.cid, sid=s.sid))
+    pick = argmax(pm)
+    trace["map_probs"] = pm
+    if pick == "Z":
+        return no_evidence(s, c), [], trace
+    ent, att = keys[letters.index(pick)]
+    val, rid = state[(ent, att)]
+    trace.update({"key": [ent, att], "tracked_value": val})
+    pv = m.options(Query("value_check", P.value_check(c, ent, att, val, rid), P.LETTERS3,
+                         cid=c.cid, rids=(rid,), sid=s.sid))
+    trace["value_probs"] = pv
+    verdict = {"A": "SUPPORTED", "B": "CONTRADICTED", "C": "UNKNOWN"}[argmax(pv)]
+    return verdict, [rid], trace
 
 
 def m_T0(s, c, m, cfg, ctx):

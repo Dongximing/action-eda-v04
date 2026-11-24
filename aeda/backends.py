@@ -25,7 +25,7 @@ from typing import Any, Protocol
 
 @dataclass
 class Query:
-    kind: str                     # record | pair | holistic | q_source | q_delta | extract | map
+    kind: str                     # record|pair|holistic|q_source|q_delta|extract|map_choice|value_check|gen_claims
     prompt: str
     letters: list[str] = field(default_factory=list)
     cid: str | None = None
@@ -176,7 +176,8 @@ class TableBackend:
          "q_source": {"<cid>|<rid>": {"A": .., "B": ..}},
          "q_delta":  {"<cid>|<rid>": {...}},
          "extract":  {"<sid>|<rid>": [{"entity":..,"attribute":..,"value":..}]},
-         "map":      {"<cid>": {"entity":..,"attribute":..,"value":..} | null}}
+         "map_choice":  {"<cid>": {"A": .., ..., "Z": ..}},      # E1 key choice
+         "value_check": {"<cid>|<rid>": {"A": .., "B": .., "C": ..}}}
 
     Missing entries fall back to an uninformative answer (C for 3-option record
     queries, uniform otherwise). ``sid`` is not part of the key, so cids must be
@@ -224,8 +225,6 @@ class TableBackend:
         if q.kind == "extract":
             return json.dumps(self.t.get("extract", {}).get(f"{q.sid}|{q.rids[0]}", []),
                               ensure_ascii=False)
-        if q.kind == "map":
-            return json.dumps(self.t.get("map", {}).get(q.cid), ensure_ascii=False)
         return ""
 
 

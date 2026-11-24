@@ -97,12 +97,8 @@ table = {
         "s4|1": [fact("o7", "status", "pending_shipment")],
         "s6|3": [fact("user", "a1_changes", "paused")],
     },
-    "map": {
-        "c1": fact("user", "request_r123", "cancel"), "c2": fact("r123", "status", "active"),
-        "c3": fact("user", "request_r123", "cancel"), "c4": fact("report.pdf", "location", "/tmp"),
-        "c5": fact("o7", "status", "pending_shipment"), "c6": None,
-        "c7": fact("user", "a1_changes", "active"),
-    },
+    "map_choice": {"c1": {"A": 1.0}, "c2": {"A": 1.0}, "c3": {"A": 1.0}, "c4": {"A": 1.0}, "c5": {"A": 1.0}, "c6": {"Z": 1.0}, "c7": {"A": 1.0}},
+    "value_check": {"c1|5": p3(.9, .05, .05), "c3|3": p3(.05, .9, .05), "c7|3": p3(.05, .9, .05)},
 }
 
 def dump(name, rows):

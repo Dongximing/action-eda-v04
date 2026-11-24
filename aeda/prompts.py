@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from .schema import Claim, Record
 
-PROMPT_VERSION = "v0.4-p2"  # p2: optional preceding-context block; with context_k=0 identical to p1
+PROMPT_VERSION = "v0.4-p4"  # p2: optional preceding-context block (k=0 identical to p1); p3: E1 maps by choice; p4: E1 extraction covers requests
 
 LETTERS3 = ["A", "B", "C"]
 LETTERS2 = ["A", "B"]
@@ -94,25 +94,52 @@ def q_delta(task: str, action: str, claim: Claim, r: Record) -> str:
     )
 
 
-def extract_state(task: str, r: Record) -> str:
-    """E1: claim-agnostic state extraction from one record."""
+def extract_state(task: str, r: Record, context: list[Record] | None = None) -> str:
+    """E1: claim-agnostic state extraction from one record (p4: covers user requests and
+    instructions, optional preceding context like the per-record judgment)."""
+    ctx = ""
+    if context:
+        ctx = ("Preceding records (context only, to resolve references; do NOT extract from them):\n"
+               + "\n".join(_rec(c) for c in context) + "\n")
     return (
-        "Extract every state fact that this record establishes or changes.\n"
+        "Extract every fact that this record establishes or changes about the current state of the world, "
+        "including object locations and statuses, and the user's current requests, instructions or "
+        "permissions (use entity \"user\" for those).\n"
         f"Task context: {task}\n"
+        f"{ctx}"
         f"Record: {_rec(r)}\n\n"
         'Return a JSON list of objects {"entity": str, "attribute": str, "value": str}. '
-        "Use short lowercase names. Return [] if the record states no fact. Output JSON only."
+        'Example: "please cancel order X1" -> [{"entity": "user", "attribute": "request on x1", '
+        '"value": "cancel"}]; "file f.txt moved to /a" -> [{"entity": "f.txt", "attribute": "location", '
+        '"value": "/a"}]. Use short lowercase names and reuse the same entity/attribute names for the same '
+        "thing. Return [] only if the record changes nothing. Output JSON only."
     )
 
 
-def map_claim(claim: Claim, keys: list[tuple[str, str]]) -> str:
-    """E1: map a claim onto one tracked (entity, attribute) key."""
-    key_list = "\n".join(f"- {e} | {a}" for e, a in keys) or "(none)"
+KEY_LETTERS = [chr(ord("A") + i) for i in range(25)]  # A..Y; Z = none
+
+
+def map_claim_choice(claim: Claim, keys: list[tuple[str, str]]) -> tuple[str, list[str]]:
+    """E1 (p3): pick which tracked key decides the claim, as a single-letter choice.
+    Returns (prompt, letters); the last letter means 'none of these'."""
+    letters = KEY_LETTERS[: len(keys)] + ["Z"]
+    opts = "\n".join(f"{l}. {e} | {a}" for l, (e, a) in zip(letters, keys))
+    prompt = (
+        f"Condition: {claim.text}\n"
+        "Which tracked state key (entity | attribute) decides whether this condition holds?\n"
+        f"{opts}\n"
+        "Z. None of these keys is relevant.\n"
+        "Answer with a single letter."
+    )
+    return prompt, letters
+
+
+def value_check(claim: Claim, entity: str, attribute: str, value: str, rid: int) -> str:
+    """E1 (p3): does the tracked latest value make the claim true?"""
     return (
         f"Condition: {claim.text}\n"
-        "Tracked state keys (entity | attribute):\n"
-        f"{key_list}\n\n"
-        "Which key decides this condition, and which value makes the condition true? "
-        'Return JSON {"entity": str, "attribute": str, "value": str}, '
-        "or null if no key matches. Output JSON only."
+        f"Latest tracked state: {entity} | {attribute} = {value} (from record #{rid})\n\n"
+        "Given this state, does the condition hold?\n"
+        "A. Yes.\nB. No.\nC. Cannot tell from this state.\n"
+        "Answer with a single letter."
     )
