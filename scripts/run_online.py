@@ -23,6 +23,12 @@ Run with the ALFWorld venv (it has alfworld/textworld), from this repo:
   ~/state-audit-pilot/.venv/bin/python scripts/run_online.py \\
       --src ~/Documents/Codex/2026-11-21/yo/outputs/alfworld-9b-oneshot-alternate --out runs/online/d1
 
+More games (baseline + D1 on unused valid_seen games of the same three families):
+
+  ~/state-audit-pilot/.venv/bin/python scripts/run_online.py \\
+      --src ~/Documents/Codex/2026-11-21/yo/outputs/alfworld-9b-oneshot-alternate --out runs/online/more \\
+      --new-per-family 8
+
 Results: <out>/gameXX/d1.json per game, <out>/summary.json and summary.md (wins of
 D1 vs the baseline's natural.json on the same games).
 """
@@ -112,12 +118,36 @@ def decide(view: dict, proposal: str, check, revise, max_revisions: int) -> tupl
 
 # ---------------------------------------------------------------- one game (needs alfworld + the runner modules)
 
+def _episode(job, arm, env, book, actor, example, check=None):
+    """One episode. arm "direct": execute every proposal (the baseline). arm "d1": check first."""
+    from paired_store import digest
+    from pilot import public_checkpoint
+    view = env.reset()
+    decisions = []
+    while env.steps < job["max_steps"] and not env.done:
+        cp = public_checkpoint(view, "")
+        proposal = book.ask(arm, "qwen", "actor", [cp, digest(example)], actor, lambda: actor.action(cp))
+        step = env.steps
+        if check is None:
+            chosen, rec = proposal, None
+        else:
+            def revise(action, fb, view=view):
+                c = public_checkpoint(view, action)
+                return book.ask(arm, "qwen", "revise", [c, fb], actor, lambda: actor.revise(c, fb))
+            chosen, rec = decide(view, proposal, lambda a, view=view: check(view, a), revise, job["max_revisions"])
+        view = env.step(chosen)
+        if rec is not None:
+            obs = view["history"][-1]["observation"]
+            rec.update(step=step, observation=obs, succeeded=A.succeeded(obs))
+            decisions.append(rec)
+    return view, decisions
+
+
 def play(job: dict) -> dict:
     sys.path.insert(0, job["runner"])
     from alf_env import Episode
     from models import GPUChat
     from paired_store import CallBook, digest, load, save
-    from pilot import public_checkpoint
     from aeda.backends import AdapterBackend
 
     folder = Path(job["out"]) / job["id"]
@@ -125,10 +155,10 @@ def play(job: dict) -> dict:
     if out_path.exists():
         return json.loads(out_path.read_text())
     folder.mkdir(parents=True, exist_ok=True)
-    src = Path(job["src"]) / job["id"]
-    if not (folder / "calls.sqlite").exists():
-        shutil.copy2(src / "calls.sqlite", folder / "calls.sqlite")   # actor cache of the baseline, copied
-    natural = load(src / "natural.json")
+    src_game = Path(job["src"]) / job["id"]
+    has_src_baseline = (src_game / "natural.json").exists()
+    if has_src_baseline and not (folder / "calls.sqlite").exists():
+        shutil.copy2(src_game / "calls.sqlite", folder / "calls.sqlite")   # actor cache of the baseline, copied
 
     actor = GPUChat("https://openrouter.ai/api/v1", "qwen/qwen3.5-9b", os.environ["OPENROUTER_API_KEY"], openrouter=True)
     actor.openrouter_route = job["route"]
@@ -136,41 +166,48 @@ def play(job: dict) -> dict:
     if digest(example) != job["action_example_sha256"]:
         raise ValueError(f"{job['id']}: demonstration differs from the frozen protocol")
     actor.action_example = example
-    backend = AdapterBackend(job["adapter"])
-    cfg = Config(fewshot=job["fewshot"], record_style=job["record_style"])
     book = CallBook(folder / "calls.sqlite")
-    env = Episode(Path(job["split"]) / job["game"])
-    t0, first_request = time.time(), book.last_request_id()
+    game = Path(job["split"]) / job["game"]
     try:
-        view = env.reset()
+        # baseline: the finished run's natural.json, or run the direct arm here with the same actor and cache
+        if has_src_baseline:
+            natural = load(src_game / "natural.json")
+        elif (folder / "direct.json").exists():
+            natural = load(folder / "direct.json")
+        else:
+            env = Episode(game)
+            try:
+                t0 = time.time()
+                view, _ = _episode(job, "direct", env, book, actor, example)
+                natural = {"id": job["id"], "family": job["family"], "game": job["game"], "task": view["task"],
+                           "won": env.won, "steps": env.steps, "history": view["history"],
+                           "end": "success" if env.won else "environment_end" if env.done else "step_limit",
+                           "seconds": round(time.time() - t0, 1)}
+            finally:
+                env.close()
+            save(folder / "direct.json", natural)
+
+        backend = AdapterBackend(job["adapter"])
+        cfg = Config(fewshot=job["fewshot"], record_style=job["record_style"])
+        env = Episode(game)
+        t0, first_request = time.time(), book.last_request_id()
+        try:
+            view, decisions = _episode(job, job["arm"], env, book, actor, example,
+                                       check=lambda v, a: check_action(v, a, job["id"], backend, cfg))
+            won, steps, done = env.won, env.steps, env.done
+        finally:
+            env.close()
         if view["task"] != natural["task"] or view["history"][0] != natural["history"][0]:
             raise ValueError(f"{job['id']}: reset differs from the baseline")
-        decisions = []
-        while env.steps < job["max_steps"] and not env.done:
-            cp = public_checkpoint(view, "")
-            inputs = [cp, digest(example)]
-            proposal = book.ask("d1", "qwen", "actor", inputs, actor, lambda: actor.action(cp))
-            step = env.steps
-
-            def revise(action, fb, view=view):
-                c = public_checkpoint(view, action)
-                return book.ask("d1", "qwen", "revise", [c, fb], actor, lambda: actor.revise(c, fb))
-            chosen, rec = decide(view, proposal, lambda a, view=view: check_action(view, a, job["id"], backend, cfg),
-                                 revise, job["max_revisions"])
-            view = env.step(chosen)
-            if rec is not None:
-                obs = view["history"][-1]["observation"]
-                rec.update(step=step, observation=obs, succeeded=A.succeeded(obs))
-                decisions.append(rec)
         hist = view["history"]
         diverged = next((i for i, (a, b) in enumerate(zip(hist, natural["history"])) if a != b),
                         None if len(hist) == len(natural["history"]) else min(len(hist), len(natural["history"])))
         new_actor = book.db.execute("SELECT COUNT(*) FROM requests WHERE id>? AND reused=0 AND ok=1",
                                     (first_request,)).fetchone()[0]
-        result = {"id": job["id"], "family": job["family"], "task": view["task"], "arm": job["arm"],
-                  "won": env.won, "steps": env.steps,
-                  "end": "success" if env.won else "environment_end" if env.done else "step_limit",
+        result = {"id": job["id"], "family": job["family"], "game": job["game"], "task": view["task"], "arm": job["arm"],
+                  "won": won, "steps": steps, "end": "success" if won else "environment_end" if done else "step_limit",
                   "baseline_won": natural["won"], "baseline_steps": natural["steps"],
+                  "baseline_source": "src natural.json" if has_src_baseline else "direct.json (this run)",
                   "diverged_from_baseline_at": diverged, "history": hist, "decisions": decisions,
                   "usage": {"judge": backend.usage.as_dict(), "new_actor_requests": new_actor,
                             "seconds": round(time.time() - t0, 1)},
@@ -179,8 +216,30 @@ def play(job: dict) -> dict:
         save(out_path, result)
         return result
     finally:
-        env.close()
         book.close()
+
+
+def new_games(split: Path, src_protocol: dict, examples: dict, per_family: int, seed: int) -> list[dict]:
+    """Unused solvable valid_seen games of the families that have a demonstration, sampled per family."""
+    import random
+    sys.path.insert(0, str(DEFAULT_RUNNER))
+    from paired_store import digest
+    used = {g["game"] for g in src_protocol["games"]}
+    pools: dict[str, list[str]] = {f: [] for f in sorted(examples)}
+    for p in sorted(split.glob("*/*/game.tw-pddl")):
+        fam = p.parent.parent.name.partition("-")[0]
+        rel = str(p.relative_to(split))
+        if fam in pools and "Sliced" not in p.parent.parent.name and rel not in used \
+                and json.loads(p.read_bytes()).get("solvable") is True:
+            pools[fam].append(rel)
+    games = []
+    for fam, pool in pools.items():
+        for rel in random.Random(f"{seed}-{fam}").sample(pool, min(per_family, len(pool))):
+            games.append({"game": rel, "family": fam, "action_example_sha256": digest(examples[fam])})
+    games.sort(key=lambda g: (g["family"], g["game"]))
+    for i, g in enumerate(games, 1):
+        g["id"] = f"new{i:02d}"
+    return games
 
 
 # ---------------------------------------------------------------- summary
@@ -248,6 +307,10 @@ def main():
     ap.add_argument("--max-steps", type=int, default=50)
     ap.add_argument("--workers", type=int, default=4, help="games in parallel")
     ap.add_argument("--arm", default="d1")
+    ap.add_argument("--new-per-family", type=int, default=0,
+                    help="instead of the src games, sample this many unused valid_seen games per family "
+                         "(clean/heat/cool); each runs the baseline (direct) first, then D1")
+    ap.add_argument("--seed", type=int, default=0)
     a = ap.parse_args()
     if not os.getenv("OPENROUTER_API_KEY"):
         ap.error("set OPENROUTER_API_KEY in this terminal")
@@ -256,10 +319,23 @@ def main():
     if protocol.get("max_steps") != a.max_steps:
         print(f"note: baseline used max_steps={protocol.get('max_steps')}, this run {a.max_steps}", flush=True)
     route = json.loads((src / "routing.json").read_text())["selected"]
-    want = {g for g in a.games.split(",") if g}
-    games = [g for g in protocol["games"] if not want or g["id"] in want]
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
+    if a.new_per_family:
+        examples = json.loads((src / "one_shot_examples.json").read_text())["examples"]
+        frozen = out / "protocol.json"
+        if frozen.exists():  # resume with the same games
+            games = json.loads(frozen.read_text())["games"]
+        else:
+            games = new_games(Path(a.split_dir).expanduser(), protocol, examples, a.new_per_family, a.seed)
+            frozen.write_text(json.dumps({"source_protocol": str(src / "protocol.json"), "seed": a.seed,
+                                          "per_family": a.new_per_family, "max_steps": a.max_steps,
+                                          "games": games}, indent=1))
+        print(f"{len(games)} new games -> {frozen}", flush=True)
+    else:
+        games = protocol["games"]
+    want = {g for g in a.games.split(",") if g}
+    games = [g for g in games if not want or g["id"] in want]
     (out / "run_config.json").write_text(json.dumps({**vars(a), "route": route, "baseline_protocol": str(src / "protocol.json")}, indent=1))
     jobs = [{"id": g["id"], "game": g["game"], "family": g["family"], "action_example_sha256": g["action_example_sha256"],
              "src": str(src), "out": str(out), "runner": str(Path(a.runner).expanduser()), "split": str(Path(a.split_dir).expanduser()),
@@ -273,8 +349,8 @@ def main():
             try:
                 r = f.result()
                 results.append(r)
-                print(f"{gid}: {'WIN' if r['won'] else r['end']} in {r['steps']} steps "
-                      f"(baseline {'win' if r['baseline_won'] else 'loss'}), "
+                print(f"{gid}: D1 {'WIN' if r['won'] else r['end']} in {r['steps']} steps "
+                      f"(baseline {'win' if r['baseline_won'] else 'loss'} in {r['baseline_steps']}), "
                       f"{sum(d['blocked'] for d in r['decisions'])} blocked", flush=True)
             except Exception as e:  # report and keep the other games; rerun resumes finished games from disk
                 failed.append(gid)
