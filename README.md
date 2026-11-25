@@ -247,3 +247,16 @@ few-shot 例题沿用同一套，按同样的问法改写后展示。
 DATA=data/alfworld9b SKIP_JEV=1 API_ADAPTER=adapters.openrouter_chat:choose METHODS=T0,D1 CTX="0" OUT=runs/state \
   EXTRA="--fewshot data/fewshot/alfworld_record_fewshot.json --record-style state" bash scripts/run_sweep.sh
 ```
+
+## 在线：12 局 baseline vs D1（`scripts/run_online.py`）
+
+主 agent、示范、路由、温度、50 步上限都和 baseline（原实验的 direct 组）相同，actor 也复用同一份缓存。D1 拦下一个动作之前，两组走的每一步完全一样。在 state-changing 动作执行前，用 D1 核查前提：
+- 结果为 CONTRADICTED：拦下动作，把不成立的前提和对应的记录编号交给 agent 修改，最多修改 1 次，修改后的动作重新核查；
+- 其余结果：直接执行。
+
+```bash
+export OPENROUTER_API_KEY=...
+~/state-audit-pilot/.venv/bin/python scripts/run_online.py --src ~/Documents/Codex/2026-11-21/yo/outputs/alfworld-9b-oneshot-alternate --out runs/online/d1
+```
+
+结果写在 `runs/online/d1/summary.md`，内容是两组各赢几局、哪几局被救回或输掉，以及拦截次数和误拦次数。误拦次数用 tracker 在同一段历史上核对得出。

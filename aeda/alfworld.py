@@ -118,3 +118,31 @@ def steps_from_records(texts: list[str]) -> list[tuple[str, str]]:
             head, _, obs = t[len(ACTION_PREFIX):].partition("\n")
             steps.append((head, obs))
     return steps
+
+
+def build_sample(episode_id: str, task: str, init_obs: str, steps: list[tuple[str, str]], t: int,
+                 action: str) -> dict | None:
+    """Visible sample for proposed ``action`` at step ``t``: records are the reset observation and
+    steps[:t]; claims are the fixed preconditions of ``action``. Used by the offline converter and
+    the online runner alike, so both build identical inputs. None if the action has no preconditions."""
+    import re
+    pres = preconditions(action)
+    if not pres:
+        return None
+    records = [{"rid": 0, "source": "env", "text": init_obs, "entities": []}]
+    records += [{"rid": i + 1, "source": "env", "text": record_text(a, o), "entities": []}
+                for i, (a, o) in enumerate(steps[:t])]
+    sid = f"{episode_id}-t{t}"
+    claims = []
+    for j, pre in enumerate(pres):
+        for r in records:
+            # whole-name match, so "countertop 1" does not match "countertop 10"
+            if any(e and re.search(rf"(?<![A-Za-z0-9_]){re.escape(e)}(?![A-Za-z0-9_])", r["text"].lower())
+                   for e in pre["entities"]):
+                r["entities"] = sorted(set(r["entities"]) | set(pre["entities"]))
+        # agents start empty-handed (public game rule): "holding nothing" is a default claim
+        kind = "default" if pre["spec"]["type"] == "hand_empty" else "state"
+        claims.append({"cid": f"{sid}/c{j}", "text": pre["text"], "kind": kind, "origin": "fixed",
+                       "entities": pre["entities"], "spec": pre["spec"]})
+    return {"sid": sid, "episode_id": episode_id, "task": task, "proposed_action": action,
+            "action_reversible": True, "window_complete": True, "records": records, "claims": claims}

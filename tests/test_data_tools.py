@@ -282,3 +282,29 @@ class TestHolisticParity(unittest.TestCase):
         c = next(c for c in s.claims if c.kind == "default")
         tab = TableBackend({"holistic": {f"{c.cid}|*": {"A": .1, "B": .1, "C": .8}}})
         self.assertEqual(m_H1(s, c, Meter(tab), Config(), {})[0], "SUPPORTED_DEFAULT")
+
+
+class TestOnlineDecide(unittest.TestCase):
+    def test_block_revise_and_budget(self):
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from run_online import Check, decide
+        bad = Check("CONTRADICTED", [{"claim": "The agent is currently at sinkbasin 1", "verdict": "CONTRADICTED",
+                                      "evidence_records": ["r7"]}])
+        ok = Check("SUPPORTED", [])
+        seen = []
+
+        def revise(a, fb):
+            seen.append(fb)
+            return "go to sinkbasin 1"
+        checks = {"clean x 1 with sinkbasin 1": bad, "go to sinkbasin 1": Check("NONE")}
+        act, rec = decide({}, "clean x 1 with sinkbasin 1", checks.get, revise, 1)
+        self.assertEqual(act, "go to sinkbasin 1")
+        self.assertTrue(rec["blocked"] and not rec["executed_despite_contradiction"])
+        self.assertEqual(seen[0]["conditions"][0]["source_id"], "r7")
+        # agent keeps its action -> executed despite contradiction, counted
+        act, rec = decide({}, "clean x 1 with sinkbasin 1", checks.get, lambda a, fb: a, 1)
+        self.assertEqual(act, "clean x 1 with sinkbasin 1")
+        self.assertTrue(rec["executed_despite_contradiction"])
+        # supported and no-precondition actions pass straight through
+        self.assertEqual(decide({}, "take a 1 from b 1", lambda a: ok, revise, 1)[0], "take a 1 from b 1")
+        self.assertIsNone(decide({}, "go to b 1", lambda a: Check("NONE"), revise, 1)[1])

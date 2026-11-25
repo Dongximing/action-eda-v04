@@ -16,7 +16,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 from pathlib import Path
 
@@ -28,42 +27,22 @@ from aeda.schema import read_jsonl, write_jsonl  # noqa: E402
 def convert(ep: dict, max_samples: int | None = None):
     samples, labels = [], []
     steps = [(s["action"], s["observation"]) for s in ep["steps"]]
-    base = [{"rid": 0, "source": "env", "text": ep.get("init_obs", ""), "entities": []}]
     for t, (action, obs) in enumerate(steps):
         name, _ = A.parse_action(action)
         if name not in A.STATE_CHANGING:
             continue
-        prefix = steps[:t]
-        records = base + [{"rid": i + 1, "source": "env", "text": A.record_text(a, o), "entities": []}
-                          for i, (a, o) in enumerate(prefix)]
-        # entity tags for filtered variants: receptacle/object names mentioned in the record
-        st = A.replay(prefix)
-        sid = f"{ep['episode_id']}-t{t}"
-        claims, labs = [], []
-        for j, pre in enumerate(A.preconditions(action)):
-            cid = f"{sid}/c{j}"
-            for r in records:
-                # whole-name match, so "countertop 1" does not match "countertop 10"
-                if any(e and re.search(rf"(?<![A-Za-z0-9_]){re.escape(e)}(?![A-Za-z0-9_])", r["text"].lower())
-                       for e in pre["entities"]):
-                    r["entities"] = sorted(set(r["entities"]) | set(pre["entities"]))
-            # ALFWorld agents start empty-handed (public game rule): "holding nothing" is a default
-            # claim, true unless a record overturns it; location/holding must be shown by a record
-            kind = "default" if pre["spec"]["type"] == "hand_empty" else "state"
-            claims.append({"cid": cid, "text": pre["text"], "kind": kind, "origin": "fixed",
-                           "entities": pre["entities"], "spec": pre["spec"]})
-            labs.append({"sid": sid, "cid": cid, "gold": A.evaluate_spec(pre["spec"], st),
-                         "order_sensitive": None, "composition": False, "indirect": False,
-                         "implicit_order": False, "synthetic": False,
-                         "extra": {"label_source": "tracker", "action": action, "step": t,
-                                   "action_succeeded": A.succeeded(obs), "spec_type": pre["spec"]["type"],
-                                   "n_records": len(records)}})
-        if not claims:
+        sample = A.build_sample(ep["episode_id"], ep["task"], ep.get("init_obs", ""), steps, t, action)
+        if sample is None:
             continue
-        samples.append({"sid": sid, "episode_id": ep["episode_id"], "task": ep["task"],
-                        "proposed_action": action, "action_reversible": True, "window_complete": True,
-                        "records": records, "claims": claims})
-        labels += labs
+        st = A.replay(steps[:t])
+        for c in sample["claims"]:
+            labels.append({"sid": sample["sid"], "cid": c["cid"], "gold": A.evaluate_spec(c["spec"], st),
+                           "order_sensitive": None, "composition": False, "indirect": False,
+                           "implicit_order": False, "synthetic": False,
+                           "extra": {"label_source": "tracker", "action": action, "step": t,
+                                     "action_succeeded": A.succeeded(obs), "spec_type": c["spec"]["type"],
+                                     "n_records": len(sample["records"])}})
+        samples.append(sample)
         if max_samples and len(samples) >= max_samples:
             break
     return samples, labels
