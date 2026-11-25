@@ -13,7 +13,7 @@ from .schema import Claim, Record
 
 # p1 initial; p2 optional preceding context; p3 E1 maps by choice; p4 E1 extraction covers requests;
 # p5 structured MCQ (context / question / options) shared by all decision backends
-PROMPT_VERSION = "v0.4-p5"
+PROMPT_VERSION = "v0.4-p6"
 
 LETTERS3 = ["A", "B", "C"]
 LETTERS2 = ["A", "B"]
@@ -46,12 +46,14 @@ def _ctx_block(context: list[Record] | None, verb: str) -> str:
             + "\n".join(_rec(c) for c in context) + "\n")
 
 
-def _examples_block(examples: list[dict] | None) -> str:
+def _examples_block(examples: list[dict] | None, scope: str = "record") -> str:
     if not examples:
         return ""
-    out = ["Worked examples (from other episodes; each judges one record against one condition):"]
+    what = "one record" if scope == "record" else "a history"
+    out = [f"Worked examples (from other episodes; each judges {what} against one condition):"]
     for i, e in enumerate(examples, 1):
-        out.append(f"Example {i}\nCondition: {e['condition']}\nRecord: {e['record']}\nAnswer: {e['answer']}")
+        out.append(f"Example {i}\nCondition: {e['condition']}\n{_rec_label(scope)}: {e['record']}\n"
+                   f"Answer: {e['answer']}")
     return "\n\n".join(out) + "\n\nNow the real case.\n"
 
 
@@ -80,35 +82,42 @@ def record_judgment(task: str, action: str, claim: Claim, r: Record,
     )
 
 
-def state_options(text: str, spec: dict | None) -> tuple[str, list[tuple[str, str]]]:
-    """State question for one condition: A = condition holds after the record,
-    B = it does not, C = the record does not show it (same meaning as record_judgment)."""
+def state_options(text: str, spec: dict | None, scope: str = "record") -> tuple[str, list[tuple[str, str]]]:
+    """State question for one condition: A = condition holds, B = it does not,
+    C = not shown (same meaning as record_judgment / holistic_judgment).
+    scope "record": right after one record; "history": now, after the whole history."""
+    when = "Right after this record" if scope == "record" else "Right now (after the last record)"
+    src = "This record does" if scope == "record" else "The history does"
     t = (spec or {}).get("type")
     if t == "at":
         loc = spec["loc"]
-        return ("Right after this record, where is the agent?",
+        return (f"{when}, where is the agent?",
                 [("A", f"At {loc}."), ("B", f"Somewhere other than {loc}."),
-                 ("C", "This record does not show where the agent is.")])
+                 ("C", f"{src} not show where the agent is.")])
     if t == "holding":
         obj = spec["obj"]
-        return ("Right after this record, what is the agent holding?",
+        return (f"{when}, what is the agent holding?",
                 [("A", f"{obj}."), ("B", f"Something other than {obj}, or nothing."),
-                 ("C", "This record does not show what the agent is holding.")])
+                 ("C", f"{src} not show what the agent is holding.")])
     if t == "hand_empty":
-        return ("Right after this record, what is the agent holding?",
+        return (f"{when}, what is the agent holding?",
                 [("A", "Nothing."), ("B", "Some object."),
-                 ("C", "This record does not show what the agent is holding.")])
-    return (f"Right after this record, is this true: {text}?",
-            [("A", "Yes."), ("B", "No."), ("C", "This record does not show it.")])
+                 ("C", f"{src} not show what the agent is holding.")])
+    return (f"{when}, is this true: {text}?",
+            [("A", "Yes."), ("B", "No."), ("C", f"{src} not show it.")])
 
 
-def _state_examples_block(examples: list[dict] | None) -> str:
+def _rec_label(scope: str) -> str:
+    return "Record" if scope == "record" else "History (oldest first)"
+
+
+def _state_examples_block(examples: list[dict] | None, scope: str = "record") -> str:
     if not examples:
         return ""
     out = ["Worked examples (from other episodes):"]
     for i, e in enumerate(examples, 1):
-        q, opts = state_options(e["condition"], e.get("spec"))
-        out.append(f"Example {i}\nRecord: {e['record']}\n{q}\n" +
+        q, opts = state_options(e["condition"], e.get("spec"), scope)
+        out.append(f"Example {i}\n{_rec_label(scope)}: {e['record']}\n{q}\n" +
                    "\n".join(f"{l}. {t}" for l, t in opts) + f"\nAnswer: {e['answer']}")
     return "\n\n".join(out) + "\n\nNow the real case.\n"
 
@@ -151,12 +160,30 @@ def pair_judgment(task: str, action: str, claim: Claim, r1: Record, r2: Record) 
     )
 
 
-def holistic_judgment(task: str, action: str, claim: Claim, records: list[Record]) -> MCQ:
-    """One-shot judgment over a list of records (H1 / H2)."""
+def holistic_judgment(task: str, action: str, claim: Claim, records: list[Record],
+                      examples: list[dict] | None = None, style: str = "effect") -> MCQ:
+    """One judgment over a list of records (H1 / H2). ``style`` and ``examples``
+    mirror the per-record judgment so H1/H2 and D1 see the same question form and
+    the same worked examples (a one-record example is shown as a one-record history)."""
     hist = "\n".join(_rec(r) for r in records) if records else "(no records)"
+    if style == "state":
+        q, opts = state_options(claim.text, claim.spec, "history")
+        return MCQ(
+            context=(
+                "You track the current state of an agent from its interaction history.\n"
+                f"{_state_examples_block(examples, 'history')}"
+                f"Task: {task}\n"
+                "History (oldest first):\n"
+                f"{hist}\n\n"
+                f"Proposed action (not executed yet): {action}"
+            ),
+            question=q,
+            options=opts,
+        )
     return MCQ(
         context=(
             "You audit whether a condition holds now, before an agent executes an action.\n"
+            f"{_examples_block(examples, 'history')}"
             f"Task: {task}\n"
             "History (oldest first):\n"
             f"{hist}\n\n"

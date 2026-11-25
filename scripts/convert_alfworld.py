@@ -47,7 +47,10 @@ def convert(ep: dict, max_samples: int | None = None):
                 if any(e and re.search(rf"(?<![A-Za-z0-9_]){re.escape(e)}(?![A-Za-z0-9_])", r["text"].lower())
                        for e in pre["entities"]):
                     r["entities"] = sorted(set(r["entities"]) | set(pre["entities"]))
-            claims.append({"cid": cid, "text": pre["text"], "kind": "state", "origin": "fixed",
+            # ALFWorld agents start empty-handed (public game rule): "holding nothing" is a default
+            # claim, true unless a record overturns it; location/holding must be shown by a record
+            kind = "default" if pre["spec"]["type"] == "hand_empty" else "state"
+            claims.append({"cid": cid, "text": pre["text"], "kind": kind, "origin": "fixed",
                            "entities": pre["entities"], "spec": pre["spec"]})
             labs.append({"sid": sid, "cid": cid, "gold": A.evaluate_spec(pre["spec"], st),
                          "order_sensitive": None, "composition": False, "indirect": False,

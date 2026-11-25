@@ -259,3 +259,26 @@ class TestStateStyle(unittest.TestCase):
                     "--record-style", "state"]
             subprocess.run(base, check=True, capture_output=True, cwd=ROOT)
             self.assertEqual(json.loads(Path(d, "run_meta.json").read_text())["config"]["record_style"], "state")
+
+
+class TestHolisticParity(unittest.TestCase):
+    def test_h1_gets_same_examples_and_style(self):
+        from aeda.verifiers import load_fewshot
+        s = load_samples(ROOT / "data/alfworld9b/samples.jsonl")[0]
+        c = s.claims[0]
+        ex = list(load_fewshot(str(ROOT / "data/fewshot/alfworld_record_fewshot.json")))
+        st = P.holistic_judgment(s.task, s.proposed_action, c, s.records, ex, "state").render()
+        ef = P.holistic_judgment(s.task, s.proposed_action, c, s.records, ex, "effect").render()
+        self.assertIn("Right now (after the last record)", st)
+        self.assertIn("Example 8\nHistory (oldest first):", st)
+        self.assertIn("Example 8\nCondition:", ef)
+        self.assertEqual(P.holistic_judgment(s.task, s.proposed_action, c, s.records).render().count("Example"), 0)
+
+    def test_default_rule_shared_by_h1(self):
+        from aeda.backends import AdapterBackend
+        from aeda.verifiers import m_H1
+        s = next(x for x in load_samples(ROOT / "data/alfworld9b/samples.jsonl")
+                 if any(c.kind == "default" for c in x.claims))
+        c = next(c for c in s.claims if c.kind == "default")
+        tab = TableBackend({"holistic": {f"{c.cid}|*": {"A": .1, "B": .1, "C": .8}}})
+        self.assertEqual(m_H1(s, c, Meter(tab), Config(), {})[0], "SUPPORTED_DEFAULT")

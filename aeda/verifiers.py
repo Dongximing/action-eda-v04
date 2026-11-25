@@ -140,11 +140,15 @@ def argmax(p: dict[str, float]) -> str:
     return max(p, key=p.get)
 
 
-def holistic(m: Meter, s: Sample, c: Claim, records: list[Record]) -> tuple[str, dict]:
-    q = Query("holistic", P.holistic_judgment(s.task, s.proposed_action, c, records),
+def holistic(m: Meter, s: Sample, c: Claim, records: list[Record], cfg: Config | None = None) -> tuple[str, dict]:
+    cfg = cfg or Config()
+    q = Query("holistic", P.holistic_judgment(s.task, s.proposed_action, c, records,
+                                              list(load_fewshot(cfg.fewshot)) or None, cfg.record_style),
               cid=c.cid, rids=tuple(r.rid for r in records), sid=s.sid)
     p = m.options(q)
     verdict = {"A": "SUPPORTED", "B": "CONTRADICTED", "C": "UNKNOWN"}[argmax(p)]
+    if verdict == "UNKNOWN":
+        verdict = no_evidence(s, c)  # same default rule as the record-level methods
     return verdict, p
 
 
@@ -241,13 +245,13 @@ def m_U1(s, c, m, cfg, ctx):
 
 
 def m_H1(s, c, m, cfg, ctx):
-    v, p = holistic(m, s, c, s.records)
+    v, p = holistic(m, s, c, s.records, cfg)
     return v, [], {"probs": p}
 
 
 def m_H2(s, c, m, cfg, ctx):
     win = entity_window(s, c)
-    v, p = holistic(m, s, c, win)
+    v, p = holistic(m, s, c, win, cfg)
     return v, [], {"probs": p, "window": [r.rid for r in win]}
 
 
