@@ -9,4 +9,4 @@ Unmodified copy of two folders from the ALFWorld release:
 
 Copied from `~/state-audit-pilot/data/alfworld/` (downloaded with `alfworld-download`).
 The train, valid_train and valid_unseen splits and the detectors are not included.
-Source and license: https://github.com/alfworld/alfworld
+Source: https://github.com/alfworld/alfworld (MIT License, copied in `LICENSE`).
