@@ -1,0 +1,77 @@
+{
+  "id": "new01",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-ButterKnife-None-Drawer-2/trial_T20190908_121728_511866/game.tw-pddl",
+  "task": "put a clean butterknife in drawer.",
+  "arm": "explore",
+  "won": true,
+  "steps": 8,
+  "end": "success",
+  "baseline_won": true,
+  "baseline_steps": 17,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": 3,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 2, a countertop 1, a drawer 13, a drawer 12, a drawer 11, a drawer 10, a drawer 9, a drawer 8, a drawer 7, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a sinkbasin 1, a stoveburner 6, a stoveburner 5, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to drawer 1",
+      "observation": "You arrive at drawer 1. The drawer 1 is closed."
+    },
+    {
+      "id": "r2",
+      "action": "open drawer 1",
+      "observation": "You open the drawer 1. The drawer 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r3",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a bread 1, a butterknife 2, a cellphone 2, a kettle 1, a pan 1, a pot 1, a soapbottle 3, a soapbottle 1, a window 3, and a window 1."
+    },
+    {
+      "id": "r4",
+      "action": "take butterknife 2 from countertop 1",
+      "observation": "You pick up the butterknife 2 from the countertop 1."
+    },
+    {
+      "id": "r5",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a lettuce 3, a lettuce 2, and a spatula 2."
+    },
+    {
+      "id": "r6",
+      "action": "clean butterknife 2 with sinkbasin 1",
+      "observation": "You clean the butterknife 2 using the sinkbasin 1."
+    },
+    {
+      "id": "r7",
+      "action": "go to drawer 1",
+      "observation": "You arrive at drawer 1. The drawer 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r8",
+      "action": "move butterknife 2 to drawer 1",
+      "observation": "You move the butterknife 2 to the drawer 1."
+    }
+  ],
+  "decisions": [],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 8,
+    "seconds": 6.9
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "note": "unvisited places (explored)"
+  }
+}

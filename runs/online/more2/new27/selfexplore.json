@@ -1,0 +1,989 @@
+{
+  "id": "new27",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-Ladle-None-CounterTop-14/trial_T20190909_113844_191747/game.tw-pddl",
+  "task": "clean some ladle and put it in countertop.",
+  "arm": "selfexplore",
+  "won": true,
+  "steps": 17,
+  "end": "success",
+  "baseline_won": false,
+  "baseline_steps": 50,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": 9,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 2, a countertop 1, a fridge 1, a garbagecan 1, a microwave 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a butterknife 1, a cup 1, and a spatula 2."
+    },
+    {
+      "id": "r2",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r3",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r4",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r5",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r6",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r7",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r8",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r9",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a bowl 3, a bread 1, a butterknife 2, a fork 2, a fork 1, a knife 2, a ladle 1, a lettuce 2, a peppershaker 1, a plate 1, a potato 1, a soapbottle 2, a spoon 2, a spoon 1, and a tomato 1."
+    },
+    {
+      "id": "r10",
+      "action": "take ladle 1 from countertop 1",
+      "observation": "You pick up the ladle 1 from the countertop 1."
+    },
+    {
+      "id": "r11",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a butterknife 1, a cup 1, and a spatula 2."
+    },
+    {
+      "id": "r12",
+      "action": "clean ladle 1 with sinkbasin 1",
+      "observation": "You clean the ladle 1 using the sinkbasin 1."
+    },
+    {
+      "id": "r13",
+      "action": "move ladle 1 to countertop 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r14",
+      "action": "go to countertop 2",
+      "observation": "You arrive at countertop 2. On the countertop 2, you see a dishsponge 1, a knife 1, a lettuce 1, a mug 2, a peppershaker 3, a peppershaker 2, and a spatula 1."
+    },
+    {
+      "id": "r15",
+      "action": "move ladle 1 to countertop 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r16",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a bowl 3, a bread 1, a butterknife 2, a fork 2, a fork 1, a knife 2, a lettuce 2, a peppershaker 1, a plate 1, a potato 1, a soapbottle 2, a spoon 2, a spoon 1, and a tomato 1."
+    },
+    {
+      "id": "r17",
+      "action": "move ladle 1 to countertop 1",
+      "observation": "You move the ladle 1 to the countertop 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "code_visited": [],
+      "code_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "countertop 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "sinkbasin 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_visited": [],
+      "model_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "countertop 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "sinkbasin 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ]
+    },
+    {
+      "step": 1,
+      "code_visited": [
+        "sinkbasin 1"
+      ],
+      "code_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "countertop 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_visited": [
+        "sinkbasin 1"
+      ],
+      "model_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "countertop 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ]
+    },
+    {
+      "step": 2,
+      "code_visited": [
+        "sinkbasin 1"
+      ],
+      "code_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "countertop 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_visited": [
+        "sinkbasin 1"
+      ],
+      "model_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "countertop 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ]
+    },
+    {
+      "step": 3,
+      "code_visited": [
+        "sinkbasin 1"
+      ],
+      "code_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "countertop 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_visited": [
+        "sinkbasin 1"
+      ],
+      "model_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "countertop 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ]
+    },
+    {
+      "step": 4,
+      "code_visited": [
+        "sinkbasin 1"
+      ],
+      "code_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "countertop 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_visited": [
+        "sinkbasin 1"
+      ],
+      "model_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "countertop 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ]
+    },
+    {
+      "step": 5,
+      "code_visited": [
+        "sinkbasin 1"
+      ],
+      "code_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "countertop 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_visited": [
+        "sinkbasin 1"
+      ],
+      "model_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "countertop 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ]
+    },
+    {
+      "step": 6,
+      "code_visited": [
+        "sinkbasin 1"
+      ],
+      "code_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "countertop 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_visited": [
+        "sinkbasin 1"
+      ],
+      "model_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "countertop 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ]
+    },
+    {
+      "step": 7,
+      "code_visited": [
+        "sinkbasin 1"
+      ],
+      "code_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "countertop 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_visited": [
+        "sinkbasin 1"
+      ],
+      "model_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "countertop 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ]
+    },
+    {
+      "step": 8,
+      "code_visited": [
+        "sinkbasin 1"
+      ],
+      "code_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "countertop 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_visited": [
+        "sinkbasin 1"
+      ],
+      "model_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "countertop 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ]
+    },
+    {
+      "step": 9,
+      "code_visited": [
+        "sinkbasin 1",
+        "countertop 1"
+      ],
+      "code_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_visited": [
+        "sinkbasin 1",
+        "countertop 1"
+      ],
+      "model_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ]
+    },
+    {
+      "step": 10,
+      "code_visited": [
+        "sinkbasin 1",
+        "countertop 1"
+      ],
+      "code_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_visited": [
+        "sinkbasin 1",
+        "countertop 1"
+      ],
+      "model_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ]
+    },
+    {
+      "step": 11,
+      "code_visited": [
+        "sinkbasin 1",
+        "countertop 1"
+      ],
+      "code_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_visited": [
+        "sinkbasin 1",
+        "countertop 1"
+      ],
+      "model_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ]
+    },
+    {
+      "step": 12,
+      "code_visited": [
+        "sinkbasin 1",
+        "countertop 1"
+      ],
+      "code_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_visited": [
+        "sinkbasin 1",
+        "countertop 1"
+      ],
+      "model_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ]
+    },
+    {
+      "step": 13,
+      "code_visited": [
+        "sinkbasin 1",
+        "countertop 1"
+      ],
+      "code_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_visited": [
+        "sinkbasin 1",
+        "countertop 1"
+      ],
+      "model_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 2",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ]
+    },
+    {
+      "step": 14,
+      "code_visited": [
+        "sinkbasin 1",
+        "countertop 1",
+        "countertop 2"
+      ],
+      "code_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_visited": [
+        "sinkbasin 1",
+        "countertop 1",
+        "countertop 2"
+      ],
+      "model_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ]
+    },
+    {
+      "step": 15,
+      "code_visited": [
+        "sinkbasin 1",
+        "countertop 1",
+        "countertop 2"
+      ],
+      "code_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_visited": [
+        "sinkbasin 1",
+        "countertop 1",
+        "countertop 2"
+      ],
+      "model_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ]
+    },
+    {
+      "step": 16,
+      "code_visited": [
+        "sinkbasin 1",
+        "countertop 1",
+        "countertop 2"
+      ],
+      "code_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_visited": [
+        "sinkbasin 1",
+        "countertop 1",
+        "countertop 2"
+      ],
+      "model_not_visited": [
+        "cabinet 8",
+        "cabinet 7",
+        "cabinet 6",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ]
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 17,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 0,
+    "seconds": 29.8
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "note": "unvisited places written by the agent model (SELF_PLACES)"
+  }
+}

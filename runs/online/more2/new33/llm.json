@@ -1,0 +1,227 @@
+{
+  "id": "new33",
+  "family": "pick_heat_then_place_in_recep",
+  "game": "pick_heat_then_place_in_recep-Egg-None-CounterTop-2/trial_T20190908_122951_021026/game.tw-pddl",
+  "task": "heat some egg and put it in countertop.",
+  "arm": "llm",
+  "won": true,
+  "steps": 12,
+  "end": "success",
+  "baseline_won": true,
+  "baseline_steps": 12,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 2, a countertop 1, a drawer 13, a drawer 12, a drawer 11, a drawer 10, a drawer 9, a drawer 8, a drawer 7, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a sinkbasin 1, a stoveburner 6, a stoveburner 5, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a apple 1, a butterknife 2, a dishsponge 1, a fork 1, a lettuce 2, a pan 2, a pot 1, a soapbottle 3, a soapbottle 1, a spoon 2, a tomato 2, a tomato 1, a window 3, and a window 1."
+    },
+    {
+      "id": "r2",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r3",
+      "action": "open fridge 1",
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a bowl 1, a pan 1, a plate 2, and a potato 1."
+    },
+    {
+      "id": "r4",
+      "action": "close fridge 1",
+      "observation": "You close the fridge 1."
+    },
+    {
+      "id": "r5",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r6",
+      "action": "look",
+      "observation": "You are facing the microwave 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r7",
+      "action": "go to countertop 2",
+      "observation": "You arrive at countertop 2. On the countertop 2, you see a bread 2, a bread 1, a cellphone 1, a egg 3, a egg 2, a egg 1, a fork 2, a kettle 1, a knife 1, a ladle 1, a lettuce 1, a pot 2, a potato 2, a spatula 2, and a tomato 3."
+    },
+    {
+      "id": "r8",
+      "action": "take egg 1 from countertop 2",
+      "observation": "You pick up the egg 1 from the countertop 2."
+    },
+    {
+      "id": "r9",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r10",
+      "action": "heat egg 1 with microwave 1",
+      "observation": "You heat the egg 1 using the microwave 1."
+    },
+    {
+      "id": "r11",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a apple 1, a butterknife 2, a dishsponge 1, a fork 1, a lettuce 2, a pan 2, a pot 1, a soapbottle 3, a soapbottle 1, a spoon 2, a tomato 2, a tomato 1, a window 3, and a window 1."
+    },
+    {
+      "id": "r12",
+      "action": "move egg 1 to countertop 1",
+      "observation": "You move the egg 1 to the countertop 1."
+    }
+  ],
+  "decisions": [
+    {
+      "proposal": "open fridge 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at fridge 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "reasoning": "In record r2, the agent executed 'go to fridge 1' and received the observation 'You arrive at fridge 1. The fridge 1 is closed.' This confirms the agent's current location is fridge 1."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 2,
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a bowl 1, a pan 1, a plate 2, and a potato 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "close fridge 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at fridge 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r3"
+            ],
+            "reasoning": "In record r3, the agent executed 'open fridge 1' and the observation confirms 'You open the fridge 1'. This places the agent at fridge 1. No subsequent records have moved the agent away from this location."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 3,
+      "observation": "You close the fridge 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "take egg 1 from countertop 2",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at countertop 2",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r7"
+            ],
+            "reasoning": "Record r7 shows the agent executed 'go to countertop 2' and arrived there. No subsequent records indicate movement away from this location."
+          },
+          {
+            "claim": "The agent is currently holding nothing",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r7"
+            ],
+            "reasoning": "Reviewing the history from r0 to r7, the agent has performed navigation and observation actions but has not executed any 'take' or 'hold' commands. Therefore, the agent's inventory is empty."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 7,
+      "observation": "You pick up the egg 1 from the countertop 2.",
+      "succeeded": true
+    },
+    {
+      "proposal": "heat egg 1 with microwave 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding egg 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r8"
+            ],
+            "reasoning": "In record r8, the agent executed 'take egg 1 from countertop 2' and successfully picked it up. No subsequent action has put the egg down. Therefore, the agent is still holding it."
+          },
+          {
+            "claim": "The agent is currently at microwave 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r9"
+            ],
+            "reasoning": "In record r9, the agent executed 'go to microwave 1' and arrived there. No subsequent movement has occurred. Therefore, the agent is currently at the microwave."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 9,
+      "observation": "You heat the egg 1 using the microwave 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "move egg 1 to countertop 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding egg 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r10"
+            ],
+            "reasoning": "In record r8, the agent picked up egg 1. In record r10, the agent used the microwave to heat egg 1, which implies the agent was still holding it. There is no record between r10 and the current state where the agent puts down egg 1. Therefore, the agent is still holding it."
+          },
+          {
+            "claim": "The agent is currently at countertop 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r11"
+            ],
+            "reasoning": "In record r11, the agent executed 'go to countertop 1' and arrived there. No subsequent movement commands have been issued. Therefore, the agent is currently at countertop 1."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 11,
+      "observation": "You move the egg 1 to the countertop 1.",
+      "succeeded": true
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 5,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 0,
+    "seconds": 7.8
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "judge": "agent model, LLM_JUDGE"
+  }
+}

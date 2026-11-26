@@ -1,0 +1,72 @@
+{
+  "id": "new51",
+  "family": "pick_cool_then_place_in_recep",
+  "game": "pick_cool_then_place_in_recep-Cup-None-SideTable-21/trial_T20190906_192823_237997/game.tw-pddl",
+  "task": "put a cool cup in sidetable.",
+  "arm": "explore",
+  "won": true,
+  "steps": 7,
+  "end": "success",
+  "baseline_won": true,
+  "baseline_steps": 8,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": 1,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 1, a diningtable 3, a diningtable 2, a diningtable 1, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a sidetable 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to sidetable 1",
+      "observation": "You arrive at sidetable 1. On the sidetable 1, you see a apple 1, a cup 2, a dishsponge 1, a fork 1, a peppershaker 1, and a spoon 1."
+    },
+    {
+      "id": "r2",
+      "action": "take cup 2 from sidetable 1",
+      "observation": "You pick up the cup 2 from the sidetable 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r4",
+      "action": "open fridge 1",
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a lettuce 1, and a tomato 2."
+    },
+    {
+      "id": "r5",
+      "action": "cool cup 2 with fridge 1",
+      "observation": "You cool the cup 2 using the fridge 1."
+    },
+    {
+      "id": "r6",
+      "action": "go to sidetable 1",
+      "observation": "You arrive at sidetable 1. On the sidetable 1, you see a apple 1, a dishsponge 1, a fork 1, a peppershaker 1, and a spoon 1."
+    },
+    {
+      "id": "r7",
+      "action": "move cup 2 to sidetable 1",
+      "observation": "You move the cup 2 to the sidetable 1."
+    }
+  ],
+  "decisions": [],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 7,
+    "seconds": 2.9
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "note": "unvisited places (explored)"
+  }
+}

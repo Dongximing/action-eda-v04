@@ -1,0 +1,405 @@
+{
+  "id": "new15",
+  "family": "pick_cool_then_place_in_recep",
+  "game": "pick_cool_then_place_in_recep-Tomato-None-CounterTop-12/trial_T20190909_063844_274181/game.tw-pddl",
+  "task": "put a cool tomato in countertop.",
+  "arm": "loop",
+  "won": true,
+  "steps": 19,
+  "end": "success",
+  "baseline_won": false,
+  "baseline_steps": 50,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": 13,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 19, a cabinet 18, a cabinet 17, a cabinet 16, a cabinet 15, a cabinet 14, a cabinet 13, a cabinet 12, a cabinet 11, a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a fork 2, a fork 1, a knife 1, and a spatula 1."
+    },
+    {
+      "id": "r2",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r3",
+      "action": "open fridge 1",
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a bowl 3, a egg 2, and a lettuce 2."
+    },
+    {
+      "id": "r4",
+      "action": "close fridge 1",
+      "observation": "You close the fridge 1."
+    },
+    {
+      "id": "r5",
+      "action": "go to countertop 3",
+      "observation": "You arrive at countertop 3. On the countertop 3, you see a butterknife 1, a dishsponge 2, a dishsponge 1, a lettuce 1, a potato 3, a saltshaker 2, a spatula 3, a spatula 2, a spoon 2, and a tomato 2."
+    },
+    {
+      "id": "r6",
+      "action": "take tomato 2 from countertop 3",
+      "observation": "You pick up the tomato 2 from the countertop 3."
+    },
+    {
+      "id": "r7",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r8",
+      "action": "open fridge 1",
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a bowl 3, a egg 2, and a lettuce 2."
+    },
+    {
+      "id": "r9",
+      "action": "cool tomato 2 with fridge 1",
+      "observation": "You cool the tomato 2 using the fridge 1."
+    },
+    {
+      "id": "r10",
+      "action": "move tomato 2 to countertop 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r11",
+      "action": "move tomato 2 to countertop 3",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r12",
+      "action": "move tomato 2 to countertop 2",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r13",
+      "action": "move tomato 2 to countertop 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r14",
+      "action": "move tomato 2 to countertop 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r15",
+      "action": "move tomato 2 to countertop 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r16",
+      "action": "move tomato 2 to countertop 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r17",
+      "action": "move tomato 2 to countertop 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r18",
+      "action": "go to countertop 2",
+      "observation": "You arrive at countertop 2. On the countertop 2, you see a bread 1, a potato 2, a spoon 1, and a tomato 1."
+    },
+    {
+      "id": "r19",
+      "action": "move tomato 2 to countertop 2",
+      "observation": "You move the tomato 2 to the countertop 2."
+    }
+  ],
+  "decisions": [
+    {
+      "proposal": "move tomato 2 to countertop 2",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You just ran 'move tomato 2 to countertop 2' at r12; running it again now would give the same result. Choose a command you have not tried since r12.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r12"
+            ],
+            "kind": "repeat",
+            "times_run": 1
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move tomato 2 to countertop 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'move tomato 2 to countertop 1' at r10 (and 1 time in all), and nothing new has been observed since r10: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r10.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r10"
+                ],
+                "kind": "repeat",
+                "times_run": 1
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move tomato 2 to countertop 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 12,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "move tomato 2 to countertop 2",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'move tomato 2 to countertop 2' at r12 (and 1 time in all), and nothing new has been observed since r12: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r12.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r12"
+            ],
+            "kind": "repeat",
+            "times_run": 1
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move tomato 2 to countertop 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move tomato 2 to countertop 1' at r13; running it again now would give the same result. Choose a command you have not tried since r13.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r13"
+                ],
+                "kind": "repeat",
+                "times_run": 2
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move tomato 2 to countertop 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 13,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "move tomato 2 to countertop 2",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'move tomato 2 to countertop 2' at r12 (and 1 time in all), and nothing new has been observed since r12: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r12.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r12"
+            ],
+            "kind": "repeat",
+            "times_run": 1
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move tomato 2 to countertop 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move tomato 2 to countertop 1' at r14; running it again now would give the same result. Choose a command you have not tried since r14.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r14"
+                ],
+                "kind": "repeat",
+                "times_run": 3
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move tomato 2 to countertop 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 14,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "move tomato 2 to countertop 2",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'move tomato 2 to countertop 2' at r12 (and 1 time in all), and nothing new has been observed since r12: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r12.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r12"
+            ],
+            "kind": "repeat",
+            "times_run": 1
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move tomato 2 to countertop 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move tomato 2 to countertop 1' at r15; running it again now would give the same result. Choose a command you have not tried since r15.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r15"
+                ],
+                "kind": "repeat",
+                "times_run": 4
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move tomato 2 to countertop 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 15,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "move tomato 2 to countertop 2",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'move tomato 2 to countertop 2' at r12 (and 1 time in all), and nothing new has been observed since r12: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r12.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r12"
+            ],
+            "kind": "repeat",
+            "times_run": 1
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move tomato 2 to countertop 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move tomato 2 to countertop 1' at r16; running it again now would give the same result. Choose a command you have not tried since r16.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r16"
+                ],
+                "kind": "repeat",
+                "times_run": 5
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move tomato 2 to countertop 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 16,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "move tomato 2 to countertop 2",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'move tomato 2 to countertop 2' at r12 (and 1 time in all), and nothing new has been observed since r12: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r12.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r12"
+            ],
+            "kind": "repeat",
+            "times_run": 1
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to countertop 2",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to countertop 2",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 17,
+      "observation": "You arrive at countertop 2. On the countertop 2, you see a bread 1, a potato 2, a spoon 1, and a tomato 1.",
+      "succeeded": true,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 12,
+    "seconds": 18.4
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "checker": "repetition (loop_check)"
+  }
+}

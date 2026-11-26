@@ -1,0 +1,913 @@
+{
+  "id": "game02",
+  "family": "pick_heat_then_place_in_recep",
+  "game": "pick_heat_then_place_in_recep-Cup-None-Cabinet-22/trial_T20190907_173251_960848/game.tw-pddl",
+  "task": "put a hot cup in cabinet.",
+  "arm": "mw",
+  "won": false,
+  "steps": 50,
+  "end": "step_limit",
+  "baseline_won": false,
+  "baseline_steps": 50,
+  "baseline_source": "src natural.json",
+  "diverged_from_baseline_at": 18,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 20, a cabinet 19, a cabinet 18, a cabinet 17, a cabinet 16, a cabinet 15, a cabinet 14, a cabinet 13, a cabinet 12, a cabinet 11, a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a egg 1, a fork 1, a knife 1, a mug 1, a peppershaker 3, a plate 1, a saltshaker 2, a soapbottle 1, a tomato 2, and a tomato 1."
+    },
+    {
+      "id": "r2",
+      "action": "take mug 1 from countertop 1",
+      "observation": "You pick up the mug 1 from the countertop 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r4",
+      "action": "open fridge 1",
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a bowl 1, a bread 2, a lettuce 1, and a mug 2."
+    },
+    {
+      "id": "r5",
+      "action": "take mug 2 from fridge 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r6",
+      "action": "close fridge 1",
+      "observation": "You close the fridge 1."
+    },
+    {
+      "id": "r7",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed."
+    },
+    {
+      "id": "r8",
+      "action": "open cabinet 1",
+      "observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r9",
+      "action": "close cabinet 1",
+      "observation": "You close the cabinet 1."
+    },
+    {
+      "id": "r10",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a egg 1, a fork 1, a knife 1, a peppershaker 3, a plate 1, a saltshaker 2, a soapbottle 1, a tomato 2, and a tomato 1."
+    },
+    {
+      "id": "r11",
+      "action": "go to coffeemachine 1",
+      "observation": "You arrive at coffeemachine 1. On the coffeemachine 1, you see a mug 1."
+    },
+    {
+      "id": "r12",
+      "action": "use coffeemachine 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r13",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a egg 1, a fork 1, a knife 1, a peppershaker 3, a plate 1, a saltshaker 2, a soapbottle 1, a tomato 2, and a tomato 1."
+    },
+    {
+      "id": "r14",
+      "action": "go to coffeemachine 1",
+      "observation": "You arrive at coffeemachine 1. On the coffeemachine 1, you see a mug 1."
+    },
+    {
+      "id": "r15",
+      "action": "use coffeemachine 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r16",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a egg 1, a fork 1, a knife 1, a peppershaker 3, a plate 1, a saltshaker 2, a soapbottle 1, a tomato 2, and a tomato 1."
+    },
+    {
+      "id": "r17",
+      "action": "go to coffeemachine 1",
+      "observation": "You arrive at coffeemachine 1. On the coffeemachine 1, you see a mug 1."
+    },
+    {
+      "id": "r18",
+      "action": "use coffeemachine 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r19",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a egg 1, a fork 1, a knife 1, a peppershaker 3, a plate 1, a saltshaker 2, a soapbottle 1, a tomato 2, and a tomato 1."
+    },
+    {
+      "id": "r20",
+      "action": "go to coffeemachine 1",
+      "observation": "You arrive at coffeemachine 1. On the coffeemachine 1, you see a mug 1."
+    },
+    {
+      "id": "r21",
+      "action": "use coffeemachine 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r22",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a egg 1, a fork 1, a knife 1, a peppershaker 3, a plate 1, a saltshaker 2, a soapbottle 1, a tomato 2, and a tomato 1."
+    },
+    {
+      "id": "r23",
+      "action": "go to coffeemachine 1",
+      "observation": "You arrive at coffeemachine 1. On the coffeemachine 1, you see a mug 1."
+    },
+    {
+      "id": "r24",
+      "action": "use coffeemachine 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r25",
+      "action": "go to coffeemachine 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r26",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a egg 1, a fork 1, a knife 1, a peppershaker 3, a plate 1, a saltshaker 2, a soapbottle 1, a tomato 2, and a tomato 1."
+    },
+    {
+      "id": "r27",
+      "action": "go to coffeemachine 1",
+      "observation": "You arrive at coffeemachine 1. On the coffeemachine 1, you see a mug 1."
+    },
+    {
+      "id": "r28",
+      "action": "use coffeemachine 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r29",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a egg 1, a fork 1, a knife 1, a peppershaker 3, a plate 1, a saltshaker 2, a soapbottle 1, a tomato 2, and a tomato 1."
+    },
+    {
+      "id": "r30",
+      "action": "go to coffeemachine 1",
+      "observation": "You arrive at coffeemachine 1. On the coffeemachine 1, you see a mug 1."
+    },
+    {
+      "id": "r31",
+      "action": "use coffeemachine 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r32",
+      "action": "go to coffeemachine 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r33",
+      "action": "go to coffeemachine 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r34",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a egg 1, a fork 1, a knife 1, a peppershaker 3, a plate 1, a saltshaker 2, a soapbottle 1, a tomato 2, and a tomato 1."
+    },
+    {
+      "id": "r35",
+      "action": "go to coffeemachine 1",
+      "observation": "You arrive at coffeemachine 1. On the coffeemachine 1, you see a mug 1."
+    },
+    {
+      "id": "r36",
+      "action": "use coffeemachine 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r37",
+      "action": "go to coffeemachine 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r38",
+      "action": "go to coffeemachine 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r39",
+      "action": "go to coffeemachine 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r40",
+      "action": "go to coffeemachine 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r41",
+      "action": "go to coffeemachine 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r42",
+      "action": "go to coffeemachine 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r43",
+      "action": "go to coffeemachine 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r44",
+      "action": "go to coffeemachine 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r45",
+      "action": "go to coffeemachine 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r46",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a egg 1, a fork 1, a knife 1, a peppershaker 3, a plate 1, a saltshaker 2, a soapbottle 1, a tomato 2, and a tomato 1."
+    },
+    {
+      "id": "r47",
+      "action": "go to coffeemachine 1",
+      "observation": "You arrive at coffeemachine 1. On the coffeemachine 1, you see a mug 1."
+    },
+    {
+      "id": "r48",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a egg 1, a fork 1, a knife 1, a peppershaker 3, a plate 1, a saltshaker 2, a soapbottle 1, a tomato 2, and a tomato 1."
+    },
+    {
+      "id": "r49",
+      "action": "go to coffeemachine 1",
+      "observation": "You arrive at coffeemachine 1. On the coffeemachine 1, you see a mug 1."
+    },
+    {
+      "id": "r50",
+      "action": "use coffeemachine 1",
+      "observation": "Nothing happens."
+    }
+  ],
+  "decisions": [
+    {
+      "proposal": "take mug 1 from countertop 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The item 'mug 1' must be present on 'countertop 1' and not currently in the agent's inventory.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r1"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 1,
+      "observation": "You pick up the mug 1 from the countertop 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "open fridge 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The fridge 1 must be in a closed state.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r3"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must be holding the mug 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 3
+      },
+      "blocked": false,
+      "step": 3,
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a bowl 1, a bread 2, a lettuce 1, and a mug 2.",
+      "succeeded": true
+    },
+    {
+      "proposal": "take mug 2 from fridge 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "Agent must hold mug 1 from previous step.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "Fridge 1 must be closed before taking.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r4"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "Agent must be at fridge 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r4"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 5
+      },
+      "blocked": false,
+      "step": 4,
+      "observation": "Nothing happens.",
+      "succeeded": false
+    },
+    {
+      "proposal": "close fridge 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The fridge 1 must be in an open state before attempting to close it.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r4"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must be at fridge 1 to execute the close command.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r5",
+              "r4"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must be holding mug 1 to proceed with the task sequence involving the fridge and cabinet.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 8
+      },
+      "blocked": false,
+      "step": 5,
+      "observation": "You close the fridge 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "open cabinet 1",
+      "check": {
+        "status": "UNKNOWN",
+        "claims": [
+          {
+            "claim": "The cabinet 1 must be in a closed state.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r7"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must be holding the mug 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The mug 1 must be heated.",
+            "verdict": "UNKNOWN",
+            "evidence_records": [],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 15
+      },
+      "blocked": false,
+      "step": 7,
+      "observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see nothing.",
+      "succeeded": true
+    },
+    {
+      "proposal": "close cabinet 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent must be holding the item intended for the cabinet before closing the cabinet to avoid leaving the task incomplete.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The action 'close cabinet 1' can only be executed if the cabinet is currently in an open state.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r8"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must possess the mug 1 to fulfill the task; if the agent is not holding it, closing the cabinet does not progress the goal.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r8"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 9
+      },
+      "blocked": false,
+      "step": 8,
+      "observation": "You close the cabinet 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "use coffeemachine 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent must be holding mug 1 before executing 'use coffeemachine 1'.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must be at coffeemachine 1 to execute 'use coffeemachine 1'.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r11"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must be holding exactly mug 1 and no other item.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 21
+      },
+      "blocked": false,
+      "step": 11,
+      "observation": "Nothing happens.",
+      "succeeded": false
+    },
+    {
+      "proposal": "use coffeemachine 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent must be holding mug 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 13
+      },
+      "blocked": false,
+      "step": 14,
+      "observation": "Nothing happens.",
+      "succeeded": false
+    },
+    {
+      "proposal": "take mug 1 from coffeemachine 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The agent must be holding mug 1 before attempting to take it from the coffeemachine.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r17"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The mug 1 is already on the coffeemachine 1, making the 'take' action unnecessary if the goal is simply to access it.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r17"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The coffeemachine 1 has not successfully dispensed coffee into mug 1 in previous attempts.",
+            "verdict": "UNKNOWN",
+            "evidence_records": [],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 20
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "use coffeemachine 1",
+          "check": {
+            "status": "UNKNOWN",
+            "claims": [
+              {
+                "claim": "The agent must be holding mug 1.",
+                "verdict": "SUPPORTED",
+                "evidence_records": [
+                  "r2"
+                ],
+                "eval_spec": null,
+                "tracker": null
+              },
+              {
+                "claim": "The coffeemachine 1 must be ready to brew.",
+                "verdict": "UNKNOWN",
+                "evidence_records": [],
+                "eval_spec": null,
+                "tracker": null
+              },
+              {
+                "claim": "The agent must be at coffeemachine 1.",
+                "verdict": "SUPPORTED",
+                "evidence_records": [
+                  "r17"
+                ],
+                "eval_spec": null,
+                "tracker": null
+              }
+            ],
+            "calls": 35
+          }
+        }
+      ],
+      "executed": "use coffeemachine 1",
+      "executed_status": "UNKNOWN",
+      "executed_despite_contradiction": false,
+      "step": 17,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false
+    },
+    {
+      "proposal": "use coffeemachine 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent must be holding mug 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 19
+      },
+      "blocked": false,
+      "step": 20,
+      "observation": "Nothing happens.",
+      "succeeded": false
+    },
+    {
+      "proposal": "use coffeemachine 1",
+      "check": {
+        "status": "UNKNOWN",
+        "claims": [
+          {
+            "claim": "The agent must be holding mug 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The coffeemachine 1 must be functional and ready for use.",
+            "verdict": "UNKNOWN",
+            "evidence_records": [],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must be at coffeemachine 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r23"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 47
+      },
+      "blocked": false,
+      "step": 23,
+      "observation": "Nothing happens.",
+      "succeeded": false
+    },
+    {
+      "proposal": "use coffeemachine 1",
+      "check": {
+        "status": "UNKNOWN",
+        "claims": [
+          {
+            "claim": "The agent must be holding mug 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The coffeemachine 1 must be functional and ready to brew.",
+            "verdict": "UNKNOWN",
+            "evidence_records": [],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must be at coffeemachine 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r27"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 55
+      },
+      "blocked": false,
+      "step": 27,
+      "observation": "Nothing happens.",
+      "succeeded": false
+    },
+    {
+      "proposal": "use coffeemachine 1",
+      "check": {
+        "status": "UNKNOWN",
+        "claims": [
+          {
+            "claim": "The agent must be holding mug 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The coffeemachine 1 must be functional and ready to brew.",
+            "verdict": "UNKNOWN",
+            "evidence_records": [],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must be at coffeemachine 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r30"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 61
+      },
+      "blocked": false,
+      "step": 30,
+      "observation": "Nothing happens.",
+      "succeeded": false
+    },
+    {
+      "proposal": "use coffeemachine 1",
+      "check": {
+        "status": "UNKNOWN",
+        "claims": [
+          {
+            "claim": "The agent must be holding mug 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The coffeemachine 1 must be functional and ready to brew.",
+            "verdict": "UNKNOWN",
+            "evidence_records": [],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must be at coffeemachine 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r35"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 71
+      },
+      "blocked": false,
+      "step": 35,
+      "observation": "Nothing happens.",
+      "succeeded": false
+    },
+    {
+      "proposal": "take mug 1 from coffeemachine 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The agent must be holding mug 1 before attempting to take it from the coffeemachine.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r47"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The observation must confirm mug 1 is present on coffeemachine 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r47"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must be at coffeemachine 1 to interact with it.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r47"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 3
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to countertop 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to countertop 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 47,
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a egg 1, a fork 1, a knife 1, a peppershaker 3, a plate 1, a saltshaker 2, a soapbottle 1, a tomato 2, and a tomato 1.",
+      "succeeded": true,
+      "proposal_would_succeed": false
+    },
+    {
+      "proposal": "use coffeemachine 1",
+      "check": {
+        "status": "UNKNOWN",
+        "claims": [
+          {
+            "claim": "The agent must be holding mug 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The coffeemachine 1 must be ready for use.",
+            "verdict": "UNKNOWN",
+            "evidence_records": [],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must be at coffeemachine 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r49"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 99
+      },
+      "blocked": false,
+      "step": 49,
+      "observation": "Nothing happens.",
+      "succeeded": false
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 267,
+      "cache_hits": 218,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "seconds": 130.1032407283783,
+      "one_hot": 0
+    },
+    "new_actor_requests": 51,
+    "seconds": 327.3
+  },
+  "config": {
+    "adapter": "adapters.openrouter_chat:choose",
+    "fewshot": "/Users/ximing/Desktop/action-eda-v04/data/fewshot/alfworld_record_fewshot.json",
+    "record_style": "state",
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "mw_k": 3
+  }
+}

@@ -1,0 +1,380 @@
+{
+  "id": "new21",
+  "family": "pick_heat_then_place_in_recep",
+  "game": "pick_heat_then_place_in_recep-Mug-None-SideTable-21/trial_T20190909_090729_088825/game.tw-pddl",
+  "task": "put a hot mug in sidetable.",
+  "arm": "llm",
+  "won": true,
+  "steps": 17,
+  "end": "success",
+  "baseline_won": true,
+  "baseline_steps": 10,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": 4,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 1, a diningtable 3, a diningtable 2, a diningtable 1, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a sidetable 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to coffeemachine 1",
+      "observation": "You arrive at coffeemachine 1. On the coffeemachine 1, you see a mug 1."
+    },
+    {
+      "id": "r2",
+      "action": "take mug 1 from coffeemachine 1",
+      "observation": "You pick up the mug 1 from the coffeemachine 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to sidetable 1",
+      "observation": "You arrive at sidetable 1. On the sidetable 1, you see a knife 1, a soapbottle 1, a spoon 1, and a tomato 2."
+    },
+    {
+      "id": "r4",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r5",
+      "action": "open microwave 1",
+      "observation": "You open the microwave 1. The microwave 1 is open. In it, you see a apple 2, and a egg 1."
+    },
+    {
+      "id": "r6",
+      "action": "close microwave 1",
+      "observation": "You close the microwave 1."
+    },
+    {
+      "id": "r7",
+      "action": "go to coffeemachine 1",
+      "observation": "You arrive at coffeemachine 1. On the coffeemachine 1, you see nothing."
+    },
+    {
+      "id": "r8",
+      "action": "go to sidetable 1",
+      "observation": "You arrive at sidetable 1. On the sidetable 1, you see a knife 1, a soapbottle 1, a spoon 1, and a tomato 2."
+    },
+    {
+      "id": "r9",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r10",
+      "action": "open microwave 1",
+      "observation": "You open the microwave 1. The microwave 1 is open. In it, you see a apple 2, and a egg 1."
+    },
+    {
+      "id": "r11",
+      "action": "close microwave 1",
+      "observation": "You close the microwave 1."
+    },
+    {
+      "id": "r12",
+      "action": "go to coffeemachine 1",
+      "observation": "You arrive at coffeemachine 1. On the coffeemachine 1, you see nothing."
+    },
+    {
+      "id": "r13",
+      "action": "go to sidetable 1",
+      "observation": "You arrive at sidetable 1. On the sidetable 1, you see a knife 1, a soapbottle 1, a spoon 1, and a tomato 2."
+    },
+    {
+      "id": "r14",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r15",
+      "action": "heat mug 1 with microwave 1",
+      "observation": "You heat the mug 1 using the microwave 1."
+    },
+    {
+      "id": "r16",
+      "action": "go to sidetable 1",
+      "observation": "You arrive at sidetable 1. On the sidetable 1, you see a knife 1, a soapbottle 1, a spoon 1, and a tomato 2."
+    },
+    {
+      "id": "r17",
+      "action": "move mug 1 to sidetable 1",
+      "observation": "You move the mug 1 to the sidetable 1."
+    }
+  ],
+  "decisions": [
+    {
+      "proposal": "take mug 1 from coffeemachine 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at coffeemachine 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r1"
+            ],
+            "reasoning": "Record r1 shows the agent executed 'go to coffeemachine 1' and the observation confirms 'You arrive at coffeemachine 1'."
+          },
+          {
+            "claim": "The agent is currently holding nothing",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r1"
+            ],
+            "reasoning": "Record r1 shows the agent arrived at the coffeemachine and saw a mug, but did not pick it up yet. No prior record indicates the agent is holding anything. The proposed action is to take the mug, implying the agent is currently empty-handed."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 1,
+      "observation": "You pick up the mug 1 from the coffeemachine 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "heat mug 1 with microwave 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding mug 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "reasoning": "In record r2, the agent successfully picked up mug 1 from coffeemachine 1. There are no subsequent records indicating the agent dropped it. Therefore, the agent is still holding it."
+          },
+          {
+            "claim": "The agent is currently at microwave 1",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r3"
+            ],
+            "reasoning": "In record r3, the agent moved to sidetable 1. The agent is currently at sidetable 1, not microwave 1."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to microwave 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to microwave 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 3,
+      "observation": "You arrive at microwave 1. The microwave 1 is closed.",
+      "succeeded": true,
+      "proposal_would_succeed": false
+    },
+    {
+      "proposal": "open microwave 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at microwave 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r4"
+            ],
+            "reasoning": "Record r4 shows the agent executed 'go to microwave 1' and received an observation confirming arrival at microwave 1. No subsequent records indicate movement away from this location."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 4,
+      "observation": "You open the microwave 1. The microwave 1 is open. In it, you see a apple 2, and a egg 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "close microwave 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at microwave 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r5"
+            ],
+            "reasoning": "The last recorded action (r5) was 'open microwave 1', and the observation confirms the agent is inside/at the microwave ('You open the microwave 1...'). No subsequent movement has occurred."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 5,
+      "observation": "You close the microwave 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "heat mug 1 with microwave 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding mug 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "reasoning": "In record r2, the agent picked up mug 1. In subsequent records (r3 through r8), the agent moved to other locations (sidetable, microwave, coffeemachine) but never placed the mug down or dropped it. Therefore, the agent is still holding it."
+          },
+          {
+            "claim": "The agent is currently at microwave 1",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r8"
+            ],
+            "reasoning": "In record r8, the agent's last action was 'go to sidetable 1', and the observation confirms arrival at sidetable 1. The agent is no longer at microwave 1."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to microwave 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to microwave 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 8,
+      "observation": "You arrive at microwave 1. The microwave 1 is closed.",
+      "succeeded": true,
+      "proposal_would_succeed": false
+    },
+    {
+      "proposal": "open microwave 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at microwave 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r9"
+            ],
+            "reasoning": "The last recorded action in the history (r9) is 'go to microwave 1', and the observation confirms the agent arrived at microwave 1. No subsequent actions have moved the agent away from this location."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 9,
+      "observation": "You open the microwave 1. The microwave 1 is open. In it, you see a apple 2, and a egg 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "close microwave 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at microwave 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r10"
+            ],
+            "reasoning": "The last recorded action in the history (r10) was 'open microwave 1', and the observation confirms the agent is at microwave 1 ('You arrive at microwave 1...'). No subsequent actions have moved the agent away."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 10,
+      "observation": "You close the microwave 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "heat mug 1 with microwave 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding mug 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "reasoning": "In record r2, the agent picked up mug 1. In subsequent records (r3 through r14), the agent moved to other locations (sidetable, microwave) but never placed the mug down or dropped it. Therefore, the agent is still holding it."
+          },
+          {
+            "claim": "The agent is currently at microwave 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r14"
+            ],
+            "reasoning": "In record r14, the agent executed 'go to microwave 1' and the observation confirms 'You arrive at microwave 1'. This is the most recent action, establishing the current location."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 14,
+      "observation": "You heat the mug 1 using the microwave 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "move mug 1 to sidetable 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding mug 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "reasoning": "In record r2, the agent picked up mug 1. In subsequent records (r3 through r16), the agent moved to other locations (sidetable, microwave, coffeemachine) but never performed an action like 'drop' or 'put' to release the mug. Therefore, the agent is still holding it."
+          },
+          {
+            "claim": "The agent is currently at sidetable 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r16"
+            ],
+            "reasoning": "In record r16, the agent executed 'go to sidetable 1' and the observation confirms arrival: 'You arrive at sidetable 1.' No further movement commands have been issued since then."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 16,
+      "observation": "You move the mug 1 to the sidetable 1.",
+      "succeeded": true
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 9,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 0,
+    "seconds": 12.8
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "judge": "agent model, LLM_JUDGE"
+  }
+}

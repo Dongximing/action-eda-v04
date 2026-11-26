@@ -1,0 +1,239 @@
+{
+  "id": "game08",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-Spatula-None-DiningTable-4/trial_T20190909_002804_564168/game.tw-pddl",
+  "task": "clean some spatula and put it in diningtable.",
+  "arm": "mw",
+  "won": true,
+  "steps": 7,
+  "end": "success",
+  "baseline_won": true,
+  "baseline_steps": 7,
+  "baseline_source": "src natural.json",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a diningtable 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to diningtable 1",
+      "observation": "You arrive at diningtable 1. On the diningtable 1, you see a bread 2, a bread 1, a lettuce 3, a lettuce 2, a lettuce 1, a pan 1, a soapbottle 3, a soapbottle 2, a spatula 2, and a spoon 2."
+    },
+    {
+      "id": "r2",
+      "action": "take spatula 2 from diningtable 1",
+      "observation": "You pick up the spatula 2 from the diningtable 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a cup 2, a fork 2, and a knife 1."
+    },
+    {
+      "id": "r4",
+      "action": "clean spatula 2 with sinkbasin 1",
+      "observation": "You clean the spatula 2 using the sinkbasin 1."
+    },
+    {
+      "id": "r5",
+      "action": "move spatula 2 to diningtable 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r6",
+      "action": "go to diningtable 1",
+      "observation": "You arrive at diningtable 1. On the diningtable 1, you see a bread 2, a bread 1, a lettuce 3, a lettuce 2, a lettuce 1, a pan 1, a soapbottle 3, a soapbottle 2, and a spoon 2."
+    },
+    {
+      "id": "r7",
+      "action": "move spatula 2 to diningtable 1",
+      "observation": "You move the spatula 2 to the diningtable 1."
+    }
+  ],
+  "decisions": [
+    {
+      "proposal": "take spatula 2 from diningtable 1",
+      "check": {
+        "status": "UNKNOWN",
+        "claims": [
+          {
+            "claim": "spatula 2 must be visible on diningtable 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r1"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "agent must be at diningtable 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r1"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "agent must not hold spatula 2",
+            "verdict": "UNKNOWN",
+            "evidence_records": [],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 4
+      },
+      "blocked": false,
+      "step": 1,
+      "observation": "You pick up the spatula 2 from the diningtable 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "clean spatula 2 with sinkbasin 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent must be holding spatula 2.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must be at sinkbasin 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r3"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must have spatula 2 in their inventory.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 5
+      },
+      "blocked": false,
+      "step": 3,
+      "observation": "You clean the spatula 2 using the sinkbasin 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "move spatula 2 to diningtable 1",
+      "check": {
+        "status": "UNKNOWN",
+        "claims": [
+          {
+            "claim": "The agent must be holding spatula 2 immediately before executing the move action.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r4"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must be at diningtable 1 when executing the move action.",
+            "verdict": "UNKNOWN",
+            "evidence_records": [
+              "r3",
+              "r2"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The spatula 2 must be at diningtable 1 or held by the agent at diningtable 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 7
+      },
+      "blocked": false,
+      "step": 4,
+      "observation": "Nothing happens.",
+      "succeeded": false
+    },
+    {
+      "proposal": "move spatula 2 to diningtable 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent must be holding spatula 2.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r4"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must be at diningtable 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r6"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must have spatula 2 in their inventory.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 9
+      },
+      "blocked": false,
+      "step": 6,
+      "observation": "You move the spatula 2 to the diningtable 1.",
+      "succeeded": true
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 25,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "seconds": 13.537789106369019,
+      "one_hot": 0
+    },
+    "new_actor_requests": 4,
+    "seconds": 211.5
+  },
+  "config": {
+    "adapter": "adapters.openrouter_chat:choose",
+    "fewshot": "/Users/ximing/Desktop/action-eda-v04/data/fewshot/alfworld_record_fewshot.json",
+    "record_style": "state",
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "mw_k": 3
+  }
+}

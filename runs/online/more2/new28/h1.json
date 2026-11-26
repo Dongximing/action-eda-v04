@@ -1,0 +1,240 @@
+{
+  "id": "new28",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-Ladle-None-DiningTable-27/trial_T20190911_131350_027076/game.tw-pddl",
+  "task": "clean some ladle and put it in diningtable.",
+  "arm": "h1",
+  "won": true,
+  "steps": 18,
+  "end": "success",
+  "baseline_won": true,
+  "baseline_steps": 19,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": 17,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 12, a cabinet 11, a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 2, a countertop 1, a diningtable 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a apple 1, and a cup 1."
+    },
+    {
+      "id": "r2",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r3",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r4",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r5",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r6",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r7",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r8",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r9",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r10",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r11",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r12",
+      "action": "inventory",
+      "observation": "You are not carrying anything."
+    },
+    {
+      "id": "r13",
+      "action": "go to diningtable 1",
+      "observation": "You arrive at diningtable 1. On the diningtable 1, you see a bread 1, a butterknife 3, a butterknife 2, a dishsponge 1, a egg 3, a egg 2, a egg 1, a ladle 1, a mug 3, a peppershaker 3, a potato 3, a spatula 1, a tomato 1, and a winebottle 2."
+    },
+    {
+      "id": "r14",
+      "action": "take ladle 1 from diningtable 1",
+      "observation": "You pick up the ladle 1 from the diningtable 1."
+    },
+    {
+      "id": "r15",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a apple 1, and a cup 1."
+    },
+    {
+      "id": "r16",
+      "action": "clean ladle 1 with sinkbasin 1",
+      "observation": "You clean the ladle 1 using the sinkbasin 1."
+    },
+    {
+      "id": "r17",
+      "action": "go to diningtable 1",
+      "observation": "You arrive at diningtable 1. On the diningtable 1, you see a bread 1, a butterknife 3, a butterknife 2, a dishsponge 1, a egg 3, a egg 2, a egg 1, a mug 3, a peppershaker 3, a potato 3, a spatula 1, a tomato 1, and a winebottle 2."
+    },
+    {
+      "id": "r18",
+      "action": "move ladle 1 to diningtable 1",
+      "observation": "You move the ladle 1 to the diningtable 1."
+    }
+  ],
+  "decisions": [
+    {
+      "proposal": "take ladle 1 from diningtable 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at diningtable 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": []
+          },
+          {
+            "claim": "The agent is currently holding nothing",
+            "verdict": "SUPPORTED",
+            "evidence_records": []
+          }
+        ],
+        "calls": 2
+      },
+      "blocked": false,
+      "step": 13,
+      "observation": "You pick up the ladle 1 from the diningtable 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "clean ladle 1 with sinkbasin 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding ladle 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": []
+          },
+          {
+            "claim": "The agent is currently at sinkbasin 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": []
+          }
+        ],
+        "calls": 2
+      },
+      "blocked": false,
+      "step": 15,
+      "observation": "You clean the ladle 1 using the sinkbasin 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "move ladle 1 to diningtable 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding ladle 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": []
+          },
+          {
+            "claim": "The agent is currently at diningtable 1",
+            "verdict": "CONTRADICTED",
+            "evidence_records": []
+          }
+        ],
+        "calls": 2
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to diningtable 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to diningtable 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 16,
+      "observation": "You arrive at diningtable 1. On the diningtable 1, you see a bread 1, a butterknife 3, a butterknife 2, a dishsponge 1, a egg 3, a egg 2, a egg 1, a mug 3, a peppershaker 3, a potato 3, a spatula 1, a tomato 1, and a winebottle 2.",
+      "succeeded": true,
+      "proposal_would_succeed": false
+    },
+    {
+      "proposal": "move ladle 1 to diningtable 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding ladle 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": []
+          },
+          {
+            "claim": "The agent is currently at diningtable 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": []
+          }
+        ],
+        "calls": 2
+      },
+      "blocked": false,
+      "step": 17,
+      "observation": "You move the ladle 1 to the diningtable 1.",
+      "succeeded": true
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 8,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "seconds": 3.9411511421203613,
+      "one_hot": 0
+    },
+    "new_actor_requests": 2,
+    "seconds": 7.4
+  },
+  "config": {
+    "adapter": "adapters.openrouter_chat:choose",
+    "fewshot": "/Users/ximing/Desktop/action-eda-v04/data/fewshot/alfworld_record_fewshot.json",
+    "record_style": "state",
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail"
+  }
+}

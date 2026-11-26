@@ -1,0 +1,1668 @@
+{
+  "id": "game06",
+  "family": "pick_heat_then_place_in_recep",
+  "game": "pick_heat_then_place_in_recep-Plate-None-Cabinet-1/trial_T20190908_070946_578973/game.tw-pddl",
+  "task": "put a hot plate in cabinet.",
+  "arm": "loop_r3",
+  "won": false,
+  "steps": 50,
+  "end": "step_limit",
+  "baseline_won": false,
+  "baseline_steps": 50,
+  "baseline_source": "src natural.json",
+  "diverged_from_baseline_at": 10,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 9, a drawer 8, a drawer 7, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see a kettle 1."
+    },
+    {
+      "id": "r2",
+      "action": "take kettle 1 from stoveburner 1",
+      "observation": "You pick up the kettle 1 from the stoveburner 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed."
+    },
+    {
+      "id": "r4",
+      "action": "open cabinet 1",
+      "observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r5",
+      "action": "close cabinet 1",
+      "observation": "You close the cabinet 1."
+    },
+    {
+      "id": "r6",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing."
+    },
+    {
+      "id": "r7",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r8",
+      "action": "heat kettle 1 with stoveburner 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r9",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing."
+    },
+    {
+      "id": "r10",
+      "action": "go to stoveburner 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r11",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed."
+    },
+    {
+      "id": "r12",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing."
+    },
+    {
+      "id": "r13",
+      "action": "go to stoveburner 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r14",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r15",
+      "action": "heat kettle 1 with microwave 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r16",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing."
+    },
+    {
+      "id": "r17",
+      "action": "go to stoveburner 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r18",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r19",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing."
+    },
+    {
+      "id": "r20",
+      "action": "go to stoveburner 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r21",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r22",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed."
+    },
+    {
+      "id": "r23",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing."
+    },
+    {
+      "id": "r24",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed."
+    },
+    {
+      "id": "r25",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r26",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed."
+    },
+    {
+      "id": "r27",
+      "action": "go to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r28",
+      "action": "open cabinet 1",
+      "observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r29",
+      "action": "close cabinet 1",
+      "observation": "You close the cabinet 1."
+    },
+    {
+      "id": "r30",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing."
+    },
+    {
+      "id": "r31",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r32",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing."
+    },
+    {
+      "id": "r33",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed."
+    },
+    {
+      "id": "r34",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing."
+    },
+    {
+      "id": "r35",
+      "action": "go to stoveburner 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r36",
+      "action": "look",
+      "observation": "You are facing the stoveburner 2, and stoveburner 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r37",
+      "action": "go to stoveburner 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r38",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed."
+    },
+    {
+      "id": "r39",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing."
+    },
+    {
+      "id": "r40",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r41",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing."
+    },
+    {
+      "id": "r42",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed."
+    },
+    {
+      "id": "r43",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing."
+    },
+    {
+      "id": "r44",
+      "action": "go to stoveburner 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r45",
+      "action": "look",
+      "observation": "You are facing the stoveburner 2, and stoveburner 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r46",
+      "action": "go to stoveburner 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r47",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed."
+    },
+    {
+      "id": "r48",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing."
+    },
+    {
+      "id": "r49",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed."
+    },
+    {
+      "id": "r50",
+      "action": "go to cabinet 1",
+      "observation": "Nothing happens."
+    }
+  ],
+  "decisions": [
+    {
+      "proposal": "go to microwave 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to microwave 1' at r7 (and 1 time in all), and nothing new has been observed since r7: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r7.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r7"
+            ],
+            "kind": "repeat",
+            "times_run": 1
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to stoveburner 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to stoveburner 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 9,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": true,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to stoveburner 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You just ran 'go to stoveburner 1' at r10; running it again now would give the same result. Choose a command you have not tried since r10.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r10"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to microwave 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'go to microwave 1' at r7 (and 1 time in all), and nothing new has been observed since r7: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r7.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r7"
+                ],
+                "kind": "repeat",
+                "times_run": 1
+              }
+            ],
+            "calls": 0
+          }
+        },
+        {
+          "action": "go to stoveburner 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'go to stoveburner 1' at r10; running it again now would give the same result. Choose a command you have not tried since r10.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r10"
+                ],
+                "kind": "repeat",
+                "times_run": 4
+              }
+            ],
+            "calls": 0
+          }
+        },
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to cabinet 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 10,
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed.",
+      "succeeded": true,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to microwave 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to microwave 1' at r7 (and 1 time in all), and nothing new has been observed since r7: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r7.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r7"
+            ],
+            "kind": "repeat",
+            "times_run": 1
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to stoveburner 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to stoveburner 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 12,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": true,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to microwave 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to microwave 1' at r7 (and 1 time in all), and nothing new has been observed since r7: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r7.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r7"
+            ],
+            "kind": "repeat",
+            "times_run": 1
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to stoveburner 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'go to stoveburner 1' at r13; running it again now would give the same result. Choose a command you have not tried since r13.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r13"
+                ],
+                "kind": "repeat",
+                "times_run": 6
+              }
+            ],
+            "calls": 0
+          }
+        },
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'go to cabinet 1' at r11 (and 2 times in all), and nothing new has been observed since r11: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r11.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r11"
+                ],
+                "kind": "repeat",
+                "times_run": 2
+              }
+            ],
+            "calls": 0
+          }
+        },
+        {
+          "action": "go to microwave 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'go to microwave 1' at r7 (and 1 time in all), and nothing new has been observed since r7: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r7.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r7"
+                ],
+                "kind": "repeat",
+                "times_run": 1
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to microwave 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 13,
+      "observation": "You arrive at microwave 1. The microwave 1 is closed.",
+      "succeeded": true,
+      "proposal_would_succeed": true,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "heat kettle 1 with stoveburner 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'heat kettle 1 with stoveburner 1' at r8 (and 1 time in all), and nothing new has been observed since r8: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r8.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r8"
+            ],
+            "kind": "repeat",
+            "times_run": 1
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "heat kettle 1 with microwave 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "heat kettle 1 with microwave 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 14,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to microwave 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to microwave 1' at r14 (and 2 times in all), and nothing new has been observed since r14: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r14.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r14"
+            ],
+            "kind": "repeat",
+            "times_run": 2
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'go to cabinet 1' at r11 (and 2 times in all), and nothing new has been observed since r11: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r11.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r11"
+                ],
+                "kind": "repeat",
+                "times_run": 2
+              }
+            ],
+            "calls": 0
+          }
+        },
+        {
+          "action": "go to stoveburner 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to stoveburner 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 16,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": true,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to microwave 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to microwave 1' at r14 (and 2 times in all), and nothing new has been observed since r14: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r14.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r14"
+            ],
+            "kind": "repeat",
+            "times_run": 2
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to stoveburner 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'go to stoveburner 1' at r17; running it again now would give the same result. Choose a command you have not tried since r17.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r17"
+                ],
+                "kind": "repeat",
+                "times_run": 8
+              }
+            ],
+            "calls": 0
+          }
+        },
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'go to cabinet 1' at r11 (and 2 times in all), and nothing new has been observed since r11: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r11.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r11"
+                ],
+                "kind": "repeat",
+                "times_run": 2
+              }
+            ],
+            "calls": 0
+          }
+        },
+        {
+          "action": "go to microwave 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'go to microwave 1' at r14 (and 2 times in all), and nothing new has been observed since r14: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r14.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r14"
+                ],
+                "kind": "repeat",
+                "times_run": 2
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to microwave 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 17,
+      "observation": "You arrive at microwave 1. The microwave 1 is closed.",
+      "succeeded": true,
+      "proposal_would_succeed": true,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "heat kettle 1 with stoveburner 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'heat kettle 1 with stoveburner 1' at r8 (and 1 time in all), and nothing new has been observed since r8: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r8.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r8"
+            ],
+            "kind": "repeat",
+            "times_run": 1
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "heat kettle 1 with microwave 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'heat kettle 1 with microwave 1' at r15 (and 1 time in all), and nothing new has been observed since r15: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r15.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r15"
+                ],
+                "kind": "repeat",
+                "times_run": 1
+              }
+            ],
+            "calls": 0
+          }
+        },
+        {
+          "action": "go to stoveburner 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to stoveburner 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 18,
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing.",
+      "succeeded": true,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to microwave 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to microwave 1' at r18 (and 3 times in all), and nothing new has been observed since r18: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r18.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r18"
+            ],
+            "kind": "repeat",
+            "times_run": 3
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to stoveburner 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to stoveburner 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 19,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": true,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to microwave 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to microwave 1' at r18 (and 3 times in all), and nothing new has been observed since r18: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r18.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r18"
+            ],
+            "kind": "repeat",
+            "times_run": 3
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to stoveburner 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'go to stoveburner 1' at r20; running it again now would give the same result. Choose a command you have not tried since r20.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r20"
+                ],
+                "kind": "repeat",
+                "times_run": 10
+              }
+            ],
+            "calls": 0
+          }
+        },
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'go to cabinet 1' at r11 (and 2 times in all), and nothing new has been observed since r11: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r11.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r11"
+                ],
+                "kind": "repeat",
+                "times_run": 2
+              }
+            ],
+            "calls": 0
+          }
+        },
+        {
+          "action": "go to microwave 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'go to microwave 1' at r18 (and 3 times in all), and nothing new has been observed since r18: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r18.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r18"
+                ],
+                "kind": "repeat",
+                "times_run": 3
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to microwave 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 20,
+      "observation": "You arrive at microwave 1. The microwave 1 is closed.",
+      "succeeded": true,
+      "proposal_would_succeed": true,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "heat kettle 1 with stoveburner 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'heat kettle 1 with stoveburner 1' at r8 (and 1 time in all), and nothing new has been observed since r8: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r8.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r8"
+            ],
+            "kind": "repeat",
+            "times_run": 1
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "heat kettle 1 with microwave 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'heat kettle 1 with microwave 1' at r15 (and 1 time in all), and nothing new has been observed since r15: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r15.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r15"
+                ],
+                "kind": "repeat",
+                "times_run": 1
+              }
+            ],
+            "calls": 0
+          }
+        },
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to cabinet 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 21,
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed.",
+      "succeeded": true,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to microwave 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to microwave 1' at r21 (and 4 times in all), and nothing new has been observed since r21: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r21.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r21"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to cabinet 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 23,
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed.",
+      "succeeded": true,
+      "proposal_would_succeed": true,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "heat kettle 1 with stoveburner 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'heat kettle 1 with stoveburner 1' at r8 (and 1 time in all), and nothing new has been observed since r8: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r8.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r8"
+            ],
+            "kind": "repeat",
+            "times_run": 1
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "heat kettle 1 with microwave 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'heat kettle 1 with microwave 1' at r15 (and 1 time in all), and nothing new has been observed since r15: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r15.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r15"
+                ],
+                "kind": "repeat",
+                "times_run": 1
+              }
+            ],
+            "calls": 0
+          }
+        },
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to cabinet 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 25,
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed.",
+      "succeeded": true,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to stoveburner 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to stoveburner 1' at r23 (and 11 times in all), and nothing new has been observed since r23: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r23.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r23"
+            ],
+            "kind": "repeat",
+            "times_run": 11
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to cabinet 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 26,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": true,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to stoveburner 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to stoveburner 1' at r23 (and 11 times in all), and nothing new has been observed since r23: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r23.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r23"
+            ],
+            "kind": "repeat",
+            "times_run": 11
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'go to cabinet 1' at r27; running it again now would give the same result. Choose a command you have not tried since r27.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r27"
+                ],
+                "kind": "repeat",
+                "times_run": 6
+              }
+            ],
+            "calls": 0
+          }
+        },
+        {
+          "action": "go to microwave 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'go to microwave 1' at r25 (and 5 times in all), and nothing new has been observed since r25: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r25.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r25"
+                ],
+                "kind": "repeat",
+                "times_run": 5
+              }
+            ],
+            "calls": 0
+          }
+        },
+        {
+          "action": "open cabinet 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "open cabinet 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 27,
+      "observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see nothing.",
+      "succeeded": true,
+      "proposal_would_succeed": true,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "heat kettle 1 with stoveburner 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'heat kettle 1 with stoveburner 1' at r8 (and 1 time in all), and nothing new has been observed since r8: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r8.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r8"
+            ],
+            "kind": "repeat",
+            "times_run": 1
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "heat kettle 1 with microwave 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'heat kettle 1 with microwave 1' at r15 (and 1 time in all), and nothing new has been observed since r15: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r15.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r15"
+                ],
+                "kind": "repeat",
+                "times_run": 1
+              }
+            ],
+            "calls": 0
+          }
+        },
+        {
+          "action": "go to stoveburner 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to stoveburner 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 31,
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing.",
+      "succeeded": true,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to microwave 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to microwave 1' at r31 (and 6 times in all), and nothing new has been observed since r31: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r31.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r31"
+            ],
+            "kind": "repeat",
+            "times_run": 6
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to cabinet 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 32,
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed.",
+      "succeeded": true,
+      "proposal_would_succeed": true,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to microwave 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to microwave 1' at r31 (and 6 times in all), and nothing new has been observed since r31: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r31.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r31"
+            ],
+            "kind": "repeat",
+            "times_run": 6
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'go to cabinet 1' at r33 (and 7 times in all), and nothing new has been observed since r33: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r33.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r33"
+                ],
+                "kind": "repeat",
+                "times_run": 7
+              }
+            ],
+            "calls": 0
+          }
+        },
+        {
+          "action": "go to stoveburner 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to stoveburner 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 34,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": true,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to stoveburner 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You just ran 'go to stoveburner 1' at r35; running it again now would give the same result. Choose a command you have not tried since r35.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r35"
+            ],
+            "kind": "repeat",
+            "times_run": 15
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'go to cabinet 1' at r33 (and 7 times in all), and nothing new has been observed since r33: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r33.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r33"
+                ],
+                "kind": "repeat",
+                "times_run": 7
+              }
+            ],
+            "calls": 0
+          }
+        },
+        {
+          "action": "go to microwave 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'go to microwave 1' at r31 (and 6 times in all), and nothing new has been observed since r31: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r31.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r31"
+                ],
+                "kind": "repeat",
+                "times_run": 6
+              }
+            ],
+            "calls": 0
+          }
+        },
+        {
+          "action": "look",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "look",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 35,
+      "observation": "You are facing the stoveburner 2, and stoveburner 1. Next to it, you see nothing.",
+      "succeeded": true,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to stoveburner 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You just ran 'go to stoveburner 1' at r37; running it again now would give the same result. Choose a command you have not tried since r37.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r37"
+            ],
+            "kind": "repeat",
+            "times_run": 16
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to cabinet 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 37,
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed.",
+      "succeeded": true,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to microwave 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to microwave 1' at r40 (and 7 times in all), and nothing new has been observed since r40: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r40.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r40"
+            ],
+            "kind": "repeat",
+            "times_run": 7
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to cabinet 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 41,
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed.",
+      "succeeded": true,
+      "proposal_would_succeed": true,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to microwave 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to microwave 1' at r40 (and 7 times in all), and nothing new has been observed since r40: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r40.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r40"
+            ],
+            "kind": "repeat",
+            "times_run": 7
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'go to cabinet 1' at r42 (and 9 times in all), and nothing new has been observed since r42: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r42.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r42"
+                ],
+                "kind": "repeat",
+                "times_run": 9
+              }
+            ],
+            "calls": 0
+          }
+        },
+        {
+          "action": "go to stoveburner 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to stoveburner 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 43,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": true,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to stoveburner 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You just ran 'go to stoveburner 1' at r44; running it again now would give the same result. Choose a command you have not tried since r44.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r44"
+            ],
+            "kind": "repeat",
+            "times_run": 20
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'go to cabinet 1' at r42 (and 9 times in all), and nothing new has been observed since r42: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r42.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r42"
+                ],
+                "kind": "repeat",
+                "times_run": 9
+              }
+            ],
+            "calls": 0
+          }
+        },
+        {
+          "action": "go to microwave 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'go to microwave 1' at r40 (and 7 times in all), and nothing new has been observed since r40: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r40.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r40"
+                ],
+                "kind": "repeat",
+                "times_run": 7
+              }
+            ],
+            "calls": 0
+          }
+        },
+        {
+          "action": "look",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'look' at r36 (and 1 time in all), and nothing new has been observed since r36: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r36.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r36"
+                ],
+                "kind": "repeat",
+                "times_run": 1
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "look",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 44,
+      "observation": "You are facing the stoveburner 2, and stoveburner 1. Next to it, you see nothing.",
+      "succeeded": true,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to stoveburner 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You just ran 'go to stoveburner 1' at r46; running it again now would give the same result. Choose a command you have not tried since r46.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r46"
+            ],
+            "kind": "repeat",
+            "times_run": 21
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to cabinet 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 46,
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed.",
+      "succeeded": true,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to microwave 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to microwave 1' at r40 (and 7 times in all), and nothing new has been observed since r40: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r40.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r40"
+            ],
+            "kind": "repeat",
+            "times_run": 7
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to cabinet 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 48,
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed.",
+      "succeeded": true,
+      "proposal_would_succeed": true,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to stoveburner 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to stoveburner 1' at r48 (and 22 times in all), and nothing new has been observed since r48: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r48.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r48"
+            ],
+            "kind": "repeat",
+            "times_run": 22
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to cabinet 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 49,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": true,
+      "proposal_would_be_new": false
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 84,
+    "seconds": 97.0
+  },
+  "config": {
+    "max_revisions": 3,
+    "max_steps": 50,
+    "route": "parasail",
+    "checker": "repetition (loop_check)"
+  }
+}

@@ -1,0 +1,342 @@
+{
+  "id": "new07",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-Plate-None-CounterTop-19/trial_T20190908_212725_836398/game.tw-pddl",
+  "task": "put a clean plate in countertop.",
+  "arm": "d1",
+  "won": true,
+  "steps": 9,
+  "end": "success",
+  "baseline_won": true,
+  "baseline_steps": 10,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": 6,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 21, a cabinet 20, a cabinet 19, a cabinet 18, a cabinet 17, a cabinet 16, a cabinet 15, a cabinet 14, a cabinet 13, a cabinet 12, a cabinet 11, a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 2, a countertop 1, a diningtable 1, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a bread 1, a egg 3, a egg 2, a pan 1, a plate 3, a pot 1, a potato 1, a soapbottle 1, and a tomato 2."
+    },
+    {
+      "id": "r2",
+      "action": "take plate 3 from countertop 1",
+      "observation": "You pick up the plate 3 from the countertop 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see nothing."
+    },
+    {
+      "id": "r4",
+      "action": "clean plate 3 with sinkbasin 1",
+      "observation": "You clean the plate 3 using the sinkbasin 1."
+    },
+    {
+      "id": "r5",
+      "action": "move plate 3 to countertop 2",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r6",
+      "action": "move plate 3 to countertop 2",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r7",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a bread 1, a egg 3, a egg 2, a pan 1, a pot 1, a potato 1, a soapbottle 1, and a tomato 2."
+    },
+    {
+      "id": "r8",
+      "action": "go to countertop 2",
+      "observation": "You arrive at countertop 2. On the countertop 2, you see a cup 2, a fork 3, a fork 2, a peppershaker 2, a peppershaker 1, a spatula 3, and a spoon 1."
+    },
+    {
+      "id": "r9",
+      "action": "move plate 3 to countertop 2",
+      "observation": "You move the plate 3 to the countertop 2."
+    }
+  ],
+  "decisions": [
+    {
+      "proposal": "take plate 3 from countertop 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at countertop 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r1"
+            ]
+          },
+          {
+            "claim": "The agent is currently holding nothing",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r0"
+            ]
+          }
+        ],
+        "calls": 3
+      },
+      "blocked": false,
+      "step": 1,
+      "observation": "You pick up the plate 3 from the countertop 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "clean plate 3 with sinkbasin 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding plate 3",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ]
+          },
+          {
+            "claim": "The agent is currently at sinkbasin 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r3"
+            ]
+          }
+        ],
+        "calls": 3
+      },
+      "blocked": false,
+      "step": 3,
+      "observation": "You clean the plate 3 using the sinkbasin 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "move plate 3 to countertop 2",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding plate 3",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r4"
+            ]
+          },
+          {
+            "claim": "The agent is currently at countertop 2",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r3"
+            ]
+          }
+        ],
+        "calls": 3
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move plate 3 to countertop 2",
+          "same_as_before": true
+        }
+      ],
+      "executed": "move plate 3 to countertop 2",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 4,
+      "observation": "Nothing happens.",
+      "succeeded": false
+    },
+    {
+      "proposal": "move plate 3 to countertop 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding plate 3",
+            "verdict": "UNKNOWN",
+            "evidence_records": [
+              "r5",
+              "r4"
+            ]
+          },
+          {
+            "claim": "The agent is currently at countertop 1",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r3"
+            ]
+          }
+        ],
+        "calls": 5
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move plate 3 to countertop 2",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "The agent is currently holding plate 3",
+                "verdict": "SUPPORTED",
+                "evidence_records": [
+                  "r4"
+                ]
+              },
+              {
+                "claim": "The agent is currently at countertop 2",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r3"
+                ]
+              }
+            ],
+            "calls": 5
+          }
+        }
+      ],
+      "executed": "move plate 3 to countertop 2",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 5,
+      "observation": "Nothing happens.",
+      "succeeded": false
+    },
+    {
+      "proposal": "move plate 3 to countertop 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding plate 3",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r6",
+              "r5"
+            ]
+          },
+          {
+            "claim": "The agent is currently at countertop 1",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r3"
+            ]
+          }
+        ],
+        "calls": 6
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to countertop 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to countertop 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 6,
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a bread 1, a egg 3, a egg 2, a pan 1, a pot 1, a potato 1, a soapbottle 1, and a tomato 2.",
+      "succeeded": true
+    },
+    {
+      "proposal": "move plate 3 to countertop 2",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding plate 3",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r4"
+            ]
+          },
+          {
+            "claim": "The agent is currently at countertop 2",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r7"
+            ]
+          }
+        ],
+        "calls": 5
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to countertop 2",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to countertop 2",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 7,
+      "observation": "You arrive at countertop 2. On the countertop 2, you see a cup 2, a fork 3, a fork 2, a peppershaker 2, a peppershaker 1, a spatula 3, and a spoon 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "move plate 3 to countertop 2",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding plate 3",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r4"
+            ]
+          },
+          {
+            "claim": "The agent is currently at countertop 2",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r8"
+            ]
+          }
+        ],
+        "calls": 6
+      },
+      "blocked": false,
+      "step": 8,
+      "observation": "You move the plate 3 to the countertop 2.",
+      "succeeded": true
+    }
+  ],
+  "usage": {
+    "judge": {
+      "calls": 23,
+      "cache_hits": 13,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "seconds": 8.155058145523071,
+      "one_hot": 0
+    },
+    "new_actor_requests": 7,
+    "seconds": 12.6
+  },
+  "config": {
+    "adapter": "adapters.openrouter_chat:choose",
+    "fewshot": "/Users/ximing/Desktop/action-eda-v04/data/fewshot/alfworld_record_fewshot.json",
+    "record_style": "state",
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail"
+  }
+}

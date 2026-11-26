@@ -1,0 +1,39 @@
+{
+  "samples": "data/diag_mini/samples.jsonl",
+  "n_samples": 120,
+  "n_claims": 120,
+  "methods": [
+    "H1",
+    "H2",
+    "U1",
+    "D1",
+    "D1f",
+    "D2",
+    "E1",
+    "P0",
+    "Q0"
+  ],
+  "backend": "hf:Qwen/Qwen3-4B",
+  "thinking": false,
+  "prompt_version": "v0.4-p2",
+  "config": {
+    "tau_conf": 0.5,
+    "tau_low": 0.15,
+    "tau_high": 0.5,
+    "max_pairs": 6,
+    "tau_q0": 0.0,
+    "early_stop": true,
+    "context_k": 1
+  },
+  "wall_seconds": 557.9055790901184,
+  "backend_usage": {
+    "calls": 1784,
+    "cache_hits": 1386,
+    "input_tokens": 224543,
+    "output_tokens": 4670,
+    "seconds": 557.8272080421448
+  },
+  "errors": 0,
+  "python": "3.12.15",
+  "time": "2026-11-24 14:34:09"
+}

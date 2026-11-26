@@ -1,0 +1,67 @@
+{
+  "id": "game01",
+  "family": "pick_heat_then_place_in_recep",
+  "game": "pick_heat_then_place_in_recep-Mug-None-Cabinet-26/trial_T20190909_062333_424779/game.tw-pddl",
+  "task": "heat some mug and put it in cabinet.",
+  "arm": "loop",
+  "won": true,
+  "steps": 6,
+  "end": "success",
+  "baseline_won": true,
+  "baseline_steps": 6,
+  "baseline_source": "src natural.json",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 2, a countertop 1, a diningtable 2, a diningtable 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a egg 3, a knife 2, a knife 1, a mug 3, a mug 2, a potato 2, and a saltshaker 1."
+    },
+    {
+      "id": "r2",
+      "action": "take mug 3 from countertop 1",
+      "observation": "You pick up the mug 3 from the countertop 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r4",
+      "action": "heat mug 3 with microwave 1",
+      "observation": "You heat the mug 3 using the microwave 1."
+    },
+    {
+      "id": "r5",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. On the cabinet 1, you see nothing."
+    },
+    {
+      "id": "r6",
+      "action": "move mug 3 to cabinet 1",
+      "observation": "You move the mug 3 to the cabinet 1."
+    }
+  ],
+  "decisions": [],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 0,
+    "seconds": 0.5
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "checker": "repetition (loop_check)"
+  }
+}

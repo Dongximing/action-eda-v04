@@ -1,0 +1,35 @@
+{
+  "samples": "data/alfworld9b/samples.jsonl",
+  "n_samples": 92,
+  "n_claims": 139,
+  "methods": [
+    "T0",
+    "D1"
+  ],
+  "decision_backend": "api:openrouter/qwen/qwen3.5-9b@parasail",
+  "generator": null,
+  "thinking": false,
+  "prompt_version": "v0.4-p5",
+  "config": {
+    "tau_conf": 0.5,
+    "tau_low": 0.15,
+    "tau_high": 0.5,
+    "max_pairs": 6,
+    "tau_q0": 0.0,
+    "early_stop": true,
+    "context_k": 0
+  },
+  "wall_seconds": 63.264045000076294,
+  "decision_usage": {
+    "calls": 764,
+    "cache_hits": 948,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 461.6058757305145,
+    "one_hot": 0
+  },
+  "generator_usage": null,
+  "errors": 0,
+  "python": "3.12.15",
+  "time": "2026-11-24 18:06:41"
+}

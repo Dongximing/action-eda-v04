@@ -1,0 +1,952 @@
+{
+  "id": "new40",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-DishSponge-None-CounterTop-403/trial_T20190908_144357_621068/game.tw-pddl",
+  "task": "clean some dishsponge and put it in countertop.",
+  "arm": "onecall",
+  "won": true,
+  "steps": 20,
+  "end": "success",
+  "baseline_won": false,
+  "baseline_steps": 50,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": 1,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a bathtubbasin 1, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a countertop 1, a garbagecan 1, a handtowelholder 1, a shelf 1, a sinkbasin 2, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, a towelholder 2, and a towelholder 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a candle 1, a mirror 1, a showerglass 1, and a soapbottle 1."
+    },
+    {
+      "id": "r2",
+      "action": "look",
+      "observation": "You are facing the countertop 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r3",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see nothing."
+    },
+    {
+      "id": "r4",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed."
+    },
+    {
+      "id": "r5",
+      "action": "open cabinet 1",
+      "observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see a cloth 2, and a toiletpaper 1."
+    },
+    {
+      "id": "r6",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see nothing."
+    },
+    {
+      "id": "r7",
+      "action": "go to cabinet 2",
+      "observation": "You arrive at cabinet 2. The cabinet 2 is closed."
+    },
+    {
+      "id": "r8",
+      "action": "open cabinet 2",
+      "observation": "You open the cabinet 2. The cabinet 2 is open. In it, you see a spraybottle 1."
+    },
+    {
+      "id": "r9",
+      "action": "go to cabinet 3",
+      "observation": "You arrive at cabinet 3. The cabinet 3 is closed."
+    },
+    {
+      "id": "r10",
+      "action": "open cabinet 3",
+      "observation": "You open the cabinet 3. The cabinet 3 is open. In it, you see a spraybottle 2."
+    },
+    {
+      "id": "r11",
+      "action": "go to cabinet 4",
+      "observation": "You arrive at cabinet 4. The cabinet 4 is closed."
+    },
+    {
+      "id": "r12",
+      "action": "open cabinet 4",
+      "observation": "You open the cabinet 4. The cabinet 4 is open. In it, you see nothing."
+    },
+    {
+      "id": "r13",
+      "action": "go to shelf 1",
+      "observation": "You arrive at shelf 1. On the shelf 1, you see a cloth 1, a dishsponge 1, and a showerglass 1."
+    },
+    {
+      "id": "r14",
+      "action": "take dishsponge 1 from shelf 1",
+      "observation": "You pick up the dishsponge 1 from the shelf 1."
+    },
+    {
+      "id": "r15",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see nothing."
+    },
+    {
+      "id": "r16",
+      "action": "clean dishsponge 1 with sinkbasin 1",
+      "observation": "You clean the dishsponge 1 using the sinkbasin 1."
+    },
+    {
+      "id": "r17",
+      "action": "move dishsponge 1 to countertop 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r18",
+      "action": "move dishsponge 1 to countertop 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r19",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a candle 1, a mirror 1, a showerglass 1, and a soapbottle 1."
+    },
+    {
+      "id": "r20",
+      "action": "move dishsponge 1 to countertop 1",
+      "observation": "You move the dishsponge 1 to the countertop 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "code_visited": [],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ],
+      "model_visited": [
+        "middle of a room"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ]
+    },
+    {
+      "step": 1,
+      "code_visited": [
+        "countertop 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ],
+      "model_visited": [
+        "countertop 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ]
+    },
+    {
+      "step": 2,
+      "code_visited": [
+        "countertop 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ],
+      "model_visited": [
+        "countertop 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ]
+    },
+    {
+      "step": 3,
+      "code_visited": [
+        "countertop 1",
+        "sinkbasin 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ],
+      "model_visited": [
+        "countertop 1",
+        "sinkbasin 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ]
+    },
+    {
+      "step": 4,
+      "code_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ],
+      "model_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ]
+    },
+    {
+      "step": 5,
+      "code_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ],
+      "model_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ]
+    },
+    {
+      "step": 6,
+      "code_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ],
+      "model_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ]
+    },
+    {
+      "step": 7,
+      "code_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 4",
+        "cabinet 3",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ],
+      "model_visited": [
+        "middle of a room",
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 3",
+        "cabinet 4",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 1",
+        "towelholder 2"
+      ]
+    },
+    {
+      "step": 8,
+      "code_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 4",
+        "cabinet 3",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ],
+      "model_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 3",
+        "cabinet 4",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 1",
+        "towelholder 2"
+      ]
+    },
+    {
+      "step": 9,
+      "code_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 4",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ],
+      "model_visited": [
+        "middle of a room",
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ]
+    },
+    {
+      "step": 10,
+      "code_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 4",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ],
+      "model_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ]
+    },
+    {
+      "step": 11,
+      "code_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3",
+        "cabinet 4"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ],
+      "model_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3",
+        "cabinet 4"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ]
+    },
+    {
+      "step": 12,
+      "code_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3",
+        "cabinet 4"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ],
+      "model_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3",
+        "cabinet 4"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "shelf 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ]
+    },
+    {
+      "step": 13,
+      "code_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3",
+        "cabinet 4",
+        "shelf 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ],
+      "model_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3",
+        "cabinet 4",
+        "shelf 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 1",
+        "towelholder 2"
+      ]
+    },
+    {
+      "step": 14,
+      "code_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3",
+        "cabinet 4",
+        "shelf 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ],
+      "model_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3",
+        "cabinet 4",
+        "shelf 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 1",
+        "towelholder 2"
+      ]
+    },
+    {
+      "step": 15,
+      "code_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3",
+        "cabinet 4",
+        "shelf 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ],
+      "model_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3",
+        "cabinet 4",
+        "shelf 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 1",
+        "towelholder 2"
+      ]
+    },
+    {
+      "step": 16,
+      "code_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3",
+        "cabinet 4",
+        "shelf 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ],
+      "model_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3",
+        "cabinet 4",
+        "shelf 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 1",
+        "towelholder 2"
+      ]
+    },
+    {
+      "step": 17,
+      "code_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3",
+        "cabinet 4",
+        "shelf 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ],
+      "model_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3",
+        "cabinet 4",
+        "shelf 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 1",
+        "towelholder 2"
+      ]
+    },
+    {
+      "step": 18,
+      "code_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3",
+        "cabinet 4",
+        "shelf 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ],
+      "model_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3",
+        "cabinet 4",
+        "shelf 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 1",
+        "towelholder 2"
+      ]
+    },
+    {
+      "step": 19,
+      "code_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3",
+        "cabinet 4",
+        "shelf 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 2",
+        "towelholder 1"
+      ],
+      "model_visited": [
+        "countertop 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "cabinet 2",
+        "cabinet 3",
+        "cabinet 4",
+        "shelf 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "garbagecan 1",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 1",
+        "towelholder 2"
+      ]
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 12,
+    "seconds": 16.6
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "note": "place lists asked inside the agent's own call (ONECALL_ACTION), nothing shown"
+  }
+}

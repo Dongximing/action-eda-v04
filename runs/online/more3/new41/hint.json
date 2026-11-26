@@ -1,0 +1,72 @@
+{
+  "id": "new41",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-Fork-None-CounterTop-23/trial_T20190908_233922_171295/game.tw-pddl",
+  "task": "put a clean fork in countertop.",
+  "arm": "hint",
+  "won": true,
+  "steps": 7,
+  "end": "success",
+  "baseline_won": true,
+  "baseline_steps": 7,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 1, a diningtable 1, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to diningtable 1",
+      "observation": "You arrive at diningtable 1. On the diningtable 1, you see a bowl 2, a bowl 1, a butterknife 1, a fork 4, a fork 3, a fork 2, a fork 1, a knife 1, a pan 1, a pen 1, a pencil 2, a pencil 1, a peppershaker 1, a plate 1, a pot 1, a potato 1, a soapbottle 1, a spatula 1, a spoon 3, a spoon 2, a spoon 1, a tomato 1, and a winebottle 1."
+    },
+    {
+      "id": "r2",
+      "action": "take fork 1 from diningtable 1",
+      "observation": "You pick up the fork 1 from the diningtable 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see nothing."
+    },
+    {
+      "id": "r4",
+      "action": "clean fork 1 with sinkbasin 1",
+      "observation": "You clean the fork 1 using the sinkbasin 1."
+    },
+    {
+      "id": "r5",
+      "action": "move fork 1 to countertop 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r6",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a bread 1, a knife 2, a lettuce 1, and a peppershaker 3."
+    },
+    {
+      "id": "r7",
+      "action": "move fork 1 to countertop 1",
+      "observation": "You move the fork 1 to the countertop 1."
+    }
+  ],
+  "decisions": [],
+  "hints_shown": 1,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 2,
+    "seconds": 1.9
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "hint": "[Hint: that command had no effect. Before trying it again, make sure you are at the right place and holding the right object.]"
+  }
+}

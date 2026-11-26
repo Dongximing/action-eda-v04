@@ -1,0 +1,277 @@
+{
+  "id": "new19",
+  "family": "pick_heat_then_place_in_recep",
+  "game": "pick_heat_then_place_in_recep-Mug-None-Cabinet-3/trial_T20190909_014639_335717/game.tw-pddl",
+  "task": "put a hot mug in cabinet.",
+  "arm": "llm",
+  "won": true,
+  "steps": 9,
+  "end": "success",
+  "baseline_won": false,
+  "baseline_steps": 50,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": 6,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 1, a drawer 8, a drawer 7, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a sidetable 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to coffeemachine 1",
+      "observation": "You arrive at coffeemachine 1. On the coffeemachine 1, you see a mug 1."
+    },
+    {
+      "id": "r2",
+      "action": "take mug 1 from coffeemachine 1",
+      "observation": "You pick up the mug 1 from the coffeemachine 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed."
+    },
+    {
+      "id": "r4",
+      "action": "open cabinet 1",
+      "observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see a plate 2, and a plate 1."
+    },
+    {
+      "id": "r5",
+      "action": "use mug 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r6",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r7",
+      "action": "heat mug 1 with microwave 1",
+      "observation": "You heat the mug 1 using the microwave 1."
+    },
+    {
+      "id": "r8",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is open. In it, you see a plate 2, and a plate 1."
+    },
+    {
+      "id": "r9",
+      "action": "move mug 1 to cabinet 1",
+      "observation": "You move the mug 1 to the cabinet 1."
+    }
+  ],
+  "decisions": [
+    {
+      "proposal": "take mug 1 from coffeemachine 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at coffeemachine 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r1"
+            ],
+            "reasoning": "Record r1 shows the agent executed 'go to coffeemachine 1' and the observation confirms 'You arrive at coffeemachine 1'."
+          },
+          {
+            "claim": "The agent is currently holding nothing",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r1"
+            ],
+            "reasoning": "Record r1 shows the agent arrived at the location and saw a mug, but did not pick it up yet. There is no record of the agent picking up an object before r1. Therefore, the agent is holding nothing."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 1,
+      "observation": "You pick up the mug 1 from the coffeemachine 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "open cabinet 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at cabinet 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r3"
+            ],
+            "reasoning": "Record r3 shows the agent executed 'go to cabinet 1' and received the observation 'You arrive at cabinet 1. The cabinet 1 is closed.', confirming the agent's current location."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 3,
+      "observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see a plate 2, and a plate 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "heat mug 1 with microwave 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding mug 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "reasoning": "In record r2, the agent successfully picked up mug 1 from the coffeemachine 1. There are no subsequent records indicating the agent dropped the mug. Therefore, the agent is still holding it."
+          },
+          {
+            "claim": "The agent is currently at microwave 1",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r4"
+            ],
+            "reasoning": "In record r3, the agent went to cabinet 1. In record r4, the agent opened cabinet 1. The agent has not moved to microwave 1 since then. The last known location is cabinet 1."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to microwave 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to microwave 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 5,
+      "observation": "You arrive at microwave 1. The microwave 1 is closed.",
+      "succeeded": true,
+      "proposal_would_succeed": false
+    },
+    {
+      "proposal": "heat mug 1 with microwave 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding mug 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "reasoning": "In record r2, the agent successfully picked up mug 1 from coffeemachine 1. No subsequent action in the history (r3 through r6) indicates the agent dropped the mug. Therefore, the agent is still holding it."
+          },
+          {
+            "claim": "The agent is currently at microwave 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r6"
+            ],
+            "reasoning": "In record r6, the agent executed 'go to microwave 1' and the observation confirms 'You arrive at microwave 1'. This is the most recent location update."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 6,
+      "observation": "You heat the mug 1 using the microwave 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "move mug 1 to cabinet 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding mug 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "reasoning": "In record r2, the agent picked up mug 1. In subsequent records (r3 through r7), the agent moved to other locations or performed actions, but never dropped the mug. Therefore, the agent is still holding it."
+          },
+          {
+            "claim": "The agent is currently at cabinet 1",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r6"
+            ],
+            "reasoning": "In record r3, the agent arrived at cabinet 1. In record r6, the agent moved to microwave 1. Since the agent is now at microwave 1, they are not at cabinet 1."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to cabinet 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 7,
+      "observation": "You arrive at cabinet 1. The cabinet 1 is open. In it, you see a plate 2, and a plate 1.",
+      "succeeded": true,
+      "proposal_would_succeed": false
+    },
+    {
+      "proposal": "move mug 1 to cabinet 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding mug 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "reasoning": "In record r2, the agent picked up mug 1. In subsequent records (r3 through r8), the agent moved to other locations or interacted with objects, but never put down mug 1. Therefore, the agent is still holding it."
+          },
+          {
+            "claim": "The agent is currently at cabinet 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r8"
+            ],
+            "reasoning": "In record r8, the agent's last action was 'go to cabinet 1', and the observation confirms arrival at cabinet 1. No subsequent movement has occurred."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 8,
+      "observation": "You move the mug 1 to the cabinet 1.",
+      "succeeded": true
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 6,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 1,
+    "seconds": 10.5
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "judge": "agent model, LLM_JUDGE"
+  }
+}

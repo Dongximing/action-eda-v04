@@ -1,0 +1,377 @@
+{
+  "id": "new29",
+  "family": "pick_cool_then_place_in_recep",
+  "game": "pick_cool_then_place_in_recep-Lettuce-None-CounterTop-1/trial_T20190908_042713_075616/game.tw-pddl",
+  "task": "cool some lettuce and put it in countertop.",
+  "arm": "d1",
+  "won": true,
+  "steps": 19,
+  "end": "success",
+  "baseline_won": true,
+  "baseline_steps": 22,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": 18,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 9, a drawer 8, a drawer 7, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed."
+    },
+    {
+      "id": "r2",
+      "action": "open cabinet 1",
+      "observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r3",
+      "action": "go to cabinet 2",
+      "observation": "You arrive at cabinet 2. The cabinet 2 is closed."
+    },
+    {
+      "id": "r4",
+      "action": "open cabinet 2",
+      "observation": "You open the cabinet 2. The cabinet 2 is open. In it, you see nothing."
+    },
+    {
+      "id": "r5",
+      "action": "go to cabinet 3",
+      "observation": "You arrive at cabinet 3. The cabinet 3 is closed."
+    },
+    {
+      "id": "r6",
+      "action": "open cabinet 3",
+      "observation": "You open the cabinet 3. The cabinet 3 is open. In it, you see nothing."
+    },
+    {
+      "id": "r7",
+      "action": "go to cabinet 4",
+      "observation": "You arrive at cabinet 4. On the cabinet 4, you see nothing."
+    },
+    {
+      "id": "r8",
+      "action": "go to cabinet 5",
+      "observation": "You arrive at cabinet 5. The cabinet 5 is closed."
+    },
+    {
+      "id": "r9",
+      "action": "open cabinet 5",
+      "observation": "You open the cabinet 5. The cabinet 5 is open. In it, you see nothing."
+    },
+    {
+      "id": "r10",
+      "action": "go to cabinet 6",
+      "observation": "You arrive at cabinet 6. The cabinet 6 is closed."
+    },
+    {
+      "id": "r11",
+      "action": "open cabinet 6",
+      "observation": "You open the cabinet 6. The cabinet 6 is open. In it, you see a kettle 1."
+    },
+    {
+      "id": "r12",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r13",
+      "action": "open fridge 1",
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a cup 1, a mug 2, a plate 1, a pot 1, a potato 1, a tomato 2, and a tomato 1."
+    },
+    {
+      "id": "r14",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a apple 1, a creditcard 1, a fork 1, a glassbottle 1, a lettuce 1, a saltshaker 2, and a spatula 1."
+    },
+    {
+      "id": "r15",
+      "action": "take lettuce 1 from countertop 1",
+      "observation": "You pick up the lettuce 1 from the countertop 1."
+    },
+    {
+      "id": "r16",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is open. In it, you see a cup 1, a mug 2, a plate 1, a pot 1, a potato 1, a tomato 2, and a tomato 1."
+    },
+    {
+      "id": "r17",
+      "action": "cool lettuce 1 with fridge 1",
+      "observation": "You cool the lettuce 1 using the fridge 1."
+    },
+    {
+      "id": "r18",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a apple 1, a creditcard 1, a fork 1, a glassbottle 1, a saltshaker 2, and a spatula 1."
+    },
+    {
+      "id": "r19",
+      "action": "move lettuce 1 to countertop 1",
+      "observation": "You move the lettuce 1 to the countertop 1."
+    }
+  ],
+  "decisions": [
+    {
+      "proposal": "open cabinet 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at cabinet 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r1"
+            ]
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 1,
+      "observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see nothing.",
+      "succeeded": true
+    },
+    {
+      "proposal": "open cabinet 2",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at cabinet 2",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r3"
+            ]
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 3,
+      "observation": "You open the cabinet 2. The cabinet 2 is open. In it, you see nothing.",
+      "succeeded": true
+    },
+    {
+      "proposal": "open cabinet 3",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at cabinet 3",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r5"
+            ]
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 5,
+      "observation": "You open the cabinet 3. The cabinet 3 is open. In it, you see nothing.",
+      "succeeded": true
+    },
+    {
+      "proposal": "open cabinet 5",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at cabinet 5",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r8"
+            ]
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 8,
+      "observation": "You open the cabinet 5. The cabinet 5 is open. In it, you see nothing.",
+      "succeeded": true
+    },
+    {
+      "proposal": "open cabinet 6",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at cabinet 6",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r10"
+            ]
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 10,
+      "observation": "You open the cabinet 6. The cabinet 6 is open. In it, you see a kettle 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "open fridge 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at fridge 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r12"
+            ]
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 12,
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a cup 1, a mug 2, a plate 1, a pot 1, a potato 1, a tomato 2, and a tomato 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "take lettuce 1 from countertop 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at countertop 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r14"
+            ]
+          },
+          {
+            "claim": "The agent is currently holding nothing",
+            "verdict": "SUPPORTED_DEFAULT",
+            "evidence_records": []
+          }
+        ],
+        "calls": 16
+      },
+      "blocked": false,
+      "step": 14,
+      "observation": "You pick up the lettuce 1 from the countertop 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "cool lettuce 1 with fridge 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding lettuce 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r15"
+            ]
+          },
+          {
+            "claim": "The agent is currently at fridge 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r16"
+            ]
+          }
+        ],
+        "calls": 3
+      },
+      "blocked": false,
+      "step": 16,
+      "observation": "You cool the lettuce 1 using the fridge 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "move lettuce 1 to countertop 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding lettuce 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r17"
+            ]
+          },
+          {
+            "claim": "The agent is currently at countertop 1",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r16"
+            ]
+          }
+        ],
+        "calls": 3
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to countertop 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to countertop 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 17,
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a apple 1, a creditcard 1, a fork 1, a glassbottle 1, a saltshaker 2, and a spatula 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "move lettuce 1 to countertop 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding lettuce 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r17"
+            ]
+          },
+          {
+            "claim": "The agent is currently at countertop 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r18"
+            ]
+          }
+        ],
+        "calls": 3
+      },
+      "blocked": false,
+      "step": 18,
+      "observation": "You move the lettuce 1 to the countertop 1.",
+      "succeeded": true
+    }
+  ],
+  "usage": {
+    "judge": {
+      "calls": 30,
+      "cache_hits": 1,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "seconds": 10.187131404876709,
+      "one_hot": 0
+    },
+    "new_actor_requests": 2,
+    "seconds": 12.3
+  },
+  "config": {
+    "adapter": "adapters.openrouter_chat:choose",
+    "fewshot": "/Users/ximing/Desktop/action-eda-v04/data/fewshot/alfworld_record_fewshot.json",
+    "record_style": "state",
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail"
+  }
+}

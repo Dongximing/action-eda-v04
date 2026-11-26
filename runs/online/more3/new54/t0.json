@@ -1,0 +1,112 @@
+{
+  "id": "new54",
+  "family": "pick_cool_then_place_in_recep",
+  "game": "pick_cool_then_place_in_recep-Pan-None-StoveBurner-23/trial_T20190906_215856_374127/game.tw-pddl",
+  "task": "cool some pan and put it in stoveburner.",
+  "arm": "t0",
+  "won": true,
+  "steps": 4,
+  "end": "success",
+  "baseline_won": true,
+  "baseline_steps": 4,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 1, a diningtable 1, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see a pan 1."
+    },
+    {
+      "id": "r2",
+      "action": "take pan 1 from stoveburner 1",
+      "observation": "You pick up the pan 1 from the stoveburner 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r4",
+      "action": "cool pan 1 with fridge 1",
+      "observation": "You cool the pan 1 using the fridge 1."
+    }
+  ],
+  "decisions": [
+    {
+      "proposal": "take pan 1 from stoveburner 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at stoveburner 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r1"
+            ]
+          },
+          {
+            "claim": "The agent is currently holding nothing",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r0"
+            ]
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": false,
+      "step": 1,
+      "observation": "You pick up the pan 1 from the stoveburner 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "cool pan 1 with fridge 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding pan 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ]
+          },
+          {
+            "claim": "The agent is currently at fridge 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r3"
+            ]
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": false,
+      "step": 3,
+      "observation": "You cool the pan 1 using the fridge 1.",
+      "succeeded": true
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 0,
+    "seconds": 0.4
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "checker": "aeda.alfworld tracker"
+  }
+}

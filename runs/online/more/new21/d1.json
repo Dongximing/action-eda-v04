@@ -1,0 +1,242 @@
+{
+  "id": "new21",
+  "family": "pick_heat_then_place_in_recep",
+  "game": "pick_heat_then_place_in_recep-Mug-None-SideTable-21/trial_T20190909_090729_088825/game.tw-pddl",
+  "task": "put a hot mug in sidetable.",
+  "arm": "d1",
+  "won": true,
+  "steps": 10,
+  "end": "success",
+  "baseline_won": true,
+  "baseline_steps": 10,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 1, a diningtable 3, a diningtable 2, a diningtable 1, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a sidetable 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to coffeemachine 1",
+      "observation": "You arrive at coffeemachine 1. On the coffeemachine 1, you see a mug 1."
+    },
+    {
+      "id": "r2",
+      "action": "take mug 1 from coffeemachine 1",
+      "observation": "You pick up the mug 1 from the coffeemachine 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to sidetable 1",
+      "observation": "You arrive at sidetable 1. On the sidetable 1, you see a knife 1, a soapbottle 1, a spoon 1, and a tomato 2."
+    },
+    {
+      "id": "r4",
+      "action": "heat mug 1 with microwave 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r5",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r6",
+      "action": "open microwave 1",
+      "observation": "You open the microwave 1. The microwave 1 is open. In it, you see a apple 2, and a egg 1."
+    },
+    {
+      "id": "r7",
+      "action": "close microwave 1",
+      "observation": "You close the microwave 1."
+    },
+    {
+      "id": "r8",
+      "action": "heat mug 1 with microwave 1",
+      "observation": "You heat the mug 1 using the microwave 1."
+    },
+    {
+      "id": "r9",
+      "action": "go to sidetable 1",
+      "observation": "You arrive at sidetable 1. On the sidetable 1, you see a knife 1, a soapbottle 1, a spoon 1, and a tomato 2."
+    },
+    {
+      "id": "r10",
+      "action": "move mug 1 to sidetable 1",
+      "observation": "You move the mug 1 to the sidetable 1."
+    }
+  ],
+  "decisions": [
+    {
+      "proposal": "take mug 1 from coffeemachine 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at coffeemachine 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r1"
+            ]
+          },
+          {
+            "claim": "The agent is currently holding nothing",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r0"
+            ]
+          }
+        ],
+        "calls": 3
+      },
+      "blocked": false,
+      "step": 1,
+      "observation": "You pick up the mug 1 from the coffeemachine 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "heat mug 1 with microwave 1",
+      "check": {
+        "status": "UNKNOWN",
+        "claims": [
+          {
+            "claim": "The agent is currently holding mug 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ]
+          },
+          {
+            "claim": "The agent is currently at microwave 1",
+            "verdict": "UNKNOWN",
+            "evidence_records": [
+              "r3",
+              "r1"
+            ]
+          }
+        ],
+        "calls": 5
+      },
+      "blocked": false,
+      "step": 3,
+      "observation": "Nothing happens.",
+      "succeeded": false
+    },
+    {
+      "proposal": "open microwave 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at microwave 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r5"
+            ]
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 5,
+      "observation": "You open the microwave 1. The microwave 1 is open. In it, you see a apple 2, and a egg 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "close microwave 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at microwave 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r6"
+            ]
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 6,
+      "observation": "You close the microwave 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "heat mug 1 with microwave 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding mug 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ]
+          },
+          {
+            "claim": "The agent is currently at microwave 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r7"
+            ]
+          }
+        ],
+        "calls": 7
+      },
+      "blocked": false,
+      "step": 7,
+      "observation": "You heat the mug 1 using the microwave 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "move mug 1 to sidetable 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding mug 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ]
+          },
+          {
+            "claim": "The agent is currently at sidetable 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r9"
+            ]
+          }
+        ],
+        "calls": 9
+      },
+      "blocked": false,
+      "step": 9,
+      "observation": "You move the mug 1 to the sidetable 1.",
+      "succeeded": true
+    }
+  ],
+  "usage": {
+    "judge": {
+      "calls": 24,
+      "cache_hits": 2,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "seconds": 8.168955564498901,
+      "one_hot": 0
+    },
+    "new_actor_requests": 0,
+    "seconds": 8.7
+  },
+  "config": {
+    "adapter": "adapters.openrouter_chat:choose",
+    "fewshot": "/Users/ximing/Desktop/action-eda-v04/data/fewshot/alfworld_record_fewshot.json",
+    "record_style": "state",
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail"
+  }
+}

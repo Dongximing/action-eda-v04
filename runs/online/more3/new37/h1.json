@@ -1,0 +1,218 @@
+{
+  "id": "new37",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-ButterKnife-None-CounterTop-8/trial_T20190909_105559_983897/game.tw-pddl",
+  "task": "put a clean butterknife in countertop.",
+  "arm": "h1",
+  "won": true,
+  "steps": 9,
+  "end": "success",
+  "baseline_won": true,
+  "baseline_steps": 10,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": 8,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 18, a cabinet 17, a cabinet 16, a cabinet 15, a cabinet 14, a cabinet 13, a cabinet 12, a cabinet 11, a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 4, a countertop 3, a countertop 2, a countertop 1, a drawer 7, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a cup 1, a houseplant 1, a lettuce 1, a soapbottle 1, a spatula 1, and a spoon 1."
+    },
+    {
+      "id": "r2",
+      "action": "take butterknife from countertop 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r3",
+      "action": "go to countertop 4",
+      "observation": "You arrive at countertop 4. On the countertop 4, you see a butterknife 3, a dishsponge 2, and a peppershaker 1."
+    },
+    {
+      "id": "r4",
+      "action": "take butterknife 3 from countertop 4",
+      "observation": "You pick up the butterknife 3 from the countertop 4."
+    },
+    {
+      "id": "r5",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a cup 1, a houseplant 1, a lettuce 1, a soapbottle 1, a spatula 1, and a spoon 1."
+    },
+    {
+      "id": "r6",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see nothing."
+    },
+    {
+      "id": "r7",
+      "action": "clean butterknife 3 with sinkbasin 1",
+      "observation": "You clean the butterknife 3 using the sinkbasin 1."
+    },
+    {
+      "id": "r8",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a cup 1, a houseplant 1, a lettuce 1, a soapbottle 1, a spatula 1, and a spoon 1."
+    },
+    {
+      "id": "r9",
+      "action": "move butterknife 3 to countertop 1",
+      "observation": "You move the butterknife 3 to the countertop 1."
+    }
+  ],
+  "decisions": [
+    {
+      "proposal": "take butterknife from countertop 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at countertop 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": []
+          },
+          {
+            "claim": "The agent is currently holding nothing",
+            "verdict": "SUPPORTED_DEFAULT",
+            "evidence_records": []
+          }
+        ],
+        "calls": 2
+      },
+      "blocked": false,
+      "step": 1,
+      "observation": "Nothing happens.",
+      "succeeded": false
+    },
+    {
+      "proposal": "take butterknife 3 from countertop 4",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at countertop 4",
+            "verdict": "SUPPORTED",
+            "evidence_records": []
+          },
+          {
+            "claim": "The agent is currently holding nothing",
+            "verdict": "SUPPORTED",
+            "evidence_records": []
+          }
+        ],
+        "calls": 2
+      },
+      "blocked": false,
+      "step": 3,
+      "observation": "You pick up the butterknife 3 from the countertop 4.",
+      "succeeded": true
+    },
+    {
+      "proposal": "clean butterknife 3 with sinkbasin 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding butterknife 3",
+            "verdict": "SUPPORTED",
+            "evidence_records": []
+          },
+          {
+            "claim": "The agent is currently at sinkbasin 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": []
+          }
+        ],
+        "calls": 2
+      },
+      "blocked": false,
+      "step": 6,
+      "observation": "You clean the butterknife 3 using the sinkbasin 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "move butterknife 3 to countertop 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding butterknife 3",
+            "verdict": "SUPPORTED",
+            "evidence_records": []
+          },
+          {
+            "claim": "The agent is currently at countertop 1",
+            "verdict": "CONTRADICTED",
+            "evidence_records": []
+          }
+        ],
+        "calls": 2
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to countertop 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to countertop 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 7,
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a cup 1, a houseplant 1, a lettuce 1, a soapbottle 1, a spatula 1, and a spoon 1.",
+      "succeeded": true,
+      "proposal_would_succeed": false
+    },
+    {
+      "proposal": "move butterknife 3 to countertop 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding butterknife 3",
+            "verdict": "SUPPORTED",
+            "evidence_records": []
+          },
+          {
+            "claim": "The agent is currently at countertop 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": []
+          }
+        ],
+        "calls": 2
+      },
+      "blocked": false,
+      "step": 8,
+      "observation": "You move the butterknife 3 to the countertop 1.",
+      "succeeded": true
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 10,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "seconds": 3.7151715755462646,
+      "one_hot": 0
+    },
+    "new_actor_requests": 2,
+    "seconds": 7.6
+  },
+  "config": {
+    "adapter": "adapters.openrouter_chat:choose",
+    "fewshot": "/Users/ximing/Desktop/action-eda-v04/data/fewshot/alfworld_record_fewshot.json",
+    "record_style": "state",
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail"
+  }
+}

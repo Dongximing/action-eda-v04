@@ -1,0 +1,77 @@
+{
+  "id": "game08",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-Spatula-None-DiningTable-4/trial_T20190909_002804_564168/game.tw-pddl",
+  "task": "clean some spatula and put it in diningtable.",
+  "arm": "hint",
+  "won": true,
+  "steps": 8,
+  "end": "success",
+  "baseline_won": true,
+  "baseline_steps": 7,
+  "baseline_source": "src natural.json",
+  "diverged_from_baseline_at": 7,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a diningtable 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to diningtable 1",
+      "observation": "You arrive at diningtable 1. On the diningtable 1, you see a bread 2, a bread 1, a lettuce 3, a lettuce 2, a lettuce 1, a pan 1, a soapbottle 3, a soapbottle 2, a spatula 2, and a spoon 2."
+    },
+    {
+      "id": "r2",
+      "action": "take spatula 2 from diningtable 1",
+      "observation": "You pick up the spatula 2 from the diningtable 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a cup 2, a fork 2, and a knife 1."
+    },
+    {
+      "id": "r4",
+      "action": "clean spatula 2 with sinkbasin 1",
+      "observation": "You clean the spatula 2 using the sinkbasin 1."
+    },
+    {
+      "id": "r5",
+      "action": "move spatula 2 to diningtable 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r6",
+      "action": "go to diningtable 1",
+      "observation": "You arrive at diningtable 1. On the diningtable 1, you see a bread 2, a bread 1, a lettuce 3, a lettuce 2, a lettuce 1, a pan 1, a soapbottle 3, a soapbottle 2, and a spoon 2."
+    },
+    {
+      "id": "r7",
+      "action": "inventory",
+      "observation": "You are carrying: a spatula 2."
+    },
+    {
+      "id": "r8",
+      "action": "move spatula 2 to diningtable 1",
+      "observation": "You move the spatula 2 to the diningtable 1."
+    }
+  ],
+  "decisions": [],
+  "hints_shown": 1,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 3,
+    "seconds": 2.2
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "hint": "[Hint: that command had no effect. Before trying it again, make sure you are at the right place and holding the right object.]"
+  }
+}

@@ -1,0 +1,2963 @@
+{
+  "id": "new02",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-Cloth-None-Drawer-423/trial_T20190908_140701_251653/game.tw-pddl",
+  "task": "clean some cloth and put it in drawer.",
+  "arm": "selfexplore",
+  "won": false,
+  "steps": 50,
+  "end": "step_limit",
+  "baseline_won": false,
+  "baseline_steps": 50,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": 3,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a bathtubbasin 1, a countertop 2, a countertop 1, a drawer 8, a drawer 7, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a handtowelholder 4, a handtowelholder 3, a handtowelholder 2, a handtowelholder 1, a sinkbasin 2, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to towelholder 1",
+      "observation": "You arrive at towelholder 1. On the towelholder 1, you see a towel 1."
+    },
+    {
+      "id": "r2",
+      "action": "take towel 1 from towelholder 1",
+      "observation": "You pick up the towel 1 from the towelholder 1."
+    },
+    {
+      "id": "r3",
+      "action": "clean towel 1 with sinkbasin 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r4",
+      "action": "go to sinkbasin 2",
+      "observation": "You arrive at sinkbasin 2. On the sinkbasin 2, you see a sink 2."
+    },
+    {
+      "id": "r5",
+      "action": "clean towel 1 with sinkbasin 2",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r6",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see nothing."
+    },
+    {
+      "id": "r7",
+      "action": "clean towel 1 with sinkbasin 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r8",
+      "action": "go to drawer 1",
+      "observation": "You arrive at drawer 1. The drawer 1 is closed."
+    },
+    {
+      "id": "r9",
+      "action": "open drawer 1",
+      "observation": "You open the drawer 1. The drawer 1 is open. In it, you see a cloth 1."
+    },
+    {
+      "id": "r10",
+      "action": "take cloth 1 from drawer 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r11",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see nothing."
+    },
+    {
+      "id": "r12",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r13",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r14",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r15",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r16",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r17",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r18",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r19",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r20",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r21",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r22",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r23",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r24",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r25",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r26",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r27",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r28",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r29",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r30",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r31",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r32",
+      "action": "go to towelholder 1",
+      "observation": "You arrive at towelholder 1. On the towelholder 1, you see nothing."
+    },
+    {
+      "id": "r33",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r34",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r35",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r36",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r37",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r38",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r39",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r40",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r41",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r42",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r43",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r44",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r45",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r46",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r47",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r48",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r49",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r50",
+      "action": "go to towelholder 4",
+      "observation": "Nothing happens."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "code_visited": [],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 1"
+      ],
+      "model_visited": [],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 1"
+      ]
+    },
+    {
+      "step": 1,
+      "code_visited": [
+        "towelholder 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ]
+    },
+    {
+      "step": 2,
+      "code_visited": [
+        "towelholder 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ]
+    },
+    {
+      "step": 3,
+      "code_visited": [
+        "towelholder 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 2",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ]
+    },
+    {
+      "step": 4,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ]
+    },
+    {
+      "step": 5,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ]
+    },
+    {
+      "step": 6,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ]
+    },
+    {
+      "step": 7,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ]
+    },
+    {
+      "step": 8,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4",
+        "towelholder 3",
+        "towelholder 2"
+      ]
+    },
+    {
+      "step": 9,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4",
+        "towelholder 3",
+        "towelholder 2"
+      ]
+    },
+    {
+      "step": 10,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4",
+        "towelholder 3",
+        "towelholder 2"
+      ]
+    },
+    {
+      "step": 11,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4",
+        "towelholder 3",
+        "towelholder 2"
+      ]
+    },
+    {
+      "step": 12,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 13,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 14,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 15,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 16,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 17,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 18,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 19,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 20,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 21,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 22,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 23,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 24,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 25,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 26,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 27,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 28,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 29,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 30,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 31,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 32,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 33,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 34,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 35,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 36,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 37,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 38,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 39,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 40,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 41,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 42,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 43,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 44,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 45,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 46,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "sinkbasin 2",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 47,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "sinkbasin 2",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 48,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "sinkbasin 2",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    },
+    {
+      "step": 49,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 2",
+        "sinkbasin 1",
+        "drawer 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "sinkbasin 2",
+        "drawer 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "countertop 2",
+        "countertop 1",
+        "drawer 8",
+        "drawer 7",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "garbagecan 1",
+        "handtowelholder 4",
+        "handtowelholder 3",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 4"
+      ]
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 50,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 47,
+    "seconds": 127.5
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "note": "unvisited places written by the agent model (SELF_PLACES)"
+  }
+}

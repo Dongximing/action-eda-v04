@@ -1,0 +1,295 @@
+{
+  "id": "game12",
+  "family": "pick_cool_then_place_in_recep",
+  "game": "pick_cool_then_place_in_recep-Pan-None-DiningTable-7/trial_T20190908_232648_241836/game.tw-pddl",
+  "task": "cool some pan and put it in diningtable.",
+  "arm": "mw",
+  "won": true,
+  "steps": 10,
+  "end": "success",
+  "baseline_won": true,
+  "baseline_steps": 12,
+  "baseline_source": "src natural.json",
+  "diverged_from_baseline_at": 9,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 13, a cabinet 12, a cabinet 11, a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 2, a countertop 1, a diningtable 1, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing."
+    },
+    {
+      "id": "r2",
+      "action": "go to stoveburner 2",
+      "observation": "You arrive at stoveburner 2. On the stoveburner 2, you see a kettle 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to stoveburner 3",
+      "observation": "You arrive at stoveburner 3. On the stoveburner 3, you see a pot 2."
+    },
+    {
+      "id": "r4",
+      "action": "go to stoveburner 4",
+      "observation": "You arrive at stoveburner 4. On the stoveburner 4, you see a pan 1."
+    },
+    {
+      "id": "r5",
+      "action": "take pan 1 from stoveburner 4",
+      "observation": "You pick up the pan 1 from the stoveburner 4."
+    },
+    {
+      "id": "r6",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r7",
+      "action": "cool pan 1 with fridge 1",
+      "observation": "You cool the pan 1 using the fridge 1."
+    },
+    {
+      "id": "r8",
+      "action": "move pan 1 to diningtable 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r9",
+      "action": "go to diningtable 1",
+      "observation": "You arrive at diningtable 1. On the diningtable 1, you see a book 1, a bread 2, a bread 1, a dishsponge 1, a fork 1, a houseplant 1, a lettuce 1, a potato 3, a saltshaker 2, a saltshaker 1, a spatula 3, a spatula 2, a tomato 1, and a winebottle 2."
+    },
+    {
+      "id": "r10",
+      "action": "move pan 1 to diningtable 1",
+      "observation": "You move the pan 1 to the diningtable 1."
+    }
+  ],
+  "decisions": [
+    {
+      "proposal": "take pan 1 from stoveburner 4",
+      "check": {
+        "status": "UNKNOWN",
+        "claims": [
+          {
+            "claim": "The observation must explicitly state 'On the stoveburner 4, you see a pan 1' or similar confirmation of the pan's presence at that specific location.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r4"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent's current location must be stoveburner 4, confirmed by the observation stating 'You arrive at stoveburner 4' or the context of the last successful 'go to' action.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r4"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent's inventory must not contain 'pan 1', which can be inferred if the task history shows no prior successful 'take pan 1' action and the current observation does not indicate holding it.",
+            "verdict": "UNKNOWN",
+            "evidence_records": [],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 7
+      },
+      "blocked": false,
+      "step": 4,
+      "observation": "You pick up the pan 1 from the stoveburner 4.",
+      "succeeded": true
+    },
+    {
+      "proposal": "cool pan 1 with fridge 1",
+      "check": {
+        "status": "UNKNOWN",
+        "claims": [
+          {
+            "claim": "The fridge 1 must be open to accept an item for cooling.",
+            "verdict": "UNKNOWN",
+            "evidence_records": [],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must be at the fridge 1 to cool an item.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r6"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must hold the pan 1 to cool it.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r5"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 10
+      },
+      "blocked": false,
+      "step": 6,
+      "observation": "You cool the pan 1 using the fridge 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "move pan 1 to diningtable 1",
+      "check": {
+        "status": "UNKNOWN",
+        "claims": [
+          {
+            "claim": "The agent must be holding pan 1 to move it.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r5"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must be at diningtable 1 to move an item to it.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r4",
+              "r3"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The cooling action must have succeeded to transition the pan's state for the next step.",
+            "verdict": "UNKNOWN",
+            "evidence_records": [],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 16
+      },
+      "blocked": false,
+      "step": 7,
+      "observation": "Nothing happens.",
+      "succeeded": false
+    },
+    {
+      "proposal": "move pan 1 to diningtable 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The agent must be holding pan 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r5"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must be at diningtable 1.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r4"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The pan 1 must be at diningtable 1.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r8"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 10
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to diningtable 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to diningtable 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 8,
+      "observation": "You arrive at diningtable 1. On the diningtable 1, you see a book 1, a bread 2, a bread 1, a dishsponge 1, a fork 1, a houseplant 1, a lettuce 1, a potato 3, a saltshaker 2, a saltshaker 1, a spatula 3, a spatula 2, a tomato 1, and a winebottle 2.",
+      "succeeded": true,
+      "proposal_would_succeed": false
+    },
+    {
+      "proposal": "move pan 1 to diningtable 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent must be holding pan 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r5"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent must be at diningtable 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r9"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 6
+      },
+      "blocked": false,
+      "step": 9,
+      "observation": "You move the pan 1 to the diningtable 1.",
+      "succeeded": true
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 45,
+      "cache_hits": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "seconds": 20.664799451828003,
+      "one_hot": 0
+    },
+    "new_actor_requests": 7,
+    "seconds": 50.1
+  },
+  "config": {
+    "adapter": "adapters.openrouter_chat:choose",
+    "fewshot": "/Users/ximing/Desktop/action-eda-v04/data/fewshot/alfworld_record_fewshot.json",
+    "record_style": "state",
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "mw_k": 3
+  }
+}

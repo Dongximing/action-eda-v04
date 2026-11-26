@@ -1,0 +1,1883 @@
+{
+  "id": "game11",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-Cloth-None-Cabinet-405/trial_T20190907_080903_889497/game.tw-pddl",
+  "task": "put a clean cloth in cabinet.",
+  "arm": "loop",
+  "won": false,
+  "steps": 50,
+  "end": "step_limit",
+  "baseline_won": false,
+  "baseline_steps": 50,
+  "baseline_source": "src natural.json",
+  "diverged_from_baseline_at": 9,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a bathtubbasin 1, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a countertop 1, a garbagecan 1, a handtowelholder 2, a handtowelholder 1, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to towelholder 1",
+      "observation": "You arrive at towelholder 1. On the towelholder 1, you see a towel 1."
+    },
+    {
+      "id": "r2",
+      "action": "take towel 1 from towelholder 1",
+      "observation": "You pick up the towel 1 from the towelholder 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed."
+    },
+    {
+      "id": "r4",
+      "action": "open cabinet 1",
+      "observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see a soapbottle 2, and a soapbottle 1."
+    },
+    {
+      "id": "r5",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r6",
+      "action": "close cabinet 1",
+      "observation": "You close the cabinet 1."
+    },
+    {
+      "id": "r7",
+      "action": "open cabinet 1",
+      "observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see a soapbottle 2, and a soapbottle 1."
+    },
+    {
+      "id": "r8",
+      "action": "clean towel 1 with sinkbasin 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r9",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r10",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r11",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see nothing."
+    },
+    {
+      "id": "r12",
+      "action": "clean towel 1 with sinkbasin 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r13",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r14",
+      "action": "go to sinkbasin 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r15",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r16",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r17",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r18",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r19",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r20",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r21",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r22",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r23",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is open. In it, you see a soapbottle 2, and a soapbottle 1."
+    },
+    {
+      "id": "r24",
+      "action": "clean towel 1 with sinkbasin 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r25",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r26",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r27",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see nothing."
+    },
+    {
+      "id": "r28",
+      "action": "clean towel 1 with sinkbasin 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r29",
+      "action": "go to sinkbasin 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r30",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r31",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r32",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r33",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r34",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r35",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r36",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r37",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r38",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r39",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r40",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r41",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r42",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r43",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r44",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r45",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r46",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r47",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r48",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r49",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r50",
+      "action": "move towel 1 to cabinet 1",
+      "observation": "Nothing happens."
+    }
+  ],
+  "decisions": [
+    {
+      "proposal": "clean towel 1 with sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You just ran 'clean towel 1 with sinkbasin 1' at r8; running it again now would give the same result. Choose a command you have not tried since r8.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r8"
+            ],
+            "kind": "repeat",
+            "times_run": 1
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 8,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "clean towel 1 with sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'clean towel 1 with sinkbasin 1' at r8 (and 1 time in all), and nothing new has been observed since r8: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r8.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r8"
+            ],
+            "kind": "repeat",
+            "times_run": 1
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r9; running it again now would give the same result. Choose a command you have not tried since r9.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r9"
+                ],
+                "kind": "repeat",
+                "times_run": 2
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 9,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "clean towel 1 with sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You just ran 'clean towel 1 with sinkbasin 1' at r12; running it again now would give the same result. Choose a command you have not tried since r12.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r12"
+            ],
+            "kind": "repeat",
+            "times_run": 2
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 12,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You just ran 'go to sinkbasin 1' at r14; running it again now would give the same result. Choose a command you have not tried since r14.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r14"
+            ],
+            "kind": "repeat",
+            "times_run": 2
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You already ran 'move towel 1 to cabinet 1' at r13 (and 4 times in all), and nothing new has been observed since r13: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r13.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r13"
+                ],
+                "kind": "repeat",
+                "times_run": 4
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 14,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r14 (and 2 times in all), and nothing new has been observed since r14: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r14.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r14"
+            ],
+            "kind": "repeat",
+            "times_run": 2
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r15; running it again now would give the same result. Choose a command you have not tried since r15.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r15"
+                ],
+                "kind": "repeat",
+                "times_run": 5
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 15,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r14 (and 2 times in all), and nothing new has been observed since r14: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r14.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r14"
+            ],
+            "kind": "repeat",
+            "times_run": 2
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r16; running it again now would give the same result. Choose a command you have not tried since r16.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r16"
+                ],
+                "kind": "repeat",
+                "times_run": 6
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 16,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r14 (and 2 times in all), and nothing new has been observed since r14: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r14.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r14"
+            ],
+            "kind": "repeat",
+            "times_run": 2
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r17; running it again now would give the same result. Choose a command you have not tried since r17.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r17"
+                ],
+                "kind": "repeat",
+                "times_run": 7
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 17,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r14 (and 2 times in all), and nothing new has been observed since r14: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r14.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r14"
+            ],
+            "kind": "repeat",
+            "times_run": 2
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r18; running it again now would give the same result. Choose a command you have not tried since r18.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r18"
+                ],
+                "kind": "repeat",
+                "times_run": 8
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 18,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r14 (and 2 times in all), and nothing new has been observed since r14: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r14.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r14"
+            ],
+            "kind": "repeat",
+            "times_run": 2
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r19; running it again now would give the same result. Choose a command you have not tried since r19.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r19"
+                ],
+                "kind": "repeat",
+                "times_run": 9
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 19,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r14 (and 2 times in all), and nothing new has been observed since r14: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r14.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r14"
+            ],
+            "kind": "repeat",
+            "times_run": 2
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r20; running it again now would give the same result. Choose a command you have not tried since r20.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r20"
+                ],
+                "kind": "repeat",
+                "times_run": 10
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 20,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r14 (and 2 times in all), and nothing new has been observed since r14: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r14.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r14"
+            ],
+            "kind": "repeat",
+            "times_run": 2
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r21; running it again now would give the same result. Choose a command you have not tried since r21.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r21"
+                ],
+                "kind": "repeat",
+                "times_run": 11
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 21,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "clean towel 1 with sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'clean towel 1 with sinkbasin 1' at r12 (and 2 times in all), and nothing new has been observed since r12: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r12.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r12"
+            ],
+            "kind": "repeat",
+            "times_run": 2
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to cabinet 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to cabinet 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 22,
+      "observation": "You arrive at cabinet 1. The cabinet 1 is open. In it, you see a soapbottle 2, and a soapbottle 1.",
+      "succeeded": true,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "clean towel 1 with sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You just ran 'clean towel 1 with sinkbasin 1' at r24; running it again now would give the same result. Choose a command you have not tried since r24.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r24"
+            ],
+            "kind": "repeat",
+            "times_run": 3
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 24,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "clean towel 1 with sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'clean towel 1 with sinkbasin 1' at r24 (and 3 times in all), and nothing new has been observed since r24: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r24.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r24"
+            ],
+            "kind": "repeat",
+            "times_run": 3
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r25; running it again now would give the same result. Choose a command you have not tried since r25.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r25"
+                ],
+                "kind": "repeat",
+                "times_run": 13
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 25,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You just ran 'go to sinkbasin 1' at r29; running it again now would give the same result. Choose a command you have not tried since r29.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r29"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 29,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r29 (and 4 times in all), and nothing new has been observed since r29: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r29.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r29"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r30; running it again now would give the same result. Choose a command you have not tried since r30.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r30"
+                ],
+                "kind": "repeat",
+                "times_run": 15
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 30,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r29 (and 4 times in all), and nothing new has been observed since r29: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r29.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r29"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r31; running it again now would give the same result. Choose a command you have not tried since r31.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r31"
+                ],
+                "kind": "repeat",
+                "times_run": 16
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 31,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r29 (and 4 times in all), and nothing new has been observed since r29: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r29.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r29"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r32; running it again now would give the same result. Choose a command you have not tried since r32.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r32"
+                ],
+                "kind": "repeat",
+                "times_run": 17
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 32,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r29 (and 4 times in all), and nothing new has been observed since r29: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r29.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r29"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r33; running it again now would give the same result. Choose a command you have not tried since r33.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r33"
+                ],
+                "kind": "repeat",
+                "times_run": 18
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 33,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r29 (and 4 times in all), and nothing new has been observed since r29: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r29.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r29"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r34; running it again now would give the same result. Choose a command you have not tried since r34.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r34"
+                ],
+                "kind": "repeat",
+                "times_run": 19
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 34,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r29 (and 4 times in all), and nothing new has been observed since r29: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r29.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r29"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r35; running it again now would give the same result. Choose a command you have not tried since r35.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r35"
+                ],
+                "kind": "repeat",
+                "times_run": 20
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 35,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r29 (and 4 times in all), and nothing new has been observed since r29: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r29.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r29"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r36; running it again now would give the same result. Choose a command you have not tried since r36.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r36"
+                ],
+                "kind": "repeat",
+                "times_run": 21
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 36,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r29 (and 4 times in all), and nothing new has been observed since r29: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r29.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r29"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r37; running it again now would give the same result. Choose a command you have not tried since r37.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r37"
+                ],
+                "kind": "repeat",
+                "times_run": 22
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 37,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r29 (and 4 times in all), and nothing new has been observed since r29: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r29.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r29"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r38; running it again now would give the same result. Choose a command you have not tried since r38.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r38"
+                ],
+                "kind": "repeat",
+                "times_run": 23
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 38,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r29 (and 4 times in all), and nothing new has been observed since r29: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r29.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r29"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r39; running it again now would give the same result. Choose a command you have not tried since r39.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r39"
+                ],
+                "kind": "repeat",
+                "times_run": 24
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 39,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r29 (and 4 times in all), and nothing new has been observed since r29: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r29.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r29"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r40; running it again now would give the same result. Choose a command you have not tried since r40.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r40"
+                ],
+                "kind": "repeat",
+                "times_run": 25
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 40,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r29 (and 4 times in all), and nothing new has been observed since r29: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r29.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r29"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r41; running it again now would give the same result. Choose a command you have not tried since r41.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r41"
+                ],
+                "kind": "repeat",
+                "times_run": 26
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 41,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r29 (and 4 times in all), and nothing new has been observed since r29: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r29.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r29"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r42; running it again now would give the same result. Choose a command you have not tried since r42.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r42"
+                ],
+                "kind": "repeat",
+                "times_run": 27
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 42,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r29 (and 4 times in all), and nothing new has been observed since r29: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r29.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r29"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r43; running it again now would give the same result. Choose a command you have not tried since r43.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r43"
+                ],
+                "kind": "repeat",
+                "times_run": 28
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 43,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r29 (and 4 times in all), and nothing new has been observed since r29: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r29.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r29"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r44; running it again now would give the same result. Choose a command you have not tried since r44.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r44"
+                ],
+                "kind": "repeat",
+                "times_run": 29
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 44,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r29 (and 4 times in all), and nothing new has been observed since r29: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r29.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r29"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r45; running it again now would give the same result. Choose a command you have not tried since r45.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r45"
+                ],
+                "kind": "repeat",
+                "times_run": 30
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 45,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r29 (and 4 times in all), and nothing new has been observed since r29: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r29.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r29"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r46; running it again now would give the same result. Choose a command you have not tried since r46.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r46"
+                ],
+                "kind": "repeat",
+                "times_run": 31
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 46,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r29 (and 4 times in all), and nothing new has been observed since r29: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r29.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r29"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r47; running it again now would give the same result. Choose a command you have not tried since r47.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r47"
+                ],
+                "kind": "repeat",
+                "times_run": 32
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 47,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r29 (and 4 times in all), and nothing new has been observed since r29: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r29.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r29"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r48; running it again now would give the same result. Choose a command you have not tried since r48.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r48"
+                ],
+                "kind": "repeat",
+                "times_run": 33
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 48,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    },
+    {
+      "proposal": "go to sinkbasin 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "You already ran 'go to sinkbasin 1' at r29 (and 4 times in all), and nothing new has been observed since r29: every later observation repeats an earlier one. Running it again would give the same result. Choose a command you have not tried since r29.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r29"
+            ],
+            "kind": "repeat",
+            "times_run": 4
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "move towel 1 to cabinet 1",
+          "check": {
+            "status": "CONTRADICTED",
+            "claims": [
+              {
+                "claim": "You just ran 'move towel 1 to cabinet 1' at r49; running it again now would give the same result. Choose a command you have not tried since r49.",
+                "verdict": "CONTRADICTED",
+                "evidence_records": [
+                  "r49"
+                ],
+                "kind": "repeat",
+                "times_run": 34
+              }
+            ],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "move towel 1 to cabinet 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 49,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": false,
+      "proposal_would_be_new": false
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 76,
+    "seconds": 64.0
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "checker": "repetition (loop_check)"
+  }
+}

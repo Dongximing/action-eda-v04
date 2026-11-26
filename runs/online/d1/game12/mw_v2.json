@@ -1,0 +1,369 @@
+{
+  "id": "game12",
+  "family": "pick_cool_then_place_in_recep",
+  "game": "pick_cool_then_place_in_recep-Pan-None-DiningTable-7/trial_T20190908_232648_241836/game.tw-pddl",
+  "task": "cool some pan and put it in diningtable.",
+  "arm": "mw_v2",
+  "won": true,
+  "steps": 10,
+  "end": "success",
+  "baseline_won": true,
+  "baseline_steps": 12,
+  "baseline_source": "src natural.json",
+  "diverged_from_baseline_at": 7,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 13, a cabinet 12, a cabinet 11, a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 2, a countertop 1, a diningtable 1, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing."
+    },
+    {
+      "id": "r2",
+      "action": "go to stoveburner 2",
+      "observation": "You arrive at stoveburner 2. On the stoveburner 2, you see a kettle 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to stoveburner 3",
+      "observation": "You arrive at stoveburner 3. On the stoveburner 3, you see a pot 2."
+    },
+    {
+      "id": "r4",
+      "action": "go to stoveburner 4",
+      "observation": "You arrive at stoveburner 4. On the stoveburner 4, you see a pan 1."
+    },
+    {
+      "id": "r5",
+      "action": "take pan 1 from stoveburner 4",
+      "observation": "You pick up the pan 1 from the stoveburner 4."
+    },
+    {
+      "id": "r6",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r7",
+      "action": "open fridge 1",
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r8",
+      "action": "cool pan 1 with fridge 1",
+      "observation": "You cool the pan 1 using the fridge 1."
+    },
+    {
+      "id": "r9",
+      "action": "go to diningtable 1",
+      "observation": "You arrive at diningtable 1. On the diningtable 1, you see a book 1, a bread 2, a bread 1, a dishsponge 1, a fork 1, a houseplant 1, a lettuce 1, a potato 3, a saltshaker 2, a saltshaker 1, a spatula 3, a spatula 2, a tomato 1, and a winebottle 2."
+    },
+    {
+      "id": "r10",
+      "action": "move pan 1 to diningtable 1",
+      "observation": "You move the pan 1 to the diningtable 1."
+    }
+  ],
+  "decisions": [
+    {
+      "proposal": "take pan 1 from stoveburner 4",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The agent is holding pan 1.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r4"
+            ],
+            "eval_spec": {
+              "type": "holding",
+              "obj": "pan 1"
+            },
+            "tracker": "CONTRADICTED"
+          },
+          {
+            "claim": "The agent is at stoveburner 4.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r4"
+            ],
+            "eval_spec": {
+              "type": "at",
+              "loc": "stoveburner 4"
+            },
+            "tracker": "SUPPORTED"
+          },
+          {
+            "claim": "pan 1 is on stoveburner 4.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r4"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 3
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "take pan 1 from stoveburner 4",
+          "same_as_before": true
+        }
+      ],
+      "executed": "take pan 1 from stoveburner 4",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "step": 4,
+      "observation": "You pick up the pan 1 from the stoveburner 4.",
+      "succeeded": true,
+      "proposal_would_succeed": true
+    },
+    {
+      "proposal": "cool pan 1 with fridge 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The fridge 1 is open.",
+            "verdict": "UNKNOWN",
+            "evidence_records": [],
+            "eval_spec": null,
+            "tracker": null
+          },
+          {
+            "claim": "The agent is holding the pan 1.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r6"
+            ],
+            "eval_spec": {
+              "type": "holding",
+              "obj": "pan 1"
+            },
+            "tracker": "SUPPORTED"
+          },
+          {
+            "claim": "The agent is at the fridge 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r6"
+            ],
+            "eval_spec": {
+              "type": "at",
+              "loc": "fridge 1"
+            },
+            "tracker": "SUPPORTED"
+          }
+        ],
+        "calls": 9
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "open fridge 1",
+          "check": {
+            "status": "SUPPORTED",
+            "claims": [
+              {
+                "claim": "The fridge 1 is closed.",
+                "verdict": "SUPPORTED",
+                "evidence_records": [
+                  "r6"
+                ],
+                "eval_spec": null,
+                "tracker": null
+              },
+              {
+                "claim": "The agent is at the fridge 1.",
+                "verdict": "SUPPORTED",
+                "evidence_records": [
+                  "r6"
+                ],
+                "eval_spec": {
+                  "type": "at",
+                  "loc": "fridge 1"
+                },
+                "tracker": "SUPPORTED"
+              }
+            ],
+            "calls": 2
+          }
+        }
+      ],
+      "executed": "open fridge 1",
+      "executed_status": "SUPPORTED",
+      "executed_despite_contradiction": false,
+      "step": 6,
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see nothing.",
+      "succeeded": true,
+      "proposal_would_succeed": true
+    },
+    {
+      "proposal": "cool pan 1 with fridge 1",
+      "check": {
+        "status": "UNKNOWN",
+        "claims": [
+          {
+            "claim": "The agent is holding pan 1.",
+            "verdict": "UNKNOWN",
+            "evidence_records": [
+              "r7",
+              "r5"
+            ],
+            "eval_spec": {
+              "type": "holding",
+              "obj": "pan 1"
+            },
+            "tracker": "SUPPORTED"
+          },
+          {
+            "claim": "The agent is at fridge 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r7"
+            ],
+            "eval_spec": {
+              "type": "at",
+              "loc": "fridge 1"
+            },
+            "tracker": "SUPPORTED"
+          },
+          {
+            "claim": "The fridge 1 is open.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r7"
+            ],
+            "eval_spec": null,
+            "tracker": null
+          }
+        ],
+        "calls": 5
+      },
+      "blocked": false,
+      "step": 7,
+      "observation": "You cool the pan 1 using the fridge 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "move pan 1 to diningtable 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The agent is holding pan 1.",
+            "verdict": "UNKNOWN",
+            "evidence_records": [
+              "r7",
+              "r5"
+            ],
+            "eval_spec": {
+              "type": "holding",
+              "obj": "pan 1"
+            },
+            "tracker": "SUPPORTED"
+          },
+          {
+            "claim": "The agent is at diningtable 1.",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r4"
+            ],
+            "eval_spec": {
+              "type": "at",
+              "loc": "diningtable 1"
+            },
+            "tracker": "CONTRADICTED"
+          }
+        ],
+        "calls": 9
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to diningtable 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to diningtable 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 8,
+      "observation": "You arrive at diningtable 1. On the diningtable 1, you see a book 1, a bread 2, a bread 1, a dishsponge 1, a fork 1, a houseplant 1, a lettuce 1, a potato 3, a saltshaker 2, a saltshaker 1, a spatula 3, a spatula 2, a tomato 1, and a winebottle 2.",
+      "succeeded": true,
+      "proposal_would_succeed": false
+    },
+    {
+      "proposal": "move pan 1 to diningtable 1",
+      "check": {
+        "status": "UNKNOWN",
+        "claims": [
+          {
+            "claim": "The agent is holding pan 1.",
+            "verdict": "UNKNOWN",
+            "evidence_records": [
+              "r7",
+              "r5"
+            ],
+            "eval_spec": {
+              "type": "holding",
+              "obj": "pan 1"
+            },
+            "tracker": "SUPPORTED"
+          },
+          {
+            "claim": "The agent is at diningtable 1.",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r9"
+            ],
+            "eval_spec": {
+              "type": "at",
+              "loc": "diningtable 1"
+            },
+            "tracker": "SUPPORTED"
+          }
+        ],
+        "calls": 6
+      },
+      "blocked": false,
+      "step": 9,
+      "observation": "You move the pan 1 to the diningtable 1.",
+      "succeeded": true
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 30,
+      "cache_hits": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "seconds": 11.99053430557251,
+      "one_hot": 0
+    },
+    "new_actor_requests": 12,
+    "seconds": 26.3
+  },
+  "config": {
+    "adapter": "adapters.openrouter_chat:choose",
+    "fewshot": "",
+    "record_style": "state",
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "mw_k": 3,
+    "mw_writer": "v2"
+  }
+}

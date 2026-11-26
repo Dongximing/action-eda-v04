@@ -1,0 +1,537 @@
+{
+  "id": "new50",
+  "family": "pick_cool_then_place_in_recep",
+  "game": "pick_cool_then_place_in_recep-Bowl-None-Cabinet-20/trial_T20190909_112912_154874/game.tw-pddl",
+  "task": "put a cool bowl in cabinet.",
+  "arm": "llm",
+  "won": false,
+  "steps": 50,
+  "end": "step_limit",
+  "baseline_won": false,
+  "baseline_steps": 50,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": 16,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 13, a cabinet 12, a cabinet 11, a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 1, a diningtable 1, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "look",
+      "observation": "You are in the middle of a room. Looking quickly around you, you see nothing."
+    },
+    {
+      "id": "r2",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed."
+    },
+    {
+      "id": "r3",
+      "action": "open cabinet 1",
+      "observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r4",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r5",
+      "action": "open fridge 1",
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a bread 2, a egg 3, and a pot 2."
+    },
+    {
+      "id": "r6",
+      "action": "take pot 2 from fridge 1",
+      "observation": "You pick up the pot 2 from the fridge 1."
+    },
+    {
+      "id": "r7",
+      "action": "go to fridge 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r8",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see a pan 1."
+    },
+    {
+      "id": "r9",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is open. In it, you see a apple 1, a bread 2, and a egg 3."
+    },
+    {
+      "id": "r10",
+      "action": "close fridge 1",
+      "observation": "You close the fridge 1."
+    },
+    {
+      "id": "r11",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see a pan 1."
+    },
+    {
+      "id": "r12",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r13",
+      "action": "open fridge 1",
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a bread 2, and a egg 3."
+    },
+    {
+      "id": "r14",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r15",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is open. In it, you see a apple 1, a bread 2, and a egg 3."
+    },
+    {
+      "id": "r16",
+      "action": "close fridge 1",
+      "observation": "You close the fridge 1."
+    },
+    {
+      "id": "r17",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r18",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r19",
+      "action": "open fridge 1",
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a bread 2, and a egg 3."
+    },
+    {
+      "id": "r20",
+      "action": "close fridge 1",
+      "observation": "You close the fridge 1."
+    },
+    {
+      "id": "r21",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r22",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r23",
+      "action": "open fridge 1",
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a bread 2, and a egg 3."
+    },
+    {
+      "id": "r24",
+      "action": "close fridge 1",
+      "observation": "You close the fridge 1."
+    },
+    {
+      "id": "r25",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r26",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r27",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r28",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r29",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r30",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r31",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r32",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r33",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r34",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r35",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r36",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r37",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r38",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r39",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r40",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r41",
+      "action": "go to fridge 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r42",
+      "action": "go to fridge 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r43",
+      "action": "go to fridge 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r44",
+      "action": "go to fridge 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r45",
+      "action": "go to fridge 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r46",
+      "action": "go to fridge 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r47",
+      "action": "go to fridge 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r48",
+      "action": "go to fridge 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r49",
+      "action": "go to fridge 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r50",
+      "action": "go to fridge 1",
+      "observation": "Nothing happens."
+    }
+  ],
+  "decisions": [
+    {
+      "proposal": "open cabinet 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at cabinet 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r2"
+            ],
+            "reasoning": "Record r2 shows the agent executed 'go to cabinet 1' and received an observation confirming arrival at cabinet 1, stating 'You arrive at cabinet 1.' This establishes the agent's current location."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 2,
+      "observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see nothing.",
+      "succeeded": true
+    },
+    {
+      "proposal": "open fridge 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at fridge 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r4"
+            ],
+            "reasoning": "In record r4, the agent executed 'go to fridge 1' and received an observation confirming arrival at fridge 1. No subsequent actions have moved the agent away from this location."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 4,
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a bread 2, a egg 3, and a pot 2.",
+      "succeeded": true
+    },
+    {
+      "proposal": "take pot 2 from fridge 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at fridge 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r5"
+            ],
+            "reasoning": "Record r5 shows the agent opened fridge 1, which implies the agent is located at fridge 1. No subsequent record indicates a change in location."
+          },
+          {
+            "claim": "The agent is currently holding nothing",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r5"
+            ],
+            "reasoning": "The history records actions up to opening the fridge (r5). The proposed action is to take an item, but no prior action in the history shows the agent successfully picking up or holding any object. Therefore, the agent is currently holding nothing."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 5,
+      "observation": "You pick up the pot 2 from the fridge 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "close fridge 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at fridge 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r9"
+            ],
+            "reasoning": "In record r9, the agent executed 'go to fridge 1' and the observation confirms 'You arrive at fridge 1'. No subsequent actions have moved the agent away from this location."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 9,
+      "observation": "You close the fridge 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "open fridge 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at fridge 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r12"
+            ],
+            "reasoning": "The last recorded action (r12) was 'go to fridge 1', and the observation confirms the agent arrived at fridge 1. No subsequent actions have moved the agent away."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 12,
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a bread 2, and a egg 3.",
+      "succeeded": true
+    },
+    {
+      "proposal": "take apple 1 from fridge 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at fridge 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r15"
+            ],
+            "reasoning": "The last recorded action (r15) was 'go to fridge 1', and the observation confirms the agent arrived at fridge 1. Therefore, the agent is currently at fridge 1."
+          },
+          {
+            "claim": "The agent is currently holding nothing",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r6"
+            ],
+            "reasoning": "In record r6, the agent executed 'take pot 2 from fridge 1' and the observation states 'You pick up the pot 2 from the fridge 1.' No subsequent action has been taken to drop or place the pot. Therefore, the agent is holding the pot 2, not nothing."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "close fridge 1",
+          "check": {
+            "status": "SUPPORTED",
+            "claims": [
+              {
+                "claim": "The agent is currently at fridge 1",
+                "verdict": "SUPPORTED",
+                "evidence_records": [
+                  "r15"
+                ],
+                "reasoning": "The last recorded action in the history (r15) is 'go to fridge 1', and the observation confirms the agent arrived at fridge 1. Therefore, the agent is currently at fridge 1."
+              }
+            ],
+            "calls": 1
+          }
+        }
+      ],
+      "executed": "close fridge 1",
+      "executed_status": "SUPPORTED",
+      "executed_despite_contradiction": false,
+      "step": 15,
+      "observation": "You close the fridge 1.",
+      "succeeded": true,
+      "proposal_would_succeed": false
+    },
+    {
+      "proposal": "open fridge 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at fridge 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r18"
+            ],
+            "reasoning": "The last recorded action (r18) was 'go to fridge 1', and the observation confirms the agent arrived at fridge 1. Therefore, the agent is currently at fridge 1."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 18,
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a bread 2, and a egg 3.",
+      "succeeded": true
+    },
+    {
+      "proposal": "close fridge 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at fridge 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r19"
+            ],
+            "reasoning": "The last recorded action in the history (r19) is 'open fridge 1', and the observation confirms the agent arrived at and opened the fridge. Therefore, the agent is currently at fridge 1."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 19,
+      "observation": "You close the fridge 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "open fridge 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at fridge 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r22"
+            ],
+            "reasoning": "The last recorded action in the history (r22) is 'go to fridge 1', and the observation confirms the agent arrived at fridge 1. Therefore, the agent is currently at fridge 1."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 22,
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a bread 2, and a egg 3.",
+      "succeeded": true
+    },
+    {
+      "proposal": "close fridge 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at fridge 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r23"
+            ],
+            "reasoning": "The last recorded action in the history (r23) is 'open fridge 1', and the observation confirms the agent arrived at and opened the fridge. Therefore, the agent is currently at fridge 1."
+          }
+        ],
+        "calls": 1
+      },
+      "blocked": false,
+      "step": 23,
+      "observation": "You close the fridge 1.",
+      "succeeded": true
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 11,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 0,
+    "seconds": 14.4
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "judge": "agent model, LLM_JUDGE"
+  }
+}

@@ -1,0 +1,259 @@
+{
+  "id": "new47",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-Tomato-None-CounterTop-25/trial_T20190909_012550_586494/game.tw-pddl",
+  "task": "clean some tomato and put it in countertop.",
+  "arm": "t0",
+  "won": true,
+  "steps": 16,
+  "end": "success",
+  "baseline_won": true,
+  "baseline_steps": 22,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": 15,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 13, a cabinet 12, a cabinet 11, a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 1, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a fork 2."
+    },
+    {
+      "id": "r2",
+      "action": "look",
+      "observation": "You are facing the drawer 2, and sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r3",
+      "action": "look",
+      "observation": "You are facing the drawer 2, and sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r4",
+      "action": "look",
+      "observation": "You are facing the drawer 2, and sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r5",
+      "action": "look",
+      "observation": "You are facing the drawer 2, and sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r6",
+      "action": "look",
+      "observation": "You are facing the drawer 2, and sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r7",
+      "action": "look",
+      "observation": "You are facing the drawer 2, and sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r8",
+      "action": "look",
+      "observation": "You are facing the drawer 2, and sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r9",
+      "action": "look",
+      "observation": "You are facing the drawer 2, and sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r10",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r11",
+      "action": "open fridge 1",
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a bowl 1, a egg 1, a lettuce 2, a lettuce 1, a mug 2, a mug 1, a potato 1, and a tomato 1."
+    },
+    {
+      "id": "r12",
+      "action": "take tomato 1 from fridge 1",
+      "observation": "You pick up the tomato 1 from the fridge 1."
+    },
+    {
+      "id": "r13",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a fork 2."
+    },
+    {
+      "id": "r14",
+      "action": "clean tomato 1 with sinkbasin 1",
+      "observation": "You clean the tomato 1 using the sinkbasin 1."
+    },
+    {
+      "id": "r15",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a bread 1, a butterknife 1, a dishsponge 1, a fork 1, a knife 1, a mug 3, a pan 1, a peppershaker 2, a saltshaker 2, a saltshaker 1, a soapbottle 1, and a spoon 2."
+    },
+    {
+      "id": "r16",
+      "action": "move tomato 1 to countertop 1",
+      "observation": "You move the tomato 1 to the countertop 1."
+    }
+  ],
+  "decisions": [
+    {
+      "proposal": "open fridge 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at fridge 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r10"
+            ]
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": false,
+      "step": 10,
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a bowl 1, a egg 1, a lettuce 2, a lettuce 1, a mug 2, a mug 1, a potato 1, and a tomato 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "take tomato 1 from fridge 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently at fridge 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r10"
+            ]
+          },
+          {
+            "claim": "The agent is currently holding nothing",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r0"
+            ]
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": false,
+      "step": 11,
+      "observation": "You pick up the tomato 1 from the fridge 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "clean tomato 1 with sinkbasin 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding tomato 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r12"
+            ]
+          },
+          {
+            "claim": "The agent is currently at sinkbasin 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r13"
+            ]
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": false,
+      "step": 13,
+      "observation": "You clean the tomato 1 using the sinkbasin 1.",
+      "succeeded": true
+    },
+    {
+      "proposal": "move tomato 1 to countertop 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding tomato 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r12"
+            ]
+          },
+          {
+            "claim": "The agent is currently at countertop 1",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              "r13"
+            ]
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "go to countertop 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "go to countertop 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 14,
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a bread 1, a butterknife 1, a dishsponge 1, a fork 1, a knife 1, a mug 3, a pan 1, a peppershaker 2, a saltshaker 2, a saltshaker 1, a soapbottle 1, and a spoon 2.",
+      "succeeded": true
+    },
+    {
+      "proposal": "move tomato 1 to countertop 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "The agent is currently holding tomato 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r12"
+            ]
+          },
+          {
+            "claim": "The agent is currently at countertop 1",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              "r15"
+            ]
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": false,
+      "step": 15,
+      "observation": "You move the tomato 1 to the countertop 1.",
+      "succeeded": true
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 0,
+    "seconds": 0.8
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "checker": "aeda.alfworld tracker"
+  }
+}

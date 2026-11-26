@@ -1,0 +1,122 @@
+{
+  "id": "new03",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-Ladle-None-DiningTable-16/trial_T20190909_183724_205399/game.tw-pddl",
+  "task": "put a clean ladle in diningtable.",
+  "arm": "hint",
+  "won": true,
+  "steps": 17,
+  "end": "success",
+  "baseline_won": true,
+  "baseline_steps": 16,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": 16,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 27, a cabinet 26, a cabinet 25, a cabinet 24, a cabinet 23, a cabinet 22, a cabinet 21, a cabinet 20, a cabinet 19, a cabinet 18, a cabinet 17, a cabinet 16, a cabinet 15, a cabinet 14, a cabinet 13, a cabinet 12, a cabinet 11, a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 2, a countertop 1, a diningtable 1, a drawer 12, a drawer 11, a drawer 10, a drawer 9, a drawer 8, a drawer 7, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a dishsponge 2, a egg 3, a fork 2, and a mug 3."
+    },
+    {
+      "id": "r2",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r3",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r4",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r5",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r6",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r7",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r8",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r9",
+      "action": "look",
+      "observation": "You are facing the sinkbasin 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r10",
+      "action": "go to diningtable 1",
+      "observation": "You arrive at diningtable 1. On the diningtable 1, you see a bread 2, a bread 1, a butterknife 2, a cup 1, a fork 1, a knife 2, a knife 1, a ladle 1, a lettuce 2, a lettuce 1, a potato 1, a saltshaker 1, a soapbottle 1, a spatula 1, a spoon 1, a tomato 1, and a winebottle 1."
+    },
+    {
+      "id": "r11",
+      "action": "take ladle 1 from diningtable 1",
+      "observation": "You pick up the ladle 1 from the diningtable 1."
+    },
+    {
+      "id": "r12",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a dishsponge 2, a egg 3, a fork 2, and a mug 3."
+    },
+    {
+      "id": "r13",
+      "action": "clean ladle 1 with sinkbasin 1",
+      "observation": "You clean the ladle 1 using the sinkbasin 1."
+    },
+    {
+      "id": "r14",
+      "action": "move ladle 1 to diningtable 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r15",
+      "action": "go to diningtable 1",
+      "observation": "You arrive at diningtable 1. On the diningtable 1, you see a bread 2, a bread 1, a butterknife 2, a cup 1, a fork 1, a knife 2, a knife 1, a lettuce 2, a lettuce 1, a potato 1, a saltshaker 1, a soapbottle 1, a spatula 1, a spoon 1, a tomato 1, and a winebottle 1."
+    },
+    {
+      "id": "r16",
+      "action": "inventory",
+      "observation": "You are carrying: a ladle 1."
+    },
+    {
+      "id": "r17",
+      "action": "move ladle 1 to diningtable 1",
+      "observation": "You move the ladle 1 to the diningtable 1."
+    }
+  ],
+  "decisions": [],
+  "hints_shown": 1,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 3,
+    "seconds": 4.3
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "hint": "[Hint: that command had no effect. Before trying it again, make sure you are at the right place and holding the right object.]"
+  }
+}
