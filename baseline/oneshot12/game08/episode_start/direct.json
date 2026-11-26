@@ -1,0 +1,69 @@
+{
+  "arm": "direct",
+  "prefix_hash": "71d2bac223c326a6decab1a2a8d6e548295e668d563851c68b62a14ef652fab9",
+  "replay_verified": true,
+  "prefix_steps": 0,
+  "remaining_step_budget": 50,
+  "proposal": "go to diningtable 1",
+  "chosen": "go to diningtable 1",
+  "won": true,
+  "end": "success",
+  "total_env_steps": 7,
+  "suffix": [
+    {
+      "id": "r1",
+      "action": "go to diningtable 1",
+      "observation": "You arrive at diningtable 1. On the diningtable 1, you see a bread 2, a bread 1, a lettuce 3, a lettuce 2, a lettuce 1, a pan 1, a soapbottle 3, a soapbottle 2, a spatula 2, and a spoon 2."
+    },
+    {
+      "id": "r2",
+      "action": "take spatula 2 from diningtable 1",
+      "observation": "You pick up the spatula 2 from the diningtable 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a cup 2, a fork 2, and a knife 1."
+    },
+    {
+      "id": "r4",
+      "action": "clean spatula 2 with sinkbasin 1",
+      "observation": "You clean the spatula 2 using the sinkbasin 1."
+    },
+    {
+      "id": "r5",
+      "action": "move spatula 2 to diningtable 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r6",
+      "action": "go to diningtable 1",
+      "observation": "You arrive at diningtable 1. On the diningtable 1, you see a bread 2, a bread 1, a lettuce 3, a lettuce 2, a lettuce 1, a pan 1, a soapbottle 3, a soapbottle 2, and a spoon 2."
+    },
+    {
+      "id": "r7",
+      "action": "move spatula 2 to diningtable 1",
+      "observation": "You move the spatula 2 to the diningtable 1."
+    }
+  ],
+  "intervention": [],
+  "decisions": [],
+  "token_usage": {
+    "totals": {
+      "requests": 7,
+      "requests_missing_usage": 0,
+      "input_tokens": 10109,
+      "output_tokens": 95,
+      "total_tokens": 10204
+    },
+    "by_operation": {
+      "actor": {
+        "requests": 7,
+        "requests_missing_usage": 0,
+        "input_tokens": 10109,
+        "output_tokens": 95,
+        "total_tokens": 10204
+      }
+    }
+  }
+}

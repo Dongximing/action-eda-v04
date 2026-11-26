@@ -1,0 +1,303 @@
+{
+  "design": "episode",
+  "paired_unit": "whole game",
+  "games_planned": 12,
+  "natural_games_finished": 6,
+  "natural_games_won": 1,
+  "prefixes_selected": 6,
+  "missing_slots_among_finished_games": {
+    "episode_start": 0
+  },
+  "results": {
+    "direct": {
+      "prefixes": 6,
+      "different_games": 6,
+      "successes": 1,
+      "actions_reviewed": 0,
+      "action_changes_or_abstentions": 0,
+      "standalone_tokens": {
+        "requests": 256,
+        "requests_missing_usage": 0,
+        "input_tokens": 563333,
+        "output_tokens": 2607,
+        "total_tokens": 565940
+      },
+      "tokens_by_operation": {
+        "actor": {
+          "requests": 256,
+          "requests_missing_usage": 0,
+          "input_tokens": 563333,
+          "output_tokens": 2607,
+          "total_tokens": 565940
+        }
+      }
+    }
+  },
+  "paired_contrasts": {},
+  "physical_api_usage": [
+    {
+      "scope": "direct",
+      "model_role": "qwen",
+      "attempts": 256,
+      "failed_decisions": 0,
+      "input_tokens": 563333,
+      "output_tokens": 2607,
+      "total_tokens": 565940,
+      "input_reports": 256,
+      "output_reports": 256,
+      "total_reports": 256,
+      "transport_records": 256,
+      "reported_usd": 0.05698505,
+      "cost_reports": 256,
+      "seconds": 153.44,
+      "observed_input_tokens": 563333,
+      "observed_output_tokens": 2607,
+      "observed_total_tokens": 565940
+    }
+  ],
+  "natural_games": [
+    {
+      "game_id": "game01",
+      "family": "pick_heat_then_place_in_recep",
+      "won": true,
+      "steps": 6,
+      "selected": [
+        "episode_start"
+      ]
+    },
+    {
+      "game_id": "game02",
+      "family": "pick_heat_then_place_in_recep",
+      "won": false,
+      "steps": 50,
+      "selected": [
+        "episode_start"
+      ]
+    },
+    {
+      "game_id": "game03",
+      "family": "pick_clean_then_place_in_recep",
+      "won": false,
+      "steps": 50,
+      "selected": [
+        "episode_start"
+      ]
+    },
+    {
+      "game_id": "game04",
+      "family": "pick_cool_then_place_in_recep",
+      "won": false,
+      "steps": 50,
+      "selected": [
+        "episode_start"
+      ]
+    },
+    {
+      "game_id": "game05",
+      "family": "pick_cool_then_place_in_recep",
+      "won": false,
+      "steps": 50,
+      "selected": [
+        "episode_start"
+      ]
+    },
+    {
+      "game_id": "game06",
+      "family": "pick_heat_then_place_in_recep",
+      "won": false,
+      "steps": 50,
+      "selected": [
+        "episode_start"
+      ]
+    }
+  ],
+  "paired_samples": [
+    {
+      "game_id": "game01",
+      "family": "pick_heat_then_place_in_recep",
+      "slot": "episode_start",
+      "outcomes": {
+        "direct": {
+          "won": true,
+          "end": "success",
+          "changed_actions": 0,
+          "checkpoints_reviewed": 0,
+          "token_usage": {
+            "totals": {
+              "requests": 6,
+              "requests_missing_usage": 0,
+              "input_tokens": 8195,
+              "output_tokens": 71,
+              "total_tokens": 8266
+            },
+            "by_operation": {
+              "actor": {
+                "requests": 6,
+                "requests_missing_usage": 0,
+                "input_tokens": 8195,
+                "output_tokens": 71,
+                "total_tokens": 8266
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "game_id": "game02",
+      "family": "pick_heat_then_place_in_recep",
+      "slot": "episode_start",
+      "outcomes": {
+        "direct": {
+          "won": false,
+          "end": "step_limit",
+          "changed_actions": 0,
+          "checkpoints_reviewed": 0,
+          "token_usage": {
+            "totals": {
+              "requests": 50,
+              "requests_missing_usage": 0,
+              "input_tokens": 122254,
+              "output_tokens": 570,
+              "total_tokens": 122824
+            },
+            "by_operation": {
+              "actor": {
+                "requests": 50,
+                "requests_missing_usage": 0,
+                "input_tokens": 122254,
+                "output_tokens": 570,
+                "total_tokens": 122824
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "game_id": "game03",
+      "family": "pick_clean_then_place_in_recep",
+      "slot": "episode_start",
+      "outcomes": {
+        "direct": {
+          "won": false,
+          "end": "step_limit",
+          "changed_actions": 0,
+          "checkpoints_reviewed": 0,
+          "token_usage": {
+            "totals": {
+              "requests": 50,
+              "requests_missing_usage": 0,
+              "input_tokens": 119203,
+              "output_tokens": 481,
+              "total_tokens": 119684
+            },
+            "by_operation": {
+              "actor": {
+                "requests": 50,
+                "requests_missing_usage": 0,
+                "input_tokens": 119203,
+                "output_tokens": 481,
+                "total_tokens": 119684
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "game_id": "game04",
+      "family": "pick_cool_then_place_in_recep",
+      "slot": "episode_start",
+      "outcomes": {
+        "direct": {
+          "won": false,
+          "end": "step_limit",
+          "changed_actions": 0,
+          "checkpoints_reviewed": 0,
+          "token_usage": {
+            "totals": {
+              "requests": 50,
+              "requests_missing_usage": 0,
+              "input_tokens": 97857,
+              "output_tokens": 438,
+              "total_tokens": 98295
+            },
+            "by_operation": {
+              "actor": {
+                "requests": 50,
+                "requests_missing_usage": 0,
+                "input_tokens": 97857,
+                "output_tokens": 438,
+                "total_tokens": 98295
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "game_id": "game05",
+      "family": "pick_cool_then_place_in_recep",
+      "slot": "episode_start",
+      "outcomes": {
+        "direct": {
+          "won": false,
+          "end": "step_limit",
+          "changed_actions": 0,
+          "checkpoints_reviewed": 0,
+          "token_usage": {
+            "totals": {
+              "requests": 50,
+              "requests_missing_usage": 0,
+              "input_tokens": 111020,
+              "output_tokens": 497,
+              "total_tokens": 111517
+            },
+            "by_operation": {
+              "actor": {
+                "requests": 50,
+                "requests_missing_usage": 0,
+                "input_tokens": 111020,
+                "output_tokens": 497,
+                "total_tokens": 111517
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "game_id": "game06",
+      "family": "pick_heat_then_place_in_recep",
+      "slot": "episode_start",
+      "outcomes": {
+        "direct": {
+          "won": false,
+          "end": "step_limit",
+          "changed_actions": 0,
+          "checkpoints_reviewed": 0,
+          "token_usage": {
+            "totals": {
+              "requests": 50,
+              "requests_missing_usage": 0,
+              "input_tokens": 104804,
+              "output_tokens": 550,
+              "total_tokens": 105354
+            },
+            "by_operation": {
+              "actor": {
+                "requests": 50,
+                "requests_missing_usage": 0,
+                "input_tokens": 104804,
+                "output_tokens": 550,
+                "total_tokens": 105354
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "requested_arms_complete": false
+}

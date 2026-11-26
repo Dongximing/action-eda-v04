@@ -21,12 +21,12 @@ Run with the ALFWorld venv (it has alfworld/textworld), from this repo:
 
   export OPENROUTER_API_KEY=...
   ~/state-audit-pilot/.venv/bin/python scripts/run_online.py \\
-      --src ~/Documents/Codex/2026-11-21/yo/outputs/alfworld-9b-oneshot-alternate --out runs/online/d1
+      --out runs/online/d1
 
 More games (baseline + D1 on unused valid_seen games of the same three families):
 
   ~/state-audit-pilot/.venv/bin/python scripts/run_online.py \\
-      --src ~/Documents/Codex/2026-11-21/yo/outputs/alfworld-9b-oneshot-alternate --out runs/online/more \\
+      --out runs/online/more \\
       --new-per-family 8
 
 Results: <out>/gameXX/d1.json per game, <out>/summary.json and summary.md (wins of
@@ -89,8 +89,8 @@ from aeda import alfworld as A  # noqa: E402
 from aeda.schema import Sample  # noqa: E402
 from aeda.verifiers import Config, run  # noqa: E402
 
-YO = Path.home() / "Documents/Codex/2026-11-21/yo/outputs"
-DEFAULT_RUNNER = YO / "alfworld-action-eda-oneshot-altprovider"
+DEFAULT_RUNNER = ROOT / "baseline/runner"      # copy of the baseline agent code (alfworld-action-eda-oneshot-altprovider)
+DEFAULT_SRC = ROOT / "baseline/oneshot12"      # copy of the 12-game baseline run (alfworld-9b-oneshot-alternate)
 DEFAULT_SPLIT = ROOT / "data/alfworld/json_2.1.1/valid_seen"  # copy of ALFWorld json_2.1.1 valid_seen
 
 
@@ -798,7 +798,7 @@ def summarize(results: list[dict], out: Path, arm: str = "d1") -> dict:
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--src", required=True, help="finished paired run with protocol.json, routing.json, gameXX/")
+    ap.add_argument("--src", default=str(DEFAULT_SRC), help="finished paired run with protocol.json, routing.json, gameXX/")
     ap.add_argument("--out", required=True)
     ap.add_argument("--runner", default=str(DEFAULT_RUNNER), help="dir with alf_env.py, models.py, paired_store.py, pilot.py")
     ap.add_argument("--split-dir", default=str(DEFAULT_SPLIT))

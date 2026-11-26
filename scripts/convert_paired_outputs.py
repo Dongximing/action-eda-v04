@@ -8,7 +8,7 @@ before it; claims and tracker labels come from scripts/convert_alfworld.convert,
 labels.extra.action_succeeded records whether the environment then executed it.
 
   python scripts/convert_paired_outputs.py \
-      --src ~/Documents/Codex/2026-11-21/yo/outputs/alfworld-9b-oneshot-alternate \
+      --src baseline/oneshot12 \
       --out data/alfworld9b
 """
 from __future__ import annotations

@@ -4,6 +4,79 @@
 
 这一版做的是**离线对比**：给定同一组 (claim, 历史前缀) 样本，各方法用同一个决策模型给出判断，再按分层统计和配对 bootstrap 比较。在线接入主 Agent（§6.3）还没写。
 
+## 怎么跑实验（68 局 ALFWorld 在线实验）
+
+主 agent 是 qwen3.5-9b（OpenRouter，服务商 Parasail），每局最多 50 步，游戏来自 ALFWorld valid_seen 的 clean / heat / cool 三类。每一组（arm）的输入都和 baseline 一样，只在规定的地方加东西。
+
+### 准备
+
+```bash
+git clone https://github.com/Dongximing/action-eda-v04.git
+cd action-eda-v04
+python3.11 -m venv .venv-alf
+.venv-alf/bin/pip install -r requirements.txt
+export OPENROUTER_API_KEY=...        # 只在跑实验时需要；没有设置，run_online.py 会直接退出
+```
+
+下面的 `python` 都指 `.venv-alf/bin/python`。跑实验需要的东西都在仓库里：
+
+| 路径 | 内容 |
+|---|---|
+| `data/alfworld/json_2.1.1/valid_seen/` | ALFWorld 游戏文件（242 局，原样拷贝） |
+| `baseline/runner/` | baseline 的 agent 代码：环境、提示、模型调用、缓存 |
+| `baseline/oneshot12/` | baseline 最初 12 局的运行结果。`protocol.json` 定下这 12 局、50 步、模型、温度和示范；`routing.json` 定下服务商（`"selected"`）；`one_shot_examples.json` 是三类游戏各一条示范 |
+| `runs/online/{d1,more,more2,more3}/` | 68 局的全部结果，每局一个文件夹，每组一个 `<arm>.json`，`calls.sqlite` 是模型回答的缓存 |
+
+68 局分在四个文件夹：
+
+| 文件夹 | 局数 | 游戏从哪来 | 这些局的 baseline |
+|---|---|---|---|
+| `d1` | 12 | `baseline/oneshot12/protocol.json` | `baseline/oneshot12/gameXX/natural.json` |
+| `more` | 24 | 每类抽 8 局没用过的（`runs/online/more/protocol.json`） | 每局的 `direct.json` |
+| `more2` | 12 | 每类抽 4 局，跳过 more 的 | 同上 |
+| `more3` | 20 | 每类最多抽 11 局，跳过 more 和 more2 的（剩下的不够） | 同上 |
+
+### 跑一组
+
+```bash
+for d in d1 more more2 more3; do
+  python scripts/run_online.py --out runs/online/$d --arm selfexplore
+done
+```
+
+`--arm` 可选：
+
+| arm | 做法 |
+|---|---|
+| `explore` | 代码从历史里算出 r0 里列出的地点哪些去过、哪些没去过，附在最新观察后面 |
+| `selfexplore` | 同样的提示，但两张表由同一个 9B 模型单独调用一次来写（每步 2 次调用） |
+| `onecall` | 对照：同样的记账要求放进 agent 自己选动作的那次调用里，结果不给 agent 看 |
+| `onecall_use` | 对照：onecall 的提示里改一句，要求根据两张表选动作 |
+| `d1` `t0` `hint` `mw` `h1` `llm` `loop` `llmloop` | 早期的动作前核查各组，见后面各节 |
+
+- 已经有 `<arm>.json` 的局会跳过，所以中断后运行同一条命令就会接着跑。
+- 每局的 `calls.sqlite` 存着之前的模型回答，输入相同就直接用存好的，不发请求、不花钱。重跑仓库里已有的局，结果和原来完全一样。
+- `--workers`（默认 4）是同时跑几局；`--games game01,game02` 只跑这几局。
+
+从头复现 56 局新游戏的抽取（先跑每局的 baseline，存成 `direct.json`，再跑 d1）。种子都是 0：
+
+```bash
+python scripts/run_online.py --out runs/online/more  --new-per-family 8
+python scripts/run_online.py --out runs/online/more2 --new-per-family 4  --exclude runs/online/more/protocol.json
+python scripts/run_online.py --out runs/online/more3 --new-per-family 11 --exclude runs/online/more/protocol.json,runs/online/more2/protocol.json
+```
+
+### 看结果
+
+```bash
+python scripts/compare_arms.py runs/online/d1 runs/online/more runs/online/more2 runs/online/more3   # -> runs/online/compare.md
+python scripts/analyze_losses.py runs/online/d1 runs/online/more runs/online/more2 runs/online/more3 --arm selfexplore --out <输出目录>
+```
+
+`compare.md`：每组赢几局、比 baseline 多赢（rescued）和少赢（lost）哪几局、两边都赢的局用了多少步（附符号检验）。`analyze_losses.py`：输掉的局停在哪一步（没找到目标、找到没拿、拿错东西、拿了没处理成功、处理了没放）。
+
+目前的结果（68 局里赢的局数）：baseline 25，explore 44，selfexplore 42，onecall 21。onecall_use 还没跑完。
+
 ## 模型角色
 
 | 角色 | 用在哪里 | 怎么指定 |
@@ -192,7 +265,7 @@ tests/                       逻辑测试（不需要模型；fake_jev.py 是测
 数据来自另一套在线实验的 direct 组自然轨迹：qwen3.5-9b 单示范主 agent，12 局 valid_seen，赢 4 局。`data/alfworld9b/` 由下面的命令生成，已提交：
 
 ```bash
-python scripts/convert_paired_outputs.py --src ~/Documents/Codex/2026-11-21/yo/outputs/alfworld-9b-oneshot-alternate --out data/alfworld9b
+python scripts/convert_paired_outputs.py --out data/alfworld9b
 ```
 
 样本单位是主 agent 提出的每个改变状态的动作（take/move/open/close/clean/heat/cool），共 92 个。记录只包含该动作之前的步骤。claims 是固定前置条件（在哪、拿着什么、手是否空），共 139 条。gold 由 tracker 给出；该动作在环境里是否真的执行（是否返回 "Nothing happens"）记在 `labels.extra.action_succeeded`，核查器看不到。
@@ -257,7 +330,7 @@ DATA=data/alfworld9b SKIP_JEV=1 API_ADAPTER=adapters.openrouter_chat:choose METH
 
 ```bash
 export OPENROUTER_API_KEY=...
-~/state-audit-pilot/.venv/bin/python scripts/run_online.py --src ~/Documents/Codex/2026-11-21/yo/outputs/alfworld-9b-oneshot-alternate --out runs/online/d1
+python scripts/run_online.py --out runs/online/d1
 ```
 
 结果写在 `runs/online/d1/summary.md`，内容是两组各赢几局、哪几局被救回或输掉，以及拦截次数和误拦次数。误拦次数用 tracker 在同一段历史上核对得出。
@@ -282,8 +355,8 @@ checks never see `go to` / `look`, so they cannot touch these loops.
   already rejected at this step (`rejected_at_this_step`).
 
     for d in d1 more more2 more3; do for arm in loop llmloop; do
-      ~/state-audit-pilot/.venv/bin/python scripts/run_online.py \
-        --src ~/Documents/Codex/2026-11-21/yo/outputs/alfworld-9b-oneshot-alternate --out runs/online/$d --arm $arm
+      python scripts/run_online.py \
+        --out runs/online/$d --arm $arm
     done; done
 
 ### Unvisited-places reminder (explore)
@@ -292,8 +365,8 @@ The loop arms did not rescue lost games: blocked agents moved between the same 2
 blocks nothing; after the latest observation the agent sees which places listed in the opening
 observation it has not visited yet (`run_online.explored`, from the history only).
 
-    ~/state-audit-pilot/.venv/bin/python scripts/run_online.py \
-      --src ~/Documents/Codex/2026-11-21/yo/outputs/alfworld-9b-oneshot-alternate --out runs/online/d1 --arm explore
+    python scripts/run_online.py \
+      --out runs/online/d1 --arm explore
 
 * `selfexplore`: the same note, but the two lists are written each step by the agent model in a
   separate call (`SELF_PLACES`, operation `judge-places`).
@@ -307,8 +380,8 @@ observation it has not visited yet (`run_online.explored`, from the history only
   these two lists, propose the command." (`ONECALL_USE_ACTION`, operation `actor-onecall-use`).
 
     for d in d1 more more2 more3; do
-      ~/state-audit-pilot/.venv/bin/python scripts/run_online.py \
-        --src ~/Documents/Codex/2026-11-21/yo/outputs/alfworld-9b-oneshot-alternate --out runs/online/$d --arm onecall
+      python scripts/run_online.py \
+        --out runs/online/$d --arm onecall
     done
 
 ### Online control arms (T0 rule tracker, failure hint)
@@ -316,8 +389,8 @@ observation it has not visited yet (`run_online.explored`, from the history only
 Same games, actor, cache and 50-step budget as D1; results go next to `d1.json` in the same folders.
 
     for d in d1 more more2 more3; do for arm in t0 hint; do
-      ~/state-audit-pilot/.venv/bin/python scripts/run_online.py \
-        --src ~/Documents/Codex/2026-11-21/yo/outputs/alfworld-9b-oneshot-alternate --out runs/online/$d --arm $arm
+      python scripts/run_online.py \
+        --out runs/online/$d --arm $arm
     done; done
     python scripts/compare_arms.py runs/online/d1 runs/online/more runs/online/more2 runs/online/more3
 
@@ -330,8 +403,8 @@ Same games, actor, cache and 50-step budget as D1; results go next to `d1.json` 
 
 ### Online arm with model-written conditions (mw)
 
-    ~/state-audit-pilot/.venv/bin/python scripts/run_online.py \
-      --src ~/Documents/Codex/2026-11-21/yo/outputs/alfworld-9b-oneshot-alternate --out runs/online/d1 --arm mw
+    python scripts/run_online.py \
+      --out runs/online/d1 --arm mw
 
 Before a checked command the agent model writes up to `--mw-k` (3) conditions with the baseline's own
 `models.GPUChat.risks()`; D1 verifies each free-text condition (the judge sees only the text, examples
@@ -341,8 +414,8 @@ in a fresh env (`proposal_would_succeed`). Results in `<out>/<id>/mw.json`, `<ou
 
 ### Condition writers (aeda/conditions.py) and their offline benchmark
 
-    ~/state-audit-pilot/.venv/bin/python scripts/eval_conditions.py --writers risks,v2,v2demo   # -> runs/conditions/report.md
-    ~/state-audit-pilot/.venv/bin/python scripts/run_online.py --src ... --out runs/online/d1 --arm mw --mw-writer v2demo
+    python scripts/eval_conditions.py --writers risks,v2,v2demo   # -> runs/conditions/report.md
+    python scripts/run_online.py --out runs/online/d1 --arm mw --mw-writer v2demo
 
 `risks` = the baseline's own risk generator; `v2` = precondition-only instruction (no effects, goal or later
 steps; most-likely-false first); `v2demo` = v2 plus the agent's own one-shot demonstration for the task

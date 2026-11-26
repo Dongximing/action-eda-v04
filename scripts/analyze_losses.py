@@ -31,7 +31,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from aeda import alfworld as A  # noqa: E402
 
-SRC = Path.home() / "Documents/Codex/2026-11-21/yo/outputs/alfworld-9b-oneshot-alternate"
+SRC = ROOT / "baseline/oneshot12"
 TASK = [re.compile(r"put an? (clean|hot|cool) (\w+) in (\w+)"),
         re.compile(r"(clean|heat|cool) some (\w+) and put it in (\w+)")]
 VERB = {"clean": "clean", "hot": "heat", "heat": "heat", "cool": "cool"}

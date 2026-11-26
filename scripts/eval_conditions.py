@@ -40,9 +40,8 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from aeda import alfworld as A  # noqa: E402
 from aeda import conditions as W  # noqa: E402
 
-YO = Path.home() / "Documents/Codex/2026-11-21/yo/outputs"
-DEFAULT_SRC = YO / "alfworld-9b-oneshot-alternate"
-DEFAULT_RUNNER = YO / "alfworld-action-eda-oneshot-altprovider"
+DEFAULT_SRC = ROOT / "baseline/oneshot12"
+DEFAULT_RUNNER = ROOT / "baseline/runner"
 EFFECT = {"clean": r"\b(clean|cleaned|washed)\b", "heat": r"\b(hot|heated|warm|warmed)\b",
           "cool": r"\b(cool|cooled|cold|chilled)\b"}
 

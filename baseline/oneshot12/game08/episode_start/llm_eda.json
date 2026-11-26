@@ -1,0 +1,1074 @@
+{
+  "arm": "llm_eda",
+  "prefix_hash": "71d2bac223c326a6decab1a2a8d6e548295e668d563851c68b62a14ef652fab9",
+  "replay_verified": true,
+  "prefix_steps": 0,
+  "remaining_step_budget": 50,
+  "proposal": "go to diningtable 1",
+  "chosen": "go to diningtable 1",
+  "won": true,
+  "end": "success",
+  "total_env_steps": 7,
+  "suffix": [
+    {
+      "id": "r1",
+      "action": "go to diningtable 1",
+      "observation": "You arrive at diningtable 1. On the diningtable 1, you see a bread 2, a bread 1, a lettuce 3, a lettuce 2, a lettuce 1, a pan 1, a soapbottle 3, a soapbottle 2, a spatula 2, and a spoon 2."
+    },
+    {
+      "id": "r2",
+      "action": "take spatula 2 from diningtable 1",
+      "observation": "You pick up the spatula 2 from the diningtable 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a cup 2, a fork 2, and a knife 1."
+    },
+    {
+      "id": "r4",
+      "action": "clean spatula 2 with sinkbasin 1",
+      "observation": "You clean the spatula 2 using the sinkbasin 1."
+    },
+    {
+      "id": "r5",
+      "action": "go to diningtable 1",
+      "observation": "You arrive at diningtable 1. On the diningtable 1, you see a bread 2, a bread 1, a lettuce 3, a lettuce 2, a lettuce 1, a pan 1, a soapbottle 3, a soapbottle 2, and a spoon 2."
+    },
+    {
+      "id": "r6",
+      "action": "inventory",
+      "observation": "You are carrying: a spatula 2."
+    },
+    {
+      "id": "r7",
+      "action": "move spatula 2 to diningtable 1",
+      "observation": "You move the spatula 2 to the diningtable 1."
+    }
+  ],
+  "intervention": [
+    {
+      "action": "take spatula 2 from diningtable 1",
+      "prepared": {
+        "selection": "none",
+        "menu": {
+          "R1": "The spatula 2 is not currently on the diningtable 1.",
+          "R2": "The agent is not currently located at diningtable 1.",
+          "R3": "The agent is already holding spatula 2.",
+          "none": "No listed issue identified.",
+          "insufficient": "Available information is insufficient."
+        },
+        "risks": [
+          {
+            "risk": "The spatula 2 is not currently on the diningtable 1.",
+            "claim": "spatula 2 must be visible on diningtable 1",
+            "anchors": [
+              "spatula 2",
+              "diningtable 1"
+            ]
+          },
+          {
+            "risk": "The agent is not currently located at diningtable 1.",
+            "claim": "agent must be at diningtable 1",
+            "anchors": [
+              "diningtable 1"
+            ]
+          },
+          {
+            "risk": "The agent is already holding spatula 2.",
+            "claim": "agent must not hold spatula 2",
+            "anchors": [
+              "spatula 2"
+            ]
+          }
+        ],
+        "claims": [
+          {
+            "id": "location",
+            "claim": "The agent is currently at diningtable 1.",
+            "anchors": [
+              "diningtable 1"
+            ],
+            "predicate": "location"
+          },
+          {
+            "id": "contained",
+            "claim": "spatula 2 is currently in or on diningtable 1.",
+            "anchors": [
+              "spatula 2",
+              "diningtable 1"
+            ],
+            "predicate": "contained"
+          }
+        ],
+        "calls": [
+          {
+            "stage": "risk_menu",
+            "claim_id": null,
+            "record_ids": [
+              "r0",
+              "r1"
+            ],
+            "answer": "none",
+            "seconds": 0.35962
+          }
+        ],
+        "menu_failed": false,
+        "fixed_conditions_available": true
+      },
+      "audit": {
+        "method": "eda",
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "id": "location",
+            "claim": "The agent is currently at diningtable 1.",
+            "anchors": [
+              "diningtable 1"
+            ],
+            "predicate": "location",
+            "status": "SUPPORTED",
+            "source_id": "r1",
+            "witness_id": "r1",
+            "candidate_ids": [
+              "r0",
+              "r1"
+            ]
+          },
+          {
+            "id": "contained",
+            "claim": "spatula 2 is currently in or on diningtable 1.",
+            "anchors": [
+              "spatula 2",
+              "diningtable 1"
+            ],
+            "predicate": "contained",
+            "status": "SUPPORTED",
+            "source_id": "r1",
+            "witness_id": "r1",
+            "candidate_ids": [
+              "r0",
+              "r1"
+            ]
+          }
+        ],
+        "calls": [
+          {
+            "stage": "source",
+            "claim_id": "location",
+            "record_ids": [
+              "r1"
+            ],
+            "answer": "yes",
+            "seconds": 0.559628
+          },
+          {
+            "stage": "delta",
+            "claim_id": "location",
+            "record_ids": [
+              "r1"
+            ],
+            "answer": "yes",
+            "seconds": 1.434329
+          },
+          {
+            "stage": "source",
+            "claim_id": "contained",
+            "record_ids": [
+              "r1"
+            ],
+            "answer": "yes",
+            "seconds": 3.185026
+          },
+          {
+            "stage": "delta",
+            "claim_id": "contained",
+            "record_ids": [
+              "r1"
+            ],
+            "answer": "yes",
+            "seconds": 0.509669
+          }
+        ]
+      }
+    },
+    {
+      "action": "clean spatula 2 with sinkbasin 1",
+      "prepared": {
+        "selection": "R1",
+        "menu": {
+          "R1": "The agent is not currently holding the spatula 2, as the history shows it was taken but not explicitly confirmed as still held before moving to the sink, and the current observation does not list it in the agent's inventory.",
+          "R2": "The agent is not at the correct location to perform the cleaning action, as the action requires being at the sinkbasin 1, and while the last observation says 'You arrive at sinkbasin 1', the action guide states 'cleaning requires... being at the destination'.",
+          "none": "No listed issue identified.",
+          "insufficient": "Available information is insufficient."
+        },
+        "risks": [
+          {
+            "risk": "The agent is not currently holding the spatula 2, as the history shows it was taken but not explicitly confirmed as still held before moving to the sink, and the current observation does not list it in the agent's inventory.",
+            "claim": "The agent must be holding spatula 2.",
+            "anchors": [
+              "take spatula 2 from diningtable 1",
+              "You pick up the spatula 2 from the diningtable 1"
+            ]
+          },
+          {
+            "risk": "The agent is not at the correct location to perform the cleaning action, as the action requires being at the sinkbasin 1, and while the last observation says 'You arrive at sinkbasin 1', the action guide states 'cleaning requires... being at the destination'.",
+            "claim": "The agent must be at sinkbasin 1.",
+            "anchors": [
+              "go to sinkbasin 1",
+              "You arrive at sinkbasin 1"
+            ]
+          }
+        ],
+        "claims": [
+          {
+            "id": "location",
+            "claim": "The agent is currently at sinkbasin 1.",
+            "anchors": [
+              "sinkbasin 1"
+            ],
+            "predicate": "location"
+          },
+          {
+            "id": "holding",
+            "claim": "The agent is currently holding spatula 2.",
+            "anchors": [
+              "spatula 2"
+            ],
+            "predicate": "holding"
+          },
+          {
+            "id": "R1",
+            "claim": "The agent must be holding spatula 2.",
+            "anchors": [
+              "take spatula 2 from diningtable 1",
+              "You pick up the spatula 2 from the diningtable 1"
+            ],
+            "predicate": "dynamic"
+          }
+        ],
+        "calls": [
+          {
+            "stage": "risk_menu",
+            "claim_id": null,
+            "record_ids": [
+              "r0",
+              "r1",
+              "r2",
+              "r3"
+            ],
+            "answer": "R1",
+            "seconds": 0.456501
+          }
+        ],
+        "menu_failed": false,
+        "fixed_conditions_available": true
+      },
+      "audit": {
+        "method": "eda",
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "id": "location",
+            "claim": "The agent is currently at sinkbasin 1.",
+            "anchors": [
+              "sinkbasin 1"
+            ],
+            "predicate": "location",
+            "status": "SUPPORTED",
+            "source_id": "r3",
+            "witness_id": "r3",
+            "candidate_ids": [
+              "r0",
+              "r1",
+              "r2",
+              "r3"
+            ]
+          },
+          {
+            "id": "holding",
+            "claim": "The agent is currently holding spatula 2.",
+            "anchors": [
+              "spatula 2"
+            ],
+            "predicate": "holding",
+            "status": "SUPPORTED",
+            "source_id": "r2",
+            "witness_id": "r2",
+            "candidate_ids": [
+              "r1",
+              "r2"
+            ]
+          },
+          {
+            "id": "R1",
+            "claim": "The agent must be holding spatula 2.",
+            "anchors": [
+              "take spatula 2 from diningtable 1",
+              "You pick up the spatula 2 from the diningtable 1"
+            ],
+            "predicate": "dynamic",
+            "status": "SUPPORTED",
+            "source_id": "r2",
+            "witness_id": "r2",
+            "candidate_ids": [
+              "r2"
+            ]
+          }
+        ],
+        "calls": [
+          {
+            "stage": "source",
+            "claim_id": "location",
+            "record_ids": [
+              "r3"
+            ],
+            "answer": "yes",
+            "seconds": 0.407703
+          },
+          {
+            "stage": "delta",
+            "claim_id": "location",
+            "record_ids": [
+              "r3"
+            ],
+            "answer": "yes",
+            "seconds": 1.570027
+          },
+          {
+            "stage": "source",
+            "claim_id": "holding",
+            "record_ids": [
+              "r2"
+            ],
+            "answer": "yes",
+            "seconds": 0.341607
+          },
+          {
+            "stage": "delta",
+            "claim_id": "holding",
+            "record_ids": [
+              "r2"
+            ],
+            "answer": "yes",
+            "seconds": 0.413889
+          },
+          {
+            "stage": "source",
+            "claim_id": "R1",
+            "record_ids": [
+              "r2"
+            ],
+            "answer": "yes",
+            "seconds": 0.477361
+          },
+          {
+            "stage": "delta",
+            "claim_id": "R1",
+            "record_ids": [
+              "r2"
+            ],
+            "answer": "yes",
+            "seconds": 0.441631
+          }
+        ]
+      }
+    },
+    {
+      "action": "move spatula 2 to diningtable 1",
+      "prepared": {
+        "selection": "R1",
+        "menu": {
+          "R1": "The agent is not currently holding the spatula 2, as the action history does not confirm a successful 'take' action after the 'clean' action, or the item was dropped/lost during cleaning.",
+          "R2": "The agent is not currently located at diningtable 1, as the last recorded location change was to sinkbasin 1 in step r3, and no subsequent 'go to' action has been performed.",
+          "R3": "The spatula 2 is not currently located at diningtable 1, either because the previous 'take' action failed (leaving it on the table) or because the 'clean' action failed (leaving it at the sink), making the 'move' action invalid if the agent is holding it elsewhere.",
+          "none": "No listed issue identified.",
+          "insufficient": "Available information is insufficient."
+        },
+        "risks": [
+          {
+            "risk": "The agent is not currently holding the spatula 2, as the action history does not confirm a successful 'take' action after the 'clean' action, or the item was dropped/lost during cleaning.",
+            "claim": "The agent must be holding spatula 2 immediately before executing the move action.",
+            "anchors": [
+              "r4",
+              "action_guide"
+            ]
+          },
+          {
+            "risk": "The agent is not currently located at diningtable 1, as the last recorded location change was to sinkbasin 1 in step r3, and no subsequent 'go to' action has been performed.",
+            "claim": "The agent must be at diningtable 1 when executing the move action.",
+            "anchors": [
+              "r3",
+              "action_guide"
+            ]
+          },
+          {
+            "risk": "The spatula 2 is not currently located at diningtable 1, either because the previous 'take' action failed (leaving it on the table) or because the 'clean' action failed (leaving it at the sink), making the 'move' action invalid if the agent is holding it elsewhere.",
+            "claim": "The spatula 2 must be at diningtable 1 if the agent is not holding it, or the agent must be holding it if the previous take was successful.",
+            "anchors": [
+              "r1",
+              "r2",
+              "r3",
+              "action_guide"
+            ]
+          }
+        ],
+        "claims": [
+          {
+            "id": "location",
+            "claim": "The agent is currently at diningtable 1.",
+            "anchors": [
+              "diningtable 1"
+            ],
+            "predicate": "location"
+          },
+          {
+            "id": "holding",
+            "claim": "The agent is currently holding spatula 2.",
+            "anchors": [
+              "spatula 2"
+            ],
+            "predicate": "holding"
+          },
+          {
+            "id": "R1",
+            "claim": "The agent must be holding spatula 2 immediately before executing the move action.",
+            "anchors": [
+              "r4",
+              "action_guide"
+            ],
+            "predicate": "dynamic"
+          }
+        ],
+        "calls": [
+          {
+            "stage": "risk_menu",
+            "claim_id": null,
+            "record_ids": [
+              "r0",
+              "r1",
+              "r2",
+              "r3",
+              "r4"
+            ],
+            "answer": "R1",
+            "seconds": 0.425286
+          }
+        ],
+        "menu_failed": false,
+        "fixed_conditions_available": true
+      },
+      "audit": {
+        "method": "eda",
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "id": "location",
+            "claim": "The agent is currently at diningtable 1.",
+            "anchors": [
+              "diningtable 1"
+            ],
+            "predicate": "location",
+            "status": "CONTRADICTED",
+            "source_id": "r2",
+            "witness_id": "r3",
+            "candidate_ids": [
+              "r0",
+              "r1",
+              "r2",
+              "r3",
+              "r4"
+            ]
+          },
+          {
+            "id": "holding",
+            "claim": "The agent is currently holding spatula 2.",
+            "anchors": [
+              "spatula 2"
+            ],
+            "predicate": "holding",
+            "status": "SUPPORTED",
+            "source_id": "r4",
+            "witness_id": "r4",
+            "candidate_ids": [
+              "r1",
+              "r2",
+              "r4"
+            ]
+          },
+          {
+            "id": "R1",
+            "claim": "The agent must be holding spatula 2 immediately before executing the move action.",
+            "anchors": [
+              "r4",
+              "action_guide"
+            ],
+            "predicate": "dynamic",
+            "status": "SUPPORTED",
+            "source_id": "r4",
+            "witness_id": "r4",
+            "candidate_ids": [
+              "r0",
+              "r1",
+              "r2",
+              "r3",
+              "r4"
+            ]
+          }
+        ],
+        "calls": [
+          {
+            "stage": "source",
+            "claim_id": "location",
+            "record_ids": [
+              "r4"
+            ],
+            "answer": "unknown",
+            "seconds": 0.897486
+          },
+          {
+            "stage": "source",
+            "claim_id": "location",
+            "record_ids": [
+              "r3"
+            ],
+            "answer": "no",
+            "seconds": 1.152476
+          },
+          {
+            "stage": "source",
+            "claim_id": "location",
+            "record_ids": [
+              "r2"
+            ],
+            "answer": "yes",
+            "seconds": 0.394733
+          },
+          {
+            "stage": "delta",
+            "claim_id": "location",
+            "record_ids": [
+              "r2"
+            ],
+            "answer": "yes",
+            "seconds": 0.392136
+          },
+          {
+            "stage": "delta",
+            "claim_id": "location",
+            "record_ids": [
+              "r3"
+            ],
+            "answer": "no",
+            "seconds": 0.562399
+          },
+          {
+            "stage": "delta",
+            "claim_id": "location",
+            "record_ids": [
+              "r4"
+            ],
+            "answer": "yes",
+            "seconds": 1.285176
+          },
+          {
+            "stage": "source",
+            "claim_id": "holding",
+            "record_ids": [
+              "r4"
+            ],
+            "answer": "yes",
+            "seconds": 0.483515
+          },
+          {
+            "stage": "delta",
+            "claim_id": "holding",
+            "record_ids": [
+              "r4"
+            ],
+            "answer": "yes",
+            "seconds": 1.869557
+          },
+          {
+            "stage": "source",
+            "claim_id": "R1",
+            "record_ids": [
+              "r4"
+            ],
+            "answer": "yes",
+            "seconds": 0.921333
+          },
+          {
+            "stage": "delta",
+            "claim_id": "R1",
+            "record_ids": [
+              "r4"
+            ],
+            "answer": "yes",
+            "seconds": 1.253353
+          }
+        ]
+      }
+    },
+    {
+      "review": {
+        "kind": "replace",
+        "action": "go to diningtable 1"
+      }
+    },
+    {
+      "replacement_gate": {
+        "status": "SUPPORTED",
+        "source_id": "r2",
+        "rule": "target in a public observation",
+        "action": "go to diningtable 1"
+      }
+    },
+    {
+      "action": "move spatula 2 to diningtable 1",
+      "prepared": {
+        "selection": "R1",
+        "menu": {
+          "R1": "The agent is not currently holding the spatula 2, as the observation shows it is missing from the diningtable 1 list, implying it was successfully taken in r2 but the agent's inventory state is not explicitly confirmed in the latest observation.",
+          "none": "No listed issue identified.",
+          "insufficient": "Available information is insufficient."
+        },
+        "risks": [
+          {
+            "risk": "The agent is not currently holding the spatula 2, as the observation shows it is missing from the diningtable 1 list, implying it was successfully taken in r2 but the agent's inventory state is not explicitly confirmed in the latest observation.",
+            "claim": "The agent must be holding spatula 2.",
+            "anchors": [
+              "observation",
+              "You arrive at diningtable 1. On the diningtable 1, you see a bread 2, a bread 1, a lettuce 3, a lettuce 2, a lettuce 1, a pan 1, a soapbottle 3, a soapbottle 2, and a spoon 2."
+            ]
+          }
+        ],
+        "claims": [
+          {
+            "id": "location",
+            "claim": "The agent is currently at diningtable 1.",
+            "anchors": [
+              "diningtable 1"
+            ],
+            "predicate": "location"
+          },
+          {
+            "id": "holding",
+            "claim": "The agent is currently holding spatula 2.",
+            "anchors": [
+              "spatula 2"
+            ],
+            "predicate": "holding"
+          },
+          {
+            "id": "R1",
+            "claim": "The agent must be holding spatula 2.",
+            "anchors": [
+              "observation",
+              "You arrive at diningtable 1. On the diningtable 1, you see a bread 2, a bread 1, a lettuce 3, a lettuce 2, a lettuce 1, a pan 1, a soapbottle 3, a soapbottle 2, and a spoon 2."
+            ],
+            "predicate": "dynamic"
+          }
+        ],
+        "calls": [
+          {
+            "stage": "risk_menu",
+            "claim_id": null,
+            "record_ids": [
+              "r0",
+              "r1",
+              "r2",
+              "r3",
+              "r4",
+              "r5"
+            ],
+            "answer": "R1",
+            "seconds": 0.411922
+          }
+        ],
+        "menu_failed": false,
+        "fixed_conditions_available": true
+      },
+      "audit": {
+        "method": "eda",
+        "status": "UNKNOWN",
+        "claims": [
+          {
+            "id": "location",
+            "claim": "The agent is currently at diningtable 1.",
+            "anchors": [
+              "diningtable 1"
+            ],
+            "predicate": "location",
+            "status": "SUPPORTED",
+            "source_id": "r5",
+            "witness_id": "r5",
+            "candidate_ids": [
+              "r0",
+              "r1",
+              "r2",
+              "r3",
+              "r4",
+              "r5"
+            ]
+          },
+          {
+            "id": "holding",
+            "claim": "The agent is currently holding spatula 2.",
+            "anchors": [
+              "spatula 2"
+            ],
+            "predicate": "holding",
+            "status": "SUPPORTED",
+            "source_id": "r4",
+            "witness_id": "r4",
+            "candidate_ids": [
+              "r1",
+              "r2",
+              "r4"
+            ]
+          },
+          {
+            "id": "R1",
+            "claim": "The agent must be holding spatula 2.",
+            "anchors": [
+              "observation",
+              "You arrive at diningtable 1. On the diningtable 1, you see a bread 2, a bread 1, a lettuce 3, a lettuce 2, a lettuce 1, a pan 1, a soapbottle 3, a soapbottle 2, and a spoon 2."
+            ],
+            "predicate": "dynamic",
+            "status": "UNKNOWN",
+            "source_id": "r2",
+            "witness_id": "r5",
+            "candidate_ids": [
+              "r2",
+              "r5"
+            ]
+          }
+        ],
+        "calls": [
+          {
+            "stage": "source",
+            "claim_id": "location",
+            "record_ids": [
+              "r5"
+            ],
+            "answer": "yes",
+            "seconds": 0.719127
+          },
+          {
+            "stage": "delta",
+            "claim_id": "location",
+            "record_ids": [
+              "r5"
+            ],
+            "answer": "yes",
+            "seconds": 0.681898
+          },
+          {
+            "stage": "source",
+            "claim_id": "holding",
+            "record_ids": [
+              "r4"
+            ],
+            "answer": "yes",
+            "seconds": 0.002167
+          },
+          {
+            "stage": "delta",
+            "claim_id": "holding",
+            "record_ids": [
+              "r4"
+            ],
+            "answer": "yes",
+            "seconds": 0.000986
+          },
+          {
+            "stage": "source",
+            "claim_id": "R1",
+            "record_ids": [
+              "r5"
+            ],
+            "answer": "no",
+            "seconds": 0.582294
+          },
+          {
+            "stage": "source",
+            "claim_id": "R1",
+            "record_ids": [
+              "r2"
+            ],
+            "answer": "yes",
+            "seconds": 0.000719
+          },
+          {
+            "stage": "delta",
+            "claim_id": "R1",
+            "record_ids": [
+              "r2"
+            ],
+            "answer": "yes",
+            "seconds": 0.000536
+          },
+          {
+            "stage": "delta",
+            "claim_id": "R1",
+            "record_ids": [
+              "r5"
+            ],
+            "answer": "yes",
+            "seconds": 0.356031
+          }
+        ]
+      }
+    },
+    {
+      "review": {
+        "kind": "probe",
+        "action": "inventory"
+      }
+    },
+    {
+      "probe": {
+        "id": "r6",
+        "action": "inventory",
+        "observation": "You are carrying: a spatula 2."
+      }
+    },
+    {
+      "action": "move spatula 2 to diningtable 1",
+      "prepared": {
+        "selection": "none",
+        "menu": {
+          "R1": "The agent is not currently holding the spatula 2, making the move action invalid.",
+          "R2": "The agent is not currently at diningtable 1, preventing the move action from succeeding.",
+          "R3": "The target location diningtable 1 is not a valid receptacle for placing the spatula 2.",
+          "none": "No listed issue identified.",
+          "insufficient": "Available information is insufficient."
+        },
+        "risks": [
+          {
+            "risk": "The agent is not currently holding the spatula 2, making the move action invalid.",
+            "claim": "The agent must be carrying spatula 2.",
+            "anchors": [
+              "You are carrying: a spatula 2."
+            ]
+          },
+          {
+            "risk": "The agent is not currently at diningtable 1, preventing the move action from succeeding.",
+            "claim": "The agent must be at diningtable 1.",
+            "anchors": [
+              "You arrive at diningtable 1."
+            ]
+          },
+          {
+            "risk": "The target location diningtable 1 is not a valid receptacle for placing the spatula 2.",
+            "claim": "diningtable 1 must be a valid destination for move actions.",
+            "anchors": [
+              "diningtable 1"
+            ]
+          }
+        ],
+        "claims": [
+          {
+            "id": "location",
+            "claim": "The agent is currently at diningtable 1.",
+            "anchors": [
+              "diningtable 1"
+            ],
+            "predicate": "location"
+          },
+          {
+            "id": "holding",
+            "claim": "The agent is currently holding spatula 2.",
+            "anchors": [
+              "spatula 2"
+            ],
+            "predicate": "holding"
+          }
+        ],
+        "calls": [
+          {
+            "stage": "risk_menu",
+            "claim_id": null,
+            "record_ids": [
+              "r0",
+              "r1",
+              "r2",
+              "r3",
+              "r4",
+              "r5",
+              "r6"
+            ],
+            "answer": "none",
+            "seconds": 0.378594
+          }
+        ],
+        "menu_failed": false,
+        "fixed_conditions_available": true
+      },
+      "audit": {
+        "method": "eda",
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "id": "location",
+            "claim": "The agent is currently at diningtable 1.",
+            "anchors": [
+              "diningtable 1"
+            ],
+            "predicate": "location",
+            "status": "SUPPORTED",
+            "source_id": "r5",
+            "witness_id": "r5",
+            "candidate_ids": [
+              "r0",
+              "r1",
+              "r2",
+              "r3",
+              "r4",
+              "r5"
+            ]
+          },
+          {
+            "id": "holding",
+            "claim": "The agent is currently holding spatula 2.",
+            "anchors": [
+              "spatula 2"
+            ],
+            "predicate": "holding",
+            "status": "SUPPORTED",
+            "source_id": "r6",
+            "witness_id": "r6",
+            "candidate_ids": [
+              "r1",
+              "r2",
+              "r4",
+              "r6"
+            ]
+          }
+        ],
+        "calls": [
+          {
+            "stage": "source",
+            "claim_id": "location",
+            "record_ids": [
+              "r5"
+            ],
+            "answer": "yes",
+            "seconds": 0.000984
+          },
+          {
+            "stage": "delta",
+            "claim_id": "location",
+            "record_ids": [
+              "r5"
+            ],
+            "answer": "yes",
+            "seconds": 0.000798
+          },
+          {
+            "stage": "source",
+            "claim_id": "holding",
+            "record_ids": [
+              "r6"
+            ],
+            "answer": "yes",
+            "seconds": 0.552414
+          },
+          {
+            "stage": "delta",
+            "claim_id": "holding",
+            "record_ids": [
+              "r6"
+            ],
+            "answer": "yes",
+            "seconds": 0.423854
+          }
+        ]
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "step": 1,
+      "proposal": "take spatula 2 from diningtable 1",
+      "chosen": "take spatula 2 from diningtable 1",
+      "trace_start": 0,
+      "trace_end": 1
+    },
+    {
+      "step": 3,
+      "proposal": "clean spatula 2 with sinkbasin 1",
+      "chosen": "clean spatula 2 with sinkbasin 1",
+      "trace_start": 1,
+      "trace_end": 2
+    },
+    {
+      "step": 4,
+      "proposal": "move spatula 2 to diningtable 1",
+      "chosen": "go to diningtable 1",
+      "trace_start": 2,
+      "trace_end": 5
+    },
+    {
+      "step": 5,
+      "proposal": "move spatula 2 to diningtable 1",
+      "chosen": "move spatula 2 to diningtable 1",
+      "trace_start": 5,
+      "trace_end": 9
+    }
+  ],
+  "token_usage": {
+    "totals": {
+      "requests": 47,
+      "requests_missing_usage": 0,
+      "input_tokens": 34422,
+      "output_tokens": 5206,
+      "total_tokens": 39628
+    },
+    "by_operation": {
+      "actor": {
+        "requests": 6,
+        "requests_missing_usage": 0,
+        "input_tokens": 8618,
+        "output_tokens": 84,
+        "total_tokens": 8702
+      },
+      "risk_menu": {
+        "requests": 8,
+        "requests_missing_usage": 0,
+        "input_tokens": 6686,
+        "output_tokens": 4908,
+        "total_tokens": 11594
+      },
+      "select_risk": {
+        "requests": 5,
+        "requests_missing_usage": 0,
+        "input_tokens": 4394,
+        "output_tokens": 33,
+        "total_tokens": 4427
+      },
+      "eda_source": {
+        "requests": 13,
+        "requests_missing_usage": 0,
+        "input_tokens": 6089,
+        "output_tokens": 78,
+        "total_tokens": 6167
+      },
+      "eda_delta": {
+        "requests": 13,
+        "requests_missing_usage": 0,
+        "input_tokens": 6349,
+        "output_tokens": 78,
+        "total_tokens": 6427
+      },
+      "review": {
+        "requests": 2,
+        "requests_missing_usage": 0,
+        "input_tokens": 2286,
+        "output_tokens": 25,
+        "total_tokens": 2311
+      }
+    }
+  }
+}
