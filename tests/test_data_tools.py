@@ -308,3 +308,377 @@ class TestOnlineDecide(unittest.TestCase):
         # supported and no-precondition actions pass straight through
         self.assertEqual(decide({}, "take a 1 from b 1", lambda a: ok, revise, 1)[0], "take a 1 from b 1")
         self.assertIsNone(decide({}, "go to b 1", lambda a: Check("NONE"), revise, 1)[1])
+
+
+class TestControlArms(unittest.TestCase):
+    def setUp(self):
+        sys.path.insert(0, str(ROOT / "scripts"))
+
+    def _view(self, steps):
+        hist = [{"id": "r0", "action": "reset", "observation": "You are in the middle of a room."}]
+        hist += [{"id": f"r{i}", "action": a, "observation": o} for i, (a, o) in enumerate(steps, 1)]
+        return {"task": "put a clean tomato in fridge.", "observation": hist[-1]["observation"], "history": hist}
+
+    def test_tracker_check(self):
+        from run_online import tracker_check
+        v = self._view([("go to countertop 1", "You arrive at countertop 1. On the countertop 1, you see a tomato 2."),
+                        ("take tomato 2 from countertop 1", "You pick up the tomato 2 from the countertop 1."),
+                        ("go to sinkbasin 1", "You arrive at sinkbasin 1."),
+                        ("go to fridge 1", "Nothing happens.")])
+        self.assertEqual(tracker_check(v, "go to fridge 1").status, "NONE")
+        ok = tracker_check(v, "clean tomato 2 with sinkbasin 1")
+        self.assertEqual(ok.status, "SUPPORTED")
+        self.assertEqual({c["evidence_records"][0] for c in ok.claims}, {"r3", "r2"})
+        bad = tracker_check(v, "move tomato 2 to countertop 1")
+        self.assertEqual(bad.status, "CONTRADICTED")
+        at = next(c for c in bad.claims if "at countertop 1" in c["claim"])
+        self.assertEqual((at["verdict"], at["evidence_records"]), ("CONTRADICTED", ["r3"]))  # failed r4 ignored
+        self.assertEqual(tracker_check(v, "take apple 1 from countertop 1").status, "CONTRADICTED")
+        self.assertEqual(tracker_check(self._view([]), "take apple 1 from countertop 1").claims[1]["evidence_records"], ["r0"])
+
+    def test_hint_only_in_agent_view(self):
+        from run_online import HINT, hinted
+        v = self._view([("go to fridge 1", "You arrive at fridge 1."), ("open cabinet 3", "Nothing happens.")])
+        h = hinted(v)
+        self.assertTrue(h["history"][2]["observation"].endswith(HINT) and h["observation"].endswith(HINT))
+        self.assertNotIn(HINT, h["history"][1]["observation"])
+        self.assertNotIn(HINT, h["history"][0]["observation"])
+        self.assertEqual(v["history"][2]["observation"], "Nothing happens.")  # env view untouched
+        self.assertNotIn(HINT, hinted(self._view([("go to fridge 1", "You arrive at fridge 1.")]))["observation"])
+
+
+class TestModelWritten(unittest.TestCase):
+    def setUp(self):
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import types
+        self.asked = []
+        mod = types.ModuleType("fake_mw_adapter")
+
+        def choose(context, question, options):
+            self.asked.append(context + "\n" + question)
+            return "B" if "is this true" in question and "sinkbasin" in question else "C"
+        mod.choose = choose
+        sys.modules["fake_mw_adapter"] = mod
+
+    def test_parse_claim(self):
+        from aeda import alfworld as A
+        self.assertEqual(A.parse_claim("The agent is at the sinkbasin 1."), {"type": "at", "loc": "sinkbasin 1"})
+        self.assertEqual(A.parse_claim("Agent has ladle 1 in hand"), {"type": "holding", "obj": "ladle 1"})
+        self.assertEqual(A.parse_claim("The agent's hand is empty"), {"type": "hand_empty"})
+        self.assertIsNone(A.parse_claim("The microwave 1 is open"))
+
+    def test_model_check_free_text(self):
+        from run_online import model_check
+        from aeda.backends import AdapterBackend
+        from aeda.verifiers import Config
+        hist = [{"id": "r0", "action": "reset", "observation": "You are in the middle of a room."},
+                {"id": "r1", "action": "go to drawer 1", "observation": "You arrive at drawer 1."}]
+        view = {"task": "clean a ladle", "observation": hist[-1]["observation"], "history": hist}
+        conds = [{"claim": "The agent is at sinkbasin 1", "anchors": ["sinkbasin 1"]},
+                 {"claim": "The ladle 1 has been seen", "anchors": ["ladle 1"]}]
+        cfg = Config(fewshot=str(ROOT / "data/fewshot/alfworld_record_fewshot.json"), record_style="state")
+        chk = model_check(view, "clean ladle 1 with sinkbasin 1", conds, "ep", AdapterBackend("fake_mw_adapter:choose"), cfg)
+        self.assertEqual(chk.status, "CONTRADICTED")
+        at, seen = chk.claims
+        self.assertEqual((at["verdict"], at["evidence_records"], at["tracker"]), ("CONTRADICTED", ["r1"], "CONTRADICTED"))
+        self.assertEqual((seen["verdict"], seen["eval_spec"], seen["tracker"]), ("UNKNOWN", None, None))
+        # the judge sees only the text, and the worked examples in the same yes/no form
+        self.assertTrue(all("where is the agent" not in q and "what is the agent holding" not in q for q in self.asked))
+        self.assertIn("is this true: The agent is currently at fridge 1?", self.asked[0])
+        self.assertEqual(model_check(view, "take a 1 from b 1", [], "ep", None, cfg).status, "EMPTY")
+
+
+class TestConditionWriters(unittest.TestCase):
+    def test_parse_and_prompt(self):
+        from aeda import conditions as W
+        rows = W.parse({"conditions": ["The agent is at sinkbasin 1.", "the agent is at sinkbasin 1.", " ",
+                                       "The agent is holding towel 1.", "The towel 1 is dirty."]}, 2)
+        self.assertEqual([r["claim"] for r in rows], ["The agent is at sinkbasin 1.", "The agent is holding towel 1."])
+        self.assertEqual(rows[1]["anchors"], ["towel 1"])
+        with self.assertRaises(ValueError):
+            W.parse({"risks": []}, 3)
+        v2, demo = W.instruction("v2", 3), W.instruction("v2demo", 3, "Action: go to fridge 1")
+        self.assertIn("at most 3 conditions", v2)
+        self.assertNotIn("<example>", v2)
+        self.assertTrue(demo.startswith(v2) and demo.endswith("<example>\nAction: go to fridge 1\n</example>"))
+        with self.assertRaises(ValueError):
+            W.instruction("v2demo", 3)
+
+    def test_write_uses_actor_client(self):
+        from aeda import conditions as W
+
+        class Fake:
+            def _respond(self, state, prompt, max_tokens):
+                self.seen = (state, prompt, max_tokens)
+                return {"conditions": ["The agent is at fridge 1."]}
+
+            def risks(self, cp, k):
+                return [{"risk": "r", "claim": "x", "anchors": ["fridge 1"]}]
+        f = Fake()
+        out = W.write(f, {"task": "t", "action": "cool pan 1 with fridge 1"}, "v2", 3, lambda cp: {**cp, "pub": 1})
+        self.assertEqual(out, [{"claim": "The agent is at fridge 1.", "anchors": ["fridge 1"]}])
+        self.assertEqual(f.seen[0]["pub"], 1)
+        self.assertEqual(W.write(f, {}, "risks", 3)[0]["claim"], "x")
+
+    def test_score(self):
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from eval_conditions import score
+        h = [{"id": "r0", "action": "reset", "observation": "room"},
+             {"id": "r1", "action": "go to drawer 1", "observation": "You arrive at drawer 1."}]
+        cp = {"action": "clean towel 1 with sinkbasin 1", "history": h, "succeeded": False}
+        s = score(cp, [{"claim": "The agent must be at sinkbasin 1."}, {"claim": "The towel 1 must be clean."}])
+        self.assertEqual((s["need"], s["covered"], s["free"]), (2, 1, 1))
+        self.assertTrue(s["catchable_failure"] and s["explained"] and s["effect"])
+        ok = score({**cp, "succeeded": True, "action": "open drawer 1"}, [{"claim": "The agent is at drawer 1."}])
+        self.assertFalse(ok["false_alarm"] or ok["effect"])
+        self.assertEqual(ok["covered"], 1)
+
+
+class TestContextJudges(unittest.TestCase):
+    def setUp(self):
+        sys.path.insert(0, str(ROOT / "scripts"))
+        hist = [{"id": "r0", "action": "reset", "observation": "You are in the middle of a room."},
+                {"id": "r1", "action": "go to countertop 1", "observation": "You arrive at countertop 1."},
+                {"id": "r2", "action": "take tomato 2 from countertop 1", "observation": "You pick up the tomato 2."},
+                {"id": "r3", "action": "go to fridge 1", "observation": "You arrive at fridge 1."}]
+        self.view = {"task": "put a cool tomato in countertop.", "observation": hist[-1]["observation"], "history": hist}
+
+    def test_llm_check(self):
+        from run_online import llm_check
+        seen = []
+
+        def ask(state):
+            seen.append(state)
+            return {"conditions": [{"condition": c, "reasoning": "...", "verdict": v, "record": r}
+                                   for c, v, r in zip(state["conditions"], ["true", "false"], ["r2", "r3"])]}
+        chk = llm_check(self.view, "move tomato 2 to countertop 1", ask)
+        self.assertEqual(chk.status, "CONTRADICTED")
+        self.assertEqual([c["verdict"] for c in chk.claims], ["SUPPORTED", "CONTRADICTED"])
+        self.assertEqual(chk.claims[1]["evidence_records"], ["r3"])
+        self.assertEqual(len(seen[0]["history"]), 4)  # the whole visible history, nothing else
+        self.assertEqual(set(seen[0]), {"task", "proposed_action", "history", "conditions"})
+        # unusable answer -> UNKNOWN, executed, error kept
+        bad = llm_check(self.view, "move tomato 2 to countertop 1", lambda st: {"conditions": []})
+        self.assertEqual(bad.status, "UNKNOWN")
+        self.assertIn("expected 2", bad.error)
+        # unknown on "holding nothing" keeps the default rule
+        emp = llm_check(self.view, "take apple 1 from countertop 1",
+                        lambda st: {"conditions": [{"verdict": "true", "record": "r1"}, {"verdict": "unknown", "record": None}]})
+        self.assertEqual(emp.claims[1]["verdict"], "SUPPORTED_DEFAULT")
+        self.assertEqual(llm_check(self.view, "go to sinkbasin 1", ask).status, "NONE")
+
+    def test_h1_check(self):
+        import types
+        from run_online import check_action
+        from aeda.backends import AdapterBackend
+        from aeda.verifiers import Config
+        asked = []
+        mod = types.ModuleType("fake_h1_adapter")
+
+        def choose(context, question, options):
+            asked.append(context)
+            return "B" if "where is the agent" in question else "A"
+        mod.choose = choose
+        sys.modules["fake_h1_adapter"] = mod
+        cfg = Config(fewshot=str(ROOT / "data/fewshot/alfworld_record_fewshot.json"), record_style="state")
+        chk = check_action(self.view, "move tomato 2 to countertop 1", "ep", AdapterBackend("fake_h1_adapter:choose"), cfg, method="H1")
+        self.assertEqual(chk.status, "CONTRADICTED")
+        self.assertEqual(len(asked), 2)  # one question per condition
+        self.assertTrue(all("History (oldest first)" in c and "go to fridge 1" in c and "go to countertop 1" in c for c in asked))
+
+
+class TestLoopCheck(unittest.TestCase):
+    """Arm loop: block a command already run when nothing new has been observed since."""
+
+    def setUp(self):
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from run_online import loop_check
+        self.check = loop_check
+
+    def view(self, steps):
+        hist = [{"id": "r0", "action": "reset", "observation": "You are in the middle of a room."}]
+        hist += [{"id": f"r{i}", "action": a, "observation": o} for i, (a, o) in enumerate(steps, 1)]
+        return {"task": "t", "observation": hist[-1]["observation"], "history": hist}
+
+    def test_first_time_and_progress_pass(self):
+        v = self.view([("go to drawer 1", "You arrive at drawer 1. It is open."),
+                       ("go to sinkbasin 1", "You arrive at sinkbasin 1."),
+                       ("clean knife 1 with sinkbasin 1", "You clean the knife 1.")])
+        self.assertEqual(self.check(v, "go to countertop 1").status, "NONE")   # never run
+        self.assertEqual(self.check(v, "go to drawer 1").status, "NONE")       # new observations since r1
+
+    def test_repeated_look_blocked_from_third(self):
+        one = [("go to cabinet 1", "You arrive at cabinet 1."), ("look", "You are facing the cabinet 1.")]
+        self.assertEqual(self.check(self.view(one), "look").status, "NONE")     # situation changed since r2
+        v = self.view(one + [("look", "You are facing the cabinet 1.")])
+        c = self.check(v, "LOOK ")                                               # normalised
+        self.assertEqual(c.status, "CONTRADICTED")
+        self.assertEqual(c.claims[0]["evidence_records"], ["r3"])
+        self.assertIn("just ran", c.claims[0]["claim"])
+
+    def test_nothing_happens_repeat_blocked(self):
+        v = self.view([("go to cabinet 1", "You arrive at cabinet 1."), ("close cabinet 1", "Nothing happens."),
+                       ("go to cabinet 1", "Nothing happens.")])
+        c = self.check(v, "go to cabinet 1")
+        self.assertEqual(c.status, "CONTRADICTED")
+        self.assertEqual(c.claims[0]["times_run"], 2)
+        self.assertEqual(self.check(v, "close cabinet 1").status, "CONTRADICTED")
+
+    def test_same_observation_but_moved_passes(self):
+        # the put failed away from the drawer; the agent walked back (repeated arrival text): not blocked
+        v = self.view([("go to drawer 1", "You arrive at drawer 1."), ("take knife 1 from drawer 1", "You pick up the knife 1."),
+                       ("go to sinkbasin 1", "You arrive at sinkbasin 1."), ("move knife 1 to drawer 1", "Nothing happens."),
+                       ("go to drawer 1", "You arrive at drawer 1.")])
+        self.assertEqual(self.check(v, "move knife 1 to drawer 1").status, "NONE")
+
+    def test_oscillation_blocked(self):
+        v = self.view([("go to fridge 1", "You arrive at fridge 1."), ("go to countertop 1", "You arrive at countertop 1."),
+                       ("go to fridge 1", "You arrive at fridge 1."), ("go to countertop 1", "You arrive at countertop 1.")])
+        c = self.check(v, "go to fridge 1")
+        self.assertEqual(c.status, "CONTRADICTED")
+        self.assertEqual(c.claims[0]["evidence_records"], ["r3"])
+        self.assertIn("since r3", c.claims[0]["claim"])
+
+    def test_feedback_shape(self):
+        from run_online import feedback
+        v = self.view([("look", "You are facing nothing."), ("look", "You are facing nothing.")])
+        fb = feedback(self.check(v, "look"))
+        self.assertEqual(fb["conditions"][0]["source_id"], "r2")
+        self.assertEqual(fb["conditions"][0]["status"], "CONTRADICTED")
+
+
+class TestMultiRevision(unittest.TestCase):
+    def setUp(self):
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from run_online import decide, loop_check
+        self.decide, self.loop = decide, loop_check
+        steps = [("go to cabinet 1", "You arrive at cabinet 1."), ("look", "You face cabinet 1."), ("look", "You face cabinet 1."),
+                 ("go to cabinet 1", "Nothing happens.")]
+        hist = [{"id": "r0", "action": "reset", "observation": "You are in the middle of a room."}]
+        hist += [{"id": f"r{i}", "action": a, "observation": o} for i, (a, o) in enumerate(steps, 1)]
+        self.view = {"task": "t", "observation": hist[-1]["observation"], "history": hist}
+
+    def test_rejected_list_and_escape(self):
+        answers, fbs = iter(["go to cabinet 1", "go to drawer 1"]), []
+
+        def revise(action, fb):
+            fbs.append(fb)
+            return next(answers)
+        act, rec = self.decide(self.view, "look", lambda a: self.loop(self.view, a), revise, 3)
+        self.assertEqual(act, "go to drawer 1")
+        self.assertFalse(rec["executed_despite_contradiction"])
+        self.assertNotIn("rejected_at_this_step", fbs[0])                 # first revision: same feedback as r1 runs
+        self.assertEqual(fbs[1]["rejected_at_this_step"], ["look", "go to cabinet 1"])
+
+    def test_one_revision_unchanged(self):
+        act, rec = self.decide(self.view, "look", lambda a: self.loop(self.view, a), lambda a, fb: "go to cabinet 1", 1)
+        self.assertEqual(act, "go to cabinet 1")
+        self.assertTrue(rec["executed_despite_contradiction"])
+
+
+class TestExplore(unittest.TestCase):
+    def test_unvisited_note(self):
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from run_online import explored, places
+        hist = [{"id": "r0", "action": "reset", "observation": "You are in the middle of a room. Looking quickly around you, "
+                 "you see a cabinet 2, a cabinet 1, a fridge 1, and a sinkbasin 1.\n\nYour task is to: put a cool apple 1 in sinkbasin."},
+                {"id": "r1", "action": "go to fridge 1", "observation": "You arrive at fridge 1. The fridge 1 is closed."},
+                {"id": "r2", "action": "go to cabinet 9", "observation": "Nothing happens."}]
+        view = {"task": "t", "observation": hist[-1]["observation"], "history": hist}
+        self.assertEqual(places(hist), (["cabinet 2", "cabinet 1", "fridge 1", "sinkbasin 1"], ["fridge 1"]))
+        seen = explored(view)
+        self.assertIn("Not visited yet (3 of 4 places", seen["observation"])
+        self.assertIn("cabinet 2, cabinet 1, sinkbasin 1.", seen["observation"])
+        self.assertEqual(seen["history"][-1]["observation"], seen["observation"])
+        self.assertEqual(seen["history"][1], hist[1])                       # earlier records unchanged
+        self.assertEqual(view["history"][-1]["observation"], "Nothing happens.")   # env history unchanged
+
+
+class TestSelfExplore(unittest.TestCase):
+    def setUp(self):
+        sys.path.insert(0, str(ROOT / "scripts"))
+        hist = [{"id": "r0", "action": "reset", "observation": "You are in the middle of a room. Looking quickly around you, "
+                 "you see a cabinet 1, a fridge 1, and a sinkbasin 1.\n\nYour task is to: put a cool apple in sinkbasin."},
+                {"id": "r1", "action": "go to fridge 1", "observation": "You arrive at fridge 1. The fridge 1 is closed."}]
+        self.view = {"task": "t", "observation": hist[-1]["observation"], "history": hist}
+
+    def test_model_list_note_and_log(self):
+        from run_online import explored, place_list_score, self_explored
+        log, seen = [], []
+
+        def ask(state):
+            seen.append(state)
+            return {"visited": ["Fridge 1"], "not_visited": ["cabinet 1", "sinkbasin 1"]}
+        out = self_explored(self.view, ask, log)
+        self.assertEqual(out["observation"], explored(self.view)["observation"])   # same note text as explore
+        self.assertEqual(set(seen[0]), {"history"})
+        self.assertEqual(place_list_score(log)["place_list_exact"], 1)
+
+    def test_wrong_and_unusable(self):
+        from run_online import place_list_score, self_explored
+        log = []
+        self_explored(self.view, lambda st: {"visited": [], "not_visited": ["cabinet 1", "fridge 1", "toaster 1"]}, log)
+        out = self_explored(self.view, lambda st: {"places": []}, log)
+        self.assertEqual(out, self.view)                                             # no note when unusable
+        sc = place_list_score(log)
+        self.assertEqual((sc["place_list_steps"], sc["place_list_errors"], sc["place_list_exact"]), (2, 1, 0))
+        self.assertEqual((sc["place_list_missing"], sc["place_list_extra"]), (1, 2))  # sinkbasin 1 / fridge 1, toaster 1
+
+
+class TestOneCall(unittest.TestCase):
+    RUNNER = Path.home() / "Documents/Codex/2026-11-21/yo/outputs/alfworld-action-eda-oneshot-altprovider"
+
+    def setUp(self):
+        if not self.RUNNER.exists():
+            self.skipTest("baseline runner not found")
+        sys.path.insert(0, str(ROOT / "scripts"))
+        sys.path.insert(0, str(self.RUNNER))
+        hist = [{"id": "r0", "action": "reset", "observation": "You are in the middle of a room. Looking quickly around you, "
+                 "you see a cabinet 1, a fridge 1, and a sinkbasin 1.\n\nYour task is to: put a cool apple in sinkbasin."},
+                {"id": "r1", "action": "go to fridge 1", "observation": "You arrive at fridge 1. The fridge 1 is closed."}]
+        self.view = {"task": "t", "observation": hist[-1]["observation"], "history": hist}
+
+    def test_prompt_and_state_match_baseline(self):
+        from models import GPUChat
+        from pilot import public_checkpoint
+        from run_online import onecall_action
+        example = {"text": "DEMO TEXT"}
+        got = []
+
+        class Fake(GPUChat):
+            def _respond(self, state, instruction, max_tokens, **kw):
+                got.append((state, instruction))
+                return {"action": "open fridge 1"} if len(got) == 1 else \
+                    {"visited": ["fridge 1"], "not_visited": ["cabinet 1"], "action": "open fridge 1"}
+        a = Fake("http://x", "m", "k")
+        a.action_example = example
+        cp = public_checkpoint(self.view, "")
+        a.action(cp)
+        onecall_action(a, cp, example)
+        (s0, p0), (s1, p1) = got
+        self.assertEqual(s0, s1)                                     # identical input state
+        head, tail = p0.split('Return only a JSON object {"action":"..."} without explanation.')
+        self.assertTrue(p1.startswith(head) and p1.endswith(tail))   # baseline wording + demo kept
+        self.assertIn("not_visited", p1)
+
+    def test_use_variant_differs_by_one_sentence(self):
+        from run_online import ONECALL_ACTION, ONECALL_USE_ACTION, onecall_prompt
+        self.assertNotEqual(ONECALL_ACTION, ONECALL_USE_ACTION)
+        self.assertEqual(ONECALL_USE_ACTION.replace("Then, based on these two lists, propose the command.",
+                                                    "Then propose the command."), ONECALL_ACTION)
+        ex = {"text": "DEMO"}
+        self.assertTrue(onecall_prompt(ex, True).startswith(ONECALL_USE_ACTION) and onecall_prompt(ex, True).endswith(
+            onecall_prompt(ex).split(ONECALL_ACTION)[1]))
+
+    def test_read_action_and_score(self):
+        from run_online import onecall_read, place_list_score
+        log = []
+        act = onecall_read(self.view, {"visited": ["fridge 1"], "not_visited": ["cabinet 1", "sinkbasin 1"],
+                                       "action": " open fridge 1 "}, log)
+        self.assertEqual(act, "open fridge 1")
+        act = onecall_read(self.view, {"action": "open fridge 1"}, log)   # lists missing: action still used
+        self.assertEqual(act, "open fridge 1")
+        self.assertIsNone(onecall_read(self.view, None, log, "IncompleteReply: limit"))   # failed call -> fallback
+        self.assertEqual(log[-1]["fallback"], "baseline action call")
+        sc = place_list_score(log)
+        self.assertEqual((sc["place_list_steps"], sc["place_list_errors"], sc["place_list_exact"]), (3, 2, 1))

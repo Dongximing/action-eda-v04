@@ -73,6 +73,7 @@ scripts/run_sweep.sh         Jev × context_k（+ 可选对照模型）批量跑
 scripts/summarize.py         汇总多个 report.json
 data/smoke/                  7 个手工构造的冒烟样本和测试用答案表
 data/alfworld_example/       1 条构造的 ALFWorld 轨迹（仿 ReAct 附录的洗刀例子，文字为自写）
+data/alfworld/               ALFWorld json_2.1.1 的 valid_seen（242 局）和 logic 原样拷贝；68 局在线实验都出自这里，run_online.py 默认读它
 tests/                       逻辑测试（不需要模型；fake_jev.py 是测试用的假适配器）
 ```
 
@@ -260,3 +261,91 @@ export OPENROUTER_API_KEY=...
 ```
 
 结果写在 `runs/online/d1/summary.md`，内容是两组各赢几局、哪几局被救回或输掉，以及拦截次数和误拦次数。误拦次数用 tracker 在同一段历史上核对得出。
+
+### Repetition check (loop, llmloop)
+
+Why: all 40 games the llm arm loses end at the 50-step limit, 28 of them with the same command
+10+ times in a row (`scripts/analyze_losses.py` -> `runs/online/losses.md`). The fixed-condition
+checks never see `go to` / `look`, so they cannot touch these loops.
+
+* `loop`: `run_online.loop_check`, no judge and no task knowledge. A command is blocked when it was
+  already run, no observation since its last run is new (new = not "Nothing happens" and not seen
+  earlier in the episode), and the latest record that did something is the same now as then. The
+  agent gets the baseline's revise call with the reason. Offline on the 68 baseline trajectories it
+  would block 86 of 350 steps in won games and 1386 of 2150 in lost games; in only 1 case would the
+  blocked command actually have shown something new.
+* `llmloop`: `loop` first, then the `llm` check for commands that are not a blocked repeat.
+* Blocked proposals are replayed: `proposal_would_succeed` and `proposal_would_be_new`.
+* `--max-revisions 3` (written as `loop_r3.json` / `llmloop_r3.json`): with one revision 457 of 518
+  blocks ended with a replacement that was itself a blocked repeat (executed anyway), so the agent
+  alternated between two repeats. From the second revision on, the feedback also lists every command
+  already rejected at this step (`rejected_at_this_step`).
+
+    for d in d1 more more2 more3; do for arm in loop llmloop; do
+      ~/state-audit-pilot/.venv/bin/python scripts/run_online.py \
+        --src ~/Documents/Codex/2026-11-21/yo/outputs/alfworld-9b-oneshot-alternate --out runs/online/$d --arm $arm
+    done; done
+
+### Unvisited-places reminder (explore)
+
+The loop arms did not rescue lost games: blocked agents moved between the same 2-5 places. `explore`
+blocks nothing; after the latest observation the agent sees which places listed in the opening
+observation it has not visited yet (`run_online.explored`, from the history only).
+
+    ~/state-audit-pilot/.venv/bin/python scripts/run_online.py \
+      --src ~/Documents/Codex/2026-11-21/yo/outputs/alfworld-9b-oneshot-alternate --out runs/online/d1 --arm explore
+
+* `selfexplore`: the same note, but the two lists are written each step by the agent model in a
+  separate call (`SELF_PLACES`, operation `judge-places`).
+* `onecall` (ablation of selfexplore): no note and no extra call. The agent's own action call gets the
+  baseline prompt plus the same bookkeeping request and answers `{"visited", "not_visited", "action"}`
+  (`ONECALL_ACTION`, operation `actor-onecall`). The lists are only logged and scored. A step whose
+  onecall reply is unusable (e.g. the lists run past the 2048-token limit) uses the baseline's own
+  action call instead and is logged with `fallback` in `place_lists`. If onecall wins
+  about as many games as selfexplore, splitting bookkeeping from acting is not what helps.
+* `onecall_use`: onecall with one sentence changed, "Then propose the command." becomes "Then, based on
+  these two lists, propose the command." (`ONECALL_USE_ACTION`, operation `actor-onecall-use`).
+
+    for d in d1 more more2 more3; do
+      ~/state-audit-pilot/.venv/bin/python scripts/run_online.py \
+        --src ~/Documents/Codex/2026-11-21/yo/outputs/alfworld-9b-oneshot-alternate --out runs/online/$d --arm onecall
+    done
+
+### Online control arms (T0 rule tracker, failure hint)
+
+Same games, actor, cache and 50-step budget as D1; results go next to `d1.json` in the same folders.
+
+    for d in d1 more more2 more3; do for arm in t0 hint; do
+      ~/state-audit-pilot/.venv/bin/python scripts/run_online.py \
+        --src ~/Documents/Codex/2026-11-21/yo/outputs/alfworld-9b-oneshot-alternate --out runs/online/$d --arm $arm
+    done; done
+    python scripts/compare_arms.py runs/online/d1 runs/online/more runs/online/more2 runs/online/more3
+
+* `t0`: block / revise exactly like D1, but the preconditions are decided by `aeda.alfworld.replay`
+  (no judge calls). Feedback cites the record that last set the location / the hand.
+* `hint`: nothing is checked or blocked; failed steps are shown to the agent with a fixed hint
+  (`run_online.HINT`) appended. The environment history is unchanged.
+* `compare_arms.py` writes `runs/online/compare.md`: wins, rescued / lost games, steps on games both
+  won (with an exact sign test), blocks, new actor requests and judge calls per arm.
+
+### Online arm with model-written conditions (mw)
+
+    ~/state-audit-pilot/.venv/bin/python scripts/run_online.py \
+      --src ~/Documents/Codex/2026-11-21/yo/outputs/alfworld-9b-oneshot-alternate --out runs/online/d1 --arm mw
+
+Before a checked command the agent model writes up to `--mw-k` (3) conditions with the baseline's own
+`models.GPUChat.risks()`; D1 verifies each free-text condition (the judge sees only the text, examples
+in the same yes/no form). Block / revise as for D1. Scoring: conditions that parse as location / hand
+conditions (`aeda.alfworld.parse_claim`) are checked by the tracker; every blocked proposal is replayed
+in a fresh env (`proposal_would_succeed`). Results in `<out>/<id>/mw.json`, `<out>/summary_mw.md`.
+
+### Condition writers (aeda/conditions.py) and their offline benchmark
+
+    ~/state-audit-pilot/.venv/bin/python scripts/eval_conditions.py --writers risks,v2,v2demo   # -> runs/conditions/report.md
+    ~/state-audit-pilot/.venv/bin/python scripts/run_online.py --src ... --out runs/online/d1 --arm mw --mw-writer v2demo
+
+`risks` = the baseline's own risk generator; `v2` = precondition-only instruction (no effects, goal or later
+steps; most-likely-false first); `v2demo` = v2 plus the agent's own one-shot demonstration for the task
+family (same text and wording as the agent gets; nothing else is added). The benchmark scores 160 baseline checkpoints (80 failed in the env) against the tracker: required
+location / hand conditions covered, failures explained, false-alarm conditions, effects written as conditions.
+Online results go to `<out>/<id>/mw_<writer>.json` and `<out>/summary_mw_<writer>.md`.

@@ -127,6 +127,8 @@ def record_state(task: str, action: str, claim: Claim, r: Record,
     """Per-record judgment asked as a state question (``--record-style state``).
     Same A/B/C meaning as record_judgment, so D1/D1f/D2/U1/P0 use it unchanged."""
     q, opts = state_options(claim.text, claim.spec)
+    if claim.spec is None and examples:  # free-text condition: show the examples in the same yes/no form
+        examples = [{**e, "spec": None} for e in examples]
     return MCQ(
         context=(
             "You track the state of an agent from ONE record of its interaction history.\n"

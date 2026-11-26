@@ -120,6 +120,65 @@ def steps_from_records(texts: list[str]) -> list[tuple[str, str]]:
     return steps
 
 
+def records_for(init_obs: str, steps: list[tuple[str, str]]) -> list[dict]:
+    """Records r0 (reset observation) .. rN (one per step), fresh dicts each call."""
+    records = [{"rid": 0, "source": "env", "text": init_obs, "entities": []}]
+    records += [{"rid": i + 1, "source": "env", "text": record_text(a, o), "entities": []}
+                for i, (a, o) in enumerate(steps)]
+    return records
+
+
+_ENT = r"(?:the )?([a-z][a-z]*(?: [a-z]+)* [0-9]+)"
+_CLAIM_PATTERNS = [
+    (re.compile(rf"^(?:the )?agent is (?:currently |now |still )?(?:at|next to|in front of|located at) {_ENT}\.?$"), "at"),
+    (re.compile(rf"^(?:the )?agent is (?:currently |now |still )?(?:holding|carrying) {_ENT}\.?$"), "holding"),
+    (re.compile(rf"^(?:the )?agent (?:currently |now )?(?:holds|has) {_ENT}(?: in (?:its |their |the )?hands?)?\.?$"), "holding"),
+    (re.compile(r"^(?:the )?agent is (?:currently |now )?(?:holding nothing|not holding anything|empty-handed)\.?$"), "hand_empty"),
+    (re.compile(r"^(?:the )?agent(?: s|s)? hands? (?:is|are) (?:currently |now )?(?:empty|free)\.?$"), "hand_empty"),
+]
+
+
+_TAIL = re.compile(r"\s*(?:,|;|\(|\bto (?:execute|perform|do|complete|succeed)\b|\bbefore\b|\bin order\b|"
+                   r"\bfor (?:the|this)\b|\bso that\b|\bwhen\b).*$")
+
+
+def parse_claim(text: str) -> dict | None:
+    """Machine form of a free-text condition when it is one of the tracker's three kinds
+    (used only to score model-written conditions, never shown to the judge). None otherwise.
+    Modal wording ("must be at X", "needs to be holding X") and a trailing purpose clause
+    ("... to execute 'clean X with Y'") are normalised away first."""
+    t = " ".join(text.lower().replace("'", " ").replace('"', " ").split())
+    t = _TAIL.sub("", t).strip(" .")
+    t = re.sub(r"\b(?:must|should|needs? to|has to|have to) not be\b", "is not", t)
+    t = re.sub(r"\b(?:must|should|needs? to|has to|have to) (?:be|have)\b",
+               lambda m: "has" if m.group(0).endswith("have") else "is", t)
+    t = re.sub(r"\bis (?:at|in) the location of\b", "is at", t)
+    t = re.sub(r"\bhas (?:the )?([a-z]+(?: [a-z]+)* [0-9]+) in (?:its|their|the|his|her) inventory\b", r"is holding \1", t)
+    for pat, kind in _CLAIM_PATTERNS:
+        m = pat.match(t)
+        if m:
+            if kind == "at":
+                return {"type": "at", "loc": m.group(1)}
+            if kind == "holding":
+                return {"type": "holding", "obj": m.group(1)}
+            return {"type": "hand_empty"}
+    return None
+
+
+def build_model_sample(episode_id: str, task: str, init_obs: str, steps: list[tuple[str, str]],
+                       action: str, conditions: list[dict]) -> dict:
+    """Visible sample whose claims are model-written conditions ({"claim", "anchors"} rows from
+    the agent's risks() call). The judge sees only the text (spec None); eval_spec is kept for scoring."""
+    t = len(steps)
+    sid = f"{episode_id}-t{t}"
+    claims = [{"cid": f"{sid}/m{j}", "text": c["claim"], "kind": "state", "origin": "dynamic",
+               "entities": list(c.get("anchors") or []), "spec": None}
+              for j, c in enumerate(conditions)]
+    return {"sid": sid, "episode_id": episode_id, "task": task, "proposed_action": action,
+            "action_reversible": True, "window_complete": True, "records": records_for(init_obs, steps),
+            "claims": claims}
+
+
 def build_sample(episode_id: str, task: str, init_obs: str, steps: list[tuple[str, str]], t: int,
                  action: str) -> dict | None:
     """Visible sample for proposed ``action`` at step ``t``: records are the reset observation and
@@ -129,9 +188,7 @@ def build_sample(episode_id: str, task: str, init_obs: str, steps: list[tuple[st
     pres = preconditions(action)
     if not pres:
         return None
-    records = [{"rid": 0, "source": "env", "text": init_obs, "entities": []}]
-    records += [{"rid": i + 1, "source": "env", "text": record_text(a, o), "entities": []}
-                for i, (a, o) in enumerate(steps[:t])]
+    records = records_for(init_obs, steps[:t])
     sid = f"{episode_id}-t{t}"
     claims = []
     for j, pre in enumerate(pres):
