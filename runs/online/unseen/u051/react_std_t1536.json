@@ -1,0 +1,244 @@
+{
+  "id": "u051",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-Egg-None-Microwave-10/trial_T20190909_120632_691361/game.tw-pddl",
+  "task": "put a clean egg in microwave.",
+  "arm": "react_std_t1536",
+  "won": true,
+  "steps": 20,
+  "end": "success",
+  "baseline_won": null,
+  "baseline_steps": null,
+  "baseline_source": "none (--no-baseline)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r2",
+      "action": "open fridge 1",
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a cup 3, a cup 1, a lettuce 1, a plate 2, a plate 1, a potato 1, and a tomato 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. On the cabinet 1, you see a bowl 1, a peppershaker 1, and a vase 1."
+    },
+    {
+      "id": "r4",
+      "action": "go to cabinet 2",
+      "observation": "You arrive at cabinet 2. The cabinet 2 is closed."
+    },
+    {
+      "id": "r5",
+      "action": "open cabinet 2",
+      "observation": "You open the cabinet 2. The cabinet 2 is open. In it, you see nothing."
+    },
+    {
+      "id": "r6",
+      "action": "go to cabinet 3",
+      "observation": "You arrive at cabinet 3. On the cabinet 3, you see a glassbottle 1."
+    },
+    {
+      "id": "r7",
+      "action": "go to cabinet 4",
+      "observation": "You arrive at cabinet 4. On the cabinet 4, you see a glassbottle 2, and a mug 1."
+    },
+    {
+      "id": "r8",
+      "action": "go to cabinet 5",
+      "observation": "You arrive at cabinet 5. The cabinet 5 is closed."
+    },
+    {
+      "id": "r9",
+      "action": "open cabinet 5",
+      "observation": "You open the cabinet 5. The cabinet 5 is open. In it, you see nothing."
+    },
+    {
+      "id": "r10",
+      "action": "go to cabinet 6",
+      "observation": "You arrive at cabinet 6. The cabinet 6 is closed."
+    },
+    {
+      "id": "r11",
+      "action": "open cabinet 6",
+      "observation": "You open the cabinet 6. The cabinet 6 is open. In it, you see a bowl 2, a soapbottle 2, and a soapbottle 1."
+    },
+    {
+      "id": "r12",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a cup 2, a peppershaker 3, a saltshaker 1, and a tomato 2."
+    },
+    {
+      "id": "r13",
+      "action": "go to countertop 2",
+      "observation": "You arrive at countertop 2. On the countertop 2, you see a bread 1, a butterknife 1, a creditcard 1, a dishsponge 1, a glassbottle 3, a knife 1, and a spoon 1."
+    },
+    {
+      "id": "r14",
+      "action": "go to countertop 3",
+      "observation": "You arrive at countertop 3. On the countertop 3, you see a bread 3, a bread 2, a butterknife 3, a butterknife 2, a cellphone 1, a egg 1, a fork 3, a houseplant 1, a mug 3, and a statue 1."
+    },
+    {
+      "id": "r15",
+      "action": "take egg 1 from countertop 3",
+      "observation": "You pick up the egg 1 from the countertop 3."
+    },
+    {
+      "id": "r16",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a bowl 3, a spatula 2, and a spatula 1."
+    },
+    {
+      "id": "r17",
+      "action": "clean egg 1 with sinkbasin 1",
+      "observation": "You clean the egg 1 using the sinkbasin 1."
+    },
+    {
+      "id": "r18",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r19",
+      "action": "open microwave 1",
+      "observation": "You open the microwave 1. The microwave 1 is open. In it, you see a mug 2."
+    },
+    {
+      "id": "r20",
+      "action": "move egg 1 to microwave 1",
+      "observation": "You move the egg 1 to the microwave 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: To solve the task \"put a clean egg in microwave\", I need to find an egg, clean it, and then place it in the microwave. Eggs are commonly found in the fridge. I will start by going to the fridge to look for an egg.\nAction: go to fridge 1",
+      "action": "go to fridge 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: I have arrived at the fridge 1, but it is currently closed. To find an egg inside, I need to open the fridge first.\nAction: open fridge 1",
+      "action": "open fridge 1"
+    },
+    {
+      "step": 2,
+      "output": "Thought: I have opened the fridge 1, but there is no egg inside. The items visible are cup 3, cup 1, lettuce 1, plate 2, plate 1, potato 1, and tomato 1. Since the egg is not in the fridge, I need to check other locations. Eggs are often found in cabinets or on countertops. I will check the cabinets next, starting with cabinet 1.\nAction: go to cabinet 1",
+      "action": "go to cabinet 1"
+    },
+    {
+      "step": 3,
+      "output": "Thought: I checked cabinet 1, but there is no egg there (only bowl 1, peppershaker 1, and vase 1). I need to continue searching for an egg in other locations. Common places for eggs besides the fridge are other cabinets or countertops. I will check cabinet 2 next.\nAction: go to cabinet 2",
+      "action": "go to cabinet 2"
+    },
+    {
+      "step": 4,
+      "output": "Thought: I have arrived at cabinet 2, but it is closed. I need to open it to see if there is an egg inside.\nAction: open cabinet 2",
+      "action": "open cabinet 2"
+    },
+    {
+      "step": 5,
+      "output": "Thought: I opened cabinet 2, but it is empty. I need to continue searching for an egg. I will check the next cabinet, cabinet 3.\nAction: go to cabinet 3",
+      "action": "go to cabinet 3"
+    },
+    {
+      "step": 6,
+      "output": "Thought: I checked cabinet 3, but there is no egg there (only glassbottle 1). I need to continue searching. I will check cabinet 4 next.\nAction: go to cabinet 4",
+      "action": "go to cabinet 4"
+    },
+    {
+      "step": 7,
+      "output": "Thought: I checked cabinet 4, but there is no egg there (only glassbottle 2 and mug 1). I need to continue searching. I will check cabinet 5 next.\nAction: go to cabinet 5",
+      "action": "go to cabinet 5"
+    },
+    {
+      "step": 8,
+      "output": "Thought: I have arrived at cabinet 5, but it is closed. I need to open it to check if there is an egg inside.\nAction: open cabinet 5",
+      "action": "open cabinet 5"
+    },
+    {
+      "step": 9,
+      "output": "Thought: I checked cabinet 5, but it is empty. I need to continue searching for an egg. I will check cabinet 6 next.\nAction: go to cabinet 6",
+      "action": "go to cabinet 6"
+    },
+    {
+      "step": 10,
+      "output": "Thought: I have arrived at cabinet 6, but it is closed. I need to open it to check if there is an egg inside.\nAction: open cabinet 6",
+      "action": "open cabinet 6"
+    },
+    {
+      "step": 11,
+      "output": "Thought: I checked cabinet 6, but there is no egg there (only bowl 2, soapbottle 2, and soapbottle 1). I have checked the fridge and all cabinets (1-6) without finding an egg. Eggs might be on the countertops or in other receptacles like drawers or the microwave itself (though unlikely to be raw there). I will check the countertops next, starting with countertop 1.\nAction: go to countertop 1",
+      "action": "go to countertop 1"
+    },
+    {
+      "step": 12,
+      "output": "Thought: I checked countertop 1, but there is no egg there (only cup 2, peppershaker 3, saltshaker 1, and tomato 2). I need to continue searching on other countertops. I will check countertop 2 next.\nAction: go to countertop 2",
+      "action": "go to countertop 2"
+    },
+    {
+      "step": 13,
+      "output": "Thought: I checked countertop 2, but there is no egg there (only bread 1, butterknife 1, creditcard 1, dishsponge 1, glassbottle 3, knife 1, and spoon 1). I need to continue searching. I will check countertop 3 next.\nAction: go to countertop 3",
+      "action": "go to countertop 3"
+    },
+    {
+      "step": 14,
+      "output": "Thought: I found an egg (egg 1) on countertop 3. Now I need to take it, clean it using the sinkbasin, and then put it in the microwave. First, I will take the egg from countertop 3.\nAction: take egg 1 from countertop 3",
+      "action": "take egg 1 from countertop 3"
+    },
+    {
+      "step": 15,
+      "output": "Thought: I have successfully taken the egg 1. The next step is to clean it. According to the available actions, I can clean an object using the sinkbasin. I need to go to the sinkbasin 1 to perform the cleaning action.\nAction: go to sinkbasin 1",
+      "action": "go to sinkbasin 1"
+    },
+    {
+      "step": 16,
+      "output": "Thought: I have arrived at sinkbasin 1 and I am holding the egg 1. The next step in the plan is to clean the egg. I will use the sinkbasin 1 to clean the egg 1.\nAction: clean egg 1 with sinkbasin 1",
+      "action": "clean egg 1 with sinkbasin 1"
+    },
+    {
+      "step": 17,
+      "output": "Thought: I have successfully cleaned the egg 1. The final step is to put the clean egg into the microwave. I need to go to the microwave 1 to perform this action.\nAction: go to microwave 1",
+      "action": "go to microwave 1"
+    },
+    {
+      "step": 18,
+      "output": "Thought: I have arrived at the microwave 1, but it is currently closed. To put the egg inside, I first need to open the microwave.\nAction: open microwave 1",
+      "action": "open microwave 1"
+    },
+    {
+      "step": 19,
+      "output": "Thought: I have opened the microwave 1 and it is now open. I am holding the clean egg 1. The final step is to place the egg inside the microwave.\nAction: put egg 1 in/on microwave 1",
+      "action": "move egg 1 to microwave 1"
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 20,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 29.5
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (VBL App. F.3 / ReflAct App. K.1 / MPO)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca"
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "id": "u093",
+  "family": "pick_cool_then_place_in_recep",
+  "game": "pick_cool_then_place_in_recep-Tomato-None-Microwave-10/trial_T20190909_102644_926781/game.tw-pddl",
+  "task": "put a cool tomato in microwave.",
+  "arm": "react_std",
+  "won": true,
+  "steps": 11,
+  "end": "success",
+  "baseline_won": null,
+  "baseline_steps": null,
+  "baseline_source": "none (--no-baseline)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r2",
+      "action": "open recep",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r3",
+      "action": "open fridge 1",
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a bread 1, a mug 3, a pan 1, and a plate 3."
+    },
+    {
+      "id": "r4",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a dishsponge 1, and a mug 2."
+    },
+    {
+      "id": "r5",
+      "action": "go to countertop 2",
+      "observation": "You arrive at countertop 2. On the countertop 2, you see a butterknife 1, a cellphone 1, a creditcard 1, a knife 1, a lettuce 1, a saltshaker 2, a saltshaker 1, a statue 1, and a tomato 1."
+    },
+    {
+      "id": "r6",
+      "action": "take tomato 1 from countertop 2",
+      "observation": "You pick up the tomato 1 from the countertop 2."
+    },
+    {
+      "id": "r7",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is open. In it, you see a bread 1, a mug 3, a pan 1, and a plate 3."
+    },
+    {
+      "id": "r8",
+      "action": "cool tomato 1 with fridge 1",
+      "observation": "You cool the tomato 1 using the fridge 1."
+    },
+    {
+      "id": "r9",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r10",
+      "action": "open microwave 1",
+      "observation": "You open the microwave 1. The microwave 1 is open. In it, you see a egg 1."
+    },
+    {
+      "id": "r11",
+      "action": "move tomato 1 to microwave 1",
+      "observation": "You move the tomato 1 to the microwave 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: The goal is to put a cool tomato in the microwave. First, I need to find a tomato. Tomatoes are commonly found in the fridge, on countertops, or in cabinets. I will start by checking the fridge since it's a likely place for fresh produce.\nAction: go to fridge 1",
+      "action": "go to fridge 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: I am at the fridge 1, but it is closed. To find the tomato inside, I need to open the fridge first.\nAction: open recep",
+      "action": "open recep"
+    },
+    {
+      "step": 2,
+      "output": "Thought: The action \"open recep\" was invalid because the system expects a specific receptacle name. I need to specify \"fridge 1\" to open it.\nAction: open fridge 1",
+      "action": "open fridge 1"
+    },
+    {
+      "step": 3,
+      "output": "Thought: I opened the fridge 1, but I don't see a tomato inside. I see bread 1, mug 3, pan 1, and plate 3. I need to find a tomato elsewhere. Common places for tomatoes are countertops, cabinets, or the sinkbasin. I will check the countertops next, starting with countertop 1.\nAction: go to countertop 1",
+      "action": "go to countertop 1"
+    },
+    {
+      "step": 4,
+      "output": "Thought: I checked countertop 1 and found a dishsponge 1 and a mug 2, but no tomato. I need to continue searching for the tomato. I will check the other countertops next, starting with countertop 2.\nAction: go to countertop 2",
+      "action": "go to countertop 2"
+    },
+    {
+      "step": 5,
+      "output": "Thought: I found a tomato 1 on countertop 2. The task requires me to put a cool tomato in the microwave. First, I need to take the tomato from the countertop.\nAction: take tomato 1 from countertop 2",
+      "action": "take tomato 1 from countertop 2"
+    },
+    {
+      "step": 6,
+      "output": "Thought: I have successfully picked up the tomato 1. The task requires me to put a cool tomato in the microwave. To cool the tomato, I need to use the fridge 1. I will go to the fridge 1 and cool the tomato there.\nAction: go to fridge 1",
+      "action": "go to fridge 1"
+    },
+    {
+      "step": 7,
+      "output": "Thought: I am at the open fridge 1 with the tomato 1 in hand. The task requires cooling the tomato before putting it in the microwave. I will use the fridge 1 to cool the tomato 1.\nAction: cool tomato 1 with fridge 1",
+      "action": "cool tomato 1 with fridge 1"
+    },
+    {
+      "step": 8,
+      "output": "Thought: I have successfully cooled the tomato 1 using the fridge 1. The next step is to put the cooled tomato into the microwave 1. I need to go to the microwave first.\nAction: go to microwave 1",
+      "action": "go to microwave 1"
+    },
+    {
+      "step": 9,
+      "output": "Thought: I am at the microwave 1, but it is closed. To put the tomato inside, I need to open the microwave first.\nAction: open microwave 1",
+      "action": "open microwave 1"
+    },
+    {
+      "step": 10,
+      "output": "Thought: I have opened the microwave 1 and can see an egg 1 inside. I have the cooled tomato 1 in hand. The task is to put the cool tomato in the microwave. I will now place the tomato inside.\nAction: put tomato 1 in/on microwave 1",
+      "action": "move tomato 1 to microwave 1"
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 11,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 10.5
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (VBL App. F.3 / ReflAct App. K.1 / MPO)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca"
+  }
+}

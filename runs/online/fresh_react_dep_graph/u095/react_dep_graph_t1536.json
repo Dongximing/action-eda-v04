@@ -1,0 +1,413 @@
+{
+  "id": "u095",
+  "family": "pick_heat_then_place_in_recep",
+  "game": "pick_heat_then_place_in_recep-Apple-None-Fridge-10/trial_T20190906_182259_116320/game.tw-pddl",
+  "task": "heat some apple and put it in fridge.",
+  "arm": "react_dep_graph_t1536",
+  "won": true,
+  "steps": 35,
+  "end": "success",
+  "baseline_won": null,
+  "baseline_steps": null,
+  "baseline_source": "none (--no-baseline)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "open fridge 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r2",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r3",
+      "action": "open fridge 1",
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a bread 3, a bread 2, a bread 1, a lettuce 1, a tomato 2, and a tomato 1."
+    },
+    {
+      "id": "r4",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. On the cabinet 1, you see a glassbottle 1."
+    },
+    {
+      "id": "r5",
+      "action": "go to cabinet 2",
+      "observation": "You arrive at cabinet 2. The cabinet 2 is closed."
+    },
+    {
+      "id": "r6",
+      "action": "open cabinet 2",
+      "observation": "You open the cabinet 2. The cabinet 2 is open. In it, you see a dishsponge 1, and a plate 1."
+    },
+    {
+      "id": "r7",
+      "action": "go to cabinet 3",
+      "observation": "You arrive at cabinet 3. On the cabinet 3, you see a plate 2."
+    },
+    {
+      "id": "r8",
+      "action": "go to cabinet 4",
+      "observation": "You arrive at cabinet 4. On the cabinet 4, you see nothing."
+    },
+    {
+      "id": "r9",
+      "action": "go to cabinet 5",
+      "observation": "You arrive at cabinet 5. The cabinet 5 is closed."
+    },
+    {
+      "id": "r10",
+      "action": "open cabinet 5",
+      "observation": "You open the cabinet 5. The cabinet 5 is open. In it, you see a dishsponge 2, a peppershaker 1, and a soapbottle 1."
+    },
+    {
+      "id": "r11",
+      "action": "go to cabinet 6",
+      "observation": "You arrive at cabinet 6. The cabinet 6 is closed."
+    },
+    {
+      "id": "r12",
+      "action": "open cabinet 6",
+      "observation": "You open the cabinet 6. The cabinet 6 is open. In it, you see nothing."
+    },
+    {
+      "id": "r13",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a cellphone 1, a creditcard 3, a creditcard 1, and a pan 1."
+    },
+    {
+      "id": "r14",
+      "action": "go to countertop 2",
+      "observation": "You arrive at countertop 2. On the countertop 2, you see a creditcard 2, a knife 2, a knife 1, a statue 1, and a tomato 3."
+    },
+    {
+      "id": "r15",
+      "action": "go to countertop 3",
+      "observation": "You arrive at countertop 3. On the countertop 3, you see a bowl 2, a bowl 1, a butterknife 1, a cellphone 3, a cellphone 2, a cup 1, a houseplant 1, a knife 3, a plate 3, a soapbottle 2, a spatula 1, a spoon 1, a vase 3, and a vase 2."
+    },
+    {
+      "id": "r16",
+      "action": "go to diningtable 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r17",
+      "action": "go to drawer 1",
+      "observation": "You arrive at drawer 1. The drawer 1 is closed."
+    },
+    {
+      "id": "r18",
+      "action": "open drawer 1",
+      "observation": "You open the drawer 1. The drawer 1 is open. In it, you see a fork 1."
+    },
+    {
+      "id": "r19",
+      "action": "go to drawer 2",
+      "observation": "You arrive at drawer 2. The drawer 2 is closed."
+    },
+    {
+      "id": "r20",
+      "action": "open drawer 2",
+      "observation": "You open the drawer 2. The drawer 2 is open. In it, you see a fork 2."
+    },
+    {
+      "id": "r21",
+      "action": "go to drawer 3",
+      "observation": "You arrive at drawer 3. The drawer 3 is closed."
+    },
+    {
+      "id": "r22",
+      "action": "open drawer 3",
+      "observation": "You open the drawer 3. The drawer 3 is open. In it, you see nothing."
+    },
+    {
+      "id": "r23",
+      "action": "go to shelf 1",
+      "observation": "You arrive at shelf 1. On the shelf 1, you see a papertowelroll 1, a saltshaker 1, and a statue 2."
+    },
+    {
+      "id": "r24",
+      "action": "go to shelf 2",
+      "observation": "You arrive at shelf 2. On the shelf 2, you see a dishsponge 3, a mug 1, and a vase 1."
+    },
+    {
+      "id": "r25",
+      "action": "go to shelf 3",
+      "observation": "You arrive at shelf 3. On the shelf 3, you see nothing."
+    },
+    {
+      "id": "r26",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r27",
+      "action": "open microwave 1",
+      "observation": "You open the microwave 1. The microwave 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r28",
+      "action": "go to toaster 1",
+      "observation": "You arrive at toaster 1. On the toaster 1, you see nothing."
+    },
+    {
+      "id": "r29",
+      "action": "go to coffeemachine 1",
+      "observation": "You arrive at coffeemachine 1. On the coffeemachine 1, you see nothing."
+    },
+    {
+      "id": "r30",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a apple 3, a egg 3, a glassbottle 2, a potato 3, and a spoon 2."
+    },
+    {
+      "id": "r31",
+      "action": "take apple 3 from sinkbasin 1",
+      "observation": "You pick up the apple 3 from the sinkbasin 1."
+    },
+    {
+      "id": "r32",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r33",
+      "action": "heat apple 3 with microwave 1",
+      "observation": "You heat the apple 3 using the microwave 1."
+    },
+    {
+      "id": "r34",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is open. In it, you see a bread 3, a bread 2, a bread 1, a lettuce 1, a tomato 2, and a tomato 1."
+    },
+    {
+      "id": "r35",
+      "action": "move apple 3 to fridge 1",
+      "observation": "You move the apple 3 to the fridge 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: To solve the task, I need to find an apple, heat it, and then put it in the fridge. First, I need to locate an apple. Apples are commonly found in fridges, cabinets, or on countertops. I will start by checking the fridge 1.\nAction: open fridge 1",
+      "action": "open fridge 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: The previous action \"open fridge 1\" failed because I am not currently at the fridge. I need to move to the fridge first before I can interact with it. I will go to the fridge 1.\nAction: go to fridge 1",
+      "action": "go to fridge 1"
+    },
+    {
+      "step": 2,
+      "output": "Thought: I have arrived at the fridge 1, which is currently closed. To find an apple, I need to open the fridge first.\nAction: open fridge 1",
+      "action": "open fridge 1"
+    },
+    {
+      "step": 3,
+      "output": "Thought: I opened the fridge 1, but there is no apple inside (only bread and tomatoes). I need to find an apple elsewhere. Common places for apples are cabinets, countertops, or the dining table (though dining table isn't listed in the initial view, cabinets and countertops are). I will check the cabinets first, starting with cabinet 1.\nAction: go to cabinet 1",
+      "action": "go to cabinet 1"
+    },
+    {
+      "step": 4,
+      "output": "Thought: I checked cabinet 1, but there is no apple there, only a glassbottle. I need to continue searching for an apple in other locations. I will check the next cabinet, cabinet 2.\nAction: go to cabinet 2",
+      "action": "go to cabinet 2"
+    },
+    {
+      "step": 5,
+      "output": "Thought: I arrived at cabinet 2, but it is closed. I need to open it to see if there is an apple inside.\nAction: open cabinet 2",
+      "action": "open cabinet 2"
+    },
+    {
+      "step": 6,
+      "output": "Thought: I checked cabinet 2, but there is no apple inside (only a dishsponge and a plate). I need to continue searching for an apple in other locations. I will check the next cabinet, cabinet 3.\nAction: go to cabinet 3",
+      "action": "go to cabinet 3"
+    },
+    {
+      "step": 7,
+      "output": "Thought: I checked cabinet 3, but there is no apple there, only a plate. I need to continue searching for an apple in other locations. I will check the next cabinet, cabinet 4.\nAction: go to cabinet 4",
+      "action": "go to cabinet 4"
+    },
+    {
+      "step": 8,
+      "output": "Thought: I checked cabinet 4, but there is nothing there. I need to continue searching for an apple. I will check the next cabinet, cabinet 5.\nAction: go to cabinet 5",
+      "action": "go to cabinet 5"
+    },
+    {
+      "step": 9,
+      "output": "Thought: I arrived at cabinet 5, but it is closed. I need to open it to check for an apple inside.\nAction: open cabinet 5",
+      "action": "open cabinet 5"
+    },
+    {
+      "step": 10,
+      "output": "Thought: I checked cabinet 5, but there is no apple inside (only a dishsponge, peppershaker, and soapbottle). I need to continue searching for an apple. I will check the next cabinet, cabinet 6.\nAction: go to cabinet 6",
+      "action": "go to cabinet 6"
+    },
+    {
+      "step": 11,
+      "output": "Thought: I arrived at cabinet 6, but it is closed. I need to open it to check if there is an apple inside.\nAction: open cabinet 6",
+      "action": "open cabinet 6"
+    },
+    {
+      "step": 12,
+      "output": "Thought: I have checked all the cabinets (1-6) and the fridge, but found no apple. The apple might be on one of the countertops. I will check the countertops next, starting with countertop 1.\nAction: go to countertop 1",
+      "action": "go to countertop 1"
+    },
+    {
+      "step": 13,
+      "output": "Thought: I checked countertop 1, but there is no apple there (only a cellphone, creditcards, and a pan). I need to continue searching for an apple on the other countertops. I will check countertop 2 next.\nAction: go to countertop 2",
+      "action": "go to countertop 2"
+    },
+    {
+      "step": 14,
+      "output": "Thought: I checked countertop 2, but there is no apple there (only creditcards, knives, a statue, and a tomato). I need to continue searching for an apple on the remaining countertops. I will check countertop 3 next.\nAction: go to countertop 3",
+      "action": "go to countertop 3"
+    },
+    {
+      "step": 15,
+      "output": "Thought: I have checked all the cabinets and countertops, but found no apple. The apple might be on the diningtable (which was mentioned in the initial environment description but I haven't checked yet) or perhaps I missed something. Wait, looking back at the initial list, there is a \"diningtable 1\". I haven't checked it yet. Let me go there.\nAction: go to diningtable 1",
+      "action": "go to diningtable 1"
+    },
+    {
+      "step": 16,
+      "output": "Thought: The action \"go to diningtable 1\" resulted in \"Nothing happens\", which suggests that either the diningtable is not in the current room or the action name is incorrect. Looking back at the initial environment description provided in the prompt, I see: \"cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\" There is no \"diningtable 1\" listed in this specific environment description, unlike the example task. I must have hallucinated the diningtable based on the example. I need to re-examine the places I have checked. I checked fridge (no apple), cabinets 1-6 (no apple), countertops 1-3 (no apple). I haven't checked the drawers yet. Apples could be in a drawer. I will check drawer 1.\nAction: go to drawer 1",
+      "action": "go to drawer 1"
+    },
+    {
+      "step": 17,
+      "output": "Thought: I arrived at drawer 1, but it is closed. I need to open it to check if there is an apple inside.\nAction: open drawer 1",
+      "action": "open drawer 1"
+    },
+    {
+      "step": 18,
+      "output": "Thought: I checked drawer 1, but there is no apple inside (only a fork). I need to continue searching for an apple in the remaining drawers. I will check drawer 2 next.\nAction: go to drawer 2",
+      "action": "go to drawer 2"
+    },
+    {
+      "step": 19,
+      "output": "Thought: I arrived at drawer 2, but it is closed. I need to open it to check if there is an apple inside.\nAction: open drawer 2",
+      "action": "open drawer 2"
+    },
+    {
+      "step": 20,
+      "output": "Thought: I checked drawer 2, but there is no apple inside (only a fork). I need to continue searching for an apple in the remaining drawers. I will check drawer 3 next.\nAction: go to drawer 3",
+      "action": "go to drawer 3"
+    },
+    {
+      "step": 21,
+      "output": "Thought: I arrived at drawer 3, but it is closed. I need to open it to check if there is an apple inside.\nAction: open drawer 3",
+      "action": "open drawer 3"
+    },
+    {
+      "step": 22,
+      "output": "Thought: I have checked the fridge, all cabinets (1-6), all countertops (1-3), and all drawers (1-3), but found no apple. The apple might be on a shelf. I will check the shelves next, starting with shelf 1.\nAction: go to shelf 1",
+      "action": "go to shelf 1"
+    },
+    {
+      "step": 23,
+      "output": "Thought: I checked shelf 1, but there is no apple there (only a papertowelroll, saltshaker, and statue). I need to continue searching for an apple on the remaining shelves. I will check shelf 2 next.\nAction: go to shelf 2",
+      "action": "go to shelf 2"
+    },
+    {
+      "step": 24,
+      "output": "Thought: I checked shelf 2, but there is no apple there (only a dishsponge, mug, and vase). I need to continue searching for an apple on the remaining shelves. I will check shelf 3 next.\nAction: go to shelf 3",
+      "action": "go to shelf 3"
+    },
+    {
+      "step": 25,
+      "output": "Thought: I have checked the fridge, all cabinets, all countertops, all drawers, and all shelves, but found no apple. The only remaining location I haven't thoroughly checked is the garbagecan, although it's unlikely an apple would be there. However, since I must find an apple to complete the task, I will check the garbagecan last. Wait, I also haven't checked the microwave, toaster, coffeemachine, sinkbasin, or stoveburners. Apples are sometimes kept in the microwave (rare) or perhaps I missed something obvious. Let me re-evaluate. I checked: fridge, cabinets 1-6, countertops 1-3, drawers 1-3, shelves 1-3. Remaining objects: coffeemachine 1, garbagecan 1, microwave 1, shelf 1-3 (done), sinkbasin 1, stoveburner 1-4, toaster 1. I haven't checked the microwave yet. Sometimes tasks involve heating something already there, but the goal says \"heat some apple\", implying I need to find one first. Let me check the microwave just in case there's an apple inside, or perhaps the apple is on the stove? No, usually food is in cabinets/fridges/countertops. Let me check the microwave.\nAction: go to microwave 1",
+      "action": "go to microwave 1"
+    },
+    {
+      "step": 26,
+      "output": "Thought: I arrived at the microwave 1, but it is closed. I need to open it to check if there is an apple inside.\nAction: open microwave 1",
+      "action": "open microwave 1"
+    },
+    {
+      "step": 27,
+      "output": "Thought: I have checked the microwave and found no apple. I still haven't checked the toaster, coffeemachine, sinkbasin, or stoveburners. Although it's unusual, the apple might be in one of these places or perhaps I missed a location. Let me check the toaster next.\nAction: go to toaster 1",
+      "action": "go to toaster 1"
+    },
+    {
+      "step": 28,
+      "output": "Thought: I checked the toaster and found nothing. I still haven't checked the coffeemachine, sinkbasin, or stoveburners. Let me check the coffeemachine next.\nAction: go to coffeemachine 1",
+      "action": "go to coffeemachine 1"
+    },
+    {
+      "step": 29,
+      "output": "Thought: I have checked the coffeemachine and found nothing. I still haven't checked the sinkbasin or the stoveburners. Let me check the sinkbasin next.\nAction: go to sinkbasin 1",
+      "action": "go to sinkbasin 1"
+    },
+    {
+      "step": 30,
+      "output": "Thought: I found an apple (3) in the sinkbasin 1. Now I need to take it, heat it, and then put it in the fridge. First, I will take the apple from the sinkbasin.\nAction: take apple 3 from sinkbasin 1",
+      "action": "take apple 3 from sinkbasin 1"
+    },
+    {
+      "step": 31,
+      "output": "Thought: I have successfully taken the apple 3 from the sinkbasin 1. Now I need to heat it. The available heating options are the microwave 1 or the stoveburners (1-4). I will use the microwave 1 to heat the apple. First, I need to go to the microwave 1.\nAction: go to microwave 1",
+      "action": "go to microwave 1"
+    },
+    {
+      "step": 32,
+      "output": "Thought: I am at the microwave 1, which is currently open. I need to heat the apple 3 using the microwave. Since the microwave is already open, I can directly perform the heating action.\nAction: heat apple 3 with microwave 1",
+      "action": "heat apple 3 with microwave 1"
+    },
+    {
+      "step": 33,
+      "output": "Thought: I have successfully heated the apple 3 in the microwave 1. The next step is to put the heated apple into the fridge 1 to complete the task. I need to go to the fridge 1 first.\nAction: go to fridge 1",
+      "action": "go to fridge 1"
+    },
+    {
+      "step": 34,
+      "output": "Thought: I have arrived at the fridge 1, which is currently open. I have the heated apple 3 in my possession. The final step of the task is to put the apple into the fridge. I will perform the action to place the apple inside.\nAction: put apple 3 in/on fridge 1",
+      "action": "move apple 3 to fridge 1"
+    }
+  ],
+  "dep_graph": {
+    "notes": {
+      "1": "This failed. It needs \"you are at fridge 1\", which no feedback supports: you have not gone anywhere yet."
+    },
+    "blocked": {},
+    "events": [
+      {
+        "step": 1,
+        "type": "culprit",
+        "belief": "you are at fridge 1",
+        "level": "unsupported",
+        "formed": 1,
+        "hops": 1
+      }
+    ],
+    "pointed_step": {},
+    "hops": null
+  },
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 35,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 57.5
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (as react_std) + dependency-graph controller (scripts/dep_graph.py)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca",
+    "culprit_search": "multi-hop walk over the graph"
+  }
+}

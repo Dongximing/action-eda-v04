@@ -1,0 +1,792 @@
+{
+  "id": "game11",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-Cloth-None-Cabinet-405/trial_T20190907_080903_889497/game.tw-pddl",
+  "task": "put a clean cloth in cabinet.",
+  "arm": "think_jev",
+  "won": true,
+  "steps": 15,
+  "end": "success",
+  "baseline_won": false,
+  "baseline_steps": 50,
+  "baseline_source": "src natural.json",
+  "diverged_from_baseline_at": 2,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a bathtubbasin 1, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a countertop 1, a garbagecan 1, a handtowelholder 2, a handtowelholder 1, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to towelholder 1",
+      "observation": "You arrive at towelholder 1. On the towelholder 1, you see a towel 1."
+    },
+    {
+      "id": "r2",
+      "action": "look",
+      "observation": "You are facing the towelholder 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r3",
+      "action": "go to handtowelholder 1",
+      "observation": "You arrive at handtowelholder 1. On the handtowelholder 1, you see a handtowel 1."
+    },
+    {
+      "id": "r4",
+      "action": "go to handtowelholder 2",
+      "observation": "You arrive at handtowelholder 2. On the handtowelholder 2, you see nothing."
+    },
+    {
+      "id": "r5",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see nothing."
+    },
+    {
+      "id": "r6",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a candle 2."
+    },
+    {
+      "id": "r7",
+      "action": "go to garbagecan 1",
+      "observation": "You arrive at garbagecan 1. On the garbagecan 1, you see a spraybottle 2."
+    },
+    {
+      "id": "r8",
+      "action": "go to toiletpaperhanger 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r9",
+      "action": "go to bathtubbasin 1",
+      "observation": "You arrive at bathtubbasin 1. On the bathtubbasin 1, you see a cloth 2, and a soapbar 1."
+    },
+    {
+      "id": "r10",
+      "action": "take cloth 2 from bathtubbasin 1",
+      "observation": "You pick up the cloth 2 from the bathtubbasin 1."
+    },
+    {
+      "id": "r11",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see nothing."
+    },
+    {
+      "id": "r12",
+      "action": "clean cloth 2 with sinkbasin 1",
+      "observation": "You clean the cloth 2 using the sinkbasin 1."
+    },
+    {
+      "id": "r13",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed."
+    },
+    {
+      "id": "r14",
+      "action": "open cabinet 1",
+      "observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see a soapbottle 2, and a soapbottle 1."
+    },
+    {
+      "id": "r15",
+      "action": "move cloth 2 to cabinet 1",
+      "observation": "You move the cloth 2 to the cabinet 1."
+    }
+  ],
+  "decisions": [
+    {
+      "proposal": "take towel 1 from towelholder 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The object you are taking (\"towel\") is the object the task names. The task is: \"put a clean cloth in cabinet.\", which does not name \"towel\".",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              null
+            ]
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "take towel 1 from towelholder 1",
+          "same_as_before": true
+        }
+      ],
+      "executed": "take towel 1 from towelholder 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "vetoed": true,
+      "env_action": "look",
+      "step": 1,
+      "observation": "You are facing the towelholder 1. Next to it, you see nothing.",
+      "succeeded": true,
+      "proposal_would_succeed": true,
+      "proposal_would_be_new": true
+    },
+    {
+      "proposal": "take cloth 2 from bathtubbasin 1",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "cloth is named in the task",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              null
+            ]
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": false,
+      "step": 9,
+      "observation": "You pick up the cloth 2 from the bathtubbasin 1.",
+      "succeeded": true
+    }
+  ],
+  "place_lists": [
+    {
+      "step": 0,
+      "code_visited": [],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 1"
+      ],
+      "model_visited": [],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 1,
+      "code_visited": [
+        "towelholder 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 2,
+      "code_visited": [
+        "towelholder 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 3,
+      "code_visited": [
+        "towelholder 1",
+        "handtowelholder 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "handtowelholder 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 4,
+      "code_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 5,
+      "code_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2",
+        "sinkbasin 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2",
+        "sinkbasin 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 6,
+      "code_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2",
+        "sinkbasin 1",
+        "countertop 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2",
+        "sinkbasin 1",
+        "countertop 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 7,
+      "code_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2",
+        "sinkbasin 1",
+        "countertop 1",
+        "garbagecan 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2",
+        "sinkbasin 1",
+        "countertop 1",
+        "garbagecan 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 8,
+      "code_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2",
+        "sinkbasin 1",
+        "countertop 1",
+        "garbagecan 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2",
+        "sinkbasin 1",
+        "countertop 1",
+        "garbagecan 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "toilet 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 9,
+      "code_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2",
+        "sinkbasin 1",
+        "countertop 1",
+        "garbagecan 1",
+        "bathtubbasin 1"
+      ],
+      "code_not_visited": [
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2",
+        "sinkbasin 1",
+        "countertop 1",
+        "garbagecan 1",
+        "toiletpaperhanger 1",
+        "bathtubbasin 1"
+      ],
+      "model_not_visited": [
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "toilet 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 10,
+      "code_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2",
+        "sinkbasin 1",
+        "countertop 1",
+        "garbagecan 1",
+        "bathtubbasin 1"
+      ],
+      "code_not_visited": [
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2",
+        "sinkbasin 1",
+        "countertop 1",
+        "garbagecan 1",
+        "toiletpaperhanger 1",
+        "bathtubbasin 1"
+      ],
+      "model_not_visited": [
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "toilet 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 11,
+      "code_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2",
+        "sinkbasin 1",
+        "countertop 1",
+        "garbagecan 1",
+        "bathtubbasin 1"
+      ],
+      "code_not_visited": [
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2",
+        "sinkbasin 1",
+        "countertop 1",
+        "garbagecan 1",
+        "toiletpaperhanger 1",
+        "bathtubbasin 1"
+      ],
+      "model_not_visited": [
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "toilet 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 12,
+      "code_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2",
+        "sinkbasin 1",
+        "countertop 1",
+        "garbagecan 1",
+        "bathtubbasin 1"
+      ],
+      "code_not_visited": [
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2",
+        "sinkbasin 1",
+        "countertop 1",
+        "garbagecan 1",
+        "toiletpaperhanger 1",
+        "bathtubbasin 1"
+      ],
+      "model_not_visited": [
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "toilet 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 13,
+      "code_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2",
+        "sinkbasin 1",
+        "countertop 1",
+        "garbagecan 1",
+        "bathtubbasin 1",
+        "cabinet 1"
+      ],
+      "code_not_visited": [
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2",
+        "sinkbasin 1",
+        "countertop 1",
+        "garbagecan 1",
+        "toiletpaperhanger 1",
+        "bathtubbasin 1",
+        "cabinet 1"
+      ],
+      "model_not_visited": [
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "toilet 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 14,
+      "code_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2",
+        "sinkbasin 1",
+        "countertop 1",
+        "garbagecan 1",
+        "bathtubbasin 1",
+        "cabinet 1"
+      ],
+      "code_not_visited": [
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "handtowelholder 1",
+        "handtowelholder 2",
+        "sinkbasin 1",
+        "countertop 1",
+        "garbagecan 1",
+        "toiletpaperhanger 1",
+        "bathtubbasin 1",
+        "cabinet 1"
+      ],
+      "model_not_visited": [
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "toilet 1"
+      ],
+      "jev_unusable": 0
+    }
+  ],
+  "thoughts": {
+    "1": "My task is to put a clean cloth in a cabinet. First, I need to find a cloth. Cloths are often found in bathrooms, so I should check the towelholder, handtowelholder, or sinkbasin. I am currently in the middle of the room. I will start by going to the towelholder 1 to see if there is a cloth there.",
+    "2": "My task is to put a clean cloth in a cabinet. I am currently at towelholder 1 and see a towel 1. A towel is a type of cloth. I need to take the towel, clean it with the sinkbasin, and then move it to a cabinet. First, I will take the towel from the towelholder.",
+    "3": "The task is to put a clean cloth in a cabinet. I am currently at towelholder 1 and see a towel 1. The system feedback suggests that 'towel' is not the correct item name for 'cloth'. I need to find a 'cloth' instead. I should check other locations like handtowelholder 1, handtowelholder 2, sinkbasin 1, or cabinets to find a 'cloth'. I will go to handtowelholder 1 next to check for a cloth.",
+    "4": "I need to find a 'cloth' to complete the task. I have checked towelholder 1 (towel 1) and handtowelholder 1 (handtowel 1), but neither seems to be the correct 'cloth'. I should continue checking other locations. The next logical place to check is handtowelholder 2, as it might contain a cloth.",
+    "5": "I need to find a 'cloth' to complete the task. I have checked towelholder 1 (towel 1), handtowelholder 1 (handtowel 1), and handtowelholder 2 (empty). None of these seem to be the correct 'cloth'. I should continue checking other locations. The next logical place to check is sinkbasin 1, as it might contain a cloth or a container with one.",
+    "6": "I need to find a 'cloth' to complete the task. I have checked towelholder 1 (towel 1), handtowelholder 1 (handtowel 1), handtowelholder 2 (empty), and sinkbasin 1 (empty). None of these contain a 'cloth'. The next logical place to check is the countertop 1, as it might have a cloth on it.",
+    "7": "I need to find a 'cloth' to complete the task. I have checked towelholder 1 (towel 1), handtowelholder 1 (handtowel 1), handtowelholder 2 (empty), sinkbasin 1 (empty), and countertop 1 (candle 2). None of these contain a 'cloth'. The next logical place to check is the garbagecan 1, as it might contain a cloth or a container with one.",
+    "8": "I have checked towelholder 1, handtowelholder 1, handtowelholder 2, sinkbasin 1, countertop 1, and garbagecan 1, but found no 'cloth'. The remaining unvisited locations are bathtubbasin 1, toilet 1, toiletpaperhanger 1, and the cabinets. Cloths are often found in bathrooms, so I should check the toiletpaperhanger 1 or bathtubbasin 1 next. I will go to toiletpaperhanger 1 first.",
+    "9": "I have checked most of the bathroom fixtures (towelholder, handtowelholders, sinkbasin, countertop, garbagecan, toiletpaperhanger) and found no 'cloth'. The remaining unvisited locations are bathtubbasin 1, toilet 1, and the cabinets. Since cloths are often found in bathrooms, I should check the bathtubbasin 1 and toilet 1 next. I will start by going to the bathtubbasin 1.",
+    "10": "I found a cloth 2 in bathtubbasin 1. Now I need to take it, clean it with sinkbasin 1, and then move it to one of the cabinets. First, I will take the cloth from the bathtubbasin.",
+    "11": "I have successfully picked up the cloth 2 from the bathtubbasin 1. The task requires me to put a clean cloth in a cabinet. Since the cloth is currently dirty, I need to clean it first using the sinkbasin 1. After cleaning, I will move the clean cloth to one of the available cabinets (cabinet 1, 2, 3, 4, or 5). My next step is to go to the sinkbasin 1 to clean the cloth.",
+    "12": "I have the cloth 2 in my inventory. I am currently at sinkbasin 1. The next step is to clean the cloth 2 using the sinkbasin 1.",
+    "13": "I have successfully cleaned the cloth 2 using the sinkbasin 1. The task now is to put this clean cloth into a cabinet. I have several cabinets available: cabinet 1, cabinet 2, cabinet 3, cabinet 4, and cabinet 5. I will choose cabinet 1 as the destination. First, I need to go to cabinet 1.",
+    "14": "I have successfully cleaned the cloth 2. Now I need to put it into a cabinet. I am currently at cabinet 1, which is closed. I need to open it first, then move the cloth inside.",
+    "15": "I have successfully cleaned the cloth 2. I am currently at cabinet 1, which is open. The task is to put the clean cloth in a cabinet. Since I am already at cabinet 1 and it is open, I should move the cloth 2 into it."
+  },
+  "think_errors": [],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 5,
+      "cache_hits": 10
+    },
+    "new_actor_requests": 15,
+    "jev": {
+      "calls": 5,
+      "cache_hits": 9
+    },
+    "seconds": 34.7
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "thinking agent (THINK_ACTION, data/fewshot/react_think_examples.json)",
+    "note": "jevexplore ledger",
+    "checker": "name_check, hard block",
+    "jev_url": "http://127.0.0.1:8000/v1/systemone",
+    "jev_model": "OneJev1.6-4B"
+  }
+}

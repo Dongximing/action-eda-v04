@@ -1,0 +1,2429 @@
+{
+  "id": "game11",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-Cloth-None-Cabinet-405/trial_T20190907_080903_889497/game.tw-pddl",
+  "task": "put a clean cloth in cabinet.",
+  "arm": "jevexplore_hard",
+  "won": false,
+  "steps": 50,
+  "end": "step_limit",
+  "baseline_won": false,
+  "baseline_steps": 50,
+  "baseline_source": "src natural.json",
+  "diverged_from_baseline_at": 2,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a bathtubbasin 1, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a countertop 1, a garbagecan 1, a handtowelholder 2, a handtowelholder 1, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to towelholder 1",
+      "observation": "You arrive at towelholder 1. On the towelholder 1, you see a towel 1."
+    },
+    {
+      "id": "r2",
+      "action": "look",
+      "observation": "You are facing the towelholder 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r3",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see nothing."
+    },
+    {
+      "id": "r4",
+      "action": "go to towelholder 1",
+      "observation": "You arrive at towelholder 1. On the towelholder 1, you see a towel 1."
+    },
+    {
+      "id": "r5",
+      "action": "clean towel 1 with sinkbasin 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r6",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed."
+    },
+    {
+      "id": "r7",
+      "action": "open cabinet 1",
+      "observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see a soapbottle 2, and a soapbottle 1."
+    },
+    {
+      "id": "r8",
+      "action": "go to towelholder 1",
+      "observation": "You arrive at towelholder 1. On the towelholder 1, you see a towel 1."
+    },
+    {
+      "id": "r9",
+      "action": "clean towel 1 with sinkbasin 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r10",
+      "action": "look",
+      "observation": "You are facing the towelholder 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r11",
+      "action": "go to handtowelholder 1",
+      "observation": "You arrive at handtowelholder 1. On the handtowelholder 1, you see a handtowel 1."
+    },
+    {
+      "id": "r12",
+      "action": "clean handtowel 1 with sinkbasin 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r13",
+      "action": "go to handtowelholder 2",
+      "observation": "You arrive at handtowelholder 2. On the handtowelholder 2, you see nothing."
+    },
+    {
+      "id": "r14",
+      "action": "go to handtowelholder 1",
+      "observation": "You arrive at handtowelholder 1. On the handtowelholder 1, you see a handtowel 1."
+    },
+    {
+      "id": "r15",
+      "action": "look",
+      "observation": "You are facing the handtowelholder 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r16",
+      "action": "go to handtowelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r17",
+      "action": "go to handtowelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r18",
+      "action": "go to handtowelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r19",
+      "action": "go to handtowelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r20",
+      "action": "go to handtowelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r21",
+      "action": "go to handtowelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r22",
+      "action": "go to handtowelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r23",
+      "action": "go to handtowelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r24",
+      "action": "go to handtowelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r25",
+      "action": "go to handtowelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r26",
+      "action": "go to handtowelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r27",
+      "action": "go to handtowelholder 2",
+      "observation": "You arrive at handtowelholder 2. On the handtowelholder 2, you see nothing."
+    },
+    {
+      "id": "r28",
+      "action": "go to towelholder 1",
+      "observation": "You arrive at towelholder 1. On the towelholder 1, you see a towel 1."
+    },
+    {
+      "id": "r29",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r30",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r31",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r32",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r33",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r34",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r35",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r36",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r37",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r38",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r39",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r40",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r41",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r42",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r43",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r44",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r45",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r46",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r47",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r48",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r49",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r50",
+      "action": "go to towelholder 1",
+      "observation": "Nothing happens."
+    }
+  ],
+  "decisions": [
+    {
+      "proposal": "take towel 1 from towelholder 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The object you are taking (\"towel\") is the object the task names. The task is: \"put a clean cloth in cabinet.\", which does not name \"towel\".",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              null
+            ]
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "take towel 1 from towelholder 1",
+          "same_as_before": true
+        }
+      ],
+      "executed": "take towel 1 from towelholder 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "vetoed": true,
+      "env_action": "look",
+      "step": 1,
+      "observation": "You are facing the towelholder 1. Next to it, you see nothing.",
+      "succeeded": true,
+      "proposal_would_succeed": true,
+      "proposal_would_be_new": true
+    },
+    {
+      "proposal": "take towel 1 from towelholder 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The object you are taking (\"towel\") is the object the task names. The task is: \"put a clean cloth in cabinet.\", which does not name \"towel\".",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              null
+            ]
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "take towel 1 from towelholder 1",
+          "same_as_before": true
+        }
+      ],
+      "executed": "take towel 1 from towelholder 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "vetoed": true,
+      "env_action": "look",
+      "step": 9,
+      "observation": "You are facing the towelholder 1. Next to it, you see nothing.",
+      "succeeded": true,
+      "proposal_would_succeed": true,
+      "proposal_would_be_new": true
+    },
+    {
+      "proposal": "take handtowel 1 from handtowelholder 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The object you are taking (\"handtowel\") is the object the task names. The task is: \"put a clean cloth in cabinet.\", which does not name \"handtowel\".",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              null
+            ]
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "clean handtowel 1 with sinkbasin 1",
+          "check": {
+            "status": "NONE",
+            "claims": [],
+            "calls": 0
+          }
+        }
+      ],
+      "executed": "clean handtowel 1 with sinkbasin 1",
+      "executed_status": "NONE",
+      "executed_despite_contradiction": false,
+      "step": 11,
+      "observation": "Nothing happens.",
+      "succeeded": false,
+      "proposal_would_succeed": true,
+      "proposal_would_be_new": true
+    },
+    {
+      "proposal": "take handtowel 1 from handtowelholder 1",
+      "check": {
+        "status": "CONTRADICTED",
+        "claims": [
+          {
+            "claim": "The object you are taking (\"handtowel\") is the object the task names. The task is: \"put a clean cloth in cabinet.\", which does not name \"handtowel\".",
+            "verdict": "CONTRADICTED",
+            "evidence_records": [
+              null
+            ]
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": true,
+      "revisions": [
+        {
+          "action": "take handtowel 1 from handtowelholder 1",
+          "same_as_before": true
+        }
+      ],
+      "executed": "take handtowel 1 from handtowelholder 1",
+      "executed_status": "CONTRADICTED",
+      "executed_despite_contradiction": true,
+      "vetoed": true,
+      "env_action": "look",
+      "step": 14,
+      "observation": "You are facing the handtowelholder 1. Next to it, you see nothing.",
+      "succeeded": true,
+      "proposal_would_succeed": true,
+      "proposal_would_be_new": true
+    }
+  ],
+  "place_lists": [
+    {
+      "step": 0,
+      "code_visited": [],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 1"
+      ],
+      "model_visited": [],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1",
+        "towelholder 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 1,
+      "code_visited": [
+        "towelholder 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 2,
+      "code_visited": [
+        "towelholder 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "sinkbasin 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 3,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 4,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 5,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "cabinet 1",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 6,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 7,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 8,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 9,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 10,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "handtowelholder 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 11,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 12,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "handtowelholder 2",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 13,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 14,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 15,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 16,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 17,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 18,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 19,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 20,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 21,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 22,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 23,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 24,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 25,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 26,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 27,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 28,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 29,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 30,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 31,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 32,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 33,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 34,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 35,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 36,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 37,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 38,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 39,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 40,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 41,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 42,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 43,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 44,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 45,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 46,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 47,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 48,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    },
+    {
+      "step": 49,
+      "code_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "code_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "model_visited": [
+        "towelholder 1",
+        "sinkbasin 1",
+        "cabinet 1",
+        "handtowelholder 1",
+        "handtowelholder 2"
+      ],
+      "model_not_visited": [
+        "bathtubbasin 1",
+        "cabinet 5",
+        "cabinet 4",
+        "cabinet 3",
+        "cabinet 2",
+        "countertop 1",
+        "garbagecan 1",
+        "toilet 1",
+        "toiletpaperhanger 1"
+      ],
+      "jev_unusable": 0
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 7,
+      "cache_hits": 43
+    },
+    "new_actor_requests": 51,
+    "jev": {
+      "calls": 7,
+      "cache_hits": 42
+    },
+    "seconds": 48.6
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "note": "jevexplore ledger",
+    "checker": "name_check, hard block (kept blocked takes are not run; env gets look)",
+    "jev_url": "http://127.0.0.1:8000/v1/systemone",
+    "jev_model": "OneJev1.6-4B"
+  }
+}

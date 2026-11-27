@@ -14,7 +14,7 @@ from math import comb
 from pathlib import Path
 
 ARMS = [("d1", "D1 (per record, choice)"), ("h1", "H1 (whole history, choice)"),
-        ("llm", "LLM (whole history, reasoning)"), ("loop", "LOOP (repeat block)"), ("llmloop", "LLM + LOOP"), ("loop_r3", "LOOP r3"), ("explore", "EXPLORE (unvisited list)"), ("selfexplore", "SELF-EXPLORE (model's list)"), ("onecall", "ONE-CALL (lists + action, one call)"), ("onecall_use", "ONE-CALL-USE (action based on lists)"), ("llmloop_r3", "LLM + LOOP r3"), ("t0", "T0 (rule tracker)"), ("hint", "failure hint"),
+        ("llm", "LLM (whole history, reasoning)"), ("loop", "LOOP (repeat block)"), ("llmloop", "LLM + LOOP"), ("loop_r3", "LOOP r3"), ("explore", "EXPLORE (unvisited list)"), ("selfexplore", "SELF-EXPLORE (model's list)"), ("jevexplore", "JEV-EXPLORE (decision model keeps the list)"), ("jevexplore_name", "JEV-EXPLORE + NAME CHECK"), ("jevexplore_hard", "JEV-EXPLORE + NAME CHECK (hard)"), ("think_jev", "THINKING AGENT + OUR MODULE"), ("statejev", "FULL STATE (decision model) + NAME CHECK"), ("think_state", "THINKING AGENT + FULL STATE + NAME CHECK"), ("think_copy", "COPY STATE + THINK + NAME CHECK"), ("stateact", "STATEACT (published prompt)"), ("react_std", "REACT (standard: VBL/ReflAct/MPO)"), ("stateact_chat", "STATEACT-CHAT (same prompt, chat turns)"), ("onecall", "ONE-CALL (lists + action, one call)"), ("onecall_use", "ONE-CALL-USE (action based on lists)"), ("llmloop_r3", "LLM + LOOP r3"), ("t0", "T0 (rule tracker)"), ("hint", "failure hint"),
         ("mw", "MW (model-written + D1)"), ("mw_v2", "MW-v2 (+ D1)"), ("mw_v2demo", "MW-v2demo (+ D1)")]
 
 

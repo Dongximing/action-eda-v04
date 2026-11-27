@@ -1,0 +1,114 @@
+{
+  "id": "new45",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-SoapBar-None-Toilet-410/trial_T20190906_201106_979461/game.tw-pddl",
+  "task": "put a clean soapbar in toilet.",
+  "arm": "react_std",
+  "won": true,
+  "steps": 7,
+  "end": "success",
+  "baseline_won": false,
+  "baseline_steps": 50,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": 1,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a bathtubbasin 1, a countertop 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a handtowelholder 2, a handtowelholder 1, a sinkbasin 2, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, a towelholder 2, and a towelholder 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to drawer 1",
+      "observation": "You arrive at drawer 1. The drawer 1 is closed."
+    },
+    {
+      "id": "r2",
+      "action": "open drawer 1",
+      "observation": "You open the drawer 1. The drawer 1 is open. In it, you see a soapbar 2."
+    },
+    {
+      "id": "r3",
+      "action": "take soapbar 2 from drawer 1",
+      "observation": "You pick up the soapbar 2 from the drawer 1."
+    },
+    {
+      "id": "r4",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see nothing."
+    },
+    {
+      "id": "r5",
+      "action": "clean soapbar 2 with sinkbasin 1",
+      "observation": "You clean the soapbar 2 using the sinkbasin 1."
+    },
+    {
+      "id": "r6",
+      "action": "go to toilet 1",
+      "observation": "You arrive at toilet 1. On the toilet 1, you see a cloth 2, and a soapbottle 1."
+    },
+    {
+      "id": "r7",
+      "action": "move soapbar 2 to toilet 1",
+      "observation": "You move the soapbar 2 to the toilet 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: To solve the task, I need to find a soapbar, clean it with a sinkbasin, and then put it in the toilet. First, I need to locate a soapbar. Soapbars are commonly found in drawers or near sinks. I will start by checking the drawers. I'll go to drawer 1 first.\nAction: go to drawer 1",
+      "action": "go to drawer 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: The drawer 1 is closed, so I need to open it to see if there is a soapbar inside.\nAction: open drawer 1",
+      "action": "open drawer 1"
+    },
+    {
+      "step": 2,
+      "output": "Thought: I found a soapbar 2 in drawer 1. Now I need to take it, then go to a sinkbasin to clean it, and finally put it in the toilet. First, I will take the soapbar from the drawer.\nAction: take soapbar 2 from drawer 1",
+      "action": "take soapbar 2 from drawer 1"
+    },
+    {
+      "step": 3,
+      "output": "Thought: I have the soapbar 2. Now I need to clean it. I will go to sinkbasin 1 to clean the soapbar.\nAction: go to sinkbasin 1",
+      "action": "go to sinkbasin 1"
+    },
+    {
+      "step": 4,
+      "output": "Thought: I have the soapbar 2 and am at sinkbasin 1. The sinkbasin appears empty, but I can still use it to clean the soapbar. I will proceed to clean the soapbar with the sinkbasin.\nAction: clean soapbar 2 with sinkbasin 1",
+      "action": "clean soapbar 2 with sinkbasin 1"
+    },
+    {
+      "step": 5,
+      "output": "Thought: I have cleaned the soapbar 2. Now I need to put it in the toilet to complete the task. I will go to the toilet first.\nAction: go to toilet 1",
+      "action": "go to toilet 1"
+    },
+    {
+      "step": 6,
+      "output": "Thought: I have the clean soapbar 2 and am now at the toilet 1. The task requires putting the soapbar in the toilet. I will perform the action to put the soapbar in/on the toilet.\nAction: put soapbar 2 in/on toilet 1",
+      "action": "move soapbar 2 to toilet 1"
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 7,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 6.8
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (VBL App. F.3 / ReflAct App. K.1 / MPO)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca"
+  }
+}

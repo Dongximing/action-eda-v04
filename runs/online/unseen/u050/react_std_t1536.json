@@ -1,0 +1,124 @@
+{
+  "id": "u050",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-Egg-None-Microwave-10/trial_T20190909_120554_888709/game.tw-pddl",
+  "task": "clean some egg and put it in microwave.",
+  "arm": "react_std_t1536",
+  "won": true,
+  "steps": 8,
+  "end": "success",
+  "baseline_won": null,
+  "baseline_steps": null,
+  "baseline_source": "none (--no-baseline)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r2",
+      "action": "open fridge 1",
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a bowl 3, a bowl 1, a bread 1, a egg 2, a lettuce 1, a mug 3, a plate 1, a potato 1, and a tomato 1."
+    },
+    {
+      "id": "r3",
+      "action": "take egg 2 from fridge 1",
+      "observation": "You pick up the egg 2 from the fridge 1."
+    },
+    {
+      "id": "r4",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a cup 2, a plate 2, and a spatula 1."
+    },
+    {
+      "id": "r5",
+      "action": "clean egg 2 with sinkbasin 1",
+      "observation": "You clean the egg 2 using the sinkbasin 1."
+    },
+    {
+      "id": "r6",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r7",
+      "action": "open microwave 1",
+      "observation": "You open the microwave 1. The microwave 1 is open. In it, you see a potato 2."
+    },
+    {
+      "id": "r8",
+      "action": "move egg 2 to microwave 1",
+      "observation": "You move the egg 2 to the microwave 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: To solve the task, I need to find an egg, clean it with the sinkbasin, and then put it in the microwave. First, I need to locate an egg. Eggs are commonly found in the fridge. I will go to the fridge to check for an egg.\nAction: go to fridge 1",
+      "action": "go to fridge 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: I have arrived at the fridge 1, but it is closed. I need to open it to check if there is an egg inside.\nAction: open fridge 1",
+      "action": "open fridge 1"
+    },
+    {
+      "step": 2,
+      "output": "Thought: I have found an egg (egg 2) inside the fridge 1. The next step is to take this egg so I can clean it and then put it in the microwave.\nAction: take egg 2 from fridge 1",
+      "action": "take egg 2 from fridge 1"
+    },
+    {
+      "step": 3,
+      "output": "Thought: I have successfully taken the egg 2. Now I need to clean it. The task requires cleaning the egg, and the sinkbasin is the appropriate receptacle for cleaning. I will go to the sinkbasin to clean the egg.\nAction: go to sinkbasin 1",
+      "action": "go to sinkbasin 1"
+    },
+    {
+      "step": 4,
+      "output": "Thought: I have arrived at the sinkbasin 1. The egg 2 is currently in my possession. The next step is to clean the egg using the sinkbasin as per the task requirements.\nAction: clean egg 2 with sinkbasin 1",
+      "action": "clean egg 2 with sinkbasin 1"
+    },
+    {
+      "step": 5,
+      "output": "Thought: I have successfully cleaned the egg 2. The next step is to put the clean egg into the microwave as per the task goal. I need to go to the microwave 1 to place the egg inside.\nAction: go to microwave 1",
+      "action": "go to microwave 1"
+    },
+    {
+      "step": 6,
+      "output": "Thought: I have arrived at the microwave 1, but it is closed. I need to open it before I can put the egg inside.\nAction: open microwave 1",
+      "action": "open microwave 1"
+    },
+    {
+      "step": 7,
+      "output": "Thought: I have opened the microwave 1 and can see a potato 2 inside. The egg 2 is currently in my possession and has been cleaned. The next step is to place the egg into the microwave to complete the task.\nAction: put egg 2 in/on microwave 1",
+      "action": "move egg 2 to microwave 1"
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 8,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 13.8
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (VBL App. F.3 / ReflAct App. K.1 / MPO)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca"
+  }
+}

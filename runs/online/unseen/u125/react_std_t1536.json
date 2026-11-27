@@ -1,0 +1,184 @@
+{
+  "id": "u125",
+  "family": "pick_two_obj_and_place",
+  "game": "pick_two_obj_and_place-PepperShaker-None-Drawer-10/trial_T20190912_221141_608117/game.tw-pddl",
+  "task": "find two peppershaker and put them in drawer.",
+  "arm": "react_std_t1536",
+  "won": true,
+  "steps": 14,
+  "end": "success",
+  "baseline_won": null,
+  "baseline_steps": null,
+  "baseline_source": "none (--no-baseline)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a egg 1, and a potato 3."
+    },
+    {
+      "id": "r2",
+      "action": "go to countertop 2",
+      "observation": "You arrive at countertop 2. On the countertop 2, you see a apple 1, a bread 2, a bread 1, a butterknife 2, a butterknife 1, a glassbottle 2, a papertowelroll 1, a potato 1, and a soapbottle 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to countertop 3",
+      "observation": "You arrive at countertop 3. On the countertop 3, you see a butterknife 3, a cellphone 1, a fork 1, a houseplant 1, a knife 2, a knife 1, a lettuce 2, a peppershaker 4, a pot 2, a statue 2, and a statue 1."
+    },
+    {
+      "id": "r4",
+      "action": "take peppershaker 4 from countertop 3",
+      "observation": "You pick up the peppershaker 4 from the countertop 3."
+    },
+    {
+      "id": "r5",
+      "action": "go to shelf 1",
+      "observation": "You arrive at shelf 1. On the shelf 1, you see a peppershaker 3, and a saltshaker 2."
+    },
+    {
+      "id": "r6",
+      "action": "take peppershaker 3 from shelf 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r7",
+      "action": "go to drawer 1",
+      "observation": "You arrive at drawer 1. The drawer 1 is closed."
+    },
+    {
+      "id": "r8",
+      "action": "open drawer 1",
+      "observation": "You open the drawer 1. The drawer 1 is open. In it, you see a creditcard 1, and a spatula 1."
+    },
+    {
+      "id": "r9",
+      "action": "move peppershaker 4 to drawer 1",
+      "observation": "You move the peppershaker 4 to the drawer 1."
+    },
+    {
+      "id": "r10",
+      "action": "open shelf 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r11",
+      "action": "go to shelf 1",
+      "observation": "You arrive at shelf 1. On the shelf 1, you see a peppershaker 3, and a saltshaker 2."
+    },
+    {
+      "id": "r12",
+      "action": "take peppershaker 3 from shelf 1",
+      "observation": "You pick up the peppershaker 3 from the shelf 1."
+    },
+    {
+      "id": "r13",
+      "action": "go to drawer 1",
+      "observation": "You arrive at drawer 1. The drawer 1 is open. In it, you see a creditcard 1, a peppershaker 4, and a spatula 1."
+    },
+    {
+      "id": "r14",
+      "action": "move peppershaker 3 to drawer 1",
+      "observation": "You move the peppershaker 3 to the drawer 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: To solve the task, I need to find two peppershakers and put them in a drawer. Peppershakers are likely to be found on countertops, shelves, or near the stove. I will start by checking countertop 1 to see if any peppershakers are there.\nAction: go to countertop 1",
+      "action": "go to countertop 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: I checked countertop 1, but there are no peppershakers there, only an egg and a potato. I need to continue searching in other likely locations. Countertop 2 and countertop 3 are other good places to check for kitchen items like peppershakers. I will go to countertop 2 next.\nAction: go to countertop 2",
+      "action": "go to countertop 2"
+    },
+    {
+      "step": 2,
+      "output": "Thought: I checked countertop 2, but there are no peppershakers there either. I need to continue searching. Countertop 3 is another likely location for kitchen items. I will go to countertop 3 next.\nAction: go to countertop 3",
+      "action": "go to countertop 3"
+    },
+    {
+      "step": 3,
+      "output": "Thought: I found a peppershaker (peppershaker 4) on countertop 3. Now I need to take it. After taking it, I will need to find a second peppershaker. I will check the shelves or other cabinets next for the second one. First, let's take this peppershaker.\nAction: take peppershaker 4 from countertop 3",
+      "action": "take peppershaker 4 from countertop 3"
+    },
+    {
+      "step": 4,
+      "output": "Thought: I have successfully taken the first peppershaker (peppershaker 4). Now I need to find a second peppershaker. Common locations for kitchen items like peppershakers include shelves, cabinets, and countertops. I have checked the countertops so far. I will check the shelves next, starting with shelf 1.\nAction: go to shelf 1",
+      "action": "go to shelf 1"
+    },
+    {
+      "step": 5,
+      "output": "Thought: I found a second peppershaker (peppershaker 3) on shelf 1. Now I need to take it. After taking it, I will have both peppershakers and can proceed to put them in a drawer.\nAction: take peppershaker 3 from shelf 1",
+      "action": "take peppershaker 3 from shelf 1"
+    },
+    {
+      "step": 6,
+      "output": "Thought: The action \"take peppershaker 3 from shelf 1\" resulted in \"Nothing happens\", which means I cannot directly take the object from the shelf using the available actions. The available actions do not include \"open shelf\" or similar. However, I have already taken the first peppershaker (peppershaker 4) from countertop 3. I need to put this first peppershaker into a drawer to make progress, or re-evaluate how to get the second one. Since I cannot take from the shelf, I will focus on the first peppershaker I have. I need to go to a drawer to put the peppershaker 4 in. I will choose drawer 1 as a target.\nAction: go to drawer 1",
+      "action": "go to drawer 1"
+    },
+    {
+      "step": 7,
+      "output": "Thought: I am at drawer 1, but it is closed. I cannot put the peppershaker 4 inside until I open the drawer. I need to open drawer 1 first.\nAction: open drawer 1",
+      "action": "open drawer 1"
+    },
+    {
+      "step": 8,
+      "output": "Thought: I have opened drawer 1 and it is now open. I am holding peppershaker 4 (taken earlier). I need to put this peppershaker into the drawer. After that, I still need to find a way to get peppershaker 3 from shelf 1 into the drawer. Since I couldn't take it directly from the shelf, maybe I can put it in the drawer if I can access it, or perhaps the environment allows taking from shelves if I'm standing there? But the action \"take\" failed. Let's first put the peppershaker 4 I have into the drawer.\nAction: put peppershaker 4 in/on drawer 1",
+      "action": "move peppershaker 4 to drawer 1"
+    },
+    {
+      "step": 9,
+      "output": "Thought: I have successfully put the first peppershaker (peppershaker 4) into drawer 1. Now I need to deal with the second peppershaker (peppershaker 3) which is on shelf 1. My previous attempt to \"take\" it directly failed. However, I can try to put the object I am currently holding (if any) or interact with the shelf differently. Wait, I am not holding anything now. The issue is getting peppershaker 3 from the shelf. Let's re-examine the available actions. There is no \"open shelf\" action. Perhaps I need to put the peppershaker 3 into the drawer directly if the system allows moving objects between locations without \"taking\" first, or maybe I need to check if I can put it in the drawer from the shelf location. But the action list only has \"put obj in/on recep\". Usually, \"put\" requires the object to be held. Since I couldn't take it, maybe I should try to put it in the drawer anyway to see if the environment handles the transfer, or perhaps I missed something. Let's try to put peppershaker 3 in/on drawer 1 directly, assuming the system might allow it if I'm at the shelf or if the state allows. Alternatively, maybe I need to go back to the shelf and try a different approach, but the actions are limited. Let's try \"put peppershaker 3 in/on drawer 1\" to see if it works, as sometimes in these environments, if the object is visible and the receptacle is accessible, the action might succeed even if \"take\" failed, or it might prompt a different error. Actually, looking at the actions again, \"take\" is the standard way to pick up. If \"take\" failed, \"put\" will likely fail too unless I pick it up first. Is there another way? Maybe I can put the first peppershaker in, then go back. But I need both. Let's reconsider the shelf interaction. Maybe I need to \"open\" the shelf? But \"open shelf\" is not in the list. The list has \"open recep\". Is a shelf a recep? Yes. But the action is \"open shelf X\". The list says \"open recep\". It doesn't specify the name. Wait, the available actions are generic: \"open recep\". It doesn't say \"open shelf 1\". It just says \"open recep\". This implies I need to know the name of the receptacle. But the action list provided in the prompt is:\n1. go to recep\n2. take obj from recep\n3. put obj in/on recep\n4. open recep\n5. close recep\n...\nIt seems \"recep\" is a placeholder for the specific object name. So I should use \"open shelf 1\". Let me check the previous successful actions. \"open drawer 1\" worked. So \"open shelf 1\" should be valid. I failed to take the peppershaker because maybe the shelf is closed? The observation said \"On the shelf 1, you see...\". It didn't say it was closed. But maybe shelves are considered closed by default and need to be opened? Let's try to open shelf 1 first.\nAction: open shelf 1",
+      "action": "open shelf 1"
+    },
+    {
+      "step": 10,
+      "output": "Thought: The action \"open shelf 1\" resulted in \"Nothing happens\", which means shelves in this environment are likely not closable or don't require opening to access items on top of them. Since I cannot \"take\" the peppershaker 3 from the shelf using the standard action, and \"put\" usually requires holding the object, I need to find an alternative way to get the second peppershaker into the drawer. \n\nLet's re-evaluate the situation. I have peppershaker 4 in drawer 1. I need peppershaker 3. I am currently at drawer 1. Maybe I can go back to shelf 1 and try to \"take\" it again? Sometimes the first attempt fails due to a glitch, or maybe I need to be in a specific state. Or perhaps I can try to \"put\" the peppershaker 3 directly from the shelf location into the drawer if the system allows moving objects between locations without explicit \"take\" (though the action list suggests \"take\" is needed). \n\nWait, looking at the available actions again: \"take obj from recep\". If \"take\" failed, maybe the object is not considered \"in\" the receptacle in a way that allows taking? But the observation said \"On the shelf 1, you see...\". \n\nLet's try a different strategy. Maybe I can put the peppershaker 4 back out, or maybe I missed something. No, I have it in the drawer. \n\nIs it possible that I need to \"go to shelf 1\" again and try \"take peppershaker 3 from shelf 1\"? The previous failure might have been a one-time issue or I need to ensure I am facing it correctly. Let's try going to shelf 1 and attempting to take it again.\n\nAction: go to shelf 1",
+      "action": "go to shelf 1"
+    },
+    {
+      "step": 11,
+      "output": "Thought: I am now at shelf 1 and can see peppershaker 3. My previous attempt to \"take\" it failed, but perhaps I need to try again now that I have explicitly gone to the location. The available actions include \"take obj from recep\". I will attempt to take peppershaker 3 from shelf 1 again. If this fails, I may need to reconsider if there's another way to move it, but \"take\" is the standard action for picking up an object.\nAction: take peppershaker 3 from shelf 1",
+      "action": "take peppershaker 3 from shelf 1"
+    },
+    {
+      "step": 12,
+      "output": "Thought: I have successfully picked up the second peppershaker (peppershaker 3). Now I have both peppershakers: peppershaker 4 is already in drawer 1, and I am holding peppershaker 3. The task requires putting two peppershakers in a drawer. I need to put the peppershaker 3 I am holding into drawer 1 as well. I am currently at shelf 1, so I need to go to drawer 1 first.\nAction: go to drawer 1",
+      "action": "go to drawer 1"
+    },
+    {
+      "step": 13,
+      "output": "Thought: I am at drawer 1, which is open and contains peppershaker 4. I am holding peppershaker 3. The task requires putting two peppershakers in a drawer. I will now put the peppershaker 3 I am holding into drawer 1 to complete the task.\nAction: put peppershaker 3 in/on drawer 1",
+      "action": "move peppershaker 3 to drawer 1"
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 14,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 23.4
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (VBL App. F.3 / ReflAct App. K.1 / MPO)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca"
+  }
+}

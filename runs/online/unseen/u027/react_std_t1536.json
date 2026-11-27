@@ -1,0 +1,94 @@
+{
+  "id": "u027",
+  "family": "pick_and_place_simple",
+  "game": "pick_and_place_simple-PepperShaker-None-Drawer-10/trial_T20190918_154424_844749/game.tw-pddl",
+  "task": "put some peppershaker on drawer.",
+  "arm": "react_std_t1536",
+  "won": true,
+  "steps": 5,
+  "end": "success",
+  "baseline_won": null,
+  "baseline_steps": null,
+  "baseline_source": "none (--no-baseline)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. On the cabinet 1, you see a peppershaker 2, and a saltshaker 1."
+    },
+    {
+      "id": "r2",
+      "action": "take peppershaker 2 from cabinet 1",
+      "observation": "You pick up the peppershaker 2 from the cabinet 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to drawer 1",
+      "observation": "You arrive at drawer 1. The drawer 1 is closed."
+    },
+    {
+      "id": "r4",
+      "action": "open drawer 1",
+      "observation": "You open the drawer 1. The drawer 1 is open. In it, you see a cellphone 1."
+    },
+    {
+      "id": "r5",
+      "action": "move peppershaker 2 to drawer 1",
+      "observation": "You move the peppershaker 2 to the drawer 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: To solve the task, I need to find a peppershaker and put it on a drawer. First, I need to locate the peppershaker. It is likely to be found in cabinets, drawers, or on countertops. I will start by checking cabinet 1.\nAction: go to cabinet 1",
+      "action": "go to cabinet 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: I have found a peppershaker (2) on cabinet 1. The next step is to take it so I can move it to a drawer.\nAction: take peppershaker 2 from cabinet 1",
+      "action": "take peppershaker 2 from cabinet 1"
+    },
+    {
+      "step": 2,
+      "output": "Thought: I have successfully picked up the peppershaker 2. Now I need to find a drawer to put it on. I will check the available drawers starting with drawer 1.\nAction: go to drawer 1",
+      "action": "go to drawer 1"
+    },
+    {
+      "step": 3,
+      "output": "Thought: I am at drawer 1, but it is closed. I cannot put the peppershaker on it yet. I need to open the drawer first.\nAction: open drawer 1",
+      "action": "open drawer 1"
+    },
+    {
+      "step": 4,
+      "output": "Thought: I have opened drawer 1 and can see inside, but the task requires putting the peppershaker \"on\" the drawer, not inside it. Since the drawer is now open, I can place the object on top of it. I will put the peppershaker 2 on drawer 1.\nAction: put peppershaker 2 in/on drawer 1",
+      "action": "move peppershaker 2 to drawer 1"
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 5,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 4.8
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (VBL App. F.3 / ReflAct App. K.1 / MPO)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca"
+  }
+}

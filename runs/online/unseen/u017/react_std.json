@@ -1,0 +1,74 @@
+{
+  "id": "u017",
+  "family": "look_at_obj_in_light",
+  "game": "look_at_obj_in_light-Pencil-None-DeskLamp-308/trial_T20190908_220604_010430/game.tw-pddl",
+  "task": "examine the pencil with the desklamp.",
+  "arm": "react_std",
+  "won": true,
+  "steps": 3,
+  "end": "success",
+  "baseline_won": null,
+  "baseline_steps": null,
+  "baseline_source": "none (--no-baseline)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to desk 1",
+      "observation": "You arrive at desk 1. On the desk 1, you see a alarmclock 2, a cellphone 2, a desklamp 1, a keychain 2, a mug 1, and a pencil 3."
+    },
+    {
+      "id": "r2",
+      "action": "take pencil 3 from desk 1",
+      "observation": "You pick up the pencil 3 from the desk 1."
+    },
+    {
+      "id": "r3",
+      "action": "use desklamp 1",
+      "observation": "You turn on the desklamp 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: To solve the task \"examine the pencil with the desklamp\", I first need to locate a pencil and a desklamp. Pencils are commonly found on desks, shelves, or sidetables. Desklamps are also typically found on desks or sidetables. I will start by checking the desks for both items. I'll begin with desk 1.\nAction: go to desk 1",
+      "action": "go to desk 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: I have found both the desklamp 1 and the pencil 3 on desk 1. The task is to examine the pencil with the desklamp. To do this, I first need to pick up the pencil so I can use the desklamp on it.\nAction: take pencil 3 from desk 1",
+      "action": "take pencil 3 from desk 1"
+    },
+    {
+      "step": 2,
+      "output": "Thought: I have successfully picked up the pencil 3. Now I need to use the desklamp 1 to examine it. Since the desklamp is on desk 1 and I am currently holding the pencil, I should use the desklamp on the pencil.\nAction: use desklamp 1",
+      "action": "use desklamp 1"
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 3,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 3.9
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (VBL App. F.3 / ReflAct App. K.1 / MPO)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca"
+  }
+}

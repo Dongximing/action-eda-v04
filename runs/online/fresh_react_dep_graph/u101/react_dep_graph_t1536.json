@@ -1,0 +1,238 @@
+{
+  "id": "u101",
+  "family": "pick_heat_then_place_in_recep",
+  "game": "pick_heat_then_place_in_recep-Cup-None-Cabinet-10/trial_T20190907_083346_800823/game.tw-pddl",
+  "task": "put a hot cup in cabinet.",
+  "arm": "react_dep_graph_t1536",
+  "won": true,
+  "steps": 15,
+  "end": "success",
+  "baseline_won": null,
+  "baseline_steps": null,
+  "baseline_source": "none (--no-baseline)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "open cabinet 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r2",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. On the cabinet 1, you see a saltshaker 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to cabinet 2",
+      "observation": "You arrive at cabinet 2. The cabinet 2 is closed."
+    },
+    {
+      "id": "r4",
+      "action": "open cabinet 2",
+      "observation": "You open the cabinet 2. The cabinet 2 is open. In it, you see a cup 2, and a vase 1."
+    },
+    {
+      "id": "r5",
+      "action": "take cup 2 from cabinet 2",
+      "observation": "You pick up the cup 2 from the cabinet 2."
+    },
+    {
+      "id": "r6",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see a pot 1."
+    },
+    {
+      "id": "r7",
+      "action": "heat cup 2 with stoveburner 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r8",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r9",
+      "action": "open microwave 1",
+      "observation": "You open the microwave 1. The microwave 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r10",
+      "action": "move cup 2 to microwave 1",
+      "observation": "You move the cup 2 to the microwave 1."
+    },
+    {
+      "id": "r11",
+      "action": "look",
+      "observation": "You are facing the microwave 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r12",
+      "action": "take cup 2 from microwave 1",
+      "observation": "You pick up the cup 2 from the microwave 1."
+    },
+    {
+      "id": "r13",
+      "action": "heat cup 2 with microwave 1",
+      "observation": "You heat the cup 2 using the microwave 1."
+    },
+    {
+      "id": "r14",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. On the cabinet 1, you see a saltshaker 1."
+    },
+    {
+      "id": "r15",
+      "action": "move cup 2 to cabinet 1",
+      "observation": "You move the cup 2 to the cabinet 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: The task is to put a hot cup in a cabinet. First, I need to find a cup and heat it. Cups are commonly found in cabinets, drawers, or on countertops. I will start by checking the cabinets to see if there is a cup inside. I'll begin with cabinet 1.\nAction: open cabinet 1",
+      "action": "open cabinet 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: The previous action failed because I attempted to open cabinet 1 without first moving to it. I need to go to cabinet 1 first, then open it to find a cup.\nAction: go to cabinet 1",
+      "action": "go to cabinet 1"
+    },
+    {
+      "step": 2,
+      "output": "Thought: I have arrived at cabinet 1 and see a saltshaker 1, but no cup. I need to find a cup to heat and then put in a cabinet. Cups are often found in other cabinets, drawers, or on countertops. I will check cabinet 2 next to see if there is a cup inside.\nAction: go to cabinet 2",
+      "action": "go to cabinet 2"
+    },
+    {
+      "step": 3,
+      "output": "Thought: I am at cabinet 2, which is closed. I need to open it to check for a cup inside.\nAction: open cabinet 2",
+      "action": "open cabinet 2"
+    },
+    {
+      "step": 4,
+      "output": "Thought: I found a cup 2 in cabinet 2. Now I need to take it, heat it (since the task requires a \"hot cup\"), and then put it in a cabinet. First, I will take the cup from cabinet 2.\nAction: take cup 2 from cabinet 2",
+      "action": "take cup 2 from cabinet 2"
+    },
+    {
+      "step": 5,
+      "output": "Thought: I have taken the cup 2. Now I need to heat it to make it a \"hot cup\". I can use the stoveburner or the microwave to heat it. I will go to the stoveburner 1 and heat the cup there.\nAction: go to stoveburner 1",
+      "action": "go to stoveburner 1"
+    },
+    {
+      "step": 6,
+      "output": "Thought: I am at stoveburner 1, but there is a pot 1 on it, and I need to heat the cup 2. I should place the cup on the stoveburner to heat it. However, the available actions do not include \"put obj on stoveburner\". Let me check the available actions again: go to, take, put in/on, open, close, use, clean, heat, cool. The action \"heat obj with recep\" is available. So I can directly heat the cup 2 with stoveburner 1.\nAction: heat cup 2 with stoveburner 1",
+      "action": "heat cup 2 with stoveburner 1"
+    },
+    {
+      "step": 7,
+      "output": "Thought: Heating the cup with the stoveburner failed. I need to try another method to heat the cup. The microwave is another common appliance for heating items. I will go to the microwave and try to heat the cup there.\nAction: go to microwave 1",
+      "action": "go to microwave 1"
+    },
+    {
+      "step": 8,
+      "output": "Thought: I am at microwave 1, but it is closed. To heat the cup 2, I first need to open the microwave.\nAction: open microwave 1",
+      "action": "open microwave 1"
+    },
+    {
+      "step": 9,
+      "output": "Thought: I have opened the microwave 1 and it is empty. I need to place the cup 2 inside the microwave before I can heat it. The available actions include \"put obj in/on recep\". I will put the cup 2 into the microwave 1.\nAction: put cup 2 in/on microwave 1",
+      "action": "move cup 2 to microwave 1"
+    },
+    {
+      "step": 10,
+      "output": "Thought: I have successfully placed the cup 2 into the microwave 1. Now I need to heat it to make it a \"hot cup\". I will use the microwave to heat the cup.\nAction: heat cup 2 with microwave 1",
+      "action": "heat cup 2 with microwave 1",
+      "blocked": "Not run: it needs \"you are holding cup 2\", but step 10: \"You move the cup 2 to the microwave 1.\".",
+      "ran_instead": "look"
+    },
+    {
+      "step": 11,
+      "output": "Thought: The system indicates that I cannot heat the cup because I am no longer holding it; I moved it into the microwave. To heat the cup, I likely need to take it out first or the action sequence requires me to hold it. However, looking at the available actions, \"heat obj with recep\" usually implies the object is placed inside. But the error says \"needs 'you are holding cup 2'\". This suggests the specific implementation requires the agent to hold the object to perform the heating action, perhaps simulating a stovetop scenario even though I'm at the microwave, or there's a specific state requirement. Let me try to take the cup from the microwave first so I am holding it, then attempt to heat it (though heating while holding in a microwave seems physically odd, it might be the required logic for this environment). Alternatively, maybe I should just take it out and the task is considered done if it was \"hot\" before? No, the task is to \"put a hot cup\". If I can't heat it while it's inside, I must take it out. Let's try taking the cup from the microwave.\nAction: take cup 2 from microwave 1",
+      "action": "take cup 2 from microwave 1"
+    },
+    {
+      "step": 12,
+      "output": "Thought: I have successfully taken the cup 2 from the microwave 1 and am now holding it. The previous attempt to heat it failed because I wasn't holding it. Now that I am holding the cup, I will try to heat it again using the microwave. Although physically unusual to heat an object while holding it inside a microwave, the error message explicitly stated the requirement \"needs 'you are holding cup 2'\", so this is the necessary step to proceed with the heating action in this environment's logic.\nAction: heat cup 2 with microwave 1",
+      "action": "heat cup 2 with microwave 1"
+    },
+    {
+      "step": 13,
+      "output": "Thought: I have successfully heated the cup 2 using the microwave 1. The cup is now hot. The final step of the task is to put this hot cup into a cabinet. I need to find a cabinet to place it in. I will go to cabinet 1 (which I checked earlier and found a saltshaker, but it's still a valid cabinet to put the cup in) or any other available cabinet. Let's go to cabinet 1 first.\nAction: go to cabinet 1",
+      "action": "go to cabinet 1"
+    },
+    {
+      "step": 14,
+      "output": "Thought: I am at cabinet 1 and need to put the hot cup 2 inside. The action \"put obj in/on recep\" is available. I will put the cup 2 into cabinet 1.\nAction: put cup 2 in/on cabinet 1",
+      "action": "move cup 2 to cabinet 1"
+    }
+  ],
+  "dep_graph": {
+    "notes": {
+      "1": "This failed. It needs \"you are at cabinet 1\", which no feedback supports: you have not gone anywhere yet.",
+      "7": "This failed. It relies on \"a stoveburner can heat things\" (assumed at step 7), which no feedback supports: no stoveburner has worked for heat yet. That is now ruled out."
+    },
+    "blocked": {
+      "11": {
+        "told": "Not run: it needs \"you are holding cup 2\", but step 10: \"You move the cup 2 to the microwave 1.\".",
+        "ran_instead": "look"
+      }
+    },
+    "events": [
+      {
+        "step": 1,
+        "type": "culprit",
+        "belief": "you are at cabinet 1",
+        "level": "unsupported",
+        "formed": 1,
+        "hops": 1
+      },
+      {
+        "step": 7,
+        "type": "culprit",
+        "belief": "a stoveburner can heat things",
+        "level": "unsupported",
+        "formed": 7,
+        "hops": 1,
+        "ruled_out": true
+      },
+      {
+        "step": 11,
+        "type": "blocked",
+        "command": "heat cup 2 with microwave 1",
+        "belief": "you are holding cup 2",
+        "level": "refuted",
+        "instead": "look"
+      }
+    ],
+    "pointed_step": {},
+    "hops": null
+  },
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 15,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 22.8
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (as react_std) + dependency-graph controller (scripts/dep_graph.py)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca",
+    "culprit_search": "multi-hop walk over the graph"
+  }
+}

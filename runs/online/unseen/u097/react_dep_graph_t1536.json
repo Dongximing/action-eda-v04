@@ -1,0 +1,153 @@
+{
+  "id": "u097",
+  "family": "pick_heat_then_place_in_recep",
+  "game": "pick_heat_then_place_in_recep-Apple-None-Fridge-10/trial_T20190906_182435_622538/game.tw-pddl",
+  "task": "heat some apple and put it in fridge.",
+  "arm": "react_dep_graph_t1536",
+  "won": true,
+  "steps": 9,
+  "end": "success",
+  "baseline_won": null,
+  "baseline_steps": null,
+  "baseline_source": "none (--no-baseline)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "open fridge 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r2",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r3",
+      "action": "open fridge 1",
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a bowl 3, a cup 2, a cup 1, a egg 3, a lettuce 1, a potato 2, a potato 1, and a tomato 1."
+    },
+    {
+      "id": "r4",
+      "action": "take apple 1 from fridge 1",
+      "observation": "You pick up the apple 1 from the fridge 1."
+    },
+    {
+      "id": "r5",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r6",
+      "action": "open microwave 1",
+      "observation": "You open the microwave 1. The microwave 1 is open. In it, you see a egg 2."
+    },
+    {
+      "id": "r7",
+      "action": "heat apple 1 with microwave 1",
+      "observation": "You heat the apple 1 using the microwave 1."
+    },
+    {
+      "id": "r8",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is open. In it, you see a bowl 3, a cup 2, a cup 1, a egg 3, a lettuce 1, a potato 2, a potato 1, and a tomato 1."
+    },
+    {
+      "id": "r9",
+      "action": "move apple 1 to fridge 1",
+      "observation": "You move the apple 1 to the fridge 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: To solve the task, I need to find an apple, heat it, and then put it in the fridge. First, I need to locate an apple. Apples are commonly found in fridges, cabinets, or on countertops. I will start by checking the fridge 1.\nAction: open fridge 1",
+      "action": "open fridge 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: The previous action \"open fridge 1\" failed because I am not currently at the fridge. I need to move to the fridge first before I can interact with it. I will go to the fridge 1.\nAction: go to fridge 1",
+      "action": "go to fridge 1"
+    },
+    {
+      "step": 2,
+      "output": "Thought: I have arrived at the fridge 1, which is currently closed. To find an apple, I need to open the fridge first.\nAction: open fridge 1",
+      "action": "open fridge 1"
+    },
+    {
+      "step": 3,
+      "output": "Thought: I found an apple 1 inside the fridge 1. Now I need to take it out so I can heat it.\nAction: take apple 1 from fridge 1",
+      "action": "take apple 1 from fridge 1"
+    },
+    {
+      "step": 4,
+      "output": "Thought: I have successfully taken the apple 1 from the fridge. Now I need to heat it. The available heating options are the microwave 1 or the stoveburners. I will go to the microwave 1 to heat the apple.\nAction: go to microwave 1",
+      "action": "go to microwave 1"
+    },
+    {
+      "step": 5,
+      "output": "Thought: I am now at the microwave 1, which is closed. To heat the apple 1, I need to open the microwave first.\nAction: open microwave 1",
+      "action": "open microwave 1"
+    },
+    {
+      "step": 6,
+      "output": "Thought: I have opened the microwave 1 and found an egg 2 inside, but I need to heat the apple 1 I am holding. Since the microwave is now open, I can directly heat the apple 1 using it.\nAction: heat apple 1 with microwave 1",
+      "action": "heat apple 1 with microwave 1"
+    },
+    {
+      "step": 7,
+      "output": "Thought: I have successfully heated the apple 1. The next step is to put it in the fridge as per the task goal. I need to go to the fridge 1 first.\nAction: go to fridge 1",
+      "action": "go to fridge 1"
+    },
+    {
+      "step": 8,
+      "output": "Thought: I have arrived at the fridge 1, which is currently open. I am holding the heated apple 1. The task requires me to put the apple in the fridge. I will now place the apple inside.\nAction: put apple 1 in/on fridge 1",
+      "action": "move apple 1 to fridge 1"
+    }
+  ],
+  "dep_graph": {
+    "notes": {
+      "1": "This failed. It needs \"you are at fridge 1\", which no feedback supports: you have not gone anywhere yet."
+    },
+    "blocked": {},
+    "events": [
+      {
+        "step": 1,
+        "type": "culprit",
+        "belief": "you are at fridge 1",
+        "level": "unsupported",
+        "formed": 1,
+        "hops": 1
+      }
+    ],
+    "pointed_step": {},
+    "hops": null
+  },
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 0,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 0.6
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (as react_std) + dependency-graph controller (scripts/dep_graph.py)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca",
+    "culprit_search": "multi-hop walk over the graph"
+  }
+}

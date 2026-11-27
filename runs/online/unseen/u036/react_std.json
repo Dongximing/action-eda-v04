@@ -1,0 +1,164 @@
+{
+  "id": "u036",
+  "family": "pick_and_place_simple",
+  "game": "pick_and_place_simple-SoapBottle-None-Toilet-424/trial_T20190907_004404_604165/game.tw-pddl",
+  "task": "put a soapbottle in toilet.",
+  "arm": "react_std",
+  "won": true,
+  "steps": 12,
+  "end": "success",
+  "baseline_won": null,
+  "baseline_steps": null,
+  "baseline_source": "none (--no-baseline)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a countertop 1, a garbagecan 1, a handtowelholder 2, a handtowelholder 1, a sinkbasin 2, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed."
+    },
+    {
+      "id": "r2",
+      "action": "open cabinet 1",
+      "observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see a candle 2, and a cloth 2."
+    },
+    {
+      "id": "r3",
+      "action": "go to cabinet 2",
+      "observation": "You arrive at cabinet 2. The cabinet 2 is closed."
+    },
+    {
+      "id": "r4",
+      "action": "open cabinet 2",
+      "observation": "You open the cabinet 2. The cabinet 2 is open. In it, you see a candle 3, and a candle 1."
+    },
+    {
+      "id": "r5",
+      "action": "go to cabinet 3",
+      "observation": "You arrive at cabinet 3. The cabinet 3 is closed."
+    },
+    {
+      "id": "r6",
+      "action": "open cabinet 3",
+      "observation": "You open the cabinet 3. The cabinet 3 is open. In it, you see a spraybottle 1."
+    },
+    {
+      "id": "r7",
+      "action": "go to cabinet 4",
+      "observation": "You arrive at cabinet 4. The cabinet 4 is closed."
+    },
+    {
+      "id": "r8",
+      "action": "open cabinet 4",
+      "observation": "You open the cabinet 4. The cabinet 4 is open. In it, you see nothing."
+    },
+    {
+      "id": "r9",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a soapbottle 1, and a spraybottle 2."
+    },
+    {
+      "id": "r10",
+      "action": "take soapbottle 1 from countertop 1",
+      "observation": "You pick up the soapbottle 1 from the countertop 1."
+    },
+    {
+      "id": "r11",
+      "action": "go to toilet 1",
+      "observation": "You arrive at toilet 1. On the toilet 1, you see a soapbar 2, and a toiletpaper 2."
+    },
+    {
+      "id": "r12",
+      "action": "move soapbottle 1 to toilet 1",
+      "observation": "You move the soapbottle 1 to the toilet 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: To solve the task, I need to find a soapbottle and then put it in/on the toilet. A soapbottle is likely to be found in cabinets, countertops, or near sinks. I will start by checking cabinet 1 to see if there is a soapbottle there.\nAction: go to cabinet 1",
+      "action": "go to cabinet 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: The cabinet 1 is closed, so I cannot see its contents. I need to open it to check if there is a soapbottle inside.\nAction: open cabinet 1",
+      "action": "open cabinet 1"
+    },
+    {
+      "step": 2,
+      "output": "Thought: I opened cabinet 1, but it contains a candle 2 and a cloth 2, not a soapbottle. I need to continue searching for a soapbottle in other locations. I will check cabinet 2 next.\nAction: go to cabinet 2",
+      "action": "go to cabinet 2"
+    },
+    {
+      "step": 3,
+      "output": "Thought: Cabinet 2 is closed, so I need to open it to check for a soapbottle inside.\nAction: open cabinet 2",
+      "action": "open cabinet 2"
+    },
+    {
+      "step": 4,
+      "output": "Thought: I opened cabinet 2, but it contains candles, not a soapbottle. I need to continue searching. I will check cabinet 3 next.\nAction: go to cabinet 3",
+      "action": "go to cabinet 3"
+    },
+    {
+      "step": 5,
+      "output": "Thought: Cabinet 3 is closed, so I need to open it to check for a soapbottle inside.\nAction: open cabinet 3",
+      "action": "open cabinet 3"
+    },
+    {
+      "step": 6,
+      "output": "Thought: I opened cabinet 3, but it contains a spraybottle 1, not a soapbottle. I need to continue searching for a soapbottle. I will check cabinet 4 next.\nAction: go to cabinet 4",
+      "action": "go to cabinet 4"
+    },
+    {
+      "step": 7,
+      "output": "Thought: Cabinet 4 is closed, so I need to open it to check for a soapbottle inside.\nAction: open cabinet 4",
+      "action": "open cabinet 4"
+    },
+    {
+      "step": 8,
+      "output": "Thought: I have checked all four cabinets (1, 2, 3, and 4) and none of them contain a soapbottle. Cabinet 1 had a candle and cloth, Cabinet 2 had candles, Cabinet 3 had a spraybottle, and Cabinet 4 was empty. A soapbottle is often found on countertops or near sinks. I will check countertop 1 next.\nAction: go to countertop 1",
+      "action": "go to countertop 1"
+    },
+    {
+      "step": 9,
+      "output": "Thought: I found a soapbottle 1 on countertop 1. Now I need to take it and then put it in/on the toilet to complete the task.\nAction: take soapbottle 1 from countertop 1",
+      "action": "take soapbottle 1 from countertop 1"
+    },
+    {
+      "step": 10,
+      "output": "Thought: I have successfully picked up the soapbottle 1. Now I need to go to the toilet to put the soapbottle there as per the task goal.\nAction: go to toilet 1",
+      "action": "go to toilet 1"
+    },
+    {
+      "step": 11,
+      "output": "Thought: I have arrived at toilet 1 and am holding the soapbottle 1. The task is to put the soapbottle in/on the toilet. I will now perform the action to place it there.\nAction: put soapbottle 1 in/on toilet 1",
+      "action": "move soapbottle 1 to toilet 1"
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 12,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 11.3
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (VBL App. F.3 / ReflAct App. K.1 / MPO)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca"
+  }
+}

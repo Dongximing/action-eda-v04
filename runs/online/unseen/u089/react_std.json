@@ -1,0 +1,274 @@
+{
+  "id": "u089",
+  "family": "pick_cool_then_place_in_recep",
+  "game": "pick_cool_then_place_in_recep-Potato-None-Microwave-10/trial_T20190907_033157_424297/game.tw-pddl",
+  "task": "cool some potato and put it in microwave.",
+  "arm": "react_std",
+  "won": true,
+  "steps": 23,
+  "end": "success",
+  "baseline_won": null,
+  "baseline_steps": null,
+  "baseline_source": "none (--no-baseline)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. On the cabinet 1, you see a dishsponge 1."
+    },
+    {
+      "id": "r2",
+      "action": "go to cabinet 2",
+      "observation": "You arrive at cabinet 2. The cabinet 2 is closed."
+    },
+    {
+      "id": "r3",
+      "action": "open cabinet 2",
+      "observation": "You open the cabinet 2. The cabinet 2 is open. In it, you see a glassbottle 1."
+    },
+    {
+      "id": "r4",
+      "action": "go to cabinet 3",
+      "observation": "You arrive at cabinet 3. On the cabinet 3, you see a saltshaker 1."
+    },
+    {
+      "id": "r5",
+      "action": "go to cabinet 4",
+      "observation": "You arrive at cabinet 4. On the cabinet 4, you see nothing."
+    },
+    {
+      "id": "r6",
+      "action": "go to cabinet 5",
+      "observation": "You arrive at cabinet 5. The cabinet 5 is closed."
+    },
+    {
+      "id": "r7",
+      "action": "open cabinet 5",
+      "observation": "You open the cabinet 5. The cabinet 5 is open. In it, you see a peppershaker 1."
+    },
+    {
+      "id": "r8",
+      "action": "go to cabinet 6",
+      "observation": "You arrive at cabinet 6. The cabinet 6 is closed."
+    },
+    {
+      "id": "r9",
+      "action": "open cabinet 6",
+      "observation": "You open the cabinet 6. The cabinet 6 is open. In it, you see a plate 1."
+    },
+    {
+      "id": "r10",
+      "action": "go to drawer 1",
+      "observation": "You arrive at drawer 1. The drawer 1 is closed."
+    },
+    {
+      "id": "r11",
+      "action": "open drawer 1",
+      "observation": "You open the drawer 1. The drawer 1 is open. In it, you see a fork 3, and a fork 2."
+    },
+    {
+      "id": "r12",
+      "action": "go to drawer 2",
+      "observation": "You arrive at drawer 2. The drawer 2 is closed."
+    },
+    {
+      "id": "r13",
+      "action": "open drawer 2",
+      "observation": "You open the drawer 2. The drawer 2 is open. In it, you see a creditcard 1, and a fork 1."
+    },
+    {
+      "id": "r14",
+      "action": "go to drawer 3",
+      "observation": "You arrive at drawer 3. The drawer 3 is closed."
+    },
+    {
+      "id": "r15",
+      "action": "open drawer 3",
+      "observation": "You open the drawer 3. The drawer 3 is open. In it, you see nothing."
+    },
+    {
+      "id": "r16",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a mug 2, a potato 1, a soapbottle 1, a spatula 1, and a spoon 1."
+    },
+    {
+      "id": "r17",
+      "action": "take potato 1 from countertop 1",
+      "observation": "You pick up the potato 1 from the countertop 1."
+    },
+    {
+      "id": "r18",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r19",
+      "action": "open fridge 1",
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a egg 1, a lettuce 2, and a pan 1."
+    },
+    {
+      "id": "r20",
+      "action": "cool potato 1 with fridge 1",
+      "observation": "You cool the potato 1 using the fridge 1."
+    },
+    {
+      "id": "r21",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r22",
+      "action": "open microwave 1",
+      "observation": "You open the microwave 1. The microwave 1 is open. In it, you see a apple 1, and a mug 1."
+    },
+    {
+      "id": "r23",
+      "action": "move potato 1 to microwave 1",
+      "observation": "You move the potato 1 to the microwave 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: To solve the task, I need to find a potato, cool it with the fridge, and then put it in the microwave. First, I need to locate a potato. Potatoes are commonly found in cabinets, drawers, or on countertops. I will start by checking cabinet 1.\nAction: go to cabinet 1",
+      "action": "go to cabinet 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: I found a dishsponge 1 in cabinet 1, but I need a potato. I will continue searching in other cabinets. Next, I will check cabinet 2.\nAction: go to cabinet 2",
+      "action": "go to cabinet 2"
+    },
+    {
+      "step": 2,
+      "output": "Thought: Cabinet 2 is closed, so I cannot see what's inside. I need to open it to check for a potato.\nAction: open cabinet 2",
+      "action": "open cabinet 2"
+    },
+    {
+      "step": 3,
+      "output": "Thought: I found a glassbottle 1 in cabinet 2, but I need a potato. I will continue searching in other cabinets. Next, I will check cabinet 3.\nAction: go to cabinet 3",
+      "action": "go to cabinet 3"
+    },
+    {
+      "step": 4,
+      "output": "Thought: I found a saltshaker 1 in cabinet 3, but I need a potato. I will continue searching in other cabinets. Next, I will check cabinet 4.\nAction: go to cabinet 4",
+      "action": "go to cabinet 4"
+    },
+    {
+      "step": 5,
+      "output": "Thought: I found nothing in cabinet 4. I need to continue searching for a potato. I will check cabinet 5 next.\nAction: go to cabinet 5",
+      "action": "go to cabinet 5"
+    },
+    {
+      "step": 6,
+      "output": "Thought: Cabinet 5 is closed, so I cannot see its contents. I need to open it to check for a potato.\nAction: open cabinet 5",
+      "action": "open cabinet 5"
+    },
+    {
+      "step": 7,
+      "output": "Thought: I found a peppershaker 1 in cabinet 5, but I need a potato. I will continue searching in other cabinets. Next, I will check cabinet 6.\nAction: go to cabinet 6",
+      "action": "go to cabinet 6"
+    },
+    {
+      "step": 8,
+      "output": "Thought: Cabinet 6 is closed, so I need to open it to check for a potato.\nAction: open cabinet 6",
+      "action": "open cabinet 6"
+    },
+    {
+      "step": 9,
+      "output": "Thought: I have checked all the cabinets (1-6) and found dishsponge, glassbottle, saltshaker, peppershaker, and plate, but no potato. Potatoes are often stored in drawers or on countertops. I will check the drawers next, starting with drawer 1.\nAction: go to drawer 1",
+      "action": "go to drawer 1"
+    },
+    {
+      "step": 10,
+      "output": "Thought: Drawer 1 is closed, so I need to open it to check for a potato.\nAction: open drawer 1",
+      "action": "open drawer 1"
+    },
+    {
+      "step": 11,
+      "output": "Thought: I found forks in drawer 1, but no potato. I need to continue searching in other drawers. Next, I will check drawer 2.\nAction: go to drawer 2",
+      "action": "go to drawer 2"
+    },
+    {
+      "step": 12,
+      "output": "Thought: Drawer 2 is closed, so I need to open it to check for a potato.\nAction: open drawer 2",
+      "action": "open drawer 2"
+    },
+    {
+      "step": 13,
+      "output": "Thought: I found a creditcard and a fork in drawer 2, but no potato. I need to continue searching in other drawers. Next, I will check drawer 3.\nAction: go to drawer 3",
+      "action": "go to drawer 3"
+    },
+    {
+      "step": 14,
+      "output": "Thought: Drawer 3 is closed, so I need to open it to check for a potato.\nAction: open drawer 3",
+      "action": "open drawer 3"
+    },
+    {
+      "step": 15,
+      "output": "Thought: I have checked all cabinets and drawers but found no potato. Potatoes are often stored on countertops or in the fridge. I will check the countertops next, starting with countertop 1.\nAction: go to countertop 1",
+      "action": "go to countertop 1"
+    },
+    {
+      "step": 16,
+      "output": "Thought: I found a potato 1 on countertop 1. Now I need to take it, then go to the fridge to cool it, and finally put it in the microwave.\nAction: take potato 1 from countertop 1",
+      "action": "take potato 1 from countertop 1"
+    },
+    {
+      "step": 17,
+      "output": "Thought: I have successfully picked up the potato 1. The next step is to cool it. According to the task, I need to cool the potato with the fridge. I will go to the fridge 1 to perform this action.\nAction: go to fridge 1",
+      "action": "go to fridge 1"
+    },
+    {
+      "step": 18,
+      "output": "Thought: The fridge 1 is closed, so I cannot cool the potato yet. I need to open the fridge first.\nAction: open fridge 1",
+      "action": "open fridge 1"
+    },
+    {
+      "step": 19,
+      "output": "Thought: I have opened the fridge 1 and can see its contents, but the potato 1 is already in my hand. The task requires me to cool the potato with the fridge. Since the fridge is now open, I can proceed to cool the potato.\nAction: cool potato 1 with fridge 1",
+      "action": "cool potato 1 with fridge 1"
+    },
+    {
+      "step": 20,
+      "output": "Thought: I have successfully cooled the potato 1 with the fridge 1. The next step in the task is to put the potato into the microwave. I need to go to the microwave 1 to perform this action.\nAction: go to microwave 1",
+      "action": "go to microwave 1"
+    },
+    {
+      "step": 21,
+      "output": "Thought: I have arrived at the microwave 1, but it is closed. To put the potato inside, I first need to open the microwave.\nAction: open microwave 1",
+      "action": "open microwave 1"
+    },
+    {
+      "step": 22,
+      "output": "Thought: I have opened the microwave 1 and can see its contents. The potato 1 is currently in my hand, and the task requires me to put it in the microwave. Now I can proceed to place the potato inside.\nAction: put potato 1 in/on microwave 1",
+      "action": "move potato 1 to microwave 1"
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 23,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 21.0
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (VBL App. F.3 / ReflAct App. K.1 / MPO)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca"
+  }
+}

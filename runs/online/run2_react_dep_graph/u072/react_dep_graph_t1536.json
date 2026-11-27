@@ -1,0 +1,282 @@
+{
+  "id": "u072",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-Spatula-None-Drawer-10/trial_T20190907_080800_275989/game.tw-pddl",
+  "task": "clean some spatula and put it in drawer.",
+  "arm": "react_dep_graph_t1536",
+  "won": true,
+  "steps": 23,
+  "end": "success",
+  "baseline_won": null,
+  "baseline_steps": null,
+  "baseline_source": "none (--no-baseline)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. On the cabinet 1, you see a vase 1."
+    },
+    {
+      "id": "r2",
+      "action": "go to cabinet 2",
+      "observation": "You arrive at cabinet 2. The cabinet 2 is closed."
+    },
+    {
+      "id": "r3",
+      "action": "open cabinet 2",
+      "observation": "You open the cabinet 2. The cabinet 2 is open. In it, you see a peppershaker 2."
+    },
+    {
+      "id": "r4",
+      "action": "go to cabinet 3",
+      "observation": "You arrive at cabinet 3. On the cabinet 3, you see a mug 1."
+    },
+    {
+      "id": "r5",
+      "action": "go to cabinet 4",
+      "observation": "You arrive at cabinet 4. On the cabinet 4, you see a soapbottle 1."
+    },
+    {
+      "id": "r6",
+      "action": "go to cabinet 5",
+      "observation": "You arrive at cabinet 5. The cabinet 5 is closed."
+    },
+    {
+      "id": "r7",
+      "action": "open cabinet 5",
+      "observation": "You open the cabinet 5. The cabinet 5 is open. In it, you see nothing."
+    },
+    {
+      "id": "r8",
+      "action": "go to cabinet 6",
+      "observation": "You arrive at cabinet 6. The cabinet 6 is closed."
+    },
+    {
+      "id": "r9",
+      "action": "open cabinet 6",
+      "observation": "You open the cabinet 6. The cabinet 6 is open. In it, you see a plate 1."
+    },
+    {
+      "id": "r10",
+      "action": "go to drawer 1",
+      "observation": "You arrive at drawer 1. The drawer 1 is closed."
+    },
+    {
+      "id": "r11",
+      "action": "open drawer 1",
+      "observation": "You open the drawer 1. The drawer 1 is open. In it, you see a fork 1."
+    },
+    {
+      "id": "r12",
+      "action": "go to drawer 2",
+      "observation": "You arrive at drawer 2. The drawer 2 is closed."
+    },
+    {
+      "id": "r13",
+      "action": "open drawer 2",
+      "observation": "You open the drawer 2. The drawer 2 is open. In it, you see a butterknife 1."
+    },
+    {
+      "id": "r14",
+      "action": "go to drawer 3",
+      "observation": "You arrive at drawer 3. The drawer 3 is closed."
+    },
+    {
+      "id": "r15",
+      "action": "open drawer 3",
+      "observation": "You open the drawer 3. The drawer 3 is open. In it, you see a creditcard 1, and a saltshaker 1."
+    },
+    {
+      "id": "r16",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a bowl 1, a cup 1, a egg 2, a mug 2, and a peppershaker 1."
+    },
+    {
+      "id": "r17",
+      "action": "go to countertop 2",
+      "observation": "You arrive at countertop 2. On the countertop 2, you see a creditcard 2, a dishsponge 1, a glassbottle 1, a knife 1, a lettuce 1, and a statue 1."
+    },
+    {
+      "id": "r18",
+      "action": "go to countertop 3",
+      "observation": "You arrive at countertop 3. On the countertop 3, you see a bowl 2, a bread 1, a butterknife 2, a cellphone 1, a houseplant 1, a knife 2, a soapbottle 2, a spatula 1, a tomato 2, a vase 3, and a vase 2."
+    },
+    {
+      "id": "r19",
+      "action": "take spatula 1 from countertop 3",
+      "observation": "You pick up the spatula 1 from the countertop 3."
+    },
+    {
+      "id": "r20",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a spoon 1, and a tomato 3."
+    },
+    {
+      "id": "r21",
+      "action": "clean spatula 1 with sinkbasin 1",
+      "observation": "You clean the spatula 1 using the sinkbasin 1."
+    },
+    {
+      "id": "r22",
+      "action": "go to drawer 1",
+      "observation": "You arrive at drawer 1. The drawer 1 is open. In it, you see a fork 1."
+    },
+    {
+      "id": "r23",
+      "action": "move spatula 1 to drawer 1",
+      "observation": "You move the spatula 1 to the drawer 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: To solve the task, I need to find a spatula, clean it with the sinkbasin, and then put it in a drawer. First, I need to locate a spatula. Spatulas are commonly found in cabinets, drawers, or on countertops. I will start by checking cabinet 1.\nAction: go to cabinet 1",
+      "action": "go to cabinet 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: Cabinet 1 only contains a vase, so there is no spatula here. I need to check other locations. I will try cabinet 2 next.\nAction: go to cabinet 2",
+      "action": "go to cabinet 2"
+    },
+    {
+      "step": 2,
+      "output": "Thought: Cabinet 2 is closed, so I cannot see its contents yet. I need to open it to check if there is a spatula inside.\nAction: open cabinet 2",
+      "action": "open cabinet 2"
+    },
+    {
+      "step": 3,
+      "output": "Thought: Cabinet 2 contains a peppershaker, not a spatula. I need to continue searching for a spatula in other locations. I will try cabinet 3 next.\nAction: go to cabinet 3",
+      "action": "go to cabinet 3"
+    },
+    {
+      "step": 4,
+      "output": "Thought: Cabinet 3 only contains a mug, so there is no spatula here. I need to continue searching. I will try cabinet 4 next.\nAction: go to cabinet 4",
+      "action": "go to cabinet 4"
+    },
+    {
+      "step": 5,
+      "output": "Thought: Cabinet 4 only contains a soapbottle, so there is no spatula here. I need to continue searching. I will try cabinet 5 next.\nAction: go to cabinet 5",
+      "action": "go to cabinet 5"
+    },
+    {
+      "step": 6,
+      "output": "Thought: Cabinet 5 is closed, so I need to open it to check its contents for a spatula.\nAction: open cabinet 5",
+      "action": "open cabinet 5"
+    },
+    {
+      "step": 7,
+      "output": "Thought: Cabinet 5 is empty. I need to continue searching for a spatula. I will try cabinet 6 next.\nAction: go to cabinet 6",
+      "action": "go to cabinet 6"
+    },
+    {
+      "step": 8,
+      "output": "Thought: Cabinet 6 is closed, so I need to open it to check if there is a spatula inside.\nAction: open cabinet 6",
+      "action": "open cabinet 6"
+    },
+    {
+      "step": 9,
+      "output": "Thought: Cabinet 6 contains a plate, not a spatula. I have checked all the cabinets (1-6) and haven't found a spatula yet. Spatulas are often found in drawers or on countertops. I will try checking the drawers next, starting with drawer 1.\nAction: go to drawer 1",
+      "action": "go to drawer 1"
+    },
+    {
+      "step": 10,
+      "output": "Thought: Drawer 1 is closed, so I need to open it to check if there is a spatula inside.\nAction: open drawer 1",
+      "action": "open drawer 1"
+    },
+    {
+      "step": 11,
+      "output": "Thought: Drawer 1 contains a fork, not a spatula. I need to continue searching in other drawers. I will try drawer 2 next.\nAction: go to drawer 2",
+      "action": "go to drawer 2"
+    },
+    {
+      "step": 12,
+      "output": "Thought: Drawer 2 is closed, so I need to open it to check if there is a spatula inside.\nAction: open drawer 2",
+      "action": "open drawer 2"
+    },
+    {
+      "step": 13,
+      "output": "Thought: Drawer 2 contains a butterknife, not a spatula. I need to continue searching in the remaining drawers. I will try drawer 3 next.\nAction: go to drawer 3",
+      "action": "go to drawer 3"
+    },
+    {
+      "step": 14,
+      "output": "Thought: Drawer 3 is closed, so I need to open it to check if there is a spatula inside.\nAction: open drawer 3",
+      "action": "open drawer 3"
+    },
+    {
+      "step": 15,
+      "output": "Thought: Drawer 3 contains a creditcard and a saltshaker, not a spatula. I have checked all cabinets (1-6) and all drawers (1-3) without finding a spatula. Spatulas are also commonly found on countertops or in the microwave. I will try checking the countertops next, starting with countertop 1.\nAction: go to countertop 1",
+      "action": "go to countertop 1"
+    },
+    {
+      "step": 16,
+      "output": "Thought: Countertop 1 does not have a spatula. I will check countertop 2 next.\nAction: go to countertop 2",
+      "action": "go to countertop 2"
+    },
+    {
+      "step": 17,
+      "output": "Thought: Countertop 2 does not have a spatula. I will check countertop 3 next.\nAction: go to countertop 3",
+      "action": "go to countertop 3"
+    },
+    {
+      "step": 18,
+      "output": "Thought: I found a spatula 1 on countertop 3. Now I need to take it, then go to the sinkbasin to clean it, and finally put it in a drawer. First, I will take the spatula.\nAction: take spatula 1 from countertop 3",
+      "action": "take spatula 1 from countertop 3"
+    },
+    {
+      "step": 19,
+      "output": "Thought: I have successfully taken the spatula 1. Now I need to clean it. The sinkbasin 1 is the appropriate place to clean the spatula. I will go to the sinkbasin next.\nAction: go to sinkbasin 1",
+      "action": "go to sinkbasin 1"
+    },
+    {
+      "step": 20,
+      "output": "Thought: I am at the sinkbasin 1 with the spatula 1 in hand. The next step is to clean the spatula using the sinkbasin.\nAction: clean spatula 1 with sinkbasin 1",
+      "action": "clean spatula 1 with sinkbasin 1"
+    },
+    {
+      "step": 21,
+      "output": "Thought: I have successfully cleaned the spatula 1. The next step is to put it in a drawer. I need to choose a drawer. Since I checked drawers 1, 2, and 3 earlier and they contained other items (fork, butterknife, creditcard/saltshaker), I should check if I can put the spatula in one of them or if there are other drawers. However, the task just says \"put it in drawer\", implying any available drawer. Let's try putting it in drawer 1 first, as it's the first one I checked. If it's full or invalid, I'll try others. Wait, the action list doesn't have \"put obj in drawer\" directly, it has \"put obj in/on recep\". A drawer is a receptacle. So I can use \"put spatula 1 in/on drawer 1\". But first, I need to be at the drawer. I am currently at sinkbasin 1. I need to go to a drawer. Let's go to drawer 1.\nAction: go to drawer 1",
+      "action": "go to drawer 1"
+    },
+    {
+      "step": 22,
+      "output": "Thought: I am at drawer 1, which is open and contains a fork 1. I have the clean spatula 1 in hand. The task requires putting the spatula in a drawer. Drawer 1 is an available receptacle. I will put the spatula 1 in/on drawer 1.\nAction: put spatula 1 in/on drawer 1",
+      "action": "move spatula 1 to drawer 1"
+    }
+  ],
+  "dep_graph": {
+    "notes": {},
+    "blocked": {},
+    "events": [],
+    "pointed_step": {},
+    "hops": null
+  },
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 23,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 23.4
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (as react_std) + dependency-graph controller (scripts/dep_graph.py)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca",
+    "culprit_search": "multi-hop walk over the graph"
+  }
+}

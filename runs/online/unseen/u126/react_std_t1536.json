@@ -1,0 +1,124 @@
+{
+  "id": "u126",
+  "family": "pick_two_obj_and_place",
+  "game": "pick_two_obj_and_place-Pillow-None-Sofa-219/trial_T20190907_163240_345855/game.tw-pddl",
+  "task": "find two pillow and put them in sofa.",
+  "arm": "react_std_t1536",
+  "won": true,
+  "steps": 8,
+  "end": "success",
+  "baseline_won": null,
+  "baseline_steps": null,
+  "baseline_source": "none (--no-baseline)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a armchair 1, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a dresser 1, a garbagecan 1, a safe 1, a shelf 12, a shelf 11, a shelf 10, a shelf 9, a shelf 8, a shelf 7, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, a shelf 1, a sidetable 1, and a sofa 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to armchair 1",
+      "observation": "You arrive at armchair 1. On the armchair 1, you see a pillow 2, a pillow 1, and a remotecontrol 1."
+    },
+    {
+      "id": "r2",
+      "action": "take pillow 1 from armchair 1",
+      "observation": "You pick up the pillow 1 from the armchair 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to sofa 1",
+      "observation": "You arrive at sofa 1. On the sofa 1, you see nothing."
+    },
+    {
+      "id": "r4",
+      "action": "move pillow 1 to sofa 1",
+      "observation": "You move the pillow 1 to the sofa 1."
+    },
+    {
+      "id": "r5",
+      "action": "go to armchair 1",
+      "observation": "You arrive at armchair 1. On the armchair 1, you see a pillow 2, and a remotecontrol 1."
+    },
+    {
+      "id": "r6",
+      "action": "take pillow 2 from armchair 1",
+      "observation": "You pick up the pillow 2 from the armchair 1."
+    },
+    {
+      "id": "r7",
+      "action": "go to sofa 1",
+      "observation": "You arrive at sofa 1. On the sofa 1, you see a pillow 1."
+    },
+    {
+      "id": "r8",
+      "action": "move pillow 2 to sofa 1",
+      "observation": "You move the pillow 2 to the sofa 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: To solve the task, I need to find two pillows and put them on the sofa. Pillows are commonly found on sofas, armchairs, beds, or sometimes on shelves or dressers. I will start by checking the armchair 1, as it is a likely place to find a pillow.\nAction: go to armchair 1",
+      "action": "go to armchair 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: I have found two pillows (pillow 1 and pillow 2) on the armchair 1. The task requires me to put two pillows on the sofa. I will take the first pillow (pillow 1) from the armchair and then go to the sofa to put it there.\nAction: take pillow 1 from armchair 1",
+      "action": "take pillow 1 from armchair 1"
+    },
+    {
+      "step": 2,
+      "output": "Thought: I have successfully picked up pillow 1. Now I need to move to the sofa to place this pillow there. After placing it, I will need to find the second pillow (which I saw on the armchair as pillow 2) and bring it to the sofa as well.\nAction: go to sofa 1",
+      "action": "go to sofa 1"
+    },
+    {
+      "step": 3,
+      "output": "Thought: I have arrived at the sofa 1, which is currently empty. I am holding pillow 1. The next step is to place this pillow on the sofa. After that, I need to return to the armchair 1 to pick up the second pillow (pillow 2) and bring it to the sofa as well.\nAction: put pillow 1 in/on sofa 1",
+      "action": "move pillow 1 to sofa 1"
+    },
+    {
+      "step": 4,
+      "output": "Thought: I have successfully placed pillow 1 on the sofa. Now I need to find the second pillow. I remember seeing pillow 2 on the armchair 1 earlier. I should go back to the armchair 1 to pick it up.\nAction: go to armchair 1",
+      "action": "go to armchair 1"
+    },
+    {
+      "step": 5,
+      "output": "Thought: I have returned to the armchair 1 and can see pillow 2 there. I need to pick up this second pillow and then take it to the sofa to complete the task.\nAction: take pillow 2 from armchair 1",
+      "action": "take pillow 2 from armchair 1"
+    },
+    {
+      "step": 6,
+      "output": "Thought: I have successfully picked up pillow 2. Now I need to go to the sofa 1 to place this second pillow there, completing the task of putting two pillows on the sofa.\nAction: go to sofa 1",
+      "action": "go to sofa 1"
+    },
+    {
+      "step": 7,
+      "output": "Thought: I have arrived at the sofa 1, where pillow 1 is already placed. I am currently holding pillow 2. The task requires putting two pillows on the sofa. I will now place pillow 2 on the sofa to complete the task.\nAction: put pillow 2 in/on sofa 1",
+      "action": "move pillow 2 to sofa 1"
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 8,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 8.3
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (VBL App. F.3 / ReflAct App. K.1 / MPO)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca"
+  }
+}

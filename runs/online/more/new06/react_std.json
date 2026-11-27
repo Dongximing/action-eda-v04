@@ -1,0 +1,104 @@
+{
+  "id": "new06",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-Mug-None-CoffeeMachine-26/trial_T20190907_233056_022802/game.tw-pddl",
+  "task": "clean some mug and put it in coffeemachine.",
+  "arm": "react_std",
+  "won": true,
+  "steps": 6,
+  "end": "success",
+  "baseline_won": true,
+  "baseline_steps": 9,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": 1,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 2, a countertop 1, a diningtable 2, a diningtable 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to diningtable 1",
+      "observation": "You arrive at diningtable 1. On the diningtable 1, you see a apple 1, a bread 1, a butterknife 1, a cup 1, a pot 1, and a spatula 1."
+    },
+    {
+      "id": "r2",
+      "action": "go to diningtable 2",
+      "observation": "You arrive at diningtable 2. On the diningtable 2, you see a cup 2, a peppershaker 1, a plate 3, a potato 2, a saltshaker 2, a soapbottle 2, and a spoon 3."
+    },
+    {
+      "id": "r3",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a mug 2, a potato 1, a soapbottle 1, a spoon 1, and a tomato 1."
+    },
+    {
+      "id": "r4",
+      "action": "take mug 2 from countertop 1",
+      "observation": "You pick up the mug 2 from the countertop 1."
+    },
+    {
+      "id": "r5",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a egg 1, a plate 2, a spatula 3, and a spoon 2."
+    },
+    {
+      "id": "r6",
+      "action": "clean mug 2 with sinkbasin 1",
+      "observation": "You clean the mug 2 using the sinkbasin 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: To solve the task, I need to find a mug, clean it with the sinkbasin, and then put it in the coffeemachine. First, I need to locate a mug. Mugs are commonly found on diningtables, countertops, or in cabinets. I will start by checking diningtable 1.\nAction: go to diningtable 1",
+      "action": "go to diningtable 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: I am at diningtable 1, but there is no mug here, only a cup 1. I need to find a mug. I will check diningtable 2 next, as mugs are often placed on dining tables.\nAction: go to diningtable 2",
+      "action": "go to diningtable 2"
+    },
+    {
+      "step": 2,
+      "output": "Thought: I am at diningtable 2, but there is no mug here, only a cup 2. I need to find a mug. I will check countertop 1 next, as mugs are often placed on countertops.\nAction: go to countertop 1",
+      "action": "go to countertop 1"
+    },
+    {
+      "step": 3,
+      "output": "Thought: I found a mug 2 on countertop 1. Now I need to take it, then go to the sinkbasin to clean it, and finally put it in the coffeemachine.\nAction: take mug 2 from countertop 1",
+      "action": "take mug 2 from countertop 1"
+    },
+    {
+      "step": 4,
+      "output": "Thought: I have successfully picked up mug 2. The next step is to clean it. According to the task, I need to clean the mug with the sinkbasin. I will go to the sinkbasin first.\nAction: go to sinkbasin 1",
+      "action": "go to sinkbasin 1"
+    },
+    {
+      "step": 5,
+      "output": "Thought: I am at sinkbasin 1 with mug 2 in hand. The task requires me to clean the mug. I will now use the sinkbasin to clean the mug.\nAction: clean mug 2 with sinkbasin 1",
+      "action": "clean mug 2 with sinkbasin 1"
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 6,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 6.4
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (VBL App. F.3 / ReflAct App. K.1 / MPO)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca"
+  }
+}

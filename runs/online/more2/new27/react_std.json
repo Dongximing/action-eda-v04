@@ -1,0 +1,234 @@
+{
+  "id": "new27",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-Ladle-None-CounterTop-14/trial_T20190909_113844_191747/game.tw-pddl",
+  "task": "clean some ladle and put it in countertop.",
+  "arm": "react_std",
+  "won": true,
+  "steps": 19,
+  "end": "success",
+  "baseline_won": false,
+  "baseline_steps": 50,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": 1,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 2, a countertop 1, a fridge 1, a garbagecan 1, a microwave 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. On the cabinet 1, you see a bowl 1."
+    },
+    {
+      "id": "r2",
+      "action": "go to cabinet 2",
+      "observation": "You arrive at cabinet 2. On the cabinet 2, you see a soapbottle 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to cabinet 3",
+      "observation": "You arrive at cabinet 3. The cabinet 3 is closed."
+    },
+    {
+      "id": "r4",
+      "action": "open cabinet 3",
+      "observation": "You open the cabinet 3. The cabinet 3 is open. In it, you see nothing."
+    },
+    {
+      "id": "r5",
+      "action": "go to cabinet 4",
+      "observation": "You arrive at cabinet 4. The cabinet 4 is closed."
+    },
+    {
+      "id": "r6",
+      "action": "open cabinet 4",
+      "observation": "You open the cabinet 4. The cabinet 4 is open. In it, you see a saltshaker 1."
+    },
+    {
+      "id": "r7",
+      "action": "go to cabinet 5",
+      "observation": "You arrive at cabinet 5. The cabinet 5 is closed."
+    },
+    {
+      "id": "r8",
+      "action": "open cabinet 5",
+      "observation": "You open the cabinet 5. The cabinet 5 is open. In it, you see a saltshaker 2."
+    },
+    {
+      "id": "r9",
+      "action": "go to cabinet 6",
+      "observation": "You arrive at cabinet 6. On the cabinet 6, you see a bowl 2."
+    },
+    {
+      "id": "r10",
+      "action": "go to cabinet 7",
+      "observation": "You arrive at cabinet 7. On the cabinet 7, you see a saltshaker 3."
+    },
+    {
+      "id": "r11",
+      "action": "go to cabinet 8",
+      "observation": "You arrive at cabinet 8. The cabinet 8 is closed."
+    },
+    {
+      "id": "r12",
+      "action": "open cabinet 8",
+      "observation": "You open the cabinet 8. The cabinet 8 is open. In it, you see nothing."
+    },
+    {
+      "id": "r13",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a butterknife 1, a cup 1, and a spatula 2."
+    },
+    {
+      "id": "r14",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a bowl 3, a bread 1, a butterknife 2, a fork 2, a fork 1, a knife 2, a ladle 1, a lettuce 2, a peppershaker 1, a plate 1, a potato 1, a soapbottle 2, a spoon 2, a spoon 1, and a tomato 1."
+    },
+    {
+      "id": "r15",
+      "action": "take ladle 1 from countertop 1",
+      "observation": "You pick up the ladle 1 from the countertop 1."
+    },
+    {
+      "id": "r16",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a butterknife 1, a cup 1, and a spatula 2."
+    },
+    {
+      "id": "r17",
+      "action": "clean ladle 1 with sinkbasin 1",
+      "observation": "You clean the ladle 1 using the sinkbasin 1."
+    },
+    {
+      "id": "r18",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a bowl 3, a bread 1, a butterknife 2, a fork 2, a fork 1, a knife 2, a lettuce 2, a peppershaker 1, a plate 1, a potato 1, a soapbottle 2, a spoon 2, a spoon 1, and a tomato 1."
+    },
+    {
+      "id": "r19",
+      "action": "move ladle 1 to countertop 1",
+      "observation": "You move the ladle 1 to the countertop 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: To solve the task, I need to find a ladle, clean it with the sinkbasin, and then put it on the countertop. First, I need to locate a ladle. Ladles are commonly found in cabinets, drawers, or on countertops. I will start by checking the cabinets. I'll go to cabinet 1 first.\nAction: go to cabinet 1",
+      "action": "go to cabinet 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: I checked cabinet 1, but there is no ladle there, only a bowl. I need to continue searching for a ladle in other locations. I will check the next cabinet, cabinet 2.\nAction: go to cabinet 2",
+      "action": "go to cabinet 2"
+    },
+    {
+      "step": 2,
+      "output": "Thought: I checked cabinet 2, but there is no ladle there, only a soapbottle. I need to continue searching for a ladle in other locations. I will check the next cabinet, cabinet 3.\nAction: go to cabinet 3",
+      "action": "go to cabinet 3"
+    },
+    {
+      "step": 3,
+      "output": "Thought: I arrived at cabinet 3, but it is closed. I cannot see the contents inside. I need to open the cabinet to check if there is a ladle inside.\nAction: open cabinet 3",
+      "action": "open cabinet 3"
+    },
+    {
+      "step": 4,
+      "output": "Thought: I checked cabinet 3, but it is empty. I need to continue searching for a ladle in other locations. I will check the next cabinet, cabinet 4.\nAction: go to cabinet 4",
+      "action": "go to cabinet 4"
+    },
+    {
+      "step": 5,
+      "output": "Thought: I arrived at cabinet 4, but it is closed. I need to open it to check for a ladle inside.\nAction: open cabinet 4",
+      "action": "open cabinet 4"
+    },
+    {
+      "step": 6,
+      "output": "Thought: I checked cabinet 4, but there is no ladle there, only a saltshaker. I need to continue searching for a ladle in other locations. I will check the next cabinet, cabinet 5.\nAction: go to cabinet 5",
+      "action": "go to cabinet 5"
+    },
+    {
+      "step": 7,
+      "output": "Thought: I arrived at cabinet 5, but it is closed. I need to open it to check if there is a ladle inside.\nAction: open cabinet 5",
+      "action": "open cabinet 5"
+    },
+    {
+      "step": 8,
+      "output": "Thought: I checked cabinet 5, but there is no ladle there, only a saltshaker 2. I need to continue searching for a ladle in other locations. I will check the next cabinet, cabinet 6.\nAction: go to cabinet 6",
+      "action": "go to cabinet 6"
+    },
+    {
+      "step": 9,
+      "output": "Thought: I checked cabinet 6, but there is no ladle there, only a bowl 2. I need to continue searching for a ladle in other locations. I will check the next cabinet, cabinet 7.\nAction: go to cabinet 7",
+      "action": "go to cabinet 7"
+    },
+    {
+      "step": 10,
+      "output": "Thought: I checked cabinet 7, but there is no ladle there, only a saltshaker 3. I need to continue searching for a ladle in other locations. I will check the next cabinet, cabinet 8.\nAction: go to cabinet 8",
+      "action": "go to cabinet 8"
+    },
+    {
+      "step": 11,
+      "output": "Thought: I arrived at cabinet 8, but it is closed. I need to open it to check if there is a ladle inside.\nAction: open cabinet 8",
+      "action": "open cabinet 8"
+    },
+    {
+      "step": 12,
+      "output": "Thought: I have checked all the cabinets (1-8) and found no ladle. Ladles are often found in the sinkbasin or on countertops. I will check the sinkbasin next, as it is a common place for kitchen utensils.\nAction: go to sinkbasin 1",
+      "action": "go to sinkbasin 1"
+    },
+    {
+      "step": 13,
+      "output": "Thought: I checked the sinkbasin 1, but there is no ladle there, only a butterknife, a cup, and a spatula. I need to continue searching for a ladle. Common places for ladles include countertops or the microwave. I will check the countertop next.\nAction: go to countertop 1",
+      "action": "go to countertop 1"
+    },
+    {
+      "step": 14,
+      "output": "Thought: I found a ladle 1 on countertop 1. Now I need to take it, then go to the sinkbasin to clean it, and finally put it back on a countertop. First, I will take the ladle.\nAction: take ladle 1 from countertop 1",
+      "action": "take ladle 1 from countertop 1"
+    },
+    {
+      "step": 15,
+      "output": "Thought: I have successfully taken the ladle 1. Now I need to clean it. The sinkbasin 1 is the appropriate place to clean kitchen utensils. I will go to the sinkbasin.\nAction: go to sinkbasin 1",
+      "action": "go to sinkbasin 1"
+    },
+    {
+      "step": 16,
+      "output": "Thought: I am at the sinkbasin 1 with the ladle 1 in hand. The task requires me to clean the ladle. I will use the sinkbasin to clean the ladle.\nAction: clean ladle 1 with sinkbasin 1",
+      "action": "clean ladle 1 with sinkbasin 1"
+    },
+    {
+      "step": 17,
+      "output": "Thought: I have successfully cleaned the ladle 1. The next step is to put it on a countertop. I will go to countertop 1, where I originally found the ladle, and place it there.\nAction: go to countertop 1",
+      "action": "go to countertop 1"
+    },
+    {
+      "step": 18,
+      "output": "Thought: I have arrived at countertop 1 with the cleaned ladle 1. The task requires me to put the ladle on the countertop. I will now perform the action to place it there.\nAction: put ladle 1 in/on countertop 1",
+      "action": "move ladle 1 to countertop 1"
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 19,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 18.3
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (VBL App. F.3 / ReflAct App. K.1 / MPO)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca"
+  }
+}

@@ -1,0 +1,366 @@
+{
+  "id": "u115",
+  "family": "pick_heat_then_place_in_recep",
+  "game": "pick_heat_then_place_in_recep-Tomato-None-GarbageCan-10/trial_T20190908_225046_020282/game.tw-pddl",
+  "task": "put a hot tomato in garbagecan.",
+  "arm": "react_dep_graph_t1536",
+  "won": true,
+  "steps": 25,
+  "end": "success",
+  "baseline_won": null,
+  "baseline_steps": null,
+  "baseline_source": "none (--no-baseline)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "open fridge 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r2",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r3",
+      "action": "open fridge 1",
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a egg 2, a egg 1, a plate 1, a potato 2, and a potato 1."
+    },
+    {
+      "id": "r4",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a dishsponge 1, and a tomato 1."
+    },
+    {
+      "id": "r5",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing."
+    },
+    {
+      "id": "r6",
+      "action": "look",
+      "observation": "You are facing the stoveburner 3, and stoveburner 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r7",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a dishsponge 1, and a tomato 1."
+    },
+    {
+      "id": "r8",
+      "action": "take tomato 1 from countertop 1",
+      "observation": "You pick up the tomato 1 from the countertop 1."
+    },
+    {
+      "id": "r9",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing."
+    },
+    {
+      "id": "r10",
+      "action": "move tomato 1 to stoveburner 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r11",
+      "action": "use stoveburner 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r12",
+      "action": "heat tomato 1 with stoveburner 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r13",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r14",
+      "action": "open microwave 1",
+      "observation": "You open the microwave 1. The microwave 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r15",
+      "action": "move tomato 1 to microwave 1",
+      "observation": "You move the tomato 1 to the microwave 1."
+    },
+    {
+      "id": "r16",
+      "action": "look",
+      "observation": "You are facing the microwave 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r17",
+      "action": "take tomato 1 from microwave 1. Then I am holding it. Then I can try to heat it with the microwave again? That seems silly. Or heat it with the stoveburner? Let's try taking it out first to satisfy the \"holding\" condition, then see if I can heat it with the microwave (maybe the system allows heating while holding if the agent is at the microwave?). Actually, looking at the example: \"heat egg 2 with microwave 1\". In the example, did the agent put the egg in? Example trace: - take egg 2 from countertop 3. - go to microwave 1. - heat egg 2 with microwave 1. - Observation: \"You heat the egg 2 using the microwave 1.\" In the example, the agent did **not** put the egg in the microwave first! They just went to the microwave and heated it while holding it. The microwave must have heated it automatically or the action implies placing it. So, the correct procedure is: Go to microwave, ensure it's open (or maybe it doesn't matter), and then \"heat obj with microwave\". The agent must be holding the object. In my current case, I put the tomato in the microwave, so I am not holding it. I need to take it out first to be holding it, then heat it. Step 1: Take tomato 1 from microwave 1. Step 2: Heat tomato 1 with microwave 1. Step 3: Put tomato 1 in/on garbagecan 1. Let's execute Step 1. Action: take tomato 1 from microwave 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r18",
+      "action": "close microwave 1",
+      "observation": "You close the microwave 1."
+    },
+    {
+      "id": "r19",
+      "action": "take tomato 1 from microwave 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r20",
+      "action": "look",
+      "observation": "You are facing the microwave 1. Next to it, you see nothing."
+    },
+    {
+      "id": "r21",
+      "action": "open microwave 1",
+      "observation": "You open the microwave 1. The microwave 1 is open. In it, you see a tomato 1."
+    },
+    {
+      "id": "r22",
+      "action": "take tomato 1 from microwave 1",
+      "observation": "You pick up the tomato 1 from the microwave 1."
+    },
+    {
+      "id": "r23",
+      "action": "heat tomato 1 with microwave 1",
+      "observation": "You heat the tomato 1 using the microwave 1."
+    },
+    {
+      "id": "r24",
+      "action": "go to garbagecan 1",
+      "observation": "You arrive at garbagecan 1. On the garbagecan 1, you see a egg 3, and a papertowelroll 1."
+    },
+    {
+      "id": "r25",
+      "action": "move tomato 1 to garbagecan 1",
+      "observation": "You move the tomato 1 to the garbagecan 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: The task is to put a hot tomato in the garbagecan. First, I need to find a tomato. Tomatoes are commonly found in the fridge or on countertops. I will start by checking the fridge 1 to see if there is a tomato inside.\nAction: open fridge 1",
+      "action": "open fridge 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: The previous action \"open fridge 1\" failed because I am not currently at the fridge. I need to move to the fridge first before I can interact with it. I will go to the fridge 1.\nAction: go to fridge 1",
+      "action": "go to fridge 1"
+    },
+    {
+      "step": 2,
+      "output": "Thought: I have arrived at the fridge 1, which is currently closed. To check for a tomato inside, I need to open it first.\nAction: open fridge 1",
+      "action": "open fridge 1"
+    },
+    {
+      "step": 3,
+      "output": "Thought: I checked the fridge 1, but there is no tomato inside (only apple, eggs, and potatoes). I need to find a tomato elsewhere. Common places for tomatoes are countertops or cabinets. I will check the countertops next, starting with countertop 1.\nAction: go to countertop 1",
+      "action": "go to countertop 1"
+    },
+    {
+      "step": 4,
+      "output": "Thought: I found a tomato 1 on countertop 1. The task requires putting a *hot* tomato in the garbagecan. Since the tomato is currently at room temperature, I need to heat it first. I can use the stoveburner to heat it. I will go to a stoveburner (e.g., stoveburner 1) and heat the tomato.\nAction: go to stoveburner 1",
+      "action": "go to stoveburner 1"
+    },
+    {
+      "step": 5,
+      "output": "Thought: I am at stoveburner 1, but I cannot directly heat the tomato while holding it or without placing it on the burner first. The available actions include \"heat obj with recep\". This usually implies the object is already on the receptacle or the action places it there. However, looking at the available actions, there isn't a specific \"put obj on stoveburner\" action listed. Let's re-evaluate the available actions: `go to`, `take`, `put in/on`, `open`, `close`, `use`, `clean`, `heat`, `cool`. \n\nWait, the action list says `heat obj with recep`. In many simulation environments, this action might require the object to be on the receptacle, or it might implicitly handle the placement if the agent is at the location. But often, you need to `put obj in/on` the receptacle first. Is there a `put obj in/on stoveburner 1` action? No, the generic action is `put obj in/on recep`. Here `recep` would be `stoveburner 1`. So I should try to put the tomato on the stoveburner first.\n\nLet's check the actions again:\n1. go to recep\n2. take obj from recep\n3. put obj in/on recep\n4. open recep\n5. close recep\n6. use obj\n7. clean obj with recep\n8. heat obj with recep\n9. cool obj with recep\n\nYes, `put obj in/on recep` is available. So I need to put the tomato on the stoveburner 1 first, then heat it.\nAction: put tomato 1 in/on stoveburner 1",
+      "action": "move tomato 1 to stoveburner 1",
+      "blocked": "Not run: it needs \"you are holding tomato 1\", but you never picked up tomato 1.",
+      "ran_instead": "look"
+    },
+    {
+      "step": 6,
+      "output": "Thought: I need to pick up the tomato 1 from countertop 1 before I can put it on the stoveburner or heat it. I am currently at stoveburner 1, so I should go back to countertop 1 to take the tomato.\nAction: go to countertop 1",
+      "action": "go to countertop 1"
+    },
+    {
+      "step": 7,
+      "output": "Thought: I am at countertop 1 where the tomato 1 is located. I need to pick it up first so I can then put it on the stoveburner and heat it.\nAction: take tomato 1 from countertop 1",
+      "action": "take tomato 1 from countertop 1"
+    },
+    {
+      "step": 8,
+      "output": "Thought: I have successfully picked up the tomato 1. Now I need to heat it to make it hot before putting it in the garbagecan. I will go to the stoveburner 1 (where I was previously) and put the tomato on it, then heat it.\nAction: go to stoveburner 1",
+      "action": "go to stoveburner 1"
+    },
+    {
+      "step": 9,
+      "output": "Thought: I am at stoveburner 1 and holding the tomato 1. To heat it, I first need to place it on the stoveburner. The action for this is \"put obj in/on recep\", where obj is \"tomato 1\" and recep is \"stoveburner 1\".\nAction: put tomato 1 in/on stoveburner 1",
+      "action": "move tomato 1 to stoveburner 1"
+    },
+    {
+      "step": 10,
+      "output": "Thought: The action \"put tomato 1 in/on stoveburner 1\" resulted in \"Nothing happened\". This might be because the stoveburner is not currently active (not turned on), or perhaps the system requires the stove to be \"used\" or \"turned on\" first before an object can be placed on it to heat. However, looking at the available actions, there is no explicit \"turn on stove\" action. There is \"use obj\". Maybe I need to \"use\" the stoveburner first? Or perhaps the \"heat\" action itself handles the placement if I am holding the object? Let's try the \"heat obj with recep\" action directly. In many environments, if you are at the receptacle and holding the object, \"heat\" might implicitly place it or require the receptacle to be active. But if \"put\" failed, maybe the receptacle needs to be active. Is there a way to activate it? \"use obj\" is available. Let's try using the stoveburner 1 to see if it turns it on.\nAction: use stoveburner 1",
+      "action": "use stoveburner 1"
+    },
+    {
+      "step": 11,
+      "output": "Thought: The \"use stoveburner 1\" action also resulted in \"Nothing happened\". This suggests that the stoveburner might not be an object that can be \"used\" in this context, or it's already in a state where it can accept items. Let's reconsider the \"heat obj with recep\" action. In some environments, the \"heat\" action is the primary way to interact with a stove to cook something, and it might implicitly handle the placement if the agent is holding the object and is at the location. Since \"put\" failed, maybe the system expects the \"heat\" action to be performed directly while holding the object. I will try to heat the tomato 1 with the stoveburner 1.\nAction: heat tomato 1 with stoveburner 1",
+      "action": "heat tomato 1 with stoveburner 1"
+    },
+    {
+      "step": 12,
+      "output": "Thought: The previous attempts to heat the tomato on the stoveburner failed (\"Nothing happened\"). This suggests that the stoveburner might not be the correct receptacle for heating, or the mechanism to activate it is different. Let's re-evaluate the available receptacles: fridge, microwave, toaster, stoveburner, sinkbasin. \n- Fridge: cools.\n- Microwave: heats.\n- Toaster: heats (usually for bread).\n- Stoveburner: heats.\n- Sinkbasin: usually for cleaning or cooling (if water is cold).\n\nSince the stoveburner didn't work, maybe the microwave is the intended way to heat the tomato. I need to go to the microwave, put the tomato in it, and then heat it.\nAction: go to microwave 1",
+      "action": "go to microwave 1"
+    },
+    {
+      "step": 13,
+      "output": "Thought: I am at the microwave 1, which is closed. I am holding the tomato 1. To heat the tomato, I need to open the microwave first, then put the tomato inside, and finally heat it.\nAction: open microwave 1",
+      "action": "open microwave 1"
+    },
+    {
+      "step": 14,
+      "output": "Thought: I have opened the microwave 1 and it is empty. I am holding the tomato 1. The next step is to place the tomato inside the microwave so I can heat it.\nAction: put tomato 1 in/on microwave 1",
+      "action": "move tomato 1 to microwave 1"
+    },
+    {
+      "step": 15,
+      "output": "Thought: I have successfully placed the tomato 1 inside the microwave 1. Now I need to heat it to make it hot as required by the task. The action for this is \"heat obj with recep\".\nAction: heat tomato 1 with microwave 1",
+      "action": "heat tomato 1 with microwave 1",
+      "blocked": "Not run: it needs \"you are holding tomato 1\", but step 15: \"You move the tomato 1 to the microwave 1.\".",
+      "ran_instead": "look"
+    },
+    {
+      "step": 16,
+      "output": "Thought: The system indicates that I cannot heat the tomato because I am no longer holding it; I moved it into the microwave in the previous step. The \"heat obj with recep\" action likely requires the agent to be holding the object while performing the action, or perhaps the microwave needs to be closed first before heating can start. However, the error specifically mentions the \"holding\" condition. Let's try closing the microwave first, as that is a standard step before heating in many simulations, and see if that changes the state or allows the heat action to work if I were to pick it up again (though I can't pick it up if it's inside). Wait, if the object is inside, maybe the \"heat\" action works differently? But the error is strict about \"holding\". \n\nLet's re-read the available actions. Is there a way to heat something inside a receptacle? The action is \"heat obj with recep\". If the object is inside, maybe I need to close the microwave first? Or maybe I need to take it out? No, the goal is to put a *hot* tomato in the garbage can. If I take it out, it might cool down. \n\nLet's reconsider the logic. Usually, you put the item in, close the door, and then heat. The error says \"needs 'you are holding tomato 1'\". This implies the current state of the agent is \"not holding tomato 1\". This is true because I put it in the microwave. Perhaps the \"heat\" action is designed to be performed by the agent holding the object over the heat source (like a stove), not inside an appliance like a microwave? But microwaves heat things inside. \n\nMaybe the sequence is: Put in -> Close -> Heat? But the error says I need to be holding it. This is contradictory for a microwave scenario unless the \"heat\" action is generic and requires holding. If so, maybe I shouldn't have put it in? But then how do I heat it in a microwave? \n\nAlternative interpretation: Maybe I need to close the microwave first, and the system will automatically heat it? But the action list has \"heat obj with recep\". \nLet's look at the error again: \"Not run: it needs 'you are holding tomato 1'\". This is a precondition check. It seems the environment's \"heat\" action is defined such that the agent must hold the object. This makes \"heating in a microwave\" impossible with this specific action set if the object is inside. \n\nIs there another way? Maybe I should have heated it on the stoveburner? But that failed earlier. \nWhat if I take the tomato out of the microwave? Then I am holding it. Then I can heat it with the microwave? That sounds recursive and weird. \nOr maybe I heat it with the stoveburner while holding it? But the stoveburner didn't work before. \n\nLet's try a different approach. Maybe the \"heat\" action on a microwave works even if the object is inside, but the error message is misleading or I misunderstood the state. But the error is explicit. \nCould it be that I need to close the microwave first? Let's try closing it. Maybe the state update will allow the heat action to work differently, or maybe the error was about the *previous* state and closing it fixes something? No, the error is about the precondition for the *next* action. \n\nWait, if I close the microwave, I am still not holding the tomato. The error persists. \nIs it possible the task implies heating it on the stoveburner *after* taking it out? But the stoveburner failed. \nLet's re-examine the stoveburner failure. \"Nothing happens\". Maybe I need to \"use\" the stoveburner? I tried \"use stoveburner 1\" and it said \"Nothing happens\". \n\nLet's go back to the microwave. If I can't heat it while it's inside, maybe I need to take it out, heat it on the stove (if I can make that work), then put it in the garbage can. But the stove didn't work. \nIs there any other heating source? Toaster? No, that's for bread. \n\nMaybe the \"heat\" action on the microwave *does* work if I close it first, and the error message is a generic template that doesn't apply here? No, I must follow the rules. \nLet's try closing the microwave. Maybe the system expects the door to be closed before the heating process can be initiated, and the \"holding\" check is only for stove-like interactions. If I close it, maybe the state changes to \"microwave is closed with tomato inside\", and then \"heat\" might work? Or maybe the error is strictly enforced and I need to find a way to be holding it. \n\nIf I must be holding it, I must take it out. \nAction: take tomato 1 from microwave 1. \nThen I am holding it. Then I can try to heat it with the microwave again? That seems silly. \nOr heat it with the stoveburner? \nLet's try taking it out first to satisfy the \"holding\" condition, then see if I can heat it with the microwave (maybe the system allows heating while holding if the agent is at the microwave?). \nActually, looking at the example: \"heat egg 2 with microwave 1\". In the example, did the agent put the egg in? \nExample trace: \n- take egg 2 from countertop 3.\n- go to microwave 1.\n- heat egg 2 with microwave 1.\n- Observation: \"You heat the egg 2 using the microwave 1.\"\nIn the example, the agent did **not** put the egg in the microwave first! They just went to the microwave and heated it while holding it. The microwave must have heated it automatically or the action implies placing it. \nSo, the correct procedure is: Go to microwave, ensure it's open (or maybe it doesn't matter), and then \"heat obj with microwave\". The agent must be holding the object. \nIn my current case, I put the tomato in the microwave, so I am not holding it. I need to take it out first to be holding it, then heat it. \nStep 1: Take tomato 1 from microwave 1.\nStep 2: Heat tomato 1 with microwave 1.\nStep 3: Put tomato 1 in/on garbagecan 1.\n\nLet's execute Step 1.\nAction: take tomato 1 from microwave 1",
+      "action": "take tomato 1 from microwave 1. Then I am holding it. Then I can try to heat it with the microwave again? That seems silly. Or heat it with the stoveburner? Let's try taking it out first to satisfy the \"holding\" condition, then see if I can heat it with the microwave (maybe the system allows heating while holding if the agent is at the microwave?). Actually, looking at the example: \"heat egg 2 with microwave 1\". In the example, did the agent put the egg in? Example trace: - take egg 2 from countertop 3. - go to microwave 1. - heat egg 2 with microwave 1. - Observation: \"You heat the egg 2 using the microwave 1.\" In the example, the agent did **not** put the egg in the microwave first! They just went to the microwave and heated it while holding it. The microwave must have heated it automatically or the action implies placing it. So, the correct procedure is: Go to microwave, ensure it's open (or maybe it doesn't matter), and then \"heat obj with microwave\". The agent must be holding the object. In my current case, I put the tomato in the microwave, so I am not holding it. I need to take it out first to be holding it, then heat it. Step 1: Take tomato 1 from microwave 1. Step 2: Heat tomato 1 with microwave 1. Step 3: Put tomato 1 in/on garbagecan 1. Let's execute Step 1. Action: take tomato 1 from microwave 1"
+    },
+    {
+      "step": 17,
+      "output": "Thought: The action \"take tomato 1 from microwave 1\" resulted in \"Nothing happens\". This suggests that the tomato might not be considered \"in\" the microwave in a way that allows taking it out, or perhaps the microwave needs to be closed first before items can be removed (or added/removed). In many simulation environments, you must close the door of an appliance before you can interact with the contents (like taking something out). I will try closing the microwave first.\nAction: close microwave 1",
+      "action": "close microwave 1"
+    },
+    {
+      "step": 18,
+      "output": "Thought: I have closed the microwave 1. Now I need to retrieve the tomato 1 from inside so that I am holding it again. The previous attempt to take it while the microwave was open failed, but now that it is closed, the system might allow me to take it out. Once I have the tomato, I can heat it with the microwave (as seen in the example where the agent heated the egg without explicitly putting it in first, but here the object is already inside). Wait, if I take it out, I am holding it. Then I can try to heat it. But if I take it out, it's no longer in the microwave. The example showed heating while holding. Let's try taking it out first.\nAction: take tomato 1 from microwave 1",
+      "action": "take tomato 1 from microwave 1"
+    },
+    {
+      "step": 19,
+      "output": "Thought: The action \"take tomato 1 from microwave 1\" failed again, even after closing the microwave. This suggests that the tomato is not directly accessible to be \"taken\" from the microwave in the same way as from a countertop. In the example provided, the agent heated the egg with the microwave without explicitly putting it inside first; the `heat` action likely handled the placement internally or the egg was just held near it. However, in my previous attempt, I explicitly put the tomato in, which removed it from my inventory. Since I cannot take it out, I should try to heat it again while it is inside the closed microwave. The `heat` action might work on the object inside the receptacle if the receptacle is closed. Let's try heating the tomato with the microwave again.\nAction: heat tomato 1 with microwave 1",
+      "action": "heat tomato 1 with microwave 1",
+      "blocked": "Not run: it needs \"you are holding tomato 1\", but step 15: \"You move the tomato 1 to the microwave 1.\".",
+      "ran_instead": "look"
+    },
+    {
+      "step": 20,
+      "output": "Thought: The system consistently requires me to be \"holding\" the tomato to perform the \"heat\" action, but I cannot take it out of the microwave (both when open and closed). This creates a deadlock if I assume the object must be inside to be heated. However, looking back at the example: the agent took the egg, went to the microwave, and immediately heated it without putting it inside first. The `heat` action in this environment seems to work on an object the agent is holding, possibly placing it inside implicitly or heating it while held near the appliance. Since I put the tomato inside earlier, I lost the \"holding\" state. I need to get the tomato back into my inventory. Since \"take\" failed, maybe the microwave needs to be opened again? Or perhaps the \"put\" action was the issue. Let's try opening the microwave again to see if the state allows taking the item out.\nAction: open microwave 1",
+      "action": "open microwave 1"
+    },
+    {
+      "step": 21,
+      "output": "Thought: I have opened the microwave and can see the tomato 1 inside. The previous attempt to \"take\" it failed, but now that the door is open and the object is visible, I will try to take it again. Once I am holding the tomato, I can proceed to heat it with the microwave (as per the example where the egg was heated without being explicitly placed inside first, implying the `heat` action handles the interaction).\nAction: take tomato 1 from microwave 1",
+      "action": "take tomato 1 from microwave 1"
+    },
+    {
+      "step": 22,
+      "output": "Thought: I have successfully picked up the tomato 1 from the microwave. Now I am holding the tomato. According to the example provided in the prompt, the agent can heat an object with a microwave while holding it (the egg was heated without being explicitly placed inside first). I will now attempt to heat the tomato with the microwave 1.\nAction: heat tomato 1 with microwave 1",
+      "action": "heat tomato 1 with microwave 1"
+    },
+    {
+      "step": 23,
+      "output": "Thought: The tomato 1 has been successfully heated using the microwave 1. The task requires putting a hot tomato in the garbagecan. I am currently holding the hot tomato 1. I need to go to the garbagecan 1 and then put the tomato in it.\nAction: go to garbagecan 1",
+      "action": "go to garbagecan 1"
+    },
+    {
+      "step": 24,
+      "output": "Thought: I have arrived at the garbagecan 1 and am holding the hot tomato 1. The task is to put the hot tomato in the garbagecan. I will now perform the action to put the tomato in/on the garbagecan.\nAction: put tomato 1 in/on garbagecan 1",
+      "action": "move tomato 1 to garbagecan 1"
+    }
+  ],
+  "dep_graph": {
+    "notes": {
+      "1": "This failed. It needs \"you are at fridge 1\", which no feedback supports: you have not gone anywhere yet.",
+      "12": "This failed. It relies on \"a stoveburner can heat things\" (assumed at step 12), which no feedback supports: no stoveburner has worked for heat yet. That is now ruled out."
+    },
+    "blocked": {
+      "6": {
+        "told": "Not run: it needs \"you are holding tomato 1\", but you never picked up tomato 1.",
+        "ran_instead": "look"
+      },
+      "16": {
+        "told": "Not run: it needs \"you are holding tomato 1\", but step 15: \"You move the tomato 1 to the microwave 1.\".",
+        "ran_instead": "look"
+      },
+      "20": {
+        "told": "Not run: it needs \"you are holding tomato 1\", but step 15: \"You move the tomato 1 to the microwave 1.\".",
+        "ran_instead": "look"
+      }
+    },
+    "events": [
+      {
+        "step": 1,
+        "type": "culprit",
+        "belief": "you are at fridge 1",
+        "level": "unsupported",
+        "formed": 1,
+        "hops": 1
+      },
+      {
+        "step": 6,
+        "type": "blocked",
+        "command": "move tomato 1 to stoveburner 1",
+        "belief": "you are holding tomato 1",
+        "level": "refuted",
+        "instead": "look"
+      },
+      {
+        "step": 12,
+        "type": "culprit",
+        "belief": "a stoveburner can heat things",
+        "level": "unsupported",
+        "formed": 12,
+        "hops": 1,
+        "ruled_out": true
+      },
+      {
+        "step": 16,
+        "type": "blocked",
+        "command": "heat tomato 1 with microwave 1",
+        "belief": "you are holding tomato 1",
+        "level": "refuted",
+        "instead": "look"
+      },
+      {
+        "step": 20,
+        "type": "blocked",
+        "command": "heat tomato 1 with microwave 1",
+        "belief": "you are holding tomato 1",
+        "level": "refuted",
+        "instead": "look"
+      }
+    ],
+    "pointed_step": {},
+    "hops": null
+  },
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 25,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 48.5
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (as react_std) + dependency-graph controller (scripts/dep_graph.py)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca",
+    "culprit_search": "multi-hop walk over the graph"
+  }
+}

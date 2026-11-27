@@ -626,7 +626,7 @@ class TestSelfExplore(unittest.TestCase):
 
 
 class TestOneCall(unittest.TestCase):
-    RUNNER = Path.home() / "Documents/Codex/2026-11-21/yo/outputs/alfworld-action-eda-oneshot-altprovider"
+    RUNNER = ROOT / "baseline/runner"
 
     def setUp(self):
         if not self.RUNNER.exists():
@@ -682,3 +682,230 @@ class TestOneCall(unittest.TestCase):
         self.assertEqual(log[-1]["fallback"], "baseline action call")
         sc = place_list_score(log)
         self.assertEqual((sc["place_list_steps"], sc["place_list_errors"], sc["place_list_exact"]), (3, 2, 1))
+
+
+class TestJevExplore(unittest.TestCase):
+    """jevexplore: the decision model's per-record answers are accumulated into the selfexplore note."""
+
+    def setUp(self):
+        sys.path.insert(0, str(ROOT / "scripts"))
+        sys.path.insert(0, str(ROOT / "baseline/runner"))
+        r0 = ("You are in the middle of a room. Looking quickly around you, you see a cabinet 1, a fridge 1, and a "
+              "sinkbasin 1.\n\nYour task is to: put a cool apple in sinkbasin.")
+        self.hist = [{"id": "r0", "action": "reset", "observation": r0},
+                     {"id": "r1", "action": "go to fridge 1", "observation": "You arrive at fridge 1. The fridge 1 is closed."},
+                     {"id": "r2", "action": "go to drawer 9", "observation": "Nothing happens."}]
+
+    def test_same_question_as_offline_check(self):
+        import jev_places_offline as J
+        from run_online import JEV_ARRIVED_Q
+        self.assertEqual(JEV_ARRIVED_Q, J.INCR_Q)
+
+    def test_accumulates_and_asks_each_record_once(self):
+        from run_online import jev_explored, place_note
+        names = ["cabinet 1", "fridge 1", "sinkbasin 1"]
+        asked, arrived, log = [], {}, []
+
+        def ask(rec, ns):
+            asked.append(rec["action"])
+            c = "fridge 1" if rec["action"] == "go to fridge 1" else "none"
+            return {"answers": {"arrived": {"choice": c, "probabilities": {n: float(n == c) for n in ns + ["none"]}}}}
+        for k in (2, 3):  # two steps of one episode
+            view = {"task": "t", "observation": self.hist[k - 1]["observation"], "history": self.hist[:k]}
+            seen = jev_explored(view, names, ask, arrived, log)
+        self.assertEqual(asked, ["go to fridge 1", "go to drawer 9"])   # each record once
+        self.assertTrue(seen["observation"].endswith(place_note(["cabinet 1", "sinkbasin 1"], ["fridge 1"])))
+        self.assertEqual(self.hist[2]["observation"], "Nothing happens.")  # the env history is not changed
+        self.assertEqual([e["model_not_visited"] for e in log], [["cabinet 1", "sinkbasin 1"]] * 2)
+        self.assertEqual(log[-1]["code_not_visited"], ["cabinet 1", "sinkbasin 1"])
+
+    def test_unusable_answer_counts_as_none_and_no_names_means_no_note(self):
+        from run_online import jev_explored
+        view = {"task": "t", "observation": self.hist[1]["observation"], "history": self.hist[:2]}
+        log = []
+        seen = jev_explored(view, ["fridge 1"], lambda rec, ns: {"answers": {}}, {}, log)
+        self.assertEqual((log[0]["model_visited"], log[0]["jev_unusable"]), ([], 1))
+        self.assertIn("Not visited yet", seen["observation"])
+        seen = jev_explored(view, None, lambda rec, ns: 1 / 0, {}, log)
+        self.assertEqual(seen, view)
+        self.assertIn("error", log[-1])
+
+
+class TestStateAct(unittest.TestCase):
+    """stateact: their text format, read from the fetched prompt data; action extraction and correction."""
+
+    def setUp(self):
+        sys.path.insert(0, str(ROOT / "scripts"))
+        sys.path.insert(0, str(ROOT / "baseline/runner"))
+
+    def test_action_extraction_and_put_correction(self):
+        from run_online import stateact_action, stateact_clean, stateact_visited
+        out = ">goal: g\nlocations visited: fridge 1, countertop 2\ncurrent location: fridge 1\naction: put egg 1 in/on diningtable 1"
+        self.assertEqual(stateact_action(out), "move egg 1 to diningtable 1")
+        self.assertEqual(stateact_action("action: put egg 1 in microwave 1"), "move egg 1 to microwave 1")
+        self.assertEqual(stateact_action("thought: no command"), "thought: no command")   # env: Nothing happens.
+        self.assertEqual(stateact_clean(">goal: g\naction: look"), "goal: g\naction: look\n\n")
+        self.assertEqual(stateact_visited(out), ["fridge 1", "countertop 2"])
+        self.assertEqual(stateact_visited("locations visited: None\naction: look"), [])
+        self.assertIsNone(stateact_visited("action: look"))
+
+    def test_prompt_layout(self):
+        from run_online import STATEACT_DIR, stateact_examples, stateact_system
+        if not (STATEACT_DIR / "alfworld_prompts_utils_v4_heat_base.py").exists():
+            self.skipTest("StateAct prompt data not fetched (scripts/fetch_stateact_prompts.sh)")
+        s = stateact_system(stateact_examples("heat"))
+        self.assertTrue(s.startswith("Interact with a household to solve a task.\n\n\nHere are 2 examples:\n\n"))
+        self.assertTrue(s.endswith("\n\nHere is the task.\n\n"))
+        self.assertIn(">goal: put a hot apple in fridge\nlocations visited: None\ncurrent location: starting location\n"
+                      "current inventory: None\nthought: ", s)
+
+
+class TestStateActChat(unittest.TestCase):
+    def test_both_variants_listed(self):
+        src = (ROOT / "scripts/run_online.py").read_text()
+        for arm in ("stateact", "stateact_chat"):
+            self.assertIn(f'"{arm}"', src)
+        self.assertIn('"actor-stateact-chat"', src)   # its own cache entries, apart from the one-message form
+
+
+class TestNameCheck(unittest.TestCase):
+    def setUp(self):
+        sys.path.insert(0, str(ROOT / "scripts"))
+        sys.path.insert(0, str(ROOT / "baseline/runner"))
+
+    def test_blocks_only_takes_of_unnamed_objects(self):
+        from run_online import feedback, name_check
+        v = {"task": "put a hot cup in cabinet.", "history": []}
+        self.assertEqual(name_check(v, "take mug 1 from countertop 1").status, "CONTRADICTED")
+        self.assertEqual(name_check(v, "take cup 2 from countertop 1").status, "SUPPORTED")
+        self.assertEqual(name_check(v, "go to cabinet 1").status, "NONE")
+        self.assertEqual(name_check({"task": "clean some butterknife and put it in drawer.", "history": []},
+                                    "take knife 1 from drawer 1").status, "CONTRADICTED")   # whole words only
+        self.assertIn('does not name "mug"', feedback(name_check(v, "take mug 1 from countertop 1"))["conditions"][0]["claim"])
+
+
+class TestThinkJev(unittest.TestCase):
+    def setUp(self):
+        sys.path.insert(0, str(ROOT / "scripts"))
+        sys.path.insert(0, str(ROOT / "baseline/runner"))
+
+    def test_prompt_is_the_baseline_prompt_plus_a_thought(self):
+        from run_online import BASE_ACTION, THINK_ACTION
+        self.assertTrue(THINK_ACTION.startswith("You are the main agent in the ALFWorld text game."))
+        self.assertIn("first write a short thought", THINK_ACTION)
+        self.assertIn('{"thought":"...","action":"..."}', THINK_ACTION)
+        self.assertNotEqual(BASE_ACTION, THINK_ACTION)
+
+    def test_thought_demos_match_the_baseline_demos(self):
+        t = json.loads((ROOT / "data/fewshot/react_think_examples.json").read_text())["examples"]
+        b = json.loads((ROOT / "baseline/oneshot12/one_shot_examples.json").read_text())["examples"]
+        for fam in t:
+            acts = lambda e: [json.loads(l[8:])["action"] for l in e["text"].split("\n") if l.startswith("Action: ")]
+            obs = lambda e: [l for l in e["text"].split("\n") if l.startswith("Observation: ")]
+            self.assertEqual(acts(t[fam]), acts(b[fam]))
+            self.assertEqual(obs(t[fam]), obs(b[fam]))
+
+
+class TestStateLedger(unittest.TestCase):
+    def setUp(self):
+        sys.path.insert(0, str(ROOT / "scripts"))
+
+    def test_fold_and_note(self):
+        import state_ledger as L
+        recs = [{"action": "go to cabinet 1", "observation": "You arrive at cabinet 1. The cabinet 1 is closed."},
+                {"action": "go to countertop 1", "observation": "You arrive at countertop 1. On the countertop 1, you see a mug 1."},
+                {"action": "take mug 1 from countertop 1", "observation": "You pick up the mug 1 from the countertop 1."},
+                {"action": "go to cabinet 1", "observation": "You arrive at cabinet 1. The cabinet 1 is closed."},
+                {"action": "open cabinet 1", "observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see nothing."},
+                {"action": "move mug 1 to cabinet 1", "observation": "You move the mug 1 to the cabinet 1."}]
+        evs = [L.code_event(r) for r in recs]
+        st = L.fold(evs[:4])
+        self.assertEqual((st["location"], st["carrying"], st["searched"]), ("cabinet 1", "mug 1", ["countertop 1"]))
+        n = L.note(st, ["cabinet 1", "countertop 1", "fridge 1"])
+        self.assertIn("Reached but not looked inside or on: cabinet 1.", n)
+        st = L.fold(evs)
+        self.assertEqual((st["carrying"], st["searched"]), (None, ["countertop 1", "cabinet 1"]))
+
+    def test_read_answers(self):
+        import state_ledger as L
+        rec = {"action": "take mug 1 from countertop 1", "observation": "You pick up the mug 1 from the countertop 1."}
+        places = ["countertop 1", "cabinet 1"]
+        resp = {"answers": {"arrived": {"choice": "none"}, "shown": {"choice": "countertop 1"}, "contents": {"noul": 0.2},
+                            "kind": {"choice": "other"}, "carry": {"choice": "picked up mug 1"}}}
+        ev = L.read(resp, rec, places)
+        self.assertEqual((ev["arrived"], ev["searched"], ev["carry"], ev["unusable"]), (None, None, ("pick", "mug 1"), []))
+        self.assertEqual(L.read({"answers": {}}, rec, places)["unusable"], ["carry", "kind", "arrived", "searched"])
+        # an arrival whose kind is misread as "other": kept, because nothing was picked up and contents is yes
+        arr = {"action": "go to sinkbasin 1", "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a cup 1."}
+        resp = {"answers": {"arrived": {"choice": "sinkbasin 1"}, "shown": {"choice": "sinkbasin 1"}, "contents": {"noul": 0.9},
+                            "kind": {"choice": "other"}, "carry": {"choice": "nothing"}}}
+        ev = L.read(resp, arr, ["sinkbasin 1"])
+        self.assertEqual((ev["arrived"], ev["searched"]), ("sinkbasin 1", "sinkbasin 1"))
+
+
+class TestReactStd(unittest.TestCase):
+    def setUp(self):
+        sys.path.insert(0, str(ROOT / "scripts"))
+        sys.path.insert(0, str(ROOT / "baseline/runner"))
+
+    def test_prompt_and_parse(self):
+        from run_online import REACT_STD_INSTRUCTION, react_std_action, react_std_prompt
+        icl = json.loads((ROOT / "data/fewshot/mpo/alfworld_icl.json").read_text())
+        p = react_std_prompt(icl["pick_clean_then_place"][0], "ROOM\nYour task is to: put a clean cloth in cabinet.")
+        self.assertTrue(p.startswith(REACT_STD_INSTRUCTION + "\n---\nHere is an example.\n\nYou are in the middle of a room."))
+        self.assertTrue(p.endswith("\n---\n\nNow, it's your turn and here is the task.\nROOM\nYour task is to: put a clean cloth in cabinet."))
+        self.assertIn("6. use obj", REACT_STD_INSTRUCTION)
+        self.assertEqual(react_std_action("Thought: t\nAction: put mug 1 in/on cabinet 2"), "move mug 1 to cabinet 2")
+        self.assertEqual(react_std_action("Action: go to fridge 1"), "go to fridge 1")
+        self.assertIsNone(react_std_action("Thought: only a thought"))
+
+
+class TestDepGraph(unittest.TestCase):
+    def setUp(self):
+        sys.path.insert(0, str(ROOT / "scripts"))
+
+    def test_wrong_object_is_traced_back_and_ruled_out(self):
+        from dep_graph import DepGraph
+        g = DepGraph("clean some cloth and put it in cabinet.", "You are in the middle of a room.")
+        g.update(1, "go to towelholder 1", "You arrive at towelholder 1. On the towelholder 1, you see a towel 1.")
+        g.update(2, "take towel 1 from towelholder 1", "You pick up the towel 1 from the towelholder 1.")
+        g.update(3, "go to sinkbasin 1", "You arrive at sinkbasin 1. On the sinkbasin 1, you see nothing.")
+        g.update(4, "clean towel 1 with sinkbasin 1", "Nothing happens.")
+        note = g.after(4, "clean towel 1 with sinkbasin 1", "Nothing happens.", True)
+        self.assertIn('"towel 1 is the cloth the task asks for" (assumed at step 2)', note)   # not the latest step
+        instead, told = g.before(5, "clean towel 1 with sinkbasin 1")
+        self.assertEqual(instead, "move towel 1 to sinkbasin 1")
+        self.assertIn("ruled out at step 4", told)
+        self.assertIsNone(g.before(5, "go to cabinet 1"))                                     # unrelated: runs
+
+    def test_location_is_never_refuted_and_tools_are_learned(self):
+        from dep_graph import DepGraph
+        g = DepGraph("heat some mug and put it in cabinet.", "You are in the middle of a room.")
+        g.update(1, "go to cabinet 1", "You arrive at cabinet 1. On the cabinet 1, you see a mug 1.")
+        self.assertIsNone(g.before(2, "open cabinet 2"))       # cabinets can share a spot: not blocked
+        g.update(2, "take mug 1 from cabinet 1", "You pick up the mug 1 from the cabinet 1.")
+        g.update(3, "go to stoveburner 1", "You arrive at stoveburner 1. On the stoveburner 1, you see a pot 1.")
+        g.update(4, "heat mug 1 with stoveburner 1", "Nothing happens.")
+        self.assertIn("a stoveburner can heat things", g.after(4, "heat mug 1 with stoveburner 1", "Nothing happens.", True))
+        self.assertEqual(g.before(5, "heat mug 1 with stoveburner 2")[0], "look")
+        self.assertIn("has been heated", g.before(5, "move mug 1 to cabinet 1")[1])      # goal before the transform
+        g.update(5, "go to microwave 1", "You arrive at microwave 1. The microwave 1 is closed.")
+        g.update(6, "move mug 1 to microwave 1", "You move the mug 1 to the microwave 1.")
+        self.assertIn("you are holding mug 1", g.before(7, "heat mug 1 with microwave 1")[1])  # put down: refuted
+
+    def test_graph_walk_finds_the_root_behind_full_hands(self):
+        from dep_graph import DepGraph
+        for hops, expect_root in ((1, False), (None, True)):
+            g = DepGraph("put some watch on safe.", "You are in the middle of a room.", hops=hops)
+            g.update(1, "go to sofa 1", "You arrive at sofa 1. On the sofa 1, you see a box 2.")
+            g.update(2, "take box 2 from sofa 1", "You pick up the box 2 from the sofa 1.")
+            g.update(3, "go to drawer 5", "You arrive at drawer 5. On the drawer 5, you see a watch 1.")
+            g.update(4, "take watch 1 from drawer 5", "Nothing happens.")
+            note = g.after(4, "take watch 1 from drawer 5", "Nothing happens.", True)
+            self.assertIn('needs "your hands are empty"', note)
+            self.assertEqual('"box 2 is the watch the task asks for"' in note, expect_root)
+            # the graph itself: the take at step 2 created the binding and falsified "empty"
+            rels = {(e["src"], e["rel"], e["dst"]) for e in g.edges}
+            self.assertIn(("a2", "creates", "b:bind:box 2"), rels)
+            self.assertIn(("a2", "falsifies", "b:empty"), rels)
+            self.assertIn(("a4", "needs", "b:empty"), rels)

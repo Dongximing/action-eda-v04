@@ -1,0 +1,94 @@
+{
+  "id": "u002",
+  "family": "look_at_obj_in_light",
+  "game": "look_at_obj_in_light-AlarmClock-None-DeskLamp-308/trial_T20190908_222933_607649/game.tw-pddl",
+  "task": "examine the alarmclock with the desklamp.",
+  "arm": "react_std",
+  "won": true,
+  "steps": 5,
+  "end": "success",
+  "baseline_won": null,
+  "baseline_steps": null,
+  "baseline_source": "none (--no-baseline)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to desk 1",
+      "observation": "You arrive at desk 1. On the desk 1, you see a bowl 1, a desklamp 1, and a laptop 2."
+    },
+    {
+      "id": "r2",
+      "action": "go to desk 2",
+      "observation": "You arrive at desk 2. On the desk 2, you see a alarmclock 1, a keychain 2, and a mug 1."
+    },
+    {
+      "id": "r3",
+      "action": "take alarmclock 1 from desk 2",
+      "observation": "You pick up the alarmclock 1 from the desk 2."
+    },
+    {
+      "id": "r4",
+      "action": "go to desk 1",
+      "observation": "You arrive at desk 1. On the desk 1, you see a bowl 1, a desklamp 1, and a laptop 2."
+    },
+    {
+      "id": "r5",
+      "action": "use desklamp 1",
+      "observation": "You turn on the desklamp 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: To solve the task \"examine the alarmclock with the desklamp\", I first need to locate an alarmclock and a desklamp. Based on the available objects, alarmclocks are likely in drawers, desks, or shelves, and desklamps are likely on desks or sidetables. I will start by checking the desks and shelves for these items. I'll begin with desk 1.\nAction: go to desk 1",
+      "action": "go to desk 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: I have found a desklamp 1 on desk 1. Now I need to find an alarmclock. Alarmclocks are often found on desks, shelves, or sidetables. Since I am already at desk 1, I will check the other desks first. I will go to desk 2 next.\nAction: go to desk 2",
+      "action": "go to desk 2"
+    },
+    {
+      "step": 2,
+      "output": "Thought: I have found an alarmclock 1 on desk 2 and a desklamp 1 on desk 1. The task is to examine the alarmclock with the desklamp. To do this, I need to take the alarmclock to the desklamp (or vice versa) and then use the desklamp. First, I will take the alarmclock 1 from desk 2.\nAction: take alarmclock 1 from desk 2",
+      "action": "take alarmclock 1 from desk 2"
+    },
+    {
+      "step": 3,
+      "output": "Thought: I have successfully picked up the alarmclock 1. Now I need to examine it with the desklamp 1, which is located on desk 1. To do this, I should go to desk 1 where the desklamp is, and then use the desklamp on the alarmclock I am holding.\nAction: go to desk 1",
+      "action": "go to desk 1"
+    },
+    {
+      "step": 4,
+      "output": "Thought: I am now at desk 1 with the alarmclock 1 in hand, and the desklamp 1 is on the desk. The task is to examine the alarmclock with the desklamp. This implies using the desklamp on the alarmclock. I will perform the action \"use desklamp 1\" while holding the alarmclock.\nAction: use desklamp 1",
+      "action": "use desklamp 1"
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 5,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 5.7
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (VBL App. F.3 / ReflAct App. K.1 / MPO)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca"
+  }
+}

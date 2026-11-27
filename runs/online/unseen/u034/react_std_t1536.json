@@ -1,0 +1,124 @@
+{
+  "id": "u034",
+  "family": "pick_and_place_simple",
+  "game": "pick_and_place_simple-SoapBottle-None-Toilet-424/trial_T20190907_004321_405868/game.tw-pddl",
+  "task": "put some soapbottle on toilet.",
+  "arm": "react_std_t1536",
+  "won": true,
+  "steps": 8,
+  "end": "success",
+  "baseline_won": null,
+  "baseline_steps": null,
+  "baseline_source": "none (--no-baseline)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a countertop 1, a garbagecan 1, a handtowelholder 2, a handtowelholder 1, a sinkbasin 2, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. The cabinet 1 is closed."
+    },
+    {
+      "id": "r2",
+      "action": "open cabinet 1",
+      "observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see a spraybottle 2."
+    },
+    {
+      "id": "r3",
+      "action": "go to cabinet 2",
+      "observation": "You arrive at cabinet 2. The cabinet 2 is closed."
+    },
+    {
+      "id": "r4",
+      "action": "open cabinet 2",
+      "observation": "You open the cabinet 2. The cabinet 2 is open. In it, you see a candle 1, and a toiletpaper 1."
+    },
+    {
+      "id": "r5",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a soapbottle 3, and a soapbottle 1."
+    },
+    {
+      "id": "r6",
+      "action": "take soapbottle 1 from countertop 1",
+      "observation": "You pick up the soapbottle 1 from the countertop 1."
+    },
+    {
+      "id": "r7",
+      "action": "go to toilet 1",
+      "observation": "You arrive at toilet 1. On the toilet 1, you see a candle 2."
+    },
+    {
+      "id": "r8",
+      "action": "move soapbottle 1 to toilet 1",
+      "observation": "You move the soapbottle 1 to the toilet 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: To solve the task, I need to find a soapbottle and then put it on the toilet. Based on the initial observation, soapbottles are likely located in cabinets or on countertops. I will start by checking cabinet 1 to see if there is a soapbottle there.\nAction: go to cabinet 1",
+      "action": "go to cabinet 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: Cabinet 1 is closed, so I cannot see its contents. I need to open it to check for a soapbottle.\nAction: open cabinet 1",
+      "action": "open cabinet 1"
+    },
+    {
+      "step": 2,
+      "output": "Thought: I opened cabinet 1 and found a spraybottle 2, but the task requires a soapbottle. I need to continue searching for a soapbottle in other locations. I will check cabinet 2 next.\nAction: go to cabinet 2",
+      "action": "go to cabinet 2"
+    },
+    {
+      "step": 3,
+      "output": "Thought: Cabinet 2 is closed, so I need to open it to check for a soapbottle inside.\nAction: open cabinet 2",
+      "action": "open cabinet 2"
+    },
+    {
+      "step": 4,
+      "output": "Thought: I checked cabinet 1 and found a spraybottle, but no soapbottle. Cabinet 2 contains a candle and toiletpaper, also no soapbottle. I need to continue searching. The countertop is another likely place for a soapbottle. I will go to the countertop next.\nAction: go to countertop 1",
+      "action": "go to countertop 1"
+    },
+    {
+      "step": 5,
+      "output": "Thought: I found soapbottle 3 and soapbottle 1 on countertop 1. Now I need to take one of them and then put it on the toilet. I will take soapbottle 1 first.\nAction: take soapbottle 1 from countertop 1",
+      "action": "take soapbottle 1 from countertop 1"
+    },
+    {
+      "step": 6,
+      "output": "Thought: I have successfully picked up soapbottle 1. The next step is to go to the toilet and place the soapbottle on it to complete the task.\nAction: go to toilet 1",
+      "action": "go to toilet 1"
+    },
+    {
+      "step": 7,
+      "output": "Thought: I am now at toilet 1 and holding soapbottle 1. The task is to put the soapbottle on the toilet. I will perform the action to place it there.\nAction: put soapbottle 1 in/on toilet 1",
+      "action": "move soapbottle 1 to toilet 1"
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 8,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 7.5
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (VBL App. F.3 / ReflAct App. K.1 / MPO)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "id": "u032",
+  "family": "pick_and_place_simple",
+  "game": "pick_and_place_simple-SaltShaker-None-Drawer-10/trial_T20190909_021650_880235/game.tw-pddl",
+  "task": "put a saltshaker in drawer.",
+  "arm": "react_std",
+  "won": true,
+  "steps": 5,
+  "end": "success",
+  "baseline_won": null,
+  "baseline_steps": null,
+  "baseline_source": "none (--no-baseline)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to cabinet 1",
+      "observation": "You arrive at cabinet 1. On the cabinet 1, you see a plate 1, and a saltshaker 1."
+    },
+    {
+      "id": "r2",
+      "action": "take saltshaker 1 from cabinet 1",
+      "observation": "You pick up the saltshaker 1 from the cabinet 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to drawer 1",
+      "observation": "You arrive at drawer 1. The drawer 1 is closed."
+    },
+    {
+      "id": "r4",
+      "action": "open drawer 1",
+      "observation": "You open the drawer 1. The drawer 1 is open. In it, you see a creditcard 1."
+    },
+    {
+      "id": "r5",
+      "action": "move saltshaker 1 to drawer 1",
+      "observation": "You move the saltshaker 1 to the drawer 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: The goal is to put a saltshaker in a drawer. First, I need to locate a saltshaker. Saltshakers are commonly found in cabinets, drawers, or on countertops. I will start by checking cabinet 1 to see if a saltshaker is there.\nAction: go to cabinet 1",
+      "action": "go to cabinet 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: I have found a saltshaker 1 on cabinet 1. The next step is to take it so I can move it to a drawer.\nAction: take saltshaker 1 from cabinet 1",
+      "action": "take saltshaker 1 from cabinet 1"
+    },
+    {
+      "step": 2,
+      "output": "Thought: I have successfully picked up the saltshaker 1. Now I need to find a drawer to put it in. I will check drawer 1 first.\nAction: go to drawer 1",
+      "action": "go to drawer 1"
+    },
+    {
+      "step": 3,
+      "output": "Thought: I have arrived at drawer 1, but it is closed. To put the saltshaker inside, I first need to open the drawer.\nAction: open drawer 1",
+      "action": "open drawer 1"
+    },
+    {
+      "step": 4,
+      "output": "Thought: I have opened drawer 1 and can see inside. The drawer is open, so I can now place the saltshaker 1 inside it to complete the task.\nAction: put saltshaker 1 in/on drawer 1",
+      "action": "move saltshaker 1 to drawer 1"
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 5,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 4.9
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (VBL App. F.3 / ReflAct App. K.1 / MPO)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca"
+  }
+}

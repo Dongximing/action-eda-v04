@@ -1,0 +1,274 @@
+{
+  "id": "u011",
+  "family": "look_at_obj_in_light",
+  "game": "look_at_obj_in_light-CD-None-DeskLamp-308/trial_T20190908_141958_463362/game.tw-pddl",
+  "task": "examine the cd with the desklamp.",
+  "arm": "react_std",
+  "won": true,
+  "steps": 23,
+  "end": "success",
+  "baseline_won": null,
+  "baseline_steps": null,
+  "baseline_source": "none (--no-baseline)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to drawer 1",
+      "observation": "You arrive at drawer 1. The drawer 1 is closed."
+    },
+    {
+      "id": "r2",
+      "action": "open drawer 1",
+      "observation": "You open the drawer 1. The drawer 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r3",
+      "action": "go to drawer 2",
+      "observation": "You arrive at drawer 2. On the drawer 2, you see a cellphone 2, and a creditcard 1."
+    },
+    {
+      "id": "r4",
+      "action": "go to drawer 3",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r5",
+      "action": "open drawer 3",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r6",
+      "action": "go to shelf 1",
+      "observation": "You arrive at shelf 1. On the shelf 1, you see nothing."
+    },
+    {
+      "id": "r7",
+      "action": "go to shelf 2",
+      "observation": "You arrive at shelf 2. On the shelf 2, you see nothing."
+    },
+    {
+      "id": "r8",
+      "action": "go to shelf 3",
+      "observation": "You arrive at shelf 3. On the shelf 3, you see a desklamp 1."
+    },
+    {
+      "id": "r9",
+      "action": "go to shelf 4",
+      "observation": "You arrive at shelf 4. On the shelf 4, you see a alarmclock 2, and a alarmclock 1."
+    },
+    {
+      "id": "r10",
+      "action": "go to shelf 5",
+      "observation": "You arrive at shelf 5. On the shelf 5, you see nothing."
+    },
+    {
+      "id": "r11",
+      "action": "go to shelf 6",
+      "observation": "You arrive at shelf 6. On the shelf 6, you see nothing."
+    },
+    {
+      "id": "r12",
+      "action": "go to drawer 4",
+      "observation": "You arrive at drawer 4. The drawer 4 is closed."
+    },
+    {
+      "id": "r13",
+      "action": "open drawer 4",
+      "observation": "You open the drawer 4. The drawer 4 is open. In it, you see a pen 1."
+    },
+    {
+      "id": "r14",
+      "action": "go to drawer 5",
+      "observation": "You arrive at drawer 5. On the drawer 5, you see nothing."
+    },
+    {
+      "id": "r15",
+      "action": "go to drawer 6",
+      "observation": "You arrive at drawer 6. The drawer 6 is closed."
+    },
+    {
+      "id": "r16",
+      "action": "open drawer 6",
+      "observation": "You open the drawer 6. The drawer 6 is open. In it, you see a creditcard 2."
+    },
+    {
+      "id": "r17",
+      "action": "go to desk 1",
+      "observation": "You arrive at desk 1. On the desk 1, you see a desklamp 1, and a pencil 1."
+    },
+    {
+      "id": "r18",
+      "action": "go to safe 1",
+      "observation": "You arrive at safe 1. The safe 1 is closed."
+    },
+    {
+      "id": "r19",
+      "action": "open safe 1",
+      "observation": "You open the safe 1. The safe 1 is open. In it, you see a keychain 1."
+    },
+    {
+      "id": "r20",
+      "action": "go to desk 2",
+      "observation": "You arrive at desk 2. On the desk 2, you see a bowl 1, a cd 3, and a mug 1."
+    },
+    {
+      "id": "r21",
+      "action": "take cd 3 from desk 2",
+      "observation": "You pick up the cd 3 from the desk 2."
+    },
+    {
+      "id": "r22",
+      "action": "go to desk 1",
+      "observation": "You arrive at desk 1. On the desk 1, you see a desklamp 1, and a pencil 1."
+    },
+    {
+      "id": "r23",
+      "action": "use desklamp 1",
+      "observation": "You turn on the desklamp 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: To solve the task \"examine the cd with the desklamp\", I first need to locate a CD and a desklamp. Based on the available objects, CDs are likely found in drawers, shelves, or desks, while desklamps are often on desks or sidetables. I will start by checking the drawers for a CD. I'll begin with drawer 1.\nAction: go to drawer 1",
+      "action": "go to drawer 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: Drawer 1 is closed, so I cannot see its contents. I need to open it to check if there is a CD inside.\nAction: open drawer 1",
+      "action": "open drawer 1"
+    },
+    {
+      "step": 2,
+      "output": "Thought: Drawer 1 is empty. I need to continue searching for a CD and a desklamp. I will check the next drawer, drawer 2, to see if it contains a CD.\nAction: go to drawer 2",
+      "action": "go to drawer 2"
+    },
+    {
+      "step": 3,
+      "output": "Thought: Drawer 2 contains a cellphone and a creditcard, but no CD. I need to continue searching for a CD. I will check the next drawer, drawer 3.\nAction: go to drawer 3",
+      "action": "go to drawer 3"
+    },
+    {
+      "step": 4,
+      "output": "Thought: The action \"go to drawer 3\" resulted in \"Nothing happened\", which suggests I might need to open it first or the system expects a different interaction. Since I am already at drawer 3 (implied by the previous move), I should try to open it to check its contents for a CD.\nAction: open drawer 3",
+      "action": "open drawer 3"
+    },
+    {
+      "step": 5,
+      "output": "Thought: The action \"open drawer 3\" resulted in \"Nothing happened\", which is strange since the previous \"go to drawer 3\" also failed. This might indicate that \"drawer 3\" is not a valid object to interact with directly in this state, or perhaps the environment description implies it's closed and requires a specific approach, but the standard action failed. Let's re-evaluate the available objects. I see \"drawer 1\" through \"drawer 6\". Maybe I should try a different drawer that is more likely to contain a CD, such as a shelf or desk, or try another drawer number. Let's try \"drawer 4\" next, assuming the previous failures were due to specific states or errors, and checking another location is a valid recovery step. Alternatively, maybe I should check the shelves first as they often hold media like CDs. Let's try going to shelf 1.\nAction: go to shelf 1",
+      "action": "go to shelf 1"
+    },
+    {
+      "step": 6,
+      "output": "Thought: Shelf 1 is empty. I need to continue searching for a CD and a desklamp. I will check the next shelf, shelf 2, to see if it contains a CD.\nAction: go to shelf 2",
+      "action": "go to shelf 2"
+    },
+    {
+      "step": 7,
+      "output": "Thought: Shelf 2 is also empty. I need to continue searching for a CD. I will check the next shelf, shelf 3.\nAction: go to shelf 3",
+      "action": "go to shelf 3"
+    },
+    {
+      "step": 8,
+      "output": "Thought: I found a desklamp 1 on shelf 3, but I still need to find a CD to examine it with. I will continue searching for the CD in the remaining shelves. Next, I will check shelf 4.\nAction: go to shelf 4",
+      "action": "go to shelf 4"
+    },
+    {
+      "step": 9,
+      "output": "Thought: Shelf 4 contains alarmclocks but no CD. I need to continue searching for the CD. I will check the next shelf, shelf 5.\nAction: go to shelf 5",
+      "action": "go to shelf 5"
+    },
+    {
+      "step": 10,
+      "output": "Thought: Shelf 5 is empty. I need to continue searching for the CD. I will check the next shelf, shelf 6.\nAction: go to shelf 6",
+      "action": "go to shelf 6"
+    },
+    {
+      "step": 11,
+      "output": "Thought: I have checked all the shelves (1-6) and found a desklamp on shelf 3, but no CD. I also checked drawers 1, 2, and 3 (with some issues opening 3 and 4). CDs are often found in drawers or on desks. I should check the remaining drawers (4, 5, 6) and the desks (1, 2) for the CD. Let's start with drawer 4.\nAction: go to drawer 4",
+      "action": "go to drawer 4"
+    },
+    {
+      "step": 12,
+      "output": "Thought: Drawer 4 is closed, so I cannot see its contents. I need to open it to check if there is a CD inside.\nAction: open drawer 4",
+      "action": "open drawer 4"
+    },
+    {
+      "step": 13,
+      "output": "Thought: Drawer 4 contains a pen, but no CD. I need to continue searching for the CD. I will check the next drawer, drawer 5.\nAction: go to drawer 5",
+      "action": "go to drawer 5"
+    },
+    {
+      "step": 14,
+      "output": "Thought: Drawer 5 is empty. I need to continue searching for the CD. I will check the next drawer, drawer 6.\nAction: go to drawer 6",
+      "action": "go to drawer 6"
+    },
+    {
+      "step": 15,
+      "output": "Thought: Drawer 6 is closed, so I need to open it to check for a CD.\nAction: open drawer 6",
+      "action": "open drawer 6"
+    },
+    {
+      "step": 16,
+      "output": "Thought: I have checked all the drawers and shelves. I found a desklamp on shelf 3, but I still haven't found a CD. CDs are often stored in desks or safes. I should check the desks next. I will start with desk 1.\nAction: go to desk 1",
+      "action": "go to desk 1"
+    },
+    {
+      "step": 17,
+      "output": "Thought: I found a desklamp 1 on desk 1, but I still need to find a CD to examine it with. I have checked all drawers and shelves without finding a CD. CDs are sometimes stored in safes or on desks. I should check the safe next.\nAction: go to safe 1",
+      "action": "go to safe 1"
+    },
+    {
+      "step": 18,
+      "output": "Thought: The safe is closed, so I need to open it to check if there is a CD inside.\nAction: open safe 1",
+      "action": "open safe 1"
+    },
+    {
+      "step": 19,
+      "output": "Thought: I have checked all drawers, shelves, and the safe, but I haven't found a CD yet. I found a desklamp on desk 1. CDs are often stored in desks or on top of desks. I should check the other desk, desk 2, for the CD.\nAction: go to desk 2",
+      "action": "go to desk 2"
+    },
+    {
+      "step": 20,
+      "output": "Thought: I found a cd 3 on desk 2. I also found a desklamp 1 earlier on desk 1. To examine the cd with the desklamp, I need to take the cd first, then use the desklamp. I will take the cd 3 from desk 2.\nAction: take cd 3 from desk 2",
+      "action": "take cd 3 from desk 2"
+    },
+    {
+      "step": 21,
+      "output": "Thought: I have successfully picked up the cd 3. Now I need to use the desklamp to examine it. I found a desklamp 1 on desk 1 earlier. I will go to desk 1 to use the desklamp with the cd.\nAction: go to desk 1",
+      "action": "go to desk 1"
+    },
+    {
+      "step": 22,
+      "output": "Thought: I am at desk 1 where the desklamp 1 is located. I have the cd 3 in my possession. The task is to \"examine the cd with the desklamp\". The available actions include \"use obj\". Using the desklamp should allow me to examine the cd. I will use the desklamp 1.\nAction: use desklamp 1",
+      "action": "use desklamp 1"
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 23,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 26.0
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (VBL App. F.3 / ReflAct App. K.1 / MPO)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca"
+  }
+}

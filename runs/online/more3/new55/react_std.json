@@ -1,0 +1,144 @@
+{
+  "id": "new55",
+  "family": "pick_cool_then_place_in_recep",
+  "game": "pick_cool_then_place_in_recep-Pot-None-DiningTable-21/trial_T20190909_004531_429065/game.tw-pddl",
+  "task": "put a cool pot in diningtable.",
+  "arm": "react_std",
+  "won": true,
+  "steps": 10,
+  "end": "success",
+  "baseline_won": false,
+  "baseline_steps": 50,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": 3,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 1, a diningtable 3, a diningtable 2, a diningtable 1, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a sidetable 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing."
+    },
+    {
+      "id": "r2",
+      "action": "go to stoveburner 2",
+      "observation": "You arrive at stoveburner 2. On the stoveburner 2, you see a pan 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to stoveburner 3",
+      "observation": "You arrive at stoveburner 3. On the stoveburner 3, you see nothing."
+    },
+    {
+      "id": "r4",
+      "action": "go to stoveburner 4",
+      "observation": "You arrive at stoveburner 4. On the stoveburner 4, you see a pot 1."
+    },
+    {
+      "id": "r5",
+      "action": "take pot 1 from stoveburner 4",
+      "observation": "You pick up the pot 1 from the stoveburner 4."
+    },
+    {
+      "id": "r6",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r7",
+      "action": "open fridge 1",
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r8",
+      "action": "cool pot 1 with fridge 1",
+      "observation": "You cool the pot 1 using the fridge 1."
+    },
+    {
+      "id": "r9",
+      "action": "go to diningtable 1",
+      "observation": "You arrive at diningtable 1. On the diningtable 1, you see nothing."
+    },
+    {
+      "id": "r10",
+      "action": "move pot 1 to diningtable 1",
+      "observation": "You move the pot 1 to the diningtable 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: To solve the task, I need to find a pot, cool it with the fridge, and then put it on the diningtable. First, I need to locate a pot. Pots are commonly found in cabinets, drawers, or on stoveburners. I will start by checking the stoveburners since they often hold cookware. I'll begin with stoveburner 1.\nAction: go to stoveburner 1",
+      "action": "go to stoveburner 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: Since stoveburner 1 is empty, I need to check other stoveburners for a pot. I will proceed to stoveburner 2.\nAction: go to stoveburner 2",
+      "action": "go to stoveburner 2"
+    },
+    {
+      "step": 2,
+      "output": "Thought: I found a pan 1 on stoveburner 2, but the task requires a pot. I need to continue searching for a pot in other locations like stoveburner 3, stoveburner 4, cabinets, drawers, or the sinkbasin. I will check stoveburner 3 next.\nAction: go to stoveburner 3",
+      "action": "go to stoveburner 3"
+    },
+    {
+      "step": 3,
+      "output": "Thought: Stoveburner 3 is empty. I need to continue searching for a pot. I will check stoveburner 4 next.\nAction: go to stoveburner 4",
+      "action": "go to stoveburner 4"
+    },
+    {
+      "step": 4,
+      "output": "Thought: I found a pot 1 on stoveburner 4. Now I need to take it, then cool it with the fridge, and finally put it on the diningtable. First, I will take the pot from stoveburner 4.\nAction: take pot 1 from stoveburner 4",
+      "action": "take pot 1 from stoveburner 4"
+    },
+    {
+      "step": 5,
+      "output": "Thought: I have successfully picked up pot 1. The next step is to cool it. According to the task, I need to cool the pot using the fridge. I will go to the fridge 1 to perform this action.\nAction: go to fridge 1",
+      "action": "go to fridge 1"
+    },
+    {
+      "step": 6,
+      "output": "Thought: I am at the fridge 1, but it is closed. To cool the pot 1, I first need to open the fridge.\nAction: open fridge 1",
+      "action": "open fridge 1"
+    },
+    {
+      "step": 7,
+      "output": "Thought: The fridge 1 is now open, but it is empty. I need to cool the pot 1 using the fridge. Even if the fridge is empty, the action \"cool obj with recep\" should still be possible as long as I am at the receptacle. I will proceed to cool the pot 1 with the fridge 1.\nAction: cool pot 1 with fridge 1",
+      "action": "cool pot 1 with fridge 1"
+    },
+    {
+      "step": 8,
+      "output": "Thought: I have successfully cooled the pot 1. The next step is to put it on the diningtable. I need to go to one of the diningtables (1, 2, or 3) and place the pot there. I will start by going to diningtable 1.\nAction: go to diningtable 1",
+      "action": "go to diningtable 1"
+    },
+    {
+      "step": 9,
+      "output": "Thought: I have arrived at diningtable 1, which is empty. The task requires me to put the cooled pot 1 on a diningtable. Since diningtable 1 is available and empty, I will place the pot there.\nAction: put pot 1 in/on diningtable 1",
+      "action": "move pot 1 to diningtable 1"
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 10,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 10.4
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (VBL App. F.3 / ReflAct App. K.1 / MPO)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca"
+  }
+}

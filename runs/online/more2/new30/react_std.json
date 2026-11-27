@@ -1,0 +1,134 @@
+{
+  "id": "new30",
+  "family": "pick_cool_then_place_in_recep",
+  "game": "pick_cool_then_place_in_recep-Pan-None-StoveBurner-18/trial_T20190906_181023_216915/game.tw-pddl",
+  "task": "put a cool pan in stoveburner.",
+  "arm": "react_std",
+  "won": true,
+  "steps": 9,
+  "end": "success",
+  "baseline_won": false,
+  "baseline_steps": 50,
+  "baseline_source": "direct.json (this run)",
+  "diverged_from_baseline_at": 2,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 16, a cabinet 15, a cabinet 14, a cabinet 13, a cabinet 12, a cabinet 11, a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 2, a countertop 1, a diningtable 1, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a safe 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing."
+    },
+    {
+      "id": "r2",
+      "action": "go to stoveburner 2",
+      "observation": "You arrive at stoveburner 2. On the stoveburner 2, you see a pot 1."
+    },
+    {
+      "id": "r3",
+      "action": "go to stoveburner 3",
+      "observation": "You arrive at stoveburner 3. On the stoveburner 3, you see a pan 1."
+    },
+    {
+      "id": "r4",
+      "action": "take pan 1 from stoveburner 3",
+      "observation": "You pick up the pan 1 from the stoveburner 3."
+    },
+    {
+      "id": "r5",
+      "action": "go to fridge 1",
+      "observation": "You arrive at fridge 1. The fridge 1 is closed."
+    },
+    {
+      "id": "r6",
+      "action": "open fridge 1",
+      "observation": "You open the fridge 1. The fridge 1 is open. In it, you see nothing."
+    },
+    {
+      "id": "r7",
+      "action": "cool pan 1 with fridge 1",
+      "observation": "You cool the pan 1 using the fridge 1."
+    },
+    {
+      "id": "r8",
+      "action": "go to stoveburner 1",
+      "observation": "You arrive at stoveburner 1. On the stoveburner 1, you see nothing."
+    },
+    {
+      "id": "r9",
+      "action": "move pan 1 to stoveburner 1",
+      "observation": "You move the pan 1 to the stoveburner 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: To solve the task \"put a cool pan in stoveburner\", I first need to locate a pan. Pans are commonly found on stoveburners, countertops, or inside cabinets/drawers. I will start by checking the stoveburners, as they are the most likely place to find a pan initially. I'll begin with stoveburner 1.\nAction: go to stoveburner 1",
+      "action": "go to stoveburner 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: Since stoveburner 1 is empty, I need to check other stoveburners for a pan. I will proceed to stoveburner 2.\nAction: go to stoveburner 2",
+      "action": "go to stoveburner 2"
+    },
+    {
+      "step": 2,
+      "output": "Thought: Stoveburner 2 has a pot, not a pan. I need to continue searching for a pan. I will check stoveburner 3 next.\nAction: go to stoveburner 3",
+      "action": "go to stoveburner 3"
+    },
+    {
+      "step": 3,
+      "output": "Thought: I have found a pan 1 on stoveburner 3. The next step is to take the pan so I can cool it and then put it in a stoveburner.\nAction: take pan 1 from stoveburner 3",
+      "action": "take pan 1 from stoveburner 3"
+    },
+    {
+      "step": 4,
+      "output": "Thought: I have successfully picked up pan 1. The task requires me to cool the pan and then put it in a stoveburner. I need to find a fridge to cool the pan. I will go to fridge 1.\nAction: go to fridge 1",
+      "action": "go to fridge 1"
+    },
+    {
+      "step": 5,
+      "output": "Thought: I am at fridge 1, but it is closed. To cool the pan, I need to open the fridge first.\nAction: open fridge 1",
+      "action": "open fridge 1"
+    },
+    {
+      "step": 6,
+      "output": "Thought: The fridge is now open, but it is empty. I need to cool the pan using the fridge. Even if the fridge is empty, the action \"cool obj with recep\" should still be valid to perform the cooling task.\nAction: cool pan 1 with fridge 1",
+      "action": "cool pan 1 with fridge 1"
+    },
+    {
+      "step": 7,
+      "output": "Thought: I have successfully cooled the pan 1. The next step is to put the cooled pan into a stoveburner. I will go to stoveburner 1 to place it there.\nAction: go to stoveburner 1",
+      "action": "go to stoveburner 1"
+    },
+    {
+      "step": 8,
+      "output": "Thought: I have arrived at stoveburner 1, which is empty. The pan 1 is currently in my possession and has been cooled. The final step is to place the pan onto the stoveburner.\nAction: put pan 1 in/on stoveburner 1",
+      "action": "move pan 1 to stoveburner 1"
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 9,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 8.7
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (VBL App. F.3 / ReflAct App. K.1 / MPO)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca"
+  }
+}

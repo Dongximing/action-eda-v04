@@ -1,0 +1,124 @@
+{
+  "id": "u106",
+  "family": "pick_heat_then_place_in_recep",
+  "game": "pick_heat_then_place_in_recep-Egg-None-GarbageCan-10/trial_T20190908_113610_425142/game.tw-pddl",
+  "task": "heat some egg and put it in garbagecan.",
+  "arm": "react_std_t1536",
+  "won": true,
+  "steps": 8,
+  "end": "success",
+  "baseline_won": null,
+  "baseline_steps": null,
+  "baseline_source": "none (--no-baseline)",
+  "diverged_from_baseline_at": null,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "open fridge 1",
+      "observation": "Nothing happens."
+    },
+    {
+      "id": "r2",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a egg 1, and a soapbottle 2."
+    },
+    {
+      "id": "r3",
+      "action": "take egg 1 from countertop 1",
+      "observation": "You pick up the egg 1 from the countertop 1."
+    },
+    {
+      "id": "r4",
+      "action": "go to microwave 1",
+      "observation": "You arrive at microwave 1. The microwave 1 is closed."
+    },
+    {
+      "id": "r5",
+      "action": "open microwave 1",
+      "observation": "You open the microwave 1. The microwave 1 is open. In it, you see a apple 1, and a cup 1."
+    },
+    {
+      "id": "r6",
+      "action": "heat egg 1 with microwave 1",
+      "observation": "You heat the egg 1 using the microwave 1."
+    },
+    {
+      "id": "r7",
+      "action": "go to garbagecan 1",
+      "observation": "You arrive at garbagecan 1. On the garbagecan 1, you see a lettuce 3, and a papertowelroll 1."
+    },
+    {
+      "id": "r8",
+      "action": "move egg 1 to garbagecan 1",
+      "observation": "You move the egg 1 to the garbagecan 1."
+    }
+  ],
+  "decisions": [],
+  "place_lists": [
+    {
+      "step": 0,
+      "output": "Thought: To solve the task, I need to find an egg, heat it, and then put it in the garbagecan. Eggs are commonly found in the fridge, on countertops, or in cabinets. I will start by checking the fridge 1 to see if there is an egg inside.\nAction: open fridge 1",
+      "action": "open fridge 1"
+    },
+    {
+      "step": 1,
+      "output": "Thought: The action \"open fridge 1\" resulted in \"Nothing happens\", which suggests that either the fridge is already open, closed in a way that prevents interaction, or the action name is slightly off (perhaps it needs to be \"open fridge 1\" but the system expects a different state or the fridge is inaccessible). However, looking at the available actions, \"open recep\" is listed, but specific objects like \"fridge 1\" are usually targeted directly. Since \"open fridge 1\" failed, I should try to find the egg elsewhere. Common locations for eggs besides the fridge are countertops or cabinets. I will check countertop 1 next.\nAction: go to countertop 1",
+      "action": "go to countertop 1"
+    },
+    {
+      "step": 2,
+      "output": "Thought: I have found an egg (egg 1) on countertop 1. The next step is to pick it up so I can heat it. After taking the egg, I will need to find a microwave to heat it, and finally put it in the garbagecan.\nAction: take egg 1 from countertop 1",
+      "action": "take egg 1 from countertop 1"
+    },
+    {
+      "step": 3,
+      "output": "Thought: I have successfully picked up the egg 1. Now I need to heat it. The available appliance for heating is the microwave 1. I should go to the microwave 1 and then use the heat action on the egg.\nAction: go to microwave 1",
+      "action": "go to microwave 1"
+    },
+    {
+      "step": 4,
+      "output": "Thought: I am at the microwave 1, which is currently closed. To heat the egg 1, I first need to open the microwave.\nAction: open microwave 1",
+      "action": "open microwave 1"
+    },
+    {
+      "step": 5,
+      "output": "Thought: The microwave 1 is now open, but there is no egg inside. I need to heat the egg 1 I am holding. Since the microwave is open, I can directly attempt to heat the egg with it. If that doesn't work because the door is open, I might need to close it first, but usually, the \"heat\" action implies placing the object inside or interacting with the appliance. Let's try to heat the egg with the microwave first.\nAction: heat egg 1 with microwave 1",
+      "action": "heat egg 1 with microwave 1"
+    },
+    {
+      "step": 6,
+      "output": "Thought: I have successfully heated the egg 1. The final step of the task is to put the heated egg into the garbagecan. I need to go to the garbagecan and then place the egg inside.\nAction: go to garbagecan 1",
+      "action": "go to garbagecan 1"
+    },
+    {
+      "step": 7,
+      "output": "Thought: I have arrived at the garbagecan 1 and can see its contents. I am holding the heated egg 1. The final step is to place the egg into the garbagecan.\nAction: put egg 1 in/on garbagecan 1",
+      "action": "move egg 1 to garbagecan 1"
+    }
+  ],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "new_actor_requests": 8,
+    "jev": {
+      "calls": 0,
+      "cache_hits": 0
+    },
+    "seconds": 8.2
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "standard ReAct (VBL App. F.3 / ReflAct App. K.1 / MPO)",
+    "examples": "data/fewshot/mpo/alfworld_icl.json @5529eca"
+  }
+}

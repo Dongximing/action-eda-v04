@@ -1,0 +1,531 @@
+{
+  "id": "game08",
+  "family": "pick_clean_then_place_in_recep",
+  "game": "pick_clean_then_place_in_recep-Spatula-None-DiningTable-4/trial_T20190909_002804_564168/game.tw-pddl",
+  "task": "clean some spatula and put it in diningtable.",
+  "arm": "think_state",
+  "won": true,
+  "steps": 7,
+  "end": "success",
+  "baseline_won": true,
+  "baseline_steps": 7,
+  "baseline_source": "src natural.json",
+  "diverged_from_baseline_at": 1,
+  "history": [
+    {
+      "id": "r0",
+      "action": "reset",
+      "observation": "-= Welcome to TextWorld, ALFRED! =-\n\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a diningtable 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1."
+    },
+    {
+      "id": "r1",
+      "action": "go to countertop 1",
+      "observation": "You arrive at countertop 1. On the countertop 1, you see a potato 1."
+    },
+    {
+      "id": "r2",
+      "action": "go to countertop 2",
+      "observation": "You arrive at countertop 2. On the countertop 2, you see a butterknife 1, a dishsponge 1, a egg 3, a fork 1, a houseplant 1, a ladle 1, a potato 2, and a spatula 1."
+    },
+    {
+      "id": "r3",
+      "action": "take spatula 1 from countertop 2",
+      "observation": "You pick up the spatula 1 from the countertop 2."
+    },
+    {
+      "id": "r4",
+      "action": "go to sinkbasin 1",
+      "observation": "You arrive at sinkbasin 1. On the sinkbasin 1, you see a cup 2, a fork 2, and a knife 1."
+    },
+    {
+      "id": "r5",
+      "action": "clean spatula 1 with sinkbasin 1",
+      "observation": "You clean the spatula 1 using the sinkbasin 1."
+    },
+    {
+      "id": "r6",
+      "action": "go to diningtable 1",
+      "observation": "You arrive at diningtable 1. On the diningtable 1, you see a bread 2, a bread 1, a lettuce 3, a lettuce 2, a lettuce 1, a pan 1, a soapbottle 3, a soapbottle 2, a spatula 2, and a spoon 2."
+    },
+    {
+      "id": "r7",
+      "action": "move spatula 1 to diningtable 1",
+      "observation": "You move the spatula 1 to the diningtable 1."
+    }
+  ],
+  "decisions": [
+    {
+      "proposal": "take spatula 1 from countertop 2",
+      "check": {
+        "status": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "spatula is named in the task",
+            "verdict": "SUPPORTED",
+            "evidence_records": [
+              null
+            ]
+          }
+        ],
+        "calls": 0
+      },
+      "blocked": false,
+      "step": 2,
+      "observation": "You pick up the spatula 1 from the countertop 2.",
+      "succeeded": true
+    }
+  ],
+  "place_lists": [
+    {
+      "step": 0,
+      "code_visited": [],
+      "code_not_visited": [
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 3",
+        "countertop 2",
+        "countertop 1",
+        "diningtable 1",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "sinkbasin 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "code_location": null,
+      "code_carrying": null,
+      "model_visited": [],
+      "model_not_visited": [
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 3",
+        "countertop 2",
+        "countertop 1",
+        "diningtable 1",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "sinkbasin 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_location": null,
+      "model_carrying": null,
+      "unusable": 0
+    },
+    {
+      "step": 1,
+      "code_visited": [
+        "countertop 1"
+      ],
+      "code_not_visited": [
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 3",
+        "countertop 2",
+        "diningtable 1",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "sinkbasin 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "code_location": "countertop 1",
+      "code_carrying": null,
+      "model_visited": [
+        "countertop 1"
+      ],
+      "model_not_visited": [
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 3",
+        "countertop 2",
+        "diningtable 1",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "sinkbasin 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_location": "countertop 1",
+      "model_carrying": null,
+      "unusable": 0
+    },
+    {
+      "step": 2,
+      "code_visited": [
+        "countertop 1",
+        "countertop 2"
+      ],
+      "code_not_visited": [
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 3",
+        "diningtable 1",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "sinkbasin 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "code_location": "countertop 2",
+      "code_carrying": null,
+      "model_visited": [
+        "countertop 1",
+        "countertop 2"
+      ],
+      "model_not_visited": [
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 3",
+        "diningtable 1",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "sinkbasin 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_location": "countertop 2",
+      "model_carrying": null,
+      "unusable": 0
+    },
+    {
+      "step": 3,
+      "code_visited": [
+        "countertop 1",
+        "countertop 2"
+      ],
+      "code_not_visited": [
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 3",
+        "diningtable 1",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "sinkbasin 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "code_location": "countertop 2",
+      "code_carrying": "spatula 1",
+      "model_visited": [
+        "countertop 1",
+        "countertop 2"
+      ],
+      "model_not_visited": [
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 3",
+        "diningtable 1",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "sinkbasin 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_location": "countertop 2",
+      "model_carrying": "spatula 1",
+      "unusable": 0
+    },
+    {
+      "step": 4,
+      "code_visited": [
+        "countertop 1",
+        "countertop 2",
+        "sinkbasin 1"
+      ],
+      "code_not_visited": [
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 3",
+        "diningtable 1",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "code_location": "sinkbasin 1",
+      "code_carrying": "spatula 1",
+      "model_visited": [
+        "countertop 1",
+        "countertop 2",
+        "sinkbasin 1"
+      ],
+      "model_not_visited": [
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 3",
+        "diningtable 1",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_location": "sinkbasin 1",
+      "model_carrying": "spatula 1",
+      "unusable": 0
+    },
+    {
+      "step": 5,
+      "code_visited": [
+        "countertop 1",
+        "countertop 2",
+        "sinkbasin 1"
+      ],
+      "code_not_visited": [
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 3",
+        "diningtable 1",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "code_location": "sinkbasin 1",
+      "code_carrying": "spatula 1",
+      "model_visited": [
+        "countertop 1",
+        "countertop 2",
+        "sinkbasin 1"
+      ],
+      "model_not_visited": [
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 3",
+        "diningtable 1",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_location": "sinkbasin 1",
+      "model_carrying": "spatula 1",
+      "unusable": 0
+    },
+    {
+      "step": 6,
+      "code_visited": [
+        "countertop 1",
+        "countertop 2",
+        "sinkbasin 1",
+        "diningtable 1"
+      ],
+      "code_not_visited": [
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 3",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "code_location": "diningtable 1",
+      "code_carrying": "spatula 1",
+      "model_visited": [
+        "countertop 1",
+        "countertop 2",
+        "sinkbasin 1",
+        "diningtable 1"
+      ],
+      "model_not_visited": [
+        "cabinet 2",
+        "cabinet 1",
+        "coffeemachine 1",
+        "countertop 3",
+        "drawer 6",
+        "drawer 5",
+        "drawer 4",
+        "drawer 3",
+        "drawer 2",
+        "drawer 1",
+        "fridge 1",
+        "garbagecan 1",
+        "microwave 1",
+        "stoveburner 4",
+        "stoveburner 3",
+        "stoveburner 2",
+        "stoveburner 1",
+        "toaster 1"
+      ],
+      "model_location": "diningtable 1",
+      "model_carrying": "spatula 1",
+      "unusable": 0
+    }
+  ],
+  "thoughts": {
+    "1": "My task is to clean a spatula and put it in the diningtable. First, I need to find a spatula. Common places for kitchen utensils like spatulas are the countertop, stoveburner, or cabinet. I will start by checking the countertop 1.",
+    "2": "I need to find a spatula. I am currently at countertop 1, which only has a potato. I will check the other countertops and stoveburners next, as they are common places for kitchen utensils. I'll start with countertop 2.",
+    "3": "I have found a spatula 1 on countertop 2. The next step is to take it so I can clean it.",
+    "4": "I have successfully picked up the spatula 1. Now I need to clean it. According to the task, I must clean the spatula with the sinkbasin. I am currently at countertop 2, so I need to go to sinkbasin 1 first.",
+    "5": "I have the spatula 1 and am at sinkbasin 1. The next step is to clean the spatula with the sinkbasin.",
+    "6": "I have successfully cleaned the spatula 1 using the sinkbasin 1. Now I need to put the spatula 1 in the diningtable 1 to complete the task. I am currently at sinkbasin 1, so I will go to diningtable 1 first.",
+    "7": "I have successfully cleaned the spatula 1 with the sinkbasin 1. I am currently at diningtable 1 and holding the spatula 1. The task requires me to put the spatula in the diningtable. Since I am already at the diningtable and holding the spatula, I should use the 'move' command to place it there."
+  },
+  "think_errors": [],
+  "hints_shown": 0,
+  "usage": {
+    "judge": {
+      "calls": 4,
+      "cache_hits": 3
+    },
+    "new_actor_requests": 7,
+    "jev": {
+      "calls": 4,
+      "cache_hits": 2
+    },
+    "seconds": 75.8
+  },
+  "config": {
+    "max_revisions": 1,
+    "max_steps": 50,
+    "route": "parasail",
+    "agent": "thinking agent (THINK_ACTION, data/fewshot/react_think_examples.json)",
+    "note": "full state kept by the decision model (state_ledger.py)",
+    "checker": "name_check, hard block",
+    "jev_url": "http://127.0.0.1:8000/v1/systemone",
+    "jev_model": "OneJev1.6-4B"
+  }
+}
